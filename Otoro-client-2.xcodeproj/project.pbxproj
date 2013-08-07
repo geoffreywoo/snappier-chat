@@ -18,6 +18,11 @@
 		60CE1C8117AEDFE400C6249F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6817AEDFE400C6249F /* Foundation.framework */; };
 		60CE1C8917AEDFE400C6249F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60CE1C8717AEDFE400C6249F /* InfoPlist.strings */; };
 		60CE1C8C17AEDFE400C6249F /* Otoro_client_2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CE1C8B17AEDFE400C6249F /* Otoro_client_2Tests.m */; };
+		60CE1C9817AEE01B00C6249F /* OtoroContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */; };
+		60CE1C9917AEE01B00C6249F /* OtoroContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60CE1C9717AEE01B00C6249F /* OtoroContentViewController.xib */; };
+		60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */; };
+		60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */; };
+		60CE1CA017AF2DAB00C6249F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C9F17AF2DAB00C6249F /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,18 +40,25 @@
 		60CE1C6617AEDFE400C6249F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		60CE1C6817AEDFE400C6249F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		60CE1C6A17AEDFE400C6249F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		60CE1C6E17AEDFE400C6249F /* Otoro-client-2-Info.plist */ = {isa = PBXFileReference; path = "Otoro-client-2-Info.plist"; sourceTree = "<group>"; };
+		60CE1C6E17AEDFE400C6249F /* Otoro-client-2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Otoro-client-2-Info.plist"; sourceTree = "<group>"; };
 		60CE1C7017AEDFE400C6249F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		60CE1C7217AEDFE400C6249F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		60CE1C7417AEDFE400C6249F /* Otoro-client-2-Prefix.pch */ = {isa = PBXFileReference; path = "Otoro-client-2-Prefix.pch"; sourceTree = "<group>"; };
-		60CE1C7517AEDFE400C6249F /* OAppDelegate.h */ = {isa = PBXFileReference; path = OAppDelegate.h; sourceTree = "<group>"; };
+		60CE1C7417AEDFE400C6249F /* Otoro-client-2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Otoro-client-2-Prefix.pch"; sourceTree = "<group>"; };
+		60CE1C7517AEDFE400C6249F /* OAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAppDelegate.h; sourceTree = "<group>"; };
 		60CE1C7617AEDFE400C6249F /* OAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OAppDelegate.m; sourceTree = "<group>"; };
 		60CE1C7D17AEDFE400C6249F /* Otoro-client-2Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Otoro-client-2Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CE1C7E17AEDFE400C6249F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		60CE1C8617AEDFE400C6249F /* Otoro-client-2Tests-Info.plist */ = {isa = PBXFileReference; path = "Otoro-client-2Tests-Info.plist"; sourceTree = "<group>"; };
+		60CE1C8617AEDFE400C6249F /* Otoro-client-2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Otoro-client-2Tests-Info.plist"; sourceTree = "<group>"; };
 		60CE1C8817AEDFE400C6249F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		60CE1C8A17AEDFE400C6249F /* Otoro_client_2Tests.h */ = {isa = PBXFileReference; path = Otoro_client_2Tests.h; sourceTree = "<group>"; };
+		60CE1C8A17AEDFE400C6249F /* Otoro_client_2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Otoro_client_2Tests.h; sourceTree = "<group>"; };
 		60CE1C8B17AEDFE400C6249F /* Otoro_client_2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Otoro_client_2Tests.m; sourceTree = "<group>"; };
+		60CE1C9517AEE01B00C6249F /* OtoroContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroContentViewController.h; sourceTree = "<group>"; };
+		60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroContentViewController.m; sourceTree = "<group>"; };
+		60CE1C9717AEE01B00C6249F /* OtoroContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtoroContentViewController.xib; sourceTree = "<group>"; };
+		60CE1C9A17AF2D3E00C6249F /* ToroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToroViewController.h; sourceTree = "<group>"; };
+		60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToroViewController.m; sourceTree = "<group>"; };
+		60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToroViewController.xib; sourceTree = "<group>"; };
+		60CE1C9F17AF2DAB00C6249F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60CE1CA017AF2DAB00C6249F /* MapKit.framework in Frameworks */,
 				60CE1C6717AEDFE400C6249F /* UIKit.framework in Frameworks */,
 				60CE1C6917AEDFE400C6249F /* Foundation.framework in Frameworks */,
 				60CE1C6B17AEDFE400C6249F /* CoreGraphics.framework in Frameworks */,
@@ -95,6 +108,7 @@
 		60CE1C6517AEDFE400C6249F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				60CE1C9F17AF2DAB00C6249F /* MapKit.framework */,
 				60CE1C6617AEDFE400C6249F /* UIKit.framework */,
 				60CE1C6817AEDFE400C6249F /* Foundation.framework */,
 				60CE1C6A17AEDFE400C6249F /* CoreGraphics.framework */,
@@ -109,6 +123,12 @@
 				60CE1C7517AEDFE400C6249F /* OAppDelegate.h */,
 				60CE1C7617AEDFE400C6249F /* OAppDelegate.m */,
 				60CE1C6D17AEDFE400C6249F /* Supporting Files */,
+				60CE1C9517AEE01B00C6249F /* OtoroContentViewController.h */,
+				60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */,
+				60CE1C9717AEE01B00C6249F /* OtoroContentViewController.xib */,
+				60CE1C9A17AF2D3E00C6249F /* ToroViewController.h */,
+				60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */,
+				60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */,
 			);
 			path = "Otoro-client-2";
 			sourceTree = "<group>";
@@ -215,6 +235,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				60CE1C7117AEDFE400C6249F /* InfoPlist.strings in Resources */,
+				60CE1C9917AEE01B00C6249F /* OtoroContentViewController.xib in Resources */,
+				60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +273,8 @@
 			files = (
 				60CE1C7317AEDFE400C6249F /* main.m in Sources */,
 				60CE1C7717AEDFE400C6249F /* OAppDelegate.m in Sources */,
+				60CE1C9817AEE01B00C6249F /* OtoroContentViewController.m in Sources */,
+				60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "OAppDelegate.h"
+#import "OtoroContentViewController.h"
 
 @implementation OAppDelegate
 
@@ -16,7 +17,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    OtoroContentViewController *rootViewController = [[OtoroContentViewController alloc] init];
+	self.window.rootViewController = rootViewController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
