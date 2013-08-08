@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "Toro.h"
 
 @interface ToroViewController : UIViewController <MKMapViewDelegate>
 {
     IBOutlet MKMapView *mapView;
 }
+
+@property (nonatomic, strong) Toro *toro;
+
+
+- (id)initWithToro:(Toro *)toro;
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6097D9DF17B34A0100EC094E /* Toro.m in Sources */ = {isa = PBXBuildFile; fileRef = 6097D9DE17B34A0100EC094E /* Toro.m */; };
 		60CE1C6717AEDFE400C6249F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6617AEDFE400C6249F /* UIKit.framework */; };
 		60CE1C6917AEDFE400C6249F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6817AEDFE400C6249F /* Foundation.framework */; };
 		60CE1C6B17AEDFE400C6249F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6A17AEDFE400C6249F /* CoreGraphics.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6097D9DD17B34A0100EC094E /* Toro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toro.h; sourceTree = "<group>"; };
+		6097D9DE17B34A0100EC094E /* Toro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toro.m; sourceTree = "<group>"; };
 		60CE1C6217AEDFE400C6249F /* Otoro-client-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Otoro-client-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CE1C6617AEDFE400C6249F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		60CE1C6817AEDFE400C6249F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,6 +89,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6097D9DC17B349E600EC094E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6097D9DD17B34A0100EC094E /* Toro.h */,
+				6097D9DE17B34A0100EC094E /* Toro.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		60CE1C5717AEDFE400C6249F = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +132,7 @@
 		60CE1C6C17AEDFE400C6249F /* Otoro-client-2 */ = {
 			isa = PBXGroup;
 			children = (
+				6097D9DC17B349E600EC094E /* Models */,
 				60CE1C7517AEDFE400C6249F /* OAppDelegate.h */,
 				60CE1C7617AEDFE400C6249F /* OAppDelegate.m */,
 				60CE1C6D17AEDFE400C6249F /* Supporting Files */,
@@ -275,6 +288,7 @@
 				60CE1C7717AEDFE400C6249F /* OAppDelegate.m in Sources */,
 				60CE1C9817AEE01B00C6249F /* OtoroContentViewController.m in Sources */,
 				60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */,
+				6097D9DF17B34A0100EC094E /* Toro.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +452,7 @@
 				60CE1C9117AEDFE400C6249F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		60CE1C9217AEDFE400C6249F /* Build configuration list for PBXNativeTarget "Otoro-client-2Tests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +461,7 @@
 				60CE1C9417AEDFE400C6249F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

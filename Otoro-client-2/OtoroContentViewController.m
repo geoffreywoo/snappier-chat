@@ -8,12 +8,12 @@
 
 #import "OtoroContentViewController.h"
 #import "ToroViewController.h"
+#import "Toro.h"
 
 @implementation OtoroContentViewController
 
 @synthesize responseData = _responseData;
 @synthesize torosReceived = _torosReceived;
-@synthesize toroMetadata = _toroMetadata;
 @synthesize toroViewController = _toroViewController;
 @synthesize timer = _timer;
 
@@ -66,26 +66,23 @@
     NSLog(@"connectionDidFinishLoading");
     NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
     
-    
     NSString *strData = [[NSString alloc]initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",strData);
+    NSLog(@"strData: %@",strData);
     // convert to JSON
     NSError *myError = nil;
-    [self setTorosReceived: [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError]];
-    NSLog(@"%@",[self torosReceived]);
     
-    _toroMetadata = nil;
-    _toroMetadata = [[NSMutableArray alloc] init];
+    NSArray *jsonToros = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+    NSLog(@"jsonToros: %@",jsonToros);
     
-    for (int i = 0; i < [_torosReceived count]; i++) {
-        if ([ [[_torosReceived objectAtIndex:i] objectForKey:@"read"] integerValue] == 0) {
-            [_toroMetadata addObject:@"unread"];
-        } else {
-            [_toroMetadata addObject:@"read"];
-        }
+    _torosReceived = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [jsonToros count]; i++) {
+        Toro *toro = [[Toro alloc] initWith:[jsonToros objectAtIndex: i]];
+        NSLog(@"toro: %@",toro);
+        [_torosReceived addObject: toro];
     }
-
     [toroTableView reloadData];
+    NSLog(@"torosReceived: %@", _torosReceived);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -105,35 +102,45 @@
     return @"header";
 }
 
-const int TIMER = 15;
-int localCount = 0;
+const int MAX_TIME = 15;
 
 - (void) tick:(NSTimer*)timer
 {
-    if (localCount < TIMER) {
-        localCount++;
+    Toro *toro = [timer userInfo];
+    if ([toro elapsedTime] < MAX_TIME) {
+        [toro setElapsedTime: [toro elapsedTime] + 1];
     } else {
-        localCount = 0;
-        [_timer invalidate];
+        [timer invalidate];
         [_toroViewController.view removeFromSuperview];
-        // make the toro "read"
-        [_toroMetadata replaceObjectAtIndex:[timer.userInfo integerValue] withObject:@"read"];
+        [toro setElapsedTime:-1];
     }
 }
 
 - (void) popToro:(UIButton*)sender
 {
-    NSString *toroState = [_toroMetadata objectAtIndex:sender.tag];
+    NSLog(@"pop toro!");
+    int toroId = sender.tag;
+    Toro *theToro;
+    for (int i = 0; i < [_torosReceived count]; i++) {
+        Toro *toro = [_torosReceived objectAtIndex:i];
+        if ([toro toroId] == toroId) {
+            theToro = toro;
+            break;
+        }
+    }
     
-    if (![toroState isEqualToString:@"read"]) {
-        NSLog(@"pop toro!");
-        _toroViewController = [[ToroViewController alloc] init];
+    if (!theToro) return;
+    
+    if (![theToro read]) {
+        
+        _toroViewController = [[ToroViewController alloc] initWithToro:theToro];
         [self.view addSubview:_toroViewController.view];
         
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:[NSNumber numberWithInt: sender.tag] repeats:YES];
-        [_toroMetadata replaceObjectAtIndex:sender.tag withObject:@"counting"];
-    } else {
+        [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:theToro repeats:YES]];
+        [theToro setRead: true];
+    } else if ([theToro elapsedTime] != -1) {
         
+        [self.view addSubview:_toroViewController.view];
     }
     
 }
@@ -154,15 +161,15 @@ int localCount = 0;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ToroItemViewCell"];
     }
     
-    NSDictionary *o = [[self torosReceived] objectAtIndex:[indexPath row]];
+    Toro *o = [[self torosReceived] objectAtIndex:[indexPath row]];
     NSLog(@"%@",o);
     
-    if ([[o objectForKey:@"read"] integerValue] == 0 ) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@, %@, %@, %@, %@", [o objectForKey:@"id"], [o objectForKey:@"lat"], [o objectForKey:@"long"], [o objectForKey:@"sender"], [o objectForKey:@"read"]];
+    if (![o read]) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%d, %f, %f, %d, %d", [o toroId], [o lat], [o lng], [o senderId], [o read]];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         
         UIButton *button = [[UIButton alloc] init];
-        button.tag = [indexPath row];
+        button.tag = [o toroId];
         CGRect frame = cell.frame;
         [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
         [button addTarget:self action:@selector(popToro:) forControlEvents: UIControlEventTouchDown];
@@ -173,7 +180,7 @@ int localCount = 0;
         [cell addSubview:button];
         
     } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@, %@", [o objectForKey:@"id"], [o objectForKey:@"read"]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%d, %d", [o toroId], [o read]];
         cell.accessoryType = UITableViewCellAccessoryNone;
 
     }

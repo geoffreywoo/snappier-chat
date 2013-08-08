@@ -7,6 +7,7 @@
 //
 
 #import "ToroViewController.h"
+#import "Toro.h"
 
 @implementation ToroViewController
 
@@ -15,6 +16,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+    }
+    return self;
+}
+
+- (id)initWithToro:(Toro *)toro
+{
+    self = [super initWithNibName: @"ToroViewController" bundle: nil];
+    if (self) {
+        _toro = toro;
     }
     return self;
 }

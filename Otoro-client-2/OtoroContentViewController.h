@@ -17,8 +17,7 @@
     IBOutlet UITableView *toroTableView;
 }
 @property (nonatomic, strong) NSMutableData *responseData;
-@property (nonatomic, strong) NSArray *torosReceived;
-@property (nonatomic, strong) NSMutableArray *toroMetadata;
+@property (nonatomic, strong) NSMutableArray *torosReceived;
 @property (nonatomic, strong) ToroViewController *toroViewController;
 @property (nonatomic, strong) NSTimer *timer;
 
