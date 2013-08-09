@@ -12,11 +12,6 @@
 
 @implementation OtoroContentViewController
 
-@synthesize responseData = _responseData;
-@synthesize torosReceived = _torosReceived;
-@synthesize toroViewController = _toroViewController;
-@synthesize timer = _timer;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,6 +36,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+    
+    [toroTableView addSubview: self.refreshControl];
+    [self handleRefresh];
+}
+
+- (void) handleRefresh
+{
     self.responseData = [NSMutableData data];
     NSURLRequest *request = [NSURLRequest requestWithURL:
                              [NSURL URLWithString:@"http://otoro.herokuapp.com/user/contents?user=0"]];
@@ -60,6 +64,8 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {   
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+    
+    [self.refreshControl endRefreshing];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -82,7 +88,7 @@
         [_torosReceived addObject: toro];
     }
     [toroTableView reloadData];
-    NSLog(@"torosReceived: %@", _torosReceived);
+    [self.refreshControl endRefreshing];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -102,53 +108,67 @@
     return @"header";
 }
 
-const int MAX_TIME = 15;
+- (void) toroDead:(Toro*)toro
+{
+    [[toro timerLabel] setText:[NSString stringWithFormat:@"Dead!"]];
+}
 
 - (void) tick:(NSTimer*)timer
 {
     Toro *toro = [timer userInfo];
-    if ([toro elapsedTime] < MAX_TIME) {
+    if ([toro elapsedTime] < [toro maxTime]) {
         [toro setElapsedTime: [toro elapsedTime] + 1];
+        
+        int timeLeft = ([toro maxTime] - [toro elapsedTime]);
+        [[toro timerLabel] setText:[NSString stringWithFormat:@"%d",timeLeft]];
+        [[[toro toroViewController] countDown] setText:[NSString stringWithFormat:@"%d",timeLeft]];
+        
     } else {
         [timer invalidate];
-        [_toroViewController.view removeFromSuperview];
+        [[toro toroViewController].view removeFromSuperview];
         [toro setElapsedTime:-1];
+        
+        [self toroDead:toro];
+        
     }
 }
 
-- (void) popToro:(UIButton*)sender
+- (Toro *)getToro:(int) toroID
 {
-    NSLog(@"pop toro!");
-    int toroId = sender.tag;
-    Toro *theToro;
+    Toro *theToro = nil;
     for (int i = 0; i < [_torosReceived count]; i++) {
         Toro *toro = [_torosReceived objectAtIndex:i];
-        if ([toro toroId] == toroId) {
+        if ([toro toroId] == toroID) {
             theToro = toro;
             break;
         }
     }
-    
+    return theToro;
+}
+
+- (void) popToro:(UIButton*)sender
+{
+    //NSLog(@"pop toro!");
+    Toro *theToro = [self getToro:sender.tag];
     if (!theToro) return;
-    
     if (![theToro read]) {
         
-        _toroViewController = [[ToroViewController alloc] initWithToro:theToro];
-        [self.view addSubview:_toroViewController.view];
+        [self.view addSubview:[theToro toroViewController].view];
         
         [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:theToro repeats:YES]];
+        [[theToro timerLabel] setText:[NSString stringWithFormat:@"%d",[theToro maxTime]]];
         [theToro setRead: true];
     } else if ([theToro elapsedTime] != -1) {
         
-        [self.view addSubview:_toroViewController.view];
+        [self.view addSubview:[theToro toroViewController].view];
     }
     
 }
 
-- (void) hideToro
+- (void) hideToro:(UIButton*)sender
 {
-    NSLog(@"hide toro!");
-    [_toroViewController.view removeFromSuperview];
+    Toro *theToro = [self getToro:sender.tag];
+    [[theToro toroViewController].view removeFromSuperview];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -165,8 +185,8 @@ const int MAX_TIME = 15;
     NSLog(@"%@",o);
     
     if (![o read]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%d, %f, %f, %d, %d", [o toroId], [o lat], [o lng], [o senderId], [o read]];
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.textLabel.text = [NSString stringWithFormat:@"toro id: %d", [o toroId]];
+        cell.accessoryType = UITableViewCellAccessoryNone;
         
         UIButton *button = [[UIButton alloc] init];
         button.tag = [o toroId];
@@ -174,14 +194,35 @@ const int MAX_TIME = 15;
         [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
         [button addTarget:self action:@selector(popToro:) forControlEvents: UIControlEventTouchDown];
         
-        [button addTarget:self action:@selector(hideToro) forControlEvents: UIControlEventTouchUpInside];
-        [button addTarget:self action:@selector(hideToro) forControlEvents: UIControlEventTouchUpOutside];
+        [button addTarget:self action:@selector(hideToro:) forControlEvents: UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(hideToro:) forControlEvents: UIControlEventTouchUpOutside];
         
         [cell addSubview:button];
         
+        UILabel *timerLabel = [[UILabel alloc] init];
+        timerLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
+        [timerLabel setBackgroundColor: [UIColor redColor]];
+        [timerLabel setText: @"View!"];
+        [o setTimerLabel:timerLabel];
+        
+        [cell addSubview: timerLabel];
+        
     } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"%d, %d", [o toroId], [o read]];
+        cell.textLabel.text = [NSString stringWithFormat:@"toro id: %d", [o toroId]];
         cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        UIButton *button = [[UIButton alloc] init];
+        button.tag = [o toroId];
+        CGRect frame = cell.frame;
+        [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
+        
+        UILabel *timerLabel = [[UILabel alloc] init];
+        timerLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
+        [timerLabel setBackgroundColor: [UIColor redColor]];
+        [timerLabel setText: @"Dead!"];
+        [o setTimerLabel:timerLabel];
+        
+        [cell addSubview: timerLabel];
 
     }
     return cell;

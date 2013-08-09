@@ -10,13 +10,17 @@
 #import <MapKit/MapKit.h>
 #import "Toro.h"
 
+@class Toro;
+
 @interface ToroViewController : UIViewController <MKMapViewDelegate>
 {
     IBOutlet MKMapView *mapView;
+    IBOutlet UILabel *label;
+
 }
 
 @property (nonatomic, strong) Toro *toro;
-
+@property (nonatomic,strong) IBOutlet UILabel *countDown;
 
 - (id)initWithToro:(Toro *)toro;
 

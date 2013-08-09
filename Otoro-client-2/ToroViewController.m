@@ -42,7 +42,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    CLLocationCoordinate2D location = mapView.userLocation.coordinate;
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    
+    location.latitude  = [[self toro] lat];
+    location.longitude = [[self toro] lng];
+    
+    span.latitudeDelta = 0.005;
+    span.longitudeDelta = 0.005;
+    
+    region.span = span;
+    region.center = location;
+    
+    [mapView setRegion:region animated:YES];
+    [mapView regionThatFits:region];
+    [self.view sendSubviewToBack:mapView];
+    [[self countDown] setText:[NSString stringWithFormat:@"%d",[[self toro] maxTime]]];
+    
+    [label setText:[NSString stringWithFormat:@"sent from: %d, s/he is at lat/lng: (%f, %f)", [[self toro] senderId],location.latitude,location.longitude]];
 }
 
 - (void)viewDidUnload

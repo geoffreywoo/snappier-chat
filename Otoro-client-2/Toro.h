@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ToroViewController.h"
+@class ToroViewController;
 
 @interface Toro : NSObject
 
@@ -18,7 +20,10 @@
 @property (nonatomic) int senderId;
 
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) UILabel *timerLabel;
+@property (nonatomic, strong) ToroViewController *toroViewController;
 @property (nonatomic) int elapsedTime;
+@property (nonatomic) int maxTime;
 
 - (id)initWith:(NSDictionary *)dict;
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ToroViewController.h"
 
-@interface OtoroContentViewController : UIViewController 
+@interface OtoroContentViewController : UIViewController
 {
     IBOutlet UINavigationBar *navBar;
     IBOutlet UIBarButtonItem *toTakeToroViewButton;
@@ -18,7 +18,7 @@
 }
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, strong) NSMutableArray *torosReceived;
-@property (nonatomic, strong) ToroViewController *toroViewController;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSTimer *timer;
 
 @end
