@@ -47,7 +47,7 @@
 {
     self.responseData = [NSMutableData data];
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"http://otoro.herokuapp.com/user/contents?user=0"]];
+                             [NSURL URLWithString:@"http://localhost:5000/toros/received/52081035ea1ec5890d000001"]];
     
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
@@ -63,7 +63,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {   
     NSLog(@"didFailWithError");
-    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+    NSLog(@"Connection failed: %@", [error description]);
     
     [self.refreshControl endRefreshing];
 }
@@ -130,15 +130,21 @@
         
         [self toroDead:toro];
         
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                        [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:5000/toros/set_read/%@", toro.toroId]]];
+        
+        [request setHTTPMethod:@"POST"];
+        
+        [[NSURLConnection alloc] initWithRequest:request delegate:nil];
     }
 }
 
-- (Toro *)getToro:(int) toroID
+- (Toro *)getToro:(NSString *) toroID
 {
     Toro *theToro = nil;
     for (int i = 0; i < [_torosReceived count]; i++) {
         Toro *toro = [_torosReceived objectAtIndex:i];
-        if ([toro toroId] == toroID) {
+        if ([[toro toroId] isEqualToString:toroID]) {
             theToro = toro;
             break;
         }
@@ -149,7 +155,7 @@
 - (void) popToro:(UIButton*)sender
 {
     //NSLog(@"pop toro!");
-    Toro *theToro = [self getToro:sender.tag];
+    Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
     if (!theToro) return;
     if (![theToro read]) {
         
@@ -167,7 +173,7 @@
 
 - (void) hideToro:(UIButton*)sender
 {
-    Toro *theToro = [self getToro:sender.tag];
+    Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
     [[theToro toroViewController].view removeFromSuperview];
 }
 
@@ -185,11 +191,11 @@
     NSLog(@"%@",o);
     
     if (![o read]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"toro id: %d", [o toroId]];
+        cell.textLabel.text = [NSString stringWithFormat:@"toro id: %@", [o toroId]];
         cell.accessoryType = UITableViewCellAccessoryNone;
         
         UIButton *button = [[UIButton alloc] init];
-        button.tag = [o toroId];
+        button.tag = indexPath.row;
         CGRect frame = cell.frame;
         [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
         [button addTarget:self action:@selector(popToro:) forControlEvents: UIControlEventTouchDown];
@@ -208,7 +214,7 @@
         [cell addSubview: timerLabel];
         
     } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"toro id: %d", [o toroId]];
+        cell.textLabel.text = [NSString stringWithFormat:@"toro id: %@", [o toroId]];
         cell.accessoryType = UITableViewCellAccessoryNone;
         
         UIButton *button = [[UIButton alloc] init];

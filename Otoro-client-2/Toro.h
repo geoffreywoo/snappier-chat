@@ -12,7 +12,7 @@
 
 @interface Toro : NSObject
 
-@property (nonatomic) int toroId;
+@property (nonatomic, strong) NSString *toroId;
 @property (nonatomic) float lat;
 @property (nonatomic) float lng;
 @property (nonatomic) bool read;
