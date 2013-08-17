@@ -15,6 +15,7 @@
     IBOutlet MKMapView *mapView;
     IBOutlet UIButton *backButton;
     IBOutlet UIButton *sendToroButton;
+    IBOutlet UILabel *whereAreYou;
 }
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, strong) CLLocation *lastLoc;

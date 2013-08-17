@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface FriendListViewController : UIViewController
+{
+    IBOutlet UINavigationBar *navBar;
+    IBOutlet UITableView *friendTableView;
+}
+
+@property (nonatomic, strong) NSMutableArray *friends;
 
 @end
