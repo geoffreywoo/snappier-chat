@@ -46,9 +46,7 @@
 }
 
 - (void) handleRefresh
-{
-    self.responseData = [NSMutableData data];
-    
+{   
     [[OtoroConnection sharedInstance] getAllTorosReceivedWithCompletionBlock:^(NSError *error, NSDictionary *data)
     {
         if (error)
@@ -164,7 +162,7 @@
     
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ToroItemViewCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ToroViewCell"];
     }
     
     Toro *o = [[self torosReceived] objectAtIndex:[indexPath row]];

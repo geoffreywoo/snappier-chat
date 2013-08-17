@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE417C02F2E007DEF27 /* FriendListViewController.m */; };
+		602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */; };
+		602A4CEA17C03966007DEF27 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE917C03966007DEF27 /* Friend.m */; };
 		609227D417B84CA100E1D897 /* SendToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 609227D317B84CA100E1D897 /* SendToroViewController.m */; };
 		609227D617B84CC100E1D897 /* SendToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609227D517B84CC100E1D897 /* SendToroViewController.xib */; };
 		609227D817B8538C00E1D897 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609227D717B8538C00E1D897 /* CoreLocation.framework */; };
@@ -42,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		602A4CE317C02F2E007DEF27 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
+		602A4CE417C02F2E007DEF27 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
+		602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendListViewController.xib; sourceTree = "<group>"; };
+		602A4CE817C03966007DEF27 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		602A4CE917C03966007DEF27 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		609227D217B84CA100E1D897 /* SendToroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendToroViewController.h; sourceTree = "<group>"; };
 		609227D317B84CA100E1D897 /* SendToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendToroViewController.m; sourceTree = "<group>"; };
 		609227D517B84CC100E1D897 /* SendToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendToroViewController.xib; sourceTree = "<group>"; };
@@ -108,6 +116,8 @@
 			children = (
 				6097D9DD17B34A0100EC094E /* Toro.h */,
 				6097D9DE17B34A0100EC094E /* Toro.m */,
+				602A4CE817C03966007DEF27 /* Friend.h */,
+				602A4CE917C03966007DEF27 /* Friend.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -164,6 +174,9 @@
 				609227D517B84CC100E1D897 /* SendToroViewController.xib */,
 				DB9DA81F17C02AB9005418CB /* OtoroConnectionCall.h */,
 				DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */,
+				602A4CE317C02F2E007DEF27 /* FriendListViewController.h */,
+				602A4CE417C02F2E007DEF27 /* FriendListViewController.m */,
+				602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */,
 			);
 			path = "Otoro-client-2";
 			sourceTree = "<group>";
@@ -273,6 +286,7 @@
 				60CE1C9917AEE01B00C6249F /* OtoroContentViewController.xib in Resources */,
 				60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */,
 				609227D617B84CC100E1D897 /* SendToroViewController.xib in Resources */,
+				602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +329,8 @@
 				DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */,
 				609227D417B84CA100E1D897 /* SendToroViewController.m in Sources */,
 				DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */,
+				602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */,
+				602A4CEA17C03966007DEF27 /* Friend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
