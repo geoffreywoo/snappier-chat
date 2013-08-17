@@ -9,6 +9,7 @@
 #import "OtoroContentViewController.h"
 #import "ToroViewController.h"
 #import "Toro.h"
+#import "SendToroViewController.h"
 
 @implementation OtoroContentViewController
 
@@ -221,6 +222,7 @@
         button.tag = [o toroId];
         CGRect frame = cell.frame;
         [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
+        [cell addSubview:button];
         
         UILabel *timerLabel = [[UILabel alloc] init];
         timerLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
@@ -243,15 +245,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-/*    MenuSectionLink *sectionLink = _menu.menuSections[indexPath.section];
-    Section *menuSection = sectionLink.section;
+
+}
+
+-(IBAction) toTakeToroView:(id) sender
+{
+    NSLog(@"take toro view");
     
-    if (indexPath.row < menuSection.sectionLinks.count) {
-        SectionLink *link = menuSection.sectionLinks[indexPath.row];
-        MenuSectionViewController *sectionController = [[MenuSectionViewController alloc] initWithSectionLink:link];
-        [self.navigationController pushViewController:sectionController animated:YES];
+    if (_sendToroViewController == nil) {
+        _sendToroViewController = [[SendToroViewController alloc] init];
     }
- */
+
+    [self.view addSubview:_sendToroViewController.view];
+}
+-(IBAction) toSettingsView:(id) sender
+{
+    NSLog(@"to settings view");
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ToroViewController.h"
+#import "SendToroViewController.h"
 
 @interface OtoroContentViewController : UIViewController
 {
@@ -20,5 +20,8 @@
 @property (nonatomic, strong) NSMutableArray *torosReceived;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) SendToroViewController *sendToroViewController;
 
+-(IBAction) toTakeToroView:(id) sender;
+-(IBAction) toSettingsView:(id) sender;
 @end
