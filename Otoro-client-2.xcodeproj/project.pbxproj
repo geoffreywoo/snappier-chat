@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		609227D417B84CA100E1D897 /* SendToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 609227D317B84CA100E1D897 /* SendToroViewController.m */; };
+		609227D617B84CC100E1D897 /* SendToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609227D517B84CC100E1D897 /* SendToroViewController.xib */; };
+		609227D817B8538C00E1D897 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609227D717B8538C00E1D897 /* CoreLocation.framework */; };
 		6097D9DF17B34A0100EC094E /* Toro.m in Sources */ = {isa = PBXBuildFile; fileRef = 6097D9DE17B34A0100EC094E /* Toro.m */; };
 		60CE1C6717AEDFE400C6249F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6617AEDFE400C6249F /* UIKit.framework */; };
 		60CE1C6917AEDFE400C6249F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6817AEDFE400C6249F /* Foundation.framework */; };
@@ -38,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		609227D217B84CA100E1D897 /* SendToroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendToroViewController.h; sourceTree = "<group>"; };
+		609227D317B84CA100E1D897 /* SendToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendToroViewController.m; sourceTree = "<group>"; };
+		609227D517B84CC100E1D897 /* SendToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendToroViewController.xib; sourceTree = "<group>"; };
+		609227D717B8538C00E1D897 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6097D9DD17B34A0100EC094E /* Toro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toro.h; sourceTree = "<group>"; };
 		6097D9DE17B34A0100EC094E /* Toro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toro.m; sourceTree = "<group>"; };
 		60CE1C6217AEDFE400C6249F /* Otoro-client-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Otoro-client-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				609227D817B8538C00E1D897 /* CoreLocation.framework in Frameworks */,
 				60CE1CA017AF2DAB00C6249F /* MapKit.framework in Frameworks */,
 				60CE1C6717AEDFE400C6249F /* UIKit.framework in Frameworks */,
 				60CE1C6917AEDFE400C6249F /* Foundation.framework in Frameworks */,
@@ -104,6 +112,7 @@
 		60CE1C5717AEDFE400C6249F = {
 			isa = PBXGroup;
 			children = (
+				609227D717B8538C00E1D897 /* CoreLocation.framework */,
 				60CE1C6C17AEDFE400C6249F /* Otoro-client-2 */,
 				60CE1C8417AEDFE400C6249F /* Otoro-client-2Tests */,
 				60CE1C6517AEDFE400C6249F /* Frameworks */,
@@ -147,6 +156,9 @@
 				60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */,
 				DB9DA81A17C01D43005418CB /* OtoroConnection.h */,
 				DB9DA81B17C01D43005418CB /* OtoroConnection.m */,
+				609227D217B84CA100E1D897 /* SendToroViewController.h */,
+				609227D317B84CA100E1D897 /* SendToroViewController.m */,
+				609227D517B84CC100E1D897 /* SendToroViewController.xib */,
 			);
 			path = "Otoro-client-2";
 			sourceTree = "<group>";
@@ -255,6 +267,7 @@
 				60CE1C7117AEDFE400C6249F /* InfoPlist.strings in Resources */,
 				60CE1C9917AEE01B00C6249F /* OtoroContentViewController.xib in Resources */,
 				60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */,
+				609227D617B84CC100E1D897 /* SendToroViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +308,7 @@
 				60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */,
 				6097D9DF17B34A0100EC094E /* Toro.m in Sources */,
 				DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */,
+				609227D417B84CA100E1D897 /* SendToroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
