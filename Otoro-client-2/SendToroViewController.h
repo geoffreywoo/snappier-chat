@@ -16,7 +16,7 @@
     IBOutlet UIButton *backButton;
     IBOutlet UIButton *sendToroButton;
 }
-
+@property (nonatomic, strong) NSMutableData *responseData;
 
 -(IBAction) backButton:(id) sender;
 -(IBAction) sendToroButton:(id) sender;

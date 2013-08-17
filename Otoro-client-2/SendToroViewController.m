@@ -77,7 +77,6 @@
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
     
-    [self.refreshControl endRefreshing];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -91,16 +90,6 @@
     
     NSArray *jsonToros = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
     NSLog(@"jsonToros: %@",jsonToros);
-    
-    _torosReceived = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < [jsonToros count]; i++) {
-        Toro *toro = [[Toro alloc] initWith:[jsonToros objectAtIndex: i]];
-        NSLog(@"toro: %@",toro);
-        [_torosReceived addObject: toro];
-    }
-    [toroTableView reloadData];
-    [self.refreshControl endRefreshing];
 }
 
 
