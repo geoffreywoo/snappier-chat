@@ -24,6 +24,7 @@
 		60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */; };
 		60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */; };
 		60CE1CA017AF2DAB00C6249F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C9F17AF2DAB00C6249F /* MapKit.framework */; };
+		DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA81B17C01D43005418CB /* OtoroConnection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToroViewController.m; sourceTree = "<group>"; };
 		60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToroViewController.xib; sourceTree = "<group>"; };
 		60CE1C9F17AF2DAB00C6249F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DB9DA81A17C01D43005418CB /* OtoroConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroConnection.h; sourceTree = "<group>"; };
+		DB9DA81B17C01D43005418CB /* OtoroConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 				60CE1C9A17AF2D3E00C6249F /* ToroViewController.h */,
 				60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */,
 				60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */,
+				DB9DA81A17C01D43005418CB /* OtoroConnection.h */,
+				DB9DA81B17C01D43005418CB /* OtoroConnection.m */,
 			);
 			path = "Otoro-client-2";
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				60CE1C9817AEE01B00C6249F /* OtoroContentViewController.m in Sources */,
 				60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */,
 				6097D9DF17B34A0100EC094E /* Toro.m in Sources */,
+				DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
