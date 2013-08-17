@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "OtoroConnectionCall.h"
 
 @interface OtoroConnection : NSObject
-
-typedef void (^OtoroConnectionCompletionBlock)(NSError *error, NSDictionary *returnData);
 
 // example usage:
 //

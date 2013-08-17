@@ -10,6 +10,7 @@
 #import "ToroViewController.h"
 #import "Toro.h"
 #import "SendToroViewController.h"
+#import "OtoroConnection.h"
 
 @implementation OtoroContentViewController
 
@@ -47,49 +48,27 @@
 - (void) handleRefresh
 {
     self.responseData = [NSMutableData data];
-    NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"http://localhost:5000/toros/received/52081035ea1ec5890d000001"]];
     
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
-}
+    [[OtoroConnection sharedInstance] getAllTorosReceivedWithCompletionBlock:^(NSError *error, NSDictionary *data)
+    {
+        if (error)
+        {
+            [self.refreshControl endRefreshing];
+        }
+        else
+        {
+            _torosReceived = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < [data[@"toros"] count]; i++) {
+                Toro *toro = [[Toro alloc] initWith:data[@"toros"][i]];
+                NSLog(@"toro: %@",toro);
+                [_torosReceived addObject: toro];
+            }
+            [toroTableView reloadData];
+            [self.refreshControl endRefreshing];
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"didReceiveResponse");
-    [self.responseData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {       
-    [self.responseData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {   
-    NSLog(@"didFailWithError");
-    NSLog(@"Connection failed: %@", [error description]);
-    
-    [self.refreshControl endRefreshing];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"connectionDidFinishLoading");
-    NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
-    
-    NSString *strData = [[NSString alloc]initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"strData: %@",strData);
-    // convert to JSON
-    NSError *myError = nil;
-    
-    NSArray *jsonToros = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-    NSLog(@"jsonToros: %@",jsonToros);
-    
-    _torosReceived = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < [jsonToros count]; i++) {
-        Toro *toro = [[Toro alloc] initWith:[jsonToros objectAtIndex: i]];
-        NSLog(@"toro: %@",toro);
-        [_torosReceived addObject: toro];
-    }
-    [toroTableView reloadData];
-    [self.refreshControl endRefreshing];
+        }
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
