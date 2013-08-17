@@ -22,6 +22,8 @@ typedef void (^OtoroConnectionCompletionBlock)(NSError *error, NSDictionary *ret
 //          returnData[@"toros"] ...
 // }];
 
++ (OtoroConnection *)sharedInstance;
+
 // users
 - (void)getUserWithUserID:(NSString *)userID completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)createNewUserWithUsername:(NSString *)username password:(NSString *)password completionBlock:(OtoroConnectionCompletionBlock)block;
