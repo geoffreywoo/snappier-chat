@@ -10,6 +10,12 @@
 		602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE417C02F2E007DEF27 /* FriendListViewController.m */; };
 		602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */; };
 		602A4CEA17C03966007DEF27 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE917C03966007DEF27 /* Friend.m */; };
+		602A4CF217C03D9C007DEF27 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CF017C03D9C007DEF27 /* SplashViewController.m */; };
+		602A4CF317C03D9C007DEF27 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CF117C03D9C007DEF27 /* SplashViewController.xib */; };
+		602A4CF717C04008007DEF27 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CF517C04008007DEF27 /* LoginViewController.m */; };
+		602A4CF817C04008007DEF27 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CF617C04008007DEF27 /* LoginViewController.xib */; };
+		602A4CFC17C04017007DEF27 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CFA17C04017007DEF27 /* RegistrationViewController.m */; };
+		602A4CFD17C04017007DEF27 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CFB17C04017007DEF27 /* RegistrationViewController.xib */; };
 		609227D417B84CA100E1D897 /* SendToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 609227D317B84CA100E1D897 /* SendToroViewController.m */; };
 		609227D617B84CC100E1D897 /* SendToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609227D517B84CC100E1D897 /* SendToroViewController.xib */; };
 		609227D817B8538C00E1D897 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609227D717B8538C00E1D897 /* CoreLocation.framework */; };
@@ -50,6 +56,15 @@
 		602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendListViewController.xib; sourceTree = "<group>"; };
 		602A4CE817C03966007DEF27 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		602A4CE917C03966007DEF27 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		602A4CEF17C03D9C007DEF27 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		602A4CF017C03D9C007DEF27 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		602A4CF117C03D9C007DEF27 /* SplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		602A4CF417C04008007DEF27 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		602A4CF517C04008007DEF27 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		602A4CF617C04008007DEF27 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		602A4CF917C04017007DEF27 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
+		602A4CFA17C04017007DEF27 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
+		602A4CFB17C04017007DEF27 /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
 		609227D217B84CA100E1D897 /* SendToroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendToroViewController.h; sourceTree = "<group>"; };
 		609227D317B84CA100E1D897 /* SendToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendToroViewController.m; sourceTree = "<group>"; };
 		609227D517B84CC100E1D897 /* SendToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendToroViewController.xib; sourceTree = "<group>"; };
@@ -111,6 +126,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		602A4CEB17C03D1D007DEF27 /* Login and Registration */ = {
+			isa = PBXGroup;
+			children = (
+				602A4CEF17C03D9C007DEF27 /* SplashViewController.h */,
+				602A4CF017C03D9C007DEF27 /* SplashViewController.m */,
+				602A4CF117C03D9C007DEF27 /* SplashViewController.xib */,
+				602A4CF417C04008007DEF27 /* LoginViewController.h */,
+				602A4CF517C04008007DEF27 /* LoginViewController.m */,
+				602A4CF617C04008007DEF27 /* LoginViewController.xib */,
+				602A4CF917C04017007DEF27 /* RegistrationViewController.h */,
+				602A4CFA17C04017007DEF27 /* RegistrationViewController.m */,
+				602A4CFB17C04017007DEF27 /* RegistrationViewController.xib */,
+			);
+			name = "Login and Registration";
+			sourceTree = "<group>";
+		};
 		6097D9DC17B349E600EC094E /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,9 +188,10 @@
 		60CE1C6C17AEDFE400C6249F /* Otoro-client-2 */ = {
 			isa = PBXGroup;
 			children = (
-				6097D9DC17B349E600EC094E /* Models */,
 				60CE1C7517AEDFE400C6249F /* OAppDelegate.h */,
 				60CE1C7617AEDFE400C6249F /* OAppDelegate.m */,
+				602A4CEB17C03D1D007DEF27 /* Login and Registration */,
+				6097D9DC17B349E600EC094E /* Models */,
 				60CE1C6D17AEDFE400C6249F /* Supporting Files */,
 				60CE1C9517AEE01B00C6249F /* OtoroContentViewController.h */,
 				60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */,
@@ -287,6 +319,9 @@
 				60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */,
 				609227D617B84CC100E1D897 /* SendToroViewController.xib in Resources */,
 				602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */,
+				602A4CF317C03D9C007DEF27 /* SplashViewController.xib in Resources */,
+				602A4CF817C04008007DEF27 /* LoginViewController.xib in Resources */,
+				602A4CFD17C04017007DEF27 /* RegistrationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +366,9 @@
 				DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */,
 				602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */,
 				602A4CEA17C03966007DEF27 /* Friend.m in Sources */,
+				602A4CF217C03D9C007DEF27 /* SplashViewController.m in Sources */,
+				602A4CF717C04008007DEF27 /* LoginViewController.m in Sources */,
+				602A4CFC17C04017007DEF27 /* RegistrationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 
 #import "OAppDelegate.h"
-#import "OtoroContentViewController.h"
+#import "SplashViewController.h"
 
 @implementation OAppDelegate
 
@@ -17,7 +17,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    OtoroContentViewController *rootViewController = [[OtoroContentViewController alloc] init];
+    SplashViewController *rootViewController = [[SplashViewController alloc] init];
 	self.window.rootViewController = rootViewController;
     
     [self.window makeKeyAndVisible];
