@@ -17,6 +17,7 @@
     IBOutlet UIButton *sendToroButton;
 }
 @property (nonatomic, strong) NSMutableData *responseData;
+@property (nonatomic, strong) CLLocation *lastLoc;
 
 -(IBAction) backButton:(id) sender;
 -(IBAction) sendToroButton:(id) sender;

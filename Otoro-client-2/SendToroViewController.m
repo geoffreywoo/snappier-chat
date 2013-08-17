@@ -7,6 +7,7 @@
 //
 
 #import "SendToroViewController.h"
+#import "OtoroConnection.h"
 
 @interface SendToroViewController ()
 
@@ -34,9 +35,9 @@
     NSLog(@"location manager did update locations");
     NSLog(@"%@",locations);
     
-    CLLocation *lastLoc = [locations objectAtIndex:[locations count]-1];
-    NSLog(@"lastLoc: %@", lastLoc);
-    
+    _lastLoc = [locations objectAtIndex:[locations count]-1];
+    NSLog(@"lastLoc: %@", _lastLoc);
+
     MKCoordinateRegion region;
     MKCoordinateSpan span;
     
@@ -44,10 +45,15 @@
     span.longitudeDelta=0.005;
     
     region.span=span;
-    region.center=lastLoc.coordinate;
+    region.center=_lastLoc.coordinate;
     
     [mapView setRegion:region animated:TRUE];
     [mapView regionThatFits:region];
+
+    if ([_lastLoc horizontalAccuracy] < 10) {
+        [manager stopUpdatingLocation];
+    }
+    
 }
 
 -(IBAction) backButton:(id) sender
@@ -57,41 +63,14 @@
 
 -(IBAction) sendToroButton:(id) sender
 {
-    self.responseData = [NSMutableData data];
-    NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"http://otoro.herokuapp.com/toro/newuser/contents?user=0"]];
-    
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [[OtoroConnection sharedInstance] createNewToroWithLocation:_lastLoc andReceiverUserID:@"geoffreywoo" completionBlock:^(NSError *error, NSDictionary *returnData) {
+            if (error) {
+        
+            } else {
+            
+            }
+        }];
 }
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"didReceiveResponse");
-    [self.responseData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [self.responseData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"didFailWithError");
-    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
-    
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"connectionDidFinishLoading");
-    NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
-    
-    NSString *strData = [[NSString alloc]initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"strData: %@",strData);
-    // convert to JSON
-    NSError *myError = nil;
-    
-    NSArray *jsonToros = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-    NSLog(@"jsonToros: %@",jsonToros);
-}
-
 
 - (void)viewDidLoad
 {
