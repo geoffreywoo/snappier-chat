@@ -10,8 +10,21 @@
 
 typedef NS_ENUM(NSInteger, OtoroConnectionAPIType)
 {
+    // users
+    OtoroConnectionAPITypeGetUser,
+    OtoroConnectionAPITypeCreateUser,
+    OtoroConnectionAPITypeLogin,
+    
+    // toros
     OtoroConnectionAPITypeCreateToro,
-    OtoroConnectionAPITypeGetReceivedToro
+    OtoroConnectionAPITypeGetReceivedToro,
+    OtoroConnectionAPITypeGetSentToros,
+    OtoroConnectionAPITypeSetToroRead,
+    
+    // friends
+    OtoroConnectionAPITypeGetFriends,
+    OtoroConnectionAPITypeAddFriend,
+    OtoroConnectionAPITypeRemoveFriends,
 };
 
 typedef void (^OtoroConnectionCompletionBlock)(NSError *error, NSDictionary *returnData);
