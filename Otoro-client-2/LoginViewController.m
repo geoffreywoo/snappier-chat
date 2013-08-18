@@ -7,6 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "OtoroConnection.h"
+#import "OtoroContentViewController.h"
+#import "OAppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -30,7 +33,30 @@
 }
 
 -(IBAction) login:(id) sender {
+    NSLog(@"login button hit");
+
+    [[OtoroConnection sharedInstance] loginWithUsername:usernameField.text password:passwordField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
+        if (error) {
+            
+        } else {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults synchronize];
+        }
+    }];
+    OtoroContentViewController *otoroViewController = [[OtoroContentViewController alloc] init];
+    OAppDelegate *delegate = (OAppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.window.rootViewController = otoroViewController;
+    [delegate.window makeKeyAndVisible];
+}
+
+-(IBAction) back:(id) sender {
+    [self.view removeFromSuperview];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
+    [usernameField resignFirstResponder];
+    [passwordField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning

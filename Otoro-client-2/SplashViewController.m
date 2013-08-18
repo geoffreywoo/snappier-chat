@@ -30,11 +30,23 @@
 }
 
 -(IBAction) registerButton:(id) sender {
+    NSLog(@"register");
     
+    if (_registrationViewController == nil) {
+        _registrationViewController = [[RegistrationViewController alloc] init];
+    }
+    
+    [self.view addSubview:_registrationViewController.view];
 }
 
 -(IBAction) loginButton:(id) sender {
+    NSLog(@"login");
     
+    if (_loginViewController == nil) {
+        _loginViewController = [[LoginViewController alloc] init];
+    }
+    
+    [self.view addSubview:_loginViewController.view];
 }
 
 - (void)didReceiveMemoryWarning

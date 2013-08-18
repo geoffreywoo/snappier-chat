@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegistrationViewController : UIViewController
+@interface RegistrationViewController : UIViewController {
+    IBOutlet UITextField *usernameField;
+    IBOutlet UITextField *passwordField;
+    IBOutlet UITextField *emailField;
+    IBOutlet UITextField *phoneField;
+    IBOutlet UIButton *loginButton;
+    IBOutlet UIButton *backButton;
+}
+
+-(IBAction) registerButton:(id) sender;
+-(IBAction) back:(id) sender;
 
 @end

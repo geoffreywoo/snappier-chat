@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
+#import "RegistrationViewController.h"
 
 @interface SplashViewController : UIViewController
 {
     IBOutlet UIButton *registerButton;
     IBOutlet UIButton *loginButton;
 }
+@property (nonatomic, strong) LoginViewController *loginViewController;
+@property (nonatomic, strong) RegistrationViewController *registrationViewController;
 
 -(IBAction) registerButton:(id) sender;
 -(IBAction) loginButton:(id) sender;
