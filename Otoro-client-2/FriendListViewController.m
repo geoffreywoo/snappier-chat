@@ -8,6 +8,7 @@
 
 #import "FriendListViewController.h"
 #import "OtoroConnection.h"
+#import "AddFriendsViewController.h"
 #import "Friend.h"
 
 @interface FriendListViewController ()
@@ -42,6 +43,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(IBAction) back:(id) sender {
+    [self.view removeFromSuperview];
+}
+
+-(IBAction) addFriends:(id) sender {
+    NSLog(@"add friends view");
+    
+    if (_addFriendsViewController == nil) {
+        _addFriendsViewController = [[AddFriendsViewController alloc] init];
+    }
+    
+    [self.view addSubview:_addFriendsViewController.view];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

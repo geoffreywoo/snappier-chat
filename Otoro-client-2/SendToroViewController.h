@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "FriendListViewController.h"
 
 @interface SendToroViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 {
@@ -15,10 +16,12 @@
     IBOutlet MKMapView *mapView;
     IBOutlet UIButton *backButton;
     IBOutlet UIButton *sendToroButton;
+    IBOutlet UIButton *friendsButton;
     IBOutlet UILabel *whereAreYou;
 }
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, strong) CLLocation *lastLoc;
+@property (nonatomic, strong) FriendListViewController *friendListViewController;
 
 -(IBAction) backButton:(id) sender;
 -(IBAction) sendToroButton:(id) sender;

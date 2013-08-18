@@ -61,9 +61,20 @@
     [self.view removeFromSuperview];
 }
 
+-(IBAction) friendListButton:(id) sender
+{
+    NSLog(@"friends view");
+    
+    if (_friendListViewController == nil) {
+        _friendListViewController = [[FriendListViewController alloc] init];
+    }
+    
+    [self.view addSubview:_friendListViewController.view];
+}
+
 -(IBAction) sendToroButton:(id) sender
 {
-    [[OtoroConnection sharedInstance] createNewToroWithLocation:_lastLoc andReceiverUserID:@"geoffreywoo" completionBlock:^(NSError *error, NSDictionary *returnData) {
+    [[OtoroConnection sharedInstance] createNewToroWithLocation:_lastLoc andReceiverUserID:@"geoffreywoo" message:@"message" venue:@"toro global hq" completionBlock:^(NSError *error, NSDictionary *returnData) {
             if (error) {
         
             } else {

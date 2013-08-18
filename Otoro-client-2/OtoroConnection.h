@@ -25,11 +25,11 @@
 
 // users
 - (void)getUserWithUserID:(NSString *)userID completionBlock:(OtoroConnectionCompletionBlock)block;
-- (void)createNewUserWithUsername:(NSString *)username password:(NSString *)password completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)createNewUserWithUsername:(NSString *)username password:(NSString *)password email:(NSString*)email phone:(NSString*)phone completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password completionBlock:(OtoroConnectionCompletionBlock)block;
 
 // toros
-- (void)createNewToroWithLocation:(CLLocation *)location andReceiverUserID:(NSString *)receiverUserID completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)createNewToroWithLocation:(CLLocation *)location andReceiverUserID:(NSString *)receiverUserID message:(NSString*)message venue:(NSString*)venue completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block;

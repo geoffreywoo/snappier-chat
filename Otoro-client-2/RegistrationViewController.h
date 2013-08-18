@@ -13,10 +13,11 @@
     IBOutlet UITextField *passwordField;
     IBOutlet UITextField *emailField;
     IBOutlet UITextField *phoneField;
-    IBOutlet UIButton *loginButton;
+    IBOutlet UIButton *registerButton;
     IBOutlet UIButton *backButton;
 }
 
+-(IBAction) checkValidityOfRegistration:(id) sender;
 -(IBAction) registerButton:(id) sender;
 -(IBAction) back:(id) sender;
 

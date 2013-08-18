@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad
 {
+    [usernameField becomeFirstResponder];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -37,8 +38,10 @@
 
     [[OtoroConnection sharedInstance] loginWithUsername:usernameField.text password:passwordField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
-            
+            NSLog(@"logged in response: %@",error);
         } else {
+            NSLog(@"logged in response: %@",returnData);
+            
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject: nil forKey:@"username"];
             [defaults synchronize];
@@ -55,9 +58,22 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+    NSLog(@"touches began");
     [usernameField resignFirstResponder];
     [passwordField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == usernameField) {
+        NSLog(@"text field 1");
+        [passwordField becomeFirstResponder];
+    } else {
+        NSLog(@"text field 2");
+        [textField resignFirstResponder];
+        [self login:textField];
+    }
+            
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

@@ -201,13 +201,13 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     [self addAPICall:OtoroConnectionAPITypeGetUser completionBlock:block toConnection:connection];
 }
 
-- (void)createNewUserWithUsername:(NSString *)username password:(NSString *)password completionBlock:(OtoroConnectionCompletionBlock)block
+- (void)createNewUserWithUsername:(NSString *)username password:(NSString *)password email:(NSString*)email phone:(NSString*)phone completionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@/user/new", OTORO_HOST]]];
     
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:[[NSString stringWithFormat:@"username=%@&password=%@", username, password] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:[[NSString stringWithFormat:@"username=%@&password=%@&email=%@&phone=%@", username, password,email, phone] dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeCreateUser completionBlock:block toConnection:connection];
@@ -227,13 +227,13 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
 
 #pragma mark - Toros Endpoints
 
-- (void)createNewToroWithLocation:(CLLocation *)location andReceiverUserID:(NSString *)receiverUserID completionBlock:(OtoroConnectionCompletionBlock)block
+- (void)createNewToroWithLocation:(CLLocation *)location andReceiverUserID:(NSString *)receiverUserID message:(NSString*) message venue:(NSString*)venue completionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                              [NSURL URLWithString:[NSString stringWithFormat:@"%@/toro/new", OTORO_HOST]]];
     
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:[[NSString stringWithFormat:@"latitude=%f&longitude=%f&sender=%@&receiver=%@", location.coordinate.latitude, location.coordinate.longitude, self.userID, receiverUserID] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:[[NSString stringWithFormat:@"latitude=%f&longitude=%f&sender=%@&receiver=%@&message=%@&venue=%@", location.coordinate.latitude, location.coordinate.longitude, self.userID, receiverUserID,message,venue] dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeCreateToro completionBlock:block toConnection:connection];

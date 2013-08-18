@@ -235,6 +235,7 @@
 
     [self.view addSubview:_sendToroViewController.view];
 }
+
 -(IBAction) toSettingsView:(id) sender
 {
     NSLog(@"to settings view");
