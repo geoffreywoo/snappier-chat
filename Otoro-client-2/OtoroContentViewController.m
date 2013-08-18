@@ -238,6 +238,14 @@
 -(IBAction) toSettingsView:(id) sender
 {
     NSLog(@"to settings view");
+    
+    NSLog(@"take toro view");
+    
+    if (_settingsViewController == nil) {
+        _settingsViewController = [[SettingsViewController alloc] init];
+    }
+    
+    [self.view addSubview:_settingsViewController.view];
 }
 
 

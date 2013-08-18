@@ -8,6 +8,7 @@
 
 #import "OAppDelegate.h"
 #import "SplashViewController.h"
+#import "OtoroContentViewController.h"
 
 @implementation OAppDelegate
 
@@ -17,9 +18,18 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    SplashViewController *rootViewController = [[SplashViewController alloc] init];
-	self.window.rootViewController = rootViewController;
     
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults objectForKey:@"username"];
+    if (username == nil) {
+        SplashViewController *rootViewController = [[SplashViewController alloc] init];
+        self.window.rootViewController = rootViewController;
+    } else {
+        OtoroContentViewController *rootViewController = [[OtoroContentViewController alloc] init];
+        self.window.rootViewController = rootViewController;
+    }
+     
     [self.window makeKeyAndVisible];
     return YES;
 }

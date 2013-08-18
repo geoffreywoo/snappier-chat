@@ -35,7 +35,7 @@
 -(IBAction) registerButton:(id) sender {
     NSLog(@"register button hit");
     
-    [[OtoroConnection sharedInstance] loginWithUsername:usernameField.text password:passwordField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
+    [[OtoroConnection sharedInstance] createNewUserWithUsername:usernameField.text password:passwordField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
             
         } else {

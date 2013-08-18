@@ -40,6 +40,7 @@
             
         } else {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject: nil forKey:@"username"];
             [defaults synchronize];
         }
     }];
