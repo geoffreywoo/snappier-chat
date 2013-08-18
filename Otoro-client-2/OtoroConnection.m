@@ -213,6 +213,18 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     [self addAPICall:OtoroConnectionAPITypeCreateUser completionBlock:block toConnection:connection];
 }
 
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password completionBlock:(OtoroConnectionCompletionBlock)block
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/user/login", OTORO_HOST]]];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[[NSString stringWithFormat:@"username=%@&password=%@", username, password] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeLogin completionBlock:block toConnection:connection];
+}
+
 #pragma mark - Toros Endpoints
 
 - (void)createNewToroWithLocation:(CLLocation *)location andReceiverUserID:(NSString *)receiverUserID completionBlock:(OtoroConnectionCompletionBlock)block
