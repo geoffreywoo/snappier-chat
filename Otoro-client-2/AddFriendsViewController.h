@@ -10,6 +10,10 @@
 
 @interface AddFriendsViewController : UIViewController {
     IBOutlet UIBarButtonItem *backButton;
+    IBOutlet UIButton *addedYou;
+    IBOutlet UIButton *contacts;
+    IBOutlet UIButton *search;
+    
 }
 -(IBAction) backButton:(id) sender;
 

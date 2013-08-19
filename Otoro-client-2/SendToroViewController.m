@@ -21,9 +21,22 @@
     if (self) {
         locationManager = [[CLLocationManager alloc] init];
         [self initLocationManager];
-        [self.view sendSubviewToBack:mapView];
+       // [self.view sendSubviewToBack:mapView];
+        
     }
     return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    UITapGestureRecognizer *bgTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(backgroundTap:)];
+    [backgroundView addGestureRecognizer:bgTap];
+    
+    message.hidden = YES;
 }
 
 - (void) initLocationManager
@@ -56,6 +69,25 @@
     
 }
 
+-(void) backgroundTap:(id) sender
+{
+    NSLog(@"background tapped");
+    if (message.hidden) {
+        message.hidden = NO;
+        [message becomeFirstResponder];
+    } else {
+        if (message.text.length > 0) {
+            if (message.isFirstResponder)
+                [message resignFirstResponder];
+            else
+                [message becomeFirstResponder];
+        } else {
+            message.hidden = YES;
+            [message resignFirstResponder];
+        }
+    }
+}
+
 -(IBAction) backButton:(id) sender
 {
     [self.view removeFromSuperview];
@@ -74,7 +106,7 @@
 
 -(IBAction) sendToroButton:(id) sender
 {
-    [[OtoroConnection sharedInstance] createNewToroWithLocation:_lastLoc andReceiverUserID:@"geoffreywoo" message:@"message" venue:@"toro global hq" completionBlock:^(NSError *error, NSDictionary *returnData) {
+    [[OtoroConnection sharedInstance] createNewToroWithLocation:_lastLoc andReceiverUserID:@"geoffreywoo" message:message.text venue:@"toro global hq" completionBlock:^(NSError *error, NSDictionary *returnData) {
             if (error) {
         
             } else {
@@ -83,12 +115,7 @@
         }];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    //[mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
-}
+
 
 - (void)didReceiveMemoryWarning
 {

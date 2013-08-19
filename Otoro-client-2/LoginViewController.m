@@ -10,6 +10,7 @@
 #import "OtoroConnection.h"
 #import "OtoroContentViewController.h"
 #import "OAppDelegate.h"
+#import "OUser.h"
 
 @interface LoginViewController ()
 
@@ -39,18 +40,33 @@
     [[OtoroConnection sharedInstance] loginWithUsername:usernameField.text password:passwordField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
             NSLog(@"logged in response: %@",error);
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed"
+                                                            message:error.domain
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];        
+            
+            usernameField.text = @"";
+            passwordField.text = @"";
+            [usernameField resignFirstResponder];
+            
         } else {
             NSLog(@"logged in response: %@",returnData);
+            OUser *me = [[OUser alloc]initWith:[returnData objectForKey:@"user"] ];
             
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject: nil forKey:@"username"];
+            [defaults setObject: [me username] forKey:@"username"];
             [defaults synchronize];
+            
+            OtoroContentViewController *otoroViewController = [[OtoroContentViewController alloc] init];
+            OAppDelegate *delegate = (OAppDelegate *)[[UIApplication sharedApplication] delegate];
+            delegate.window.rootViewController = otoroViewController;
+            [delegate.window makeKeyAndVisible];
         }
     }];
-    OtoroContentViewController *otoroViewController = [[OtoroContentViewController alloc] init];
-    OAppDelegate *delegate = (OAppDelegate *)[[UIApplication sharedApplication] delegate];
-    delegate.window.rootViewController = otoroViewController;
-    [delegate.window makeKeyAndVisible];
+
 }
 
 -(IBAction) back:(id) sender {

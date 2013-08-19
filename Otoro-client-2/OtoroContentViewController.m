@@ -57,8 +57,8 @@
         {
             _torosReceived = [[NSMutableArray alloc] init];
             
-            for (int i = 0; i < [data[@"toros"] count]; i++) {
-                Toro *toro = [[Toro alloc] initWith:data[@"toros"][i]];
+            for (int i = 0; i < [data[@"elements"] count]; i++) {
+                Toro *toro = [[Toro alloc] initWith:data[@"elements"][i]];
                 NSLog(@"toro: %@",toro);
                 [_torosReceived addObject: toro];
             }
@@ -107,13 +107,13 @@
         [toro setElapsedTime:-1];
         
         [self toroDead:toro];
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-                                        [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:5000/toros/set_read/%@", toro.toroId]]];
-        
-        [request setHTTPMethod:@"POST"];
-        
-        [[NSURLConnection alloc] initWithRequest:request delegate:nil];
+ 
+        [[OtoroConnection sharedInstance] setReadFlagForToroID:toro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
+            if (error) {
+            } else {
+                
+            }
+        }];
     }
 }
 

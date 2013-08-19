@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE417C02F2E007DEF27 /* FriendListViewController.m */; };
 		602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */; };
-		602A4CEA17C03966007DEF27 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE917C03966007DEF27 /* Friend.m */; };
+		602A4CEA17C03966007DEF27 /* OUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE917C03966007DEF27 /* OUser.m */; };
 		602A4CF217C03D9C007DEF27 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CF017C03D9C007DEF27 /* SplashViewController.m */; };
 		602A4CF317C03D9C007DEF27 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CF117C03D9C007DEF27 /* SplashViewController.xib */; };
 		602A4CF717C04008007DEF27 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CF517C04008007DEF27 /* LoginViewController.m */; };
@@ -58,8 +58,8 @@
 		602A4CE317C02F2E007DEF27 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
 		602A4CE417C02F2E007DEF27 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
 		602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendListViewController.xib; sourceTree = "<group>"; };
-		602A4CE817C03966007DEF27 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
-		602A4CE917C03966007DEF27 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		602A4CE817C03966007DEF27 /* OUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OUser.h; sourceTree = "<group>"; };
+		602A4CE917C03966007DEF27 /* OUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OUser.m; sourceTree = "<group>"; };
 		602A4CEF17C03D9C007DEF27 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		602A4CF017C03D9C007DEF27 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		602A4CF117C03D9C007DEF27 /* SplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
@@ -171,8 +171,8 @@
 			children = (
 				6097D9DD17B34A0100EC094E /* Toro.h */,
 				6097D9DE17B34A0100EC094E /* Toro.m */,
-				602A4CE817C03966007DEF27 /* Friend.h */,
-				602A4CE917C03966007DEF27 /* Friend.m */,
+				602A4CE817C03966007DEF27 /* OUser.h */,
+				602A4CE917C03966007DEF27 /* OUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -212,9 +212,9 @@
 		60CE1C6C17AEDFE400C6249F /* Otoro-client-2 */ = {
 			isa = PBXGroup;
 			children = (
-				602A4D0317C16555007DEF27 /* Networking */,
 				60CE1C7517AEDFE400C6249F /* OAppDelegate.h */,
 				60CE1C7617AEDFE400C6249F /* OAppDelegate.m */,
+				602A4D0317C16555007DEF27 /* Networking */,
 				602A4CEB17C03D1D007DEF27 /* Login and Registration */,
 				6097D9DC17B349E600EC094E /* Models */,
 				60CE1C6D17AEDFE400C6249F /* Supporting Files */,
@@ -391,7 +391,7 @@
 				609227D417B84CA100E1D897 /* SendToroViewController.m in Sources */,
 				DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */,
 				602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */,
-				602A4CEA17C03966007DEF27 /* Friend.m in Sources */,
+				602A4CEA17C03966007DEF27 /* OUser.m in Sources */,
 				602A4CF217C03D9C007DEF27 /* SplashViewController.m in Sources */,
 				602A4CF717C04008007DEF27 /* LoginViewController.m in Sources */,
 				602A4CFC17C04017007DEF27 /* RegistrationViewController.m in Sources */,

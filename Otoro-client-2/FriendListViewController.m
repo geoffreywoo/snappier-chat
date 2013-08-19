@@ -9,7 +9,7 @@
 #import "FriendListViewController.h"
 #import "OtoroConnection.h"
 #import "AddFriendsViewController.h"
-#import "Friend.h"
+#import "OUser.h"
 
 @interface FriendListViewController ()
 
@@ -27,8 +27,8 @@
             } else {
                 _friends = [[NSMutableArray alloc] init];
                 
-                for (int i = 0; i < [data[@"friends"] count]; i++) {
-                    Friend *f = [[Friend alloc] initWith:data[@"friends"][i]];
+                for (int i = 0; i < [data[@"elements"] count]; i++) {
+                    OUser *f = [[OUser alloc] initWith:data[@"elements"][i]];
                     NSLog(@"friend: %@",f);
                     [_friends addObject:f];
                 }
@@ -86,7 +86,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FriendViewCell"];
     }
     
-    Friend *f = [[self friends] objectAtIndex:[indexPath row]];
+    OUser *f = [[self friends] objectAtIndex:[indexPath row]];
     NSLog(@"%@",f);
     
     cell.textLabel.text = [NSString stringWithFormat:@"friend: %@", [f username]];

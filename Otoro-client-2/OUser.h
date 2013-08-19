@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Friend : NSObject
+@interface OUser : NSObject
 
 @property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *phone;
 @property (nonatomic) Boolean preferred;
 @property (nonatomic) Boolean selected;
 

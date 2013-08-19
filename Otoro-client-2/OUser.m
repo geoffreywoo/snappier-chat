@@ -6,14 +6,16 @@
 //  Copyright (c) 2013 Stanford. All rights reserved.
 //
 
-#import "Friend.h"
+#import "OUser.h"
 
-@implementation Friend
+@implementation OUser
 
 - (id)initWith:(NSDictionary *)dict {
     self = [super init];
     if (self) {
         _username = [dict objectForKey:@"username"];
+        _email = [dict objectForKey:@"email"];
+        _phone = [dict objectForKey:@"phone"];
         _preferred = [dict objectForKey:@"preferred"];
     }
     return self;
