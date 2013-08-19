@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "OtoroConnectionCall.h"
+#import "OUser.h"
 
 @interface OtoroConnection : NSObject
 
@@ -22,6 +23,7 @@
 // }];
 
 + (OtoroConnection *)sharedInstance;
+@property (nonatomic, strong) OUser *user;
 
 // users
 - (void)getUserWithUserID:(NSString *)userID completionBlock:(OtoroConnectionCompletionBlock)block;

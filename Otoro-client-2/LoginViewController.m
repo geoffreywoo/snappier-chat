@@ -55,6 +55,7 @@
         } else {
             NSLog(@"logged in response: %@",returnData);
             OUser *me = [[OUser alloc]initWith:[returnData objectForKey:@"user"] ];
+            [[OtoroConnection sharedInstance] setUser: me];
             
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject: [me username] forKey:@"username"];

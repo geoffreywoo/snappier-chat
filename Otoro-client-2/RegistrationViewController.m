@@ -10,6 +10,7 @@
 #import "OtoroConnection.h"
 #import "OtoroContentViewController.h"
 #import "OAppDelegate.h"
+#import "OUser.h"
 
 @interface RegistrationViewController ()
 
@@ -35,21 +36,36 @@
 
 -(IBAction) registerButton:(id) sender {
     NSLog(@"register button hit");
-
-    
-    
     [[OtoroConnection sharedInstance] createNewUserWithUsername:usernameField.text password:passwordField.text email: emailField.text phone:phoneField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
+            NSLog(@"logged in response: %@",error);
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed"
+                                                            message:error.domain
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+            usernameField.text = @"";
+            passwordField.text = @"";
+            [usernameField resignFirstResponder];
             
         } else {
+            NSLog(@"logged in response: %@",returnData);
+            OUser *me = [[OUser alloc]initWith:[returnData objectForKey:@"user"] ];
+            [[OtoroConnection sharedInstance] setUser: me];
+            
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject: [me username] forKey:@"username"];
             [defaults synchronize];
+            
+            OtoroContentViewController *otoroViewController = [[OtoroContentViewController alloc] init];
+            OAppDelegate *delegate = (OAppDelegate *)[[UIApplication sharedApplication] delegate];
+            delegate.window.rootViewController = otoroViewController;
+            [delegate.window makeKeyAndVisible];
         }
     }];
-    OtoroContentViewController *otoroViewController = [[OtoroContentViewController alloc] init];
-    OAppDelegate *delegate = (OAppDelegate *)[[UIApplication sharedApplication] delegate];
-    delegate.window.rootViewController = otoroViewController;
-    [delegate.window makeKeyAndVisible];
 }
 
 -(IBAction) back:(id) sender {
