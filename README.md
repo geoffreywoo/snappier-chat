@@ -1,3 +1,3 @@
-otoro-client-2
+snapper-map
 ==============
-cuz otoro-client-1 i couldn't compile
+snapper
