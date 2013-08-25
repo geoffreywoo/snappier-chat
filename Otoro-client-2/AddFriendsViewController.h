@@ -7,14 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchFriendView.h"
 
 @interface AddFriendsViewController : UIViewController {
     IBOutlet UIBarButtonItem *backButton;
     IBOutlet UIButton *addedYou;
     IBOutlet UIButton *contacts;
     IBOutlet UIButton *search;
-    
 }
+
+@property (nonatomic, strong) IBOutlet SearchFriendView *searchFriendView;
+
 -(IBAction) backButton:(id) sender;
+-(IBAction) addedYouButton:(id) sender;
+-(IBAction) contactsButton:(id) sender;
+-(IBAction) searchButton:(id) sender;
 
 @end

@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self.view setBackgroundColor:[UIColor blueColor]];
     }
     return self;
 }
@@ -27,10 +27,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+
+    
+//    _searchFriendView = [[SearchFriendView alloc] init];
 }
 
 -(IBAction) backButton:(id) sender {
     [self.view removeFromSuperview];
+}
+
+-(IBAction) addedYouButton:(id) sender {
+    _searchFriendView.hidden = YES;
+}
+
+-(IBAction) contactsButton:(id) sender {
+    _searchFriendView.hidden = YES;
+}
+
+-(IBAction) searchButton:(id) sender {
+    NSLog(@"Search Button");
+    _searchFriendView.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning
