@@ -40,17 +40,7 @@
             
         } else {
             NSLog(@"loaded");
-            _friends = [[NSMutableArray alloc] init];
-            NSDictionary *elems = data[@"elements"][0];
-            NSArray *friends = elems[@"friends"];
-            for (int i = 0; i < [friends count]; i++) {
-                OUser *f = [[OUser alloc] initWithUsername:friends[i]];
-                NSLog(@"friend: %@",f);
-                [f debugPrint];
-                [_friends addObject:f];
-            }
-            
-            [[OtoroConnection sharedInstance] setFriends:_friends];
+            _friends = [[OtoroConnection sharedInstance] friends];
             [friendTableView reloadData];
         }
     }];
@@ -102,8 +92,10 @@
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [f username]];
     if (f.selected) {
+        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:0];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -136,7 +128,7 @@
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     OUser *f = [[self friends] objectAtIndex:[indexPath row]];
-    f.selected = YES;
+    [[[OtoroConnection sharedInstance] selectedFriends] addObject:f];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -144,7 +136,7 @@
     cell.accessoryType = UITableViewCellAccessoryNone;
     
     OUser *f = [[self friends] objectAtIndex:[indexPath row]];
-    f.selected = NO;
+    [[[OtoroConnection sharedInstance] selectedFriends] removeObject:f];
 }
 
 - (void)didReceiveMemoryWarning

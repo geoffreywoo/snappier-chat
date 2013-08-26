@@ -15,10 +15,12 @@
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic) Boolean preferred;
 @property (nonatomic) Boolean selected;
+@property (nonatomic) Boolean blocked;
 
 - (id)initWithUsername:(NSString *)username;
 - (id)initWith:(NSDictionary *)dict;
 - (id)initFromNSDefaults;
 - (void) debugPrint;
+- (BOOL)isEqual:(id)object;
 
 @end

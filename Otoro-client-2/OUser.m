@@ -23,6 +23,7 @@
         _email = [dict objectForKey:@"email"];
         _phone = [dict objectForKey:@"phone"];
         _preferred = [dict objectForKey:@"preferred"];
+        _blocked = [dict objectForKey:@"blocked"];
     }
     return self;
 }
@@ -35,17 +36,23 @@
         _username = [defaults objectForKey:@"username"];
         _email = [defaults objectForKey:@"email"];
         _phone = [defaults objectForKey:@"phone"];
-        _preferred = [defaults objectForKey:@"preferred"];
     }
     return self;
+}
+
+- (BOOL)isEqual:(id)object
+{
+    if (![object isKindOfClass:self.class]) {
+        return NO;
+    }
+    OUser* other = object;
+    return [self.username isEqualToString:other.username];
 }
 
 - (void)debugPrint {
     NSLog(@"username: %@",_username);
     NSLog(@"email: %@",_email);
     NSLog(@"phone: %@",_phone);
-
-    
 }
 
 @end
