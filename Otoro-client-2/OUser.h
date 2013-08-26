@@ -16,6 +16,9 @@
 @property (nonatomic) Boolean preferred;
 @property (nonatomic) Boolean selected;
 
+- (id)initWithUsername:(NSString *)username;
 - (id)initWith:(NSDictionary *)dict;
+- (id)initFromNSDefaults;
+- (void) debugPrint;
 
 @end

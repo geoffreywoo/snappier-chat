@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddFriendsViewController.h"
 
-@interface FriendListViewController : UIViewController
+@interface FriendListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UINavigationBar *navBar;
     IBOutlet UIBarButtonItem *backButton;

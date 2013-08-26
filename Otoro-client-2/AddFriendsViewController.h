@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SearchFriendView.h"
+#import "SearchViewController.h"
+#import "AddressBookViewController.h"
+#import "AddedYouViewController.h"
 
 @interface AddFriendsViewController : UIViewController {
     IBOutlet UIBarButtonItem *backButton;
     IBOutlet UIButton *addedYou;
     IBOutlet UIButton *contacts;
     IBOutlet UIButton *search;
+    IBOutlet UIView *subview2;
 }
 
-@property (nonatomic, strong) IBOutlet SearchFriendView *searchFriendView;
+//@property (nonatomic, strong) IBOutlet SearchFriendView *searchFriendView;
+@property (nonatomic, strong) SearchViewController *searchViewController;
+@property (nonatomic, strong) AddressBookViewController *addressBookViewController;
+@property (nonatomic, strong) AddedYouViewController *addedYouViewController;
 
 -(IBAction) backButton:(id) sender;
 -(IBAction) addedYouButton:(id) sender;

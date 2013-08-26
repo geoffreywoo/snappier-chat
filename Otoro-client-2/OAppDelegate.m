@@ -9,6 +9,7 @@
 #import "OAppDelegate.h"
 #import "SplashViewController.h"
 #import "OtoroContentViewController.h"
+#import "OtoroConnection.h"
 
 @implementation OAppDelegate
 
@@ -26,6 +27,9 @@
         SplashViewController *rootViewController = [[SplashViewController alloc] init];
         self.window.rootViewController = rootViewController;
     } else {
+        OUser *me = [[OUser alloc] initFromNSDefaults];
+        [[OtoroConnection sharedInstance] setUser: me];
+        
         OtoroContentViewController *rootViewController = [[OtoroContentViewController alloc] init];
         self.window.rootViewController = rootViewController;
     }

@@ -59,6 +59,8 @@
             
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject: [me username] forKey:@"username"];
+            [defaults setObject: [me email] forKey:@"email"];
+            [defaults setObject: [me phone] forKey:@"phone"];
             [defaults synchronize];
             
             OtoroContentViewController *otoroViewController = [[OtoroContentViewController alloc] init];

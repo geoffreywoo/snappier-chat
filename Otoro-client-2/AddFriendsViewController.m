@@ -28,7 +28,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-
+    _searchViewController = [[SearchViewController alloc] init];
+    _addressBookViewController = [[AddressBookViewController alloc] init];
+    _addedYouViewController = [[AddedYouViewController alloc] init];
+    [self addedYouButton:addedYou];
     
 //    _searchFriendView = [[SearchFriendView alloc] init];
 }
@@ -38,16 +41,34 @@
 }
 
 -(IBAction) addedYouButton:(id) sender {
-    _searchFriendView.hidden = YES;
+    [_addressBookViewController.view removeFromSuperview];
+    [_searchViewController.view removeFromSuperview];
+    [subview2 addSubview:_addedYouViewController.view];
+    
+    [addedYou setBackgroundColor: [UIColor redColor]];
+    [search setBackgroundColor: [UIColor blueColor]];
+    [contacts setBackgroundColor: [UIColor blueColor]];
 }
 
 -(IBAction) contactsButton:(id) sender {
-    _searchFriendView.hidden = YES;
+    [_addedYouViewController.view removeFromSuperview];
+    [_searchViewController.view removeFromSuperview];
+    [subview2 addSubview:_addressBookViewController.view];
+
+    [addedYou setBackgroundColor: [UIColor blueColor]];
+    [search setBackgroundColor: [UIColor blueColor]];
+    [contacts setBackgroundColor: [UIColor redColor]];
 }
 
 -(IBAction) searchButton:(id) sender {
     NSLog(@"Search Button");
-    _searchFriendView.hidden = NO;
+    [_addedYouViewController.view removeFromSuperview];
+    [_addressBookViewController.view removeFromSuperview];
+    [subview2 addSubview:_searchViewController.view];
+
+    [addedYou setBackgroundColor: [UIColor blueColor]];
+    [search setBackgroundColor: [UIColor redColor]];
+    [contacts setBackgroundColor: [UIColor blueColor]];
 }
 
 - (void)didReceiveMemoryWarning

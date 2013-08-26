@@ -24,6 +24,8 @@
 
 + (OtoroConnection *)sharedInstance;
 @property (nonatomic, strong) OUser *user;
+@property (nonatomic, strong) NSMutableArray *friends;
+@property (nonatomic, strong) NSMutableArray *selectedFriends;
 
 // users
 - (void)getUserWithUserID:(NSString *)userID completionBlock:(OtoroConnectionCompletionBlock)block;

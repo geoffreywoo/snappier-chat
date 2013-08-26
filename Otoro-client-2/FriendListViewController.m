@@ -21,20 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[OtoroConnection sharedInstance] getAllFriendsWithCompletionBlock:^(NSError *error, NSDictionary *data){
-            if (error) {
-                
-            } else {
-                _friends = [[NSMutableArray alloc] init];
-                
-                for (int i = 0; i < [data[@"elements"] count]; i++) {
-                    OUser *f = [[OUser alloc] initWith:data[@"elements"][i]];
-                    NSLog(@"friend: %@",f);
-                    [_friends addObject:f];
-                }
-                [friendTableView reloadData];
-            }
-        }];
+
     }
     return self;
 }
@@ -42,7 +29,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    friendTableView.delegate = self;
+    friendTableView.dataSource = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[OtoroConnection sharedInstance] getAllFriendsWithCompletionBlock:^(NSError *error, NSDictionary *data){
+        if (error) {
+            
+        } else {
+            NSLog(@"loaded");
+            _friends = [[NSMutableArray alloc] init];
+            NSDictionary *elems = data[@"elements"][0];
+            NSArray *friends = elems[@"friends"];
+            for (int i = 0; i < [friends count]; i++) {
+                OUser *f = [[OUser alloc] initWithUsername:friends[i]];
+                NSLog(@"friend: %@",f);
+                [f debugPrint];
+                [_friends addObject:f];
+            }
+            
+            [[OtoroConnection sharedInstance] setFriends:_friends];
+            [friendTableView reloadData];
+        }
+    }];
 }
 
 -(IBAction) back:(id) sender {
@@ -80,7 +91,7 @@
     
     NSLog(@"cellForRowAtIndexPath");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendViewCell"];
-    
+
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FriendViewCell"];
@@ -89,15 +100,22 @@
     OUser *f = [[self friends] objectAtIndex:[indexPath row]];
     NSLog(@"%@",f);
     
-    cell.textLabel.text = [NSString stringWithFormat:@"friend: %@", [f username]];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [f username]];
+    if (f.selected) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    /*
     UIButton *button = [[UIButton alloc] init];
     button.tag = indexPath.row;
     CGRect frame = cell.frame;
     [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
     [button addTarget:self action:@selector(toggleFriend:) forControlEvents: UIControlEventTouchDown];
     [cell addSubview:button];
+     */
     return cell;
 }
 
@@ -109,8 +127,24 @@
     return nil;
 }
 
+- (void)toggleFriend:(id)sender {
+   // sender.tag
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
+    OUser *f = [[self friends] objectAtIndex:[indexPath row]];
+    f.selected = YES;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    OUser *f = [[self friends] objectAtIndex:[indexPath row]];
+    f.selected = NO;
 }
 
 - (void)didReceiveMemoryWarning
