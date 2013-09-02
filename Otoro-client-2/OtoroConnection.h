@@ -32,6 +32,8 @@
 - (void)getUserWithUserID:(NSString *)userID completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)createNewUserWithUsername:(NSString *)username password:(NSString *)password email:(NSString*)email phone:(NSString*)phone completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)getFriendMatchesWithPhones:(NSArray *)phones emails:(NSArray *)emails completionBlock:(OtoroConnectionCompletionBlock)block;
+
 
 // toros
 - (void)createNewToro:(Toro*)toro completionBlock:(OtoroConnectionCompletionBlock)block;

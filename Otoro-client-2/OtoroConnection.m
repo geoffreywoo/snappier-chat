@@ -118,6 +118,14 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
             error = [NSError errorWithDomain:[o objectForKey:@"error"] code:-1 userInfo:o];
             [self callForConnection:connection].completionBlock(error, nil);
         }
+	} else if (apiType == OtoroConnectionAPITypeMatchAddressBook) {
+        NSDictionary *o = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if ([[o objectForKey:@"ok"] boolValue]) {
+            [self callForConnection:connection].completionBlock(error, @{@"users":o[@"elements"]});
+        } else {
+            error = [NSError errorWithDomain:[o objectForKey:@"error"] code:-1 userInfo:o];
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
     } else if (apiType == OtoroConnectionAPITypeCreateToro) {
         NSArray *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
         if (jsonToros)
@@ -241,6 +249,23 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeLogin completionBlock:block toConnection:connection];
+}
+
+- (void)getFriendMatchesWithPhones:(NSArray *)phones emails:(NSArray *)emails completionBlock:(OtoroConnectionCompletionBlock)block
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/address_book", OTORO_HOST]]];
+    
+    [request setHTTPMethod:@"POST"];
+	NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"phones" : phones, @"emails":emails} options:NSJSONWritingPrettyPrinted error:nil];
+	NSString *bodyString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSLog(@"bodystring = %@", bodyString);
+    [request setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeMatchAddressBook completionBlock:block toConnection:connection];
 }
 
 #pragma mark - Toros Endpoints
