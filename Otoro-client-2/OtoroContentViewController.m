@@ -59,7 +59,7 @@
             
             for (int i = 0; i < [data[@"elements"] count]; i++) {
                 Toro *toro = [[Toro alloc] initWith:data[@"elements"][i]];
-                NSLog(@"toro: %@",toro);
+               // NSLog(@"toro: %@",toro);
                 [_torosReceived addObject: toro];
             }
             [toroTableView reloadData];
@@ -91,6 +91,17 @@
     [[toro timerLabel] setText:[NSString stringWithFormat:@"Dead!"]];
 }
 
+- (void) makeTimerLabel:(Toro*)toro
+{
+    if ([toro elapsedTime] < [toro maxTime]) {
+        int timeLeft = ([toro maxTime] - [toro elapsedTime]);
+        [[toro timerLabel] setText:[NSString stringWithFormat:@"%d",timeLeft]];
+    } else {
+        [self toroDead:toro];
+    }
+
+}
+
 - (void) tick:(NSTimer*)timer
 {
     Toro *toro = [timer userInfo];
@@ -107,13 +118,6 @@
         [toro setElapsedTime:-1];
         
         [self toroDead:toro];
- 
-        [[OtoroConnection sharedInstance] setReadFlagForToroID:toro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
-            if (error) {
-            } else {
-                
-            }
-        }];
     }
 }
 
@@ -135,8 +139,15 @@
     //NSLog(@"pop toro!");
     Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
     if (!theToro) return;
+    
+    [[OtoroConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
+        if (error) {
+        } else {
+            NSLog(@"set read flag on %@", theToro.toroId);
+        }
+    }];
+    
     if (![theToro read]) {
-        
         [self.view addSubview:[theToro toroViewController].view];
         
         [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:theToro repeats:YES]];
@@ -145,6 +156,8 @@
     } else if ([theToro elapsedTime] != -1) {
         
         [self.view addSubview:[theToro toroViewController].view];
+        
+
     }
     
 }
@@ -157,7 +170,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"cellForRowAtIndexPath");
+   // NSLog(@"cellForRowAtIndexPath");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ToroViewCell"];
     
     
@@ -166,7 +179,7 @@
     }
     
     Toro *o = [[self torosReceived] objectAtIndex:[indexPath row]];
-    NSLog(@"%@",o);
+   // NSLog(@"%@",o);
     
     if (![o read]) {
         cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [o sender], [o created]];
@@ -206,6 +219,7 @@
         [timerLabel setBackgroundColor: [UIColor redColor]];
         [timerLabel setText: @"Dead!"];
         [o setTimerLabel:timerLabel];
+        [self makeTimerLabel:o];
         
         [cell addSubview: timerLabel];
 
