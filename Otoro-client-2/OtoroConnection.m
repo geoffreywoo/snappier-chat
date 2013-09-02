@@ -258,10 +258,7 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     
     [request setHTTPMethod:@"POST"];
 	NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"phones" : phones, @"emails":emails} options:NSJSONWritingPrettyPrinted error:nil];
-	NSString *bodyString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	NSLog(@"bodystring = %@", bodyString);
-    [request setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
-	
+    [request setHTTPBody:data];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
@@ -306,6 +303,9 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/set_read/%@", OTORO_HOST, toroID]]];
     
     [request setHTTPMethod:@"PUT"];
+	NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"read":@YES} options:NSJSONWritingPrettyPrinted error:nil];
+    [request setHTTPBody:data];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeSetToroRead completionBlock:block toConnection:connection];
