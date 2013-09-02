@@ -16,8 +16,11 @@
 @property (nonatomic) float lat;
 @property (nonatomic) float lng;
 @property (nonatomic) bool read;
-@property (nonatomic) int receiverId;
-@property (nonatomic) int senderId;
+@property (nonatomic, strong) NSString *message;
+@property (nonatomic, strong) NSString *venue;
+@property (nonatomic, strong) NSString *receiver;
+@property (nonatomic, strong) NSString *sender;
+@property (nonatomic, strong) NSString *created;
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UILabel *timerLabel;
@@ -26,6 +29,7 @@
 @property (nonatomic) int maxTime;
 
 - (id)initWith:(NSDictionary *)dict;
-
+- (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message;
+- (void)print;
 
 @end

@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "OtoroConnectionCall.h"
 #import "OUser.h"
+#import "Toro.h"
 
 @interface OtoroConnection : NSObject
 
@@ -33,7 +34,7 @@
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password completionBlock:(OtoroConnectionCompletionBlock)block;
 
 // toros
-- (void)createNewToroWithLocation:(CLLocation *)location andReceiverUserID:(NSString *)receiverUserID message:(NSString*)message venue:(NSString*)venue completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)createNewToro:(Toro*)toro completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block;

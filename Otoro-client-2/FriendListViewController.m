@@ -21,7 +21,16 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        sendButton.hidden = YES;
+    }
+    return self;
+}
 
+-(id)initWithToro:(Toro*)toro {
+    self = [super initWithNibName:@"FriendListViewController" bundle:nil];
+    if (self) {
+        _toro = toro;
+        sendButton.hidden = YES;
     }
     return self;
 }
@@ -31,6 +40,24 @@
     [super viewDidLoad];
     friendTableView.delegate = self;
     friendTableView.dataSource = self;
+}
+
+- (void)checkSendButton {
+    if ([self sendable]) {
+        NSLog(@"sendable");
+        sendButton.hidden = NO;
+//        [self.view bringSubviewToFront:sendButton];
+    } else {
+        NSLog(@"not sendable");
+        sendButton.hidden = YES;
+    }
+}
+
+- (BOOL)sendable {
+    if ( (_toro != nil) && ([[[OtoroConnection sharedInstance] selectedFriends] count] > 0) ) {
+        return YES;
+    }
+    return NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -44,10 +71,39 @@
             [friendTableView reloadData];
         }
     }];
+    [self checkSendButton];
 }
 
 -(IBAction) back:(id) sender {
-    [self.view removeFromSuperview];
+    //[self.view removeFromSuperview];
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
+static int NUM_SENT;
+
+- (void) checkIfAllSent {
+    if (NUM_SENT < [[[OtoroConnection sharedInstance] selectedFriends] count]) {
+        NSLog(@"waiting for other calls");
+    } else {
+        [[self navigationController] popToRootViewControllerAnimated:YES];
+    }
+}
+
+-(IBAction) send:(id) sender {
+    NUM_SENT = 0;
+    [_toro print];
+    _toro.sender = [[OtoroConnection sharedInstance] user].username;
+    for (OUser *selectedFriend in [[OtoroConnection sharedInstance] selectedFriends]) {
+        _toro.receiver = selectedFriend.username;
+        [[OtoroConnection sharedInstance] createNewToro:_toro completionBlock:^(NSError *error, NSDictionary *returnData) {
+            if (error) {
+                
+            } else {
+                NUM_SENT++;
+                [self checkIfAllSent];
+            }
+        }];
+    }
 }
 
 -(IBAction) addFriends:(id) sender {
@@ -129,6 +185,7 @@
     
     OUser *f = [[self friends] objectAtIndex:[indexPath row]];
     [[[OtoroConnection sharedInstance] selectedFriends] addObject:f];
+    [self checkSendButton];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -137,6 +194,7 @@
     
     OUser *f = [[self friends] objectAtIndex:[indexPath row]];
     [[[OtoroConnection sharedInstance] selectedFriends] removeObject:f];
+    [self checkSendButton];
 }
 
 - (void)didReceiveMemoryWarning

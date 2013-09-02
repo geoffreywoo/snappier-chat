@@ -6,23 +6,21 @@
 //  Copyright (c) 2013 Stanford. All rights reserved.
 //
 
-#import "SendToroViewController.h"
+#import "CreateToroViewController.h"
 #import "OtoroConnection.h"
 
-@interface SendToroViewController ()
+@interface CreateToroViewController ()
 
 @end
 
-@implementation SendToroViewController
+@implementation CreateToroViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         locationManager = [[CLLocationManager alloc] init];
-        [self initLocationManager];
        // [self.view sendSubviewToBack:mapView];
-        
     }
     return self;
 }
@@ -37,10 +35,17 @@
     [backgroundView addGestureRecognizer:bgTap];
     
     message.hidden = YES;
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self initLocationManager];
 }
 
 - (void) initLocationManager
 {
+    NSLog(@"loc manager init");
     [locationManager setDelegate:self];
     [locationManager startUpdatingLocation];
 }
@@ -90,9 +95,9 @@
 
 -(IBAction) backButton:(id) sender
 {
-    [self.view removeFromSuperview];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
-
+/*
 -(IBAction) friendListButton:(id) sender
 {
     NSLog(@"friends view");
@@ -103,16 +108,16 @@
     
     [self.view addSubview:_friendListViewController.view];
 }
+*/
+
 
 -(IBAction) sendToroButton:(id) sender
 {
-    [[OtoroConnection sharedInstance] createNewToroWithLocation:_lastLoc andReceiverUserID:@"geoffreywoo" message:message.text venue:@"toro global hq" completionBlock:^(NSError *error, NSDictionary *returnData) {
-            if (error) {
-        
-            } else {
-            
-            }
-        }];
+    Toro *toro = [[Toro alloc] initOwnToroWithLat:_lastLoc.coordinate.latitude lng:_lastLoc.coordinate.longitude message: message.text];
+    _friendListViewController = nil;
+    _friendListViewController = [[FriendListViewController alloc] initWithToro:toro];
+    //[self.view addSubview:_friendListViewController.view];
+    [[self navigationController] pushViewController:_friendListViewController animated:YES];
 }
 
 

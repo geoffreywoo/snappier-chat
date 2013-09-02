@@ -9,7 +9,7 @@
 #import "OtoroContentViewController.h"
 #import "ToroViewController.h"
 #import "Toro.h"
-#import "SendToroViewController.h"
+#import "CreateToroViewController.h"
 #import "OtoroConnection.h"
 
 @implementation OtoroContentViewController
@@ -75,7 +75,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        NSLog(@"%d",[ [self torosReceived] count]);
+        NSLog(@"number toros recieved: %d",[ [self torosReceived] count]);
         return [ [self torosReceived] count]; 
     } else {
         return 0;
@@ -169,7 +169,7 @@
     NSLog(@"%@",o);
     
     if (![o read]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"toro id: %@", [o toroId]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [o sender], [o created]];
         cell.accessoryType = UITableViewCellAccessoryNone;
         
         UIButton *button = [[UIButton alloc] init];
@@ -192,7 +192,7 @@
         [cell addSubview: timerLabel];
         
     } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"toro id: %@", [o toroId]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [o sender], [o created]];
         cell.accessoryType = UITableViewCellAccessoryNone;
         
         UIButton *button = [[UIButton alloc] init];
@@ -229,11 +229,12 @@
 {
     NSLog(@"take toro view");
     
-    if (_sendToroViewController == nil) {
-        _sendToroViewController = [[SendToroViewController alloc] init];
+    if (_createToroViewController == nil) {
+        _createToroViewController = [[CreateToroViewController alloc] init];
     }
 
-    [self.view addSubview:_sendToroViewController.view];
+    [[self navigationController] pushViewController:_createToroViewController animated:YES];
+    //[self.view addSubview:_createToroViewController.view];
 }
 
 -(IBAction) toSettingsView:(id) sender
@@ -246,7 +247,7 @@
         _settingsViewController = [[SettingsViewController alloc] init];
     }
     
-    [self.view addSubview:_settingsViewController.view];
+    [[self navigationController] pushViewController:_settingsViewController animated:YES];
 }
 
 

@@ -61,7 +61,7 @@
     [self.view sendSubviewToBack:mapView];
     [[self countDown] setText:[NSString stringWithFormat:@"%d",[[self toro] maxTime]]];
     
-    [label setText:[NSString stringWithFormat:@"sent from: %d, s/he is at lat/lng: (%f, %f)", [[self toro] senderId],location.latitude,location.longitude]];
+    [label setText:[NSString stringWithFormat:@"sent from: %@, s/he is at lat/lng: (%f, %f)", [[self toro] sender],location.latitude,location.longitude]];
 }
 
 - (void)viewDidUnload

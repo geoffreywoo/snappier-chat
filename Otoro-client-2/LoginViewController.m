@@ -63,9 +63,12 @@
             [defaults setObject: [me phone] forKey:@"phone"];
             [defaults synchronize];
             
-            OtoroContentViewController *otoroViewController = [[OtoroContentViewController alloc] init];
+            OtoroContentViewController *rootViewController = [[OtoroContentViewController alloc] init];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+            navigationController.navigationBarHidden = YES;
+            
             OAppDelegate *delegate = (OAppDelegate *)[[UIApplication sharedApplication] delegate];
-            delegate.window.rootViewController = otoroViewController;
+            delegate.window.rootViewController = navigationController;
             [delegate.window makeKeyAndVisible];
         }
     }];

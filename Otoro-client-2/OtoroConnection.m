@@ -7,6 +7,7 @@
 //
 
 #import "OtoroConnection.h"
+#import "Toro.h"
 
 NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
 
@@ -128,10 +129,10 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
             [self callForConnection:connection].completionBlock(error, nil);
         }
     } else if (apiType == OtoroConnectionAPITypeGetReceivedToro) {
-        NSArray *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
-        if (jsonToros)
+        NSDictionary *toroData = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (toroData)
         {
-            [self callForConnection:connection].completionBlock(error, @{@"toros":jsonToros});
+            [self callForConnection:connection].completionBlock(error, toroData);
         }
         else
         {
@@ -161,6 +162,7 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
         NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
         if (resp)
         {
+            _friends = [[NSMutableArray alloc] init];
             NSArray *friends = resp[@"elements"];
             for (int i = 0; i < [friends count]; i++) {
                 
@@ -243,13 +245,13 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
 
 #pragma mark - Toros Endpoints
 
-- (void)createNewToroWithLocation:(CLLocation *)location andReceiverUserID:(NSString *)receiverUserID message:(NSString*) message venue:(NSString*)venue completionBlock:(OtoroConnectionCompletionBlock)block
+- (void)createNewToro:(Toro*)toro completionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                              [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/new", OTORO_HOST]]];
     
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:[[NSString stringWithFormat:@"latitude=%f&longitude=%f&sender=%@&receiver=%@&message=%@&venue=%@", location.coordinate.latitude, location.coordinate.longitude, self.user.username, receiverUserID,message,venue] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:[[NSString stringWithFormat:@"latitude=%f&longitude=%f&sender=%@&receiver=%@&message=%@&venue=%@", toro.lat, toro.lng, toro.sender,toro.receiver,toro.message,toro.venue] dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeCreateToro completionBlock:block toConnection:connection];
@@ -278,7 +280,7 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/set_read/%@", OTORO_HOST, toroID]]];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:@"PUT"];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeSetToroRead completionBlock:block toConnection:connection];

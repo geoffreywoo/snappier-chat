@@ -31,7 +31,9 @@
         [[OtoroConnection sharedInstance] setUser: me];
         
         OtoroContentViewController *rootViewController = [[OtoroContentViewController alloc] init];
-        self.window.rootViewController = rootViewController;
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+        navigationController.navigationBarHidden = YES;
+        self.window.rootViewController = navigationController;
     }
      
     [self.window makeKeyAndVisible];

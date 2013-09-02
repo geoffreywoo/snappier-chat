@@ -43,7 +43,7 @@
 }
 
 -(IBAction) back:(id) sender {
-    [self.view removeFromSuperview];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -27,8 +27,8 @@
 		6089B86517CAB85D00C3CF9D /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6089B86317CAB85D00C3CF9D /* AddressBookViewController.xib */; };
 		6089B86917CAB87500C3CF9D /* AddedYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6089B86717CAB87500C3CF9D /* AddedYouViewController.m */; };
 		6089B86A17CAB87500C3CF9D /* AddedYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6089B86817CAB87500C3CF9D /* AddedYouViewController.xib */; };
-		609227D417B84CA100E1D897 /* SendToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 609227D317B84CA100E1D897 /* SendToroViewController.m */; };
-		609227D617B84CC100E1D897 /* SendToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609227D517B84CC100E1D897 /* SendToroViewController.xib */; };
+		609227D417B84CA100E1D897 /* CreateToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 609227D317B84CA100E1D897 /* CreateToroViewController.m */; };
+		609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609227D517B84CC100E1D897 /* CreateToroViewController.xib */; };
 		609227D817B8538C00E1D897 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609227D717B8538C00E1D897 /* CoreLocation.framework */; };
 		6097D9DF17B34A0100EC094E /* Toro.m in Sources */ = {isa = PBXBuildFile; fileRef = 6097D9DE17B34A0100EC094E /* Toro.m */; };
 		60CE1C6717AEDFE400C6249F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6617AEDFE400C6249F /* UIKit.framework */; };
@@ -92,9 +92,9 @@
 		6089B86617CAB87500C3CF9D /* AddedYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddedYouViewController.h; sourceTree = "<group>"; };
 		6089B86717CAB87500C3CF9D /* AddedYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddedYouViewController.m; sourceTree = "<group>"; };
 		6089B86817CAB87500C3CF9D /* AddedYouViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddedYouViewController.xib; sourceTree = "<group>"; };
-		609227D217B84CA100E1D897 /* SendToroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendToroViewController.h; sourceTree = "<group>"; };
-		609227D317B84CA100E1D897 /* SendToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendToroViewController.m; sourceTree = "<group>"; };
-		609227D517B84CC100E1D897 /* SendToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendToroViewController.xib; sourceTree = "<group>"; };
+		609227D217B84CA100E1D897 /* CreateToroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateToroViewController.h; sourceTree = "<group>"; };
+		609227D317B84CA100E1D897 /* CreateToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateToroViewController.m; sourceTree = "<group>"; };
+		609227D517B84CC100E1D897 /* CreateToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateToroViewController.xib; sourceTree = "<group>"; };
 		609227D717B8538C00E1D897 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6097D9DD17B34A0100EC094E /* Toro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toro.h; sourceTree = "<group>"; };
 		6097D9DE17B34A0100EC094E /* Toro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toro.m; sourceTree = "<group>"; };
@@ -187,9 +187,6 @@
 		60529FC317CA8ED200C7F064 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
-				602A4CE317C02F2E007DEF27 /* FriendListViewController.h */,
-				602A4CE417C02F2E007DEF27 /* FriendListViewController.m */,
-				602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */,
 				602A4D0417C17D31007DEF27 /* AddFriendsViewController.h */,
 				602A4D0517C17D32007DEF27 /* AddFriendsViewController.m */,
 				602A4D0617C17D32007DEF27 /* AddFriendsViewController.xib */,
@@ -262,12 +259,15 @@
 				60CE1C9517AEE01B00C6249F /* OtoroContentViewController.h */,
 				60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */,
 				60CE1C9717AEE01B00C6249F /* OtoroContentViewController.xib */,
+				609227D217B84CA100E1D897 /* CreateToroViewController.h */,
+				609227D317B84CA100E1D897 /* CreateToroViewController.m */,
+				609227D517B84CC100E1D897 /* CreateToroViewController.xib */,
 				60CE1C9A17AF2D3E00C6249F /* ToroViewController.h */,
 				60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */,
 				60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */,
-				609227D217B84CA100E1D897 /* SendToroViewController.h */,
-				609227D317B84CA100E1D897 /* SendToroViewController.m */,
-				609227D517B84CC100E1D897 /* SendToroViewController.xib */,
+				602A4CE317C02F2E007DEF27 /* FriendListViewController.h */,
+				602A4CE417C02F2E007DEF27 /* FriendListViewController.m */,
+				602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */,
 				60529FC317CA8ED200C7F064 /* Friends */,
 			);
 			path = "Otoro-client-2";
@@ -377,7 +377,7 @@
 				60CE1C7117AEDFE400C6249F /* InfoPlist.strings in Resources */,
 				60CE1C9917AEE01B00C6249F /* OtoroContentViewController.xib in Resources */,
 				60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */,
-				609227D617B84CC100E1D897 /* SendToroViewController.xib in Resources */,
+				609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */,
 				602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */,
 				602A4CF317C03D9C007DEF27 /* SplashViewController.xib in Resources */,
 				602A4CF817C04008007DEF27 /* LoginViewController.xib in Resources */,
@@ -427,7 +427,7 @@
 				60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */,
 				6097D9DF17B34A0100EC094E /* Toro.m in Sources */,
 				DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */,
-				609227D417B84CA100E1D897 /* SendToroViewController.m in Sources */,
+				609227D417B84CA100E1D897 /* CreateToroViewController.m in Sources */,
 				DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */,
 				602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */,
 				602A4CEA17C03966007DEF27 /* OUser.m in Sources */,

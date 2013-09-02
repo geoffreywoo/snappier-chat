@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "FriendListViewController.h"
 
-@interface SendToroViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate>
+@interface CreateToroViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate>
 {
     CLLocationManager *locationManager;
     IBOutlet MKMapView *mapView;
@@ -26,7 +26,7 @@
 
 -(IBAction) backButton:(id) sender;
 -(IBAction) sendToroButton:(id) sender;
--(IBAction) friendListButton: (id) sender;
+//-(IBAction) friendListButton: (id) sender;
 
 
 @end
