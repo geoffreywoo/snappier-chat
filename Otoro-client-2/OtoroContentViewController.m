@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _torosReceived = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -55,12 +55,11 @@
         }
         else
         {
-            _torosReceived = [[NSMutableArray alloc] init];
-            
             for (int i = 0; i < [data[@"elements"] count]; i++) {
                 Toro *toro = [[Toro alloc] initWith:data[@"elements"][i]];
                // NSLog(@"toro: %@",toro);
-                [_torosReceived addObject: toro];
+                if (![_torosReceived containsObject:toro])
+                    [_torosReceived addObject: toro];
             }
             [toroTableView reloadData];
             [self.refreshControl endRefreshing];
@@ -93,13 +92,14 @@
 
 - (void) makeTimerLabel:(Toro*)toro
 {
-    if ([toro elapsedTime] < [toro maxTime]) {
+    if (![toro read])
+        [[toro timerLabel] setText:[NSString stringWithFormat:@"View!"]];
+    else if ([toro read] && ([toro maxTime] == [toro elapsedTime]) ) {
+        [self toroDead:toro];
+    } else {
         int timeLeft = ([toro maxTime] - [toro elapsedTime]);
         [[toro timerLabel] setText:[NSString stringWithFormat:@"%d",timeLeft]];
-    } else {
-        [self toroDead:toro];
     }
-
 }
 
 - (void) tick:(NSTimer*)timer
@@ -115,7 +115,6 @@
     } else {
         [timer invalidate];
         [[toro toroViewController].view removeFromSuperview];
-        [toro setElapsedTime:-1];
         
         [self toroDead:toro];
     }
@@ -140,30 +139,29 @@
     Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
     if (!theToro) return;
     
-    [[OtoroConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
-        if (error) {
-        } else {
-            NSLog(@"set read flag on %@", theToro.toroId);
-        }
-    }];
-    
     if (![theToro read]) {
+        [[OtoroConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
+            if (error) {
+            } else {
+                NSLog(@"set read flag on %@", theToro.toroId);
+            }
+        }];
+        
         [self.view addSubview:[theToro toroViewController].view];
         
         [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:theToro repeats:YES]];
         [[theToro timerLabel] setText:[NSString stringWithFormat:@"%d",[theToro maxTime]]];
         [theToro setRead: true];
-    } else if ([theToro elapsedTime] != -1) {
-        
+    } else if ([theToro elapsedTime] < [theToro maxTime]) {
+        NSLog(@"pop toro, elapsed: %i, max: %i", [theToro elapsedTime], [theToro maxTime]);
         [self.view addSubview:[theToro toroViewController].view];
-        
-
     }
     
 }
 
 - (void) hideToro:(UIButton*)sender
 {
+    NSLog(@"hide Toro");
     Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
     [[theToro toroViewController].view removeFromSuperview];
 }
@@ -179,31 +177,31 @@
     }
     
     Toro *o = [[self torosReceived] objectAtIndex:[indexPath row]];
-   // NSLog(@"%@",o);
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [o sender], [o created]];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+        
+    UIButton *button = [[UIButton alloc] init];
+    button.tag = indexPath.row;
+    CGRect frame = cell.frame;
+    [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
+    [button addTarget:self action:@selector(popToro:) forControlEvents: UIControlEventTouchDown];
+        
+    [button addTarget:self action:@selector(hideToro:) forControlEvents: UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(hideToro:) forControlEvents: UIControlEventTouchUpOutside];
+        
+    [cell addSubview:button];
+        
+    UILabel *timerLabel = [[UILabel alloc] init];
+    timerLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
+    [timerLabel setBackgroundColor: [UIColor redColor]];
+    [o setTimerLabel:timerLabel];
+    [self makeTimerLabel:o];
+    [cell addSubview: [o timerLabel]];
     
-    if (![o read]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [o sender], [o created]];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        
-        UIButton *button = [[UIButton alloc] init];
-        button.tag = indexPath.row;
-        CGRect frame = cell.frame;
-        [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
-        [button addTarget:self action:@selector(popToro:) forControlEvents: UIControlEventTouchDown];
-        
-        [button addTarget:self action:@selector(hideToro:) forControlEvents: UIControlEventTouchUpInside];
-        [button addTarget:self action:@selector(hideToro:) forControlEvents: UIControlEventTouchUpOutside];
-        
-        [cell addSubview:button];
-        
-        UILabel *timerLabel = [[UILabel alloc] init];
-        timerLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
-        [timerLabel setBackgroundColor: [UIColor redColor]];
-        [timerLabel setText: @"View!"];
-        [o setTimerLabel:timerLabel];
-        
-        [cell addSubview: timerLabel];
-        
+    return cell;
+}
+ /*
+   //   if (![o read]) {
     } else {
         cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [o sender], [o created]];
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -224,8 +222,7 @@
         [cell addSubview: timerLabel];
 
     }
-    return cell;
-}
+  */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.0;

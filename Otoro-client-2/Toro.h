@@ -30,6 +30,8 @@
 
 - (id)initWith:(NSDictionary *)dict;
 - (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message;
+- (BOOL)isEqual:(id)object;
 - (void)print;
+
 
 @end

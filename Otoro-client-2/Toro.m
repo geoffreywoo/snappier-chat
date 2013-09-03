@@ -18,14 +18,17 @@ const int MAX_TIME = 15;
         _toroId = [dict objectForKey:@"_id"];
         _lat = [[dict objectForKey:@"latitude"] floatValue];
         _lng = [[dict objectForKey:@"longitude"] floatValue];
- //       _read = [[dict objectForKey:@"read"] boolValue];
+        _read = [[dict objectForKey:@"read"] boolValue];
         _receiver = [dict objectForKey:@"receiver"];
         _sender = [dict objectForKey:@"sender"];
         _message = [dict objectForKey:@"message"];
         _venue = [dict objectForKey:@"venue"];
         _created = [dict objectForKey:@"created_at"];
-            
-        _elapsedTime = 0;
+        
+        if (_read)
+            _elapsedTime = 15;
+        else
+            _elapsedTime = 0;
         _maxTime = MAX_TIME;
         
         _toroViewController = [[ToroViewController alloc] initWithToro:self];
@@ -43,8 +46,21 @@ const int MAX_TIME = 15;
     return self;
 }
 
+- (BOOL)isEqual:(id)object
+{
+    if (![object isKindOfClass:self.class]) {
+        return NO;
+    }
+    Toro* other = object;
+    return [self.toroId isEqualToString:other.toroId];
+}
+
 - (void) print
 {
+    NSLog(@"lat: %f", _lat);
+    NSLog(@"lng: %f", _lng);
+    NSLog(@"sender: %@", _sender);
+    NSLog(@"receiver: %@", _receiver);
     NSLog(@"message: %@", _message);
 }
 

@@ -90,11 +90,13 @@ static int NUM_SENT;
 }
 
 -(IBAction) send:(id) sender {
+    NSLog(@"SENDING TORO");
     NUM_SENT = 0;
-    [_toro print];
+
     _toro.sender = [[OtoroConnection sharedInstance] user].username;
     for (OUser *selectedFriend in [[OtoroConnection sharedInstance] selectedFriends]) {
         _toro.receiver = selectedFriend.username;
+        [_toro print];
         [[OtoroConnection sharedInstance] createNewToro:_toro completionBlock:^(NSError *error, NSDictionary *returnData) {
             if (error) {
                 
