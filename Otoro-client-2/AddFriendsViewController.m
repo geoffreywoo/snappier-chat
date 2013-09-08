@@ -31,13 +31,11 @@
     _searchViewController = [[SearchViewController alloc] init];
     _addressBookViewController = [[AddressBookViewController alloc] init];
     _addedYouViewController = [[AddedYouViewController alloc] init];
-    [self addedYouButton:addedYou];
-    
-//    _searchFriendView = [[SearchFriendView alloc] init];
+    [self contactsButton:contacts];
 }
 
 -(IBAction) backButton:(id) sender {
-    [self.view removeFromSuperview];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 -(IBAction) addedYouButton:(id) sender {

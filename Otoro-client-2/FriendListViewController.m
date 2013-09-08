@@ -114,8 +114,7 @@ static int NUM_SENT;
     if (_addFriendsViewController == nil) {
         _addFriendsViewController = [[AddFriendsViewController alloc] init];
     }
-    
-    [self.view addSubview:_addFriendsViewController.view];
+    [[self navigationController] pushViewController:_addFriendsViewController animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

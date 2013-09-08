@@ -147,10 +147,20 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
             [self callForConnection:connection].completionBlock(error, nil);
         }
     } else if (apiType == OtoroConnectionAPITypeGetSentToros) {
-        NSArray *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
-        if (jsonToros)
+        NSDictionary *toroData = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (toroData)
         {
-            [self callForConnection:connection].completionBlock(error, @{@"toros":jsonToros});
+            [self callForConnection:connection].completionBlock(error, toroData);
+        }
+        else
+        {
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
+    } else if (apiType == OtoroConnectionAPITypeGetAllToros) {
+        NSDictionary *toroData = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (toroData)
+        {
+            [self callForConnection:connection].completionBlock(error, toroData);
         }
         else
         {
@@ -295,6 +305,15 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeGetSentToros completionBlock:block toConnection:connection];
+}
+
+- (void)getAllTorosWithCompletionBlock:(OtoroConnectionCompletionBlock)block
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:
+                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/%@", OTORO_HOST, self.user.username]]];
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeGetAllToros completionBlock:block toConnection:connection];
 }
 
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block

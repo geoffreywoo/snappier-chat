@@ -43,12 +43,19 @@
     [self initLocationManager];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    message.hidden = YES;
+    message.text = @"";
+}
+
 - (void) initLocationManager
 {
     NSLog(@"loc manager init");
     [locationManager setDelegate:self];
     [locationManager startUpdatingLocation];
 }
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     NSLog(@"location manager did update locations");
     NSLog(@"%@",locations);
@@ -119,6 +126,7 @@
     //[self.view addSubview:_friendListViewController.view];
     [[self navigationController] pushViewController:_friendListViewController animated:YES];
 }
+
 
 
 

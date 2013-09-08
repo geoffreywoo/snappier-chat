@@ -39,6 +39,7 @@
 - (void)createNewToro:(Toro*)toro completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)getAllTorosWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block;
 
 // friends
