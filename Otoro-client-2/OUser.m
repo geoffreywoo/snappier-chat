@@ -22,8 +22,8 @@
         _username = [dict objectForKey:@"username"];
         _email = [dict objectForKey:@"email"];
         _phone = [dict objectForKey:@"phone"];
-        _preferred = [dict objectForKey:@"preferred"];
-        _blocked = [dict objectForKey:@"blocked"];
+        _preferred = [[dict objectForKey:@"preferred"] boolValue];
+        _blocked = [[dict objectForKey:@"blocked"] boolValue];
     }
     return self;
 }

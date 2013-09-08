@@ -8,8 +8,13 @@
 
 #import "CreateToroViewController.h"
 #import "OtoroConnection.h"
+#import "OtoroChooseVenueViewController.h"
 
-@interface CreateToroViewController ()
+@interface CreateToroViewController ()<OtoroChooseVenueViewControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *chooseVenueButton;
+@property (nonatomic, strong) OVenue *venue;
+@property (strong, nonatomic) OtoroChooseVenueViewController *chooseVenueViewController;
 
 @end
 
@@ -47,6 +52,8 @@
 {
     message.hidden = YES;
     message.text = @"";
+	self.venue = nil;
+	[self.chooseVenueButton setTitle:@"Place" forState:UIControlStateNormal];
 }
 
 - (void) initLocationManager
@@ -117,23 +124,26 @@
 }
 */
 
+- (IBAction)choosePlaceButtonPressed:(id)sender
+{
+	self.chooseVenueViewController = [[OtoroChooseVenueViewController alloc] initWithDelegate:self location:_lastLoc];
+	[self.navigationController pushViewController:self.chooseVenueViewController animated:YES];
+}
 
 -(IBAction) sendToroButton:(id) sender
 {
-    Toro *toro = [[Toro alloc] initOwnToroWithLat:_lastLoc.coordinate.latitude lng:_lastLoc.coordinate.longitude message: message.text];
+    Toro *toro = [[Toro alloc] initOwnToroWithLat:_lastLoc.coordinate.latitude lng:_lastLoc.coordinate.longitude message: message.text venue:self.venue];
     _friendListViewController = nil;
     _friendListViewController = [[FriendListViewController alloc] initWithToro:toro];
     //[self.view addSubview:_friendListViewController.view];
     [[self navigationController] pushViewController:_friendListViewController animated:YES];
 }
 
+#pragma mark - OtoroChooseVenueViewControllerDelegate
 
-
-
-- (void)didReceiveMemoryWarning
+- (void)otoroChooseVenueViewController:(OtoroChooseVenueViewController *)viewController didChooseVenue:(OVenue *)venue
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	self.venue = venue;
+	[self.chooseVenueButton setTitle:venue.name forState:UIControlStateNormal];
 }
-
 @end
