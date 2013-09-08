@@ -53,6 +53,11 @@
 		60CE1CA017AF2DAB00C6249F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C9F17AF2DAB00C6249F /* MapKit.framework */; };
 		DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA81B17C01D43005418CB /* OtoroConnection.m */; };
 		DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */; };
+		F4F9A53917DBDADD0027AE66 /* OtoroChooseVenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9A53717DBDADC0027AE66 /* OtoroChooseVenueViewController.m */; };
+		F4F9A53A17DBDADD0027AE66 /* OtoroChooseVenueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F9A53817DBDADC0027AE66 /* OtoroChooseVenueViewController.xib */; };
+		F4F9A53D17DBE1890027AE66 /* OVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9A53C17DBE1890027AE66 /* OVenue.m */; };
+		F4F9A54117DBE7BC0027AE66 /* poweredByFoursquare.png in Resources */ = {isa = PBXBuildFile; fileRef = F4F9A53F17DBE7BC0027AE66 /* poweredByFoursquare.png */; };
+		F4F9A54217DBE7BC0027AE66 /* poweredByFoursquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4F9A54017DBE7BC0027AE66 /* poweredByFoursquare@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +140,13 @@
 		DB9DA81B17C01D43005418CB /* OtoroConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroConnection.m; sourceTree = "<group>"; };
 		DB9DA81F17C02AB9005418CB /* OtoroConnectionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroConnectionCall.h; sourceTree = "<group>"; };
 		DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroConnectionCall.m; sourceTree = "<group>"; };
+		F4F9A53617DBDADA0027AE66 /* OtoroChooseVenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroChooseVenueViewController.h; sourceTree = "<group>"; };
+		F4F9A53717DBDADC0027AE66 /* OtoroChooseVenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroChooseVenueViewController.m; sourceTree = "<group>"; };
+		F4F9A53817DBDADC0027AE66 /* OtoroChooseVenueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtoroChooseVenueViewController.xib; sourceTree = "<group>"; };
+		F4F9A53B17DBE1890027AE66 /* OVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVenue.h; sourceTree = "<group>"; };
+		F4F9A53C17DBE1890027AE66 /* OVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OVenue.m; sourceTree = "<group>"; };
+		F4F9A53F17DBE7BC0027AE66 /* poweredByFoursquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = poweredByFoursquare.png; path = Resources/poweredByFoursquare.png; sourceTree = "<group>"; };
+		F4F9A54017DBE7BC0027AE66 /* poweredByFoursquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "poweredByFoursquare@2x.png"; path = "Resources/poweredByFoursquare@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +245,8 @@
 				6097D9DE17B34A0100EC094E /* Toro.m */,
 				602A4CE817C03966007DEF27 /* OUser.h */,
 				602A4CE917C03966007DEF27 /* OUser.m */,
+				F4F9A53B17DBE1890027AE66 /* OVenue.h */,
+				F4F9A53C17DBE1890027AE66 /* OVenue.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -246,6 +260,7 @@
 				60CE1C8417AEDFE400C6249F /* Otoro-client-2Tests */,
 				60CE1C6517AEDFE400C6249F /* Frameworks */,
 				60CE1C6317AEDFE400C6249F /* Products */,
+				F4F9A53E17DBE7840027AE66 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -293,6 +308,9 @@
 				602A4CE417C02F2E007DEF27 /* FriendListViewController.m */,
 				602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */,
 				60529FC317CA8ED200C7F064 /* Friends */,
+				F4F9A53617DBDADA0027AE66 /* OtoroChooseVenueViewController.h */,
+				F4F9A53717DBDADC0027AE66 /* OtoroChooseVenueViewController.m */,
+				F4F9A53817DBDADC0027AE66 /* OtoroChooseVenueViewController.xib */,
 			);
 			path = "Otoro-client-2";
 			sourceTree = "<group>";
@@ -325,6 +343,15 @@
 				60CE1C8717AEDFE400C6249F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4F9A53E17DBE7840027AE66 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4F9A53F17DBE7BC0027AE66 /* poweredByFoursquare.png */,
+				F4F9A54017DBE7BC0027AE66 /* poweredByFoursquare@2x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +440,9 @@
 				6089B86A17CAB87500C3CF9D /* AddedYouViewController.xib in Resources */,
 				608EF30817DBF9040040B0B2 /* OtoroSentTableViewCell.xib in Resources */,
 				608EF30A17DBF9530040B0B2 /* OtoroReceivedTableViewCell.xib in Resources */,
+				F4F9A53A17DBDADD0027AE66 /* OtoroChooseVenueViewController.xib in Resources */,
+				F4F9A54117DBE7BC0027AE66 /* poweredByFoursquare.png in Resources */,
+				F4F9A54217DBE7BC0027AE66 /* poweredByFoursquare@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +497,8 @@
 				6089B86917CAB87500C3CF9D /* AddedYouViewController.m in Sources */,
 				608EF30317DBF8760040B0B2 /* OtoroSentTableViewCell.m in Sources */,
 				608EF30617DBF8940040B0B2 /* OtoroReceivedTableViewCell.m in Sources */,
+				F4F9A53917DBDADD0027AE66 /* OtoroChooseVenueViewController.m in Sources */,
+				F4F9A53D17DBE1890027AE66 /* OVenue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

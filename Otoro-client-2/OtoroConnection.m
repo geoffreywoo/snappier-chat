@@ -283,7 +283,18 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
                              [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/new", OTORO_HOST]]];
     
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:[[NSString stringWithFormat:@"latitude=%f&longitude=%f&sender=%@&receiver=%@&message=%@&venue=%@", toro.lat, toro.lng, toro.sender,toro.receiver,toro.message,toro.venue] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	NSMutableString *body = [NSMutableString stringWithFormat:@"latitude=%f&longitude=%f&sender=%@&receiver=%@", toro.lat, toro.lng, toro.sender,toro.receiver];
+	if (toro.message)
+	{
+		[body appendFormat:@"&message=%@", toro.message];
+	}
+	if (toro.venue)
+	{
+		[body appendFormat:@"&venue=%@&venueID=%@", toro.venue.name, toro.venue.venueID];
+	}
+	
+    [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeCreateToro completionBlock:block toConnection:connection];

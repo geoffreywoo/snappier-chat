@@ -10,6 +10,11 @@
 #import "Toro.h"
 #import "AddFriendsViewController.h"
 
+@class FriendListViewController;
+@protocol FriendListViewControllerDelegate <NSObject>
+- (void)friendListViewController:(FriendListViewController *)viewController didSendToro:(Toro *)toro;
+@end
+
 @interface FriendListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UINavigationBar *navBar;
@@ -21,8 +26,9 @@
 @property (nonatomic, strong) AddFriendsViewController *addFriendsViewController;
 @property (nonatomic, strong) NSMutableArray *friends;
 @property (nonatomic, strong) Toro *toro;
+@property (nonatomic, weak) id<FriendListViewControllerDelegate>delegate;
 
--(id)initWithToro: (Toro*)toro;
+-(id)initWithToro: (Toro*)toro delegate:(id<FriendListViewControllerDelegate>)delegate;
 
 -(IBAction) back:(id) sender;
 -(IBAction) addFriends:(id) sender;

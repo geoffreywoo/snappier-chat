@@ -22,9 +22,13 @@ const int MAX_TIME = 15;
         _receiver = [dict objectForKey:@"receiver"];
         _sender = [dict objectForKey:@"sender"];
         _message = [dict objectForKey:@"message"];
-        _venue = [dict objectForKey:@"venue"];
         _created = [dict objectForKey:@"created_at"];
-        
+		
+		OVenue *venue = [[OVenue alloc] init];
+		venue.name = dict[@"venue"];
+		venue.venueID = dict[@"venueID"];
+		_venue = venue;
+		
         if (_read)
             _elapsedTime = 15;
         else
@@ -36,12 +40,14 @@ const int MAX_TIME = 15;
     return self;
 }
 
-- (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message {
+- (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message venue:(OVenue *)venue
+{
     self = [super init];
     if (self) {
         _lat = lat;
         _lng = lng;
         _message = message;
+		_venue = venue;
     }
     return self;
 }

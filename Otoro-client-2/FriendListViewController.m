@@ -26,9 +26,11 @@
     return self;
 }
 
--(id)initWithToro:(Toro*)toro {
+-(id)initWithToro:(Toro*)toro delegate:(id<FriendListViewControllerDelegate>)delegate
+{
     self = [super initWithNibName:@"FriendListViewController" bundle:nil];
     if (self) {
+		_delegate = delegate;
         _toro = toro;
         sendButton.hidden = YES;
     }
@@ -85,7 +87,7 @@ static int NUM_SENT;
     if (NUM_SENT < [[[OtoroConnection sharedInstance] selectedFriends] count]) {
         NSLog(@"waiting for other calls");
     } else {
-        [[self navigationController] popToRootViewControllerAnimated:YES];
+		[self.delegate friendListViewController:self didSendToro:self.toro];
     }
 }
 

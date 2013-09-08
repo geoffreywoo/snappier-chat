@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ToroViewController.h"
+#import "OVenue.h"
 @class ToroViewController;
 
 @interface Toro : NSObject
@@ -17,7 +18,7 @@
 @property (nonatomic) float lng;
 @property (nonatomic) bool read;
 @property (nonatomic, strong) NSString *message;
-@property (nonatomic, strong) NSString *venue;
+@property (nonatomic, strong) OVenue *venue;
 @property (nonatomic, strong) NSString *receiver;
 @property (nonatomic, strong) NSString *sender;
 @property (nonatomic, strong) NSString *created;
@@ -29,7 +30,7 @@
 @property (nonatomic) int maxTime;
 
 - (id)initWith:(NSDictionary *)dict;
-- (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message;
+- (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message venue:(OVenue *)venue;
 - (BOOL)isEqual:(id)object;
 - (void)print;
 
