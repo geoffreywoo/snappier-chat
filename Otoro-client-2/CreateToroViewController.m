@@ -10,7 +10,7 @@
 #import "OtoroConnection.h"
 #import "OtoroChooseVenueViewController.h"
 
-@interface CreateToroViewController ()<OtoroChooseVenueViewControllerDelegate>
+@interface CreateToroViewController ()<OtoroChooseVenueViewControllerDelegate, FriendListViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *chooseVenueButton;
 @property (nonatomic, strong) OVenue *venue;
@@ -48,12 +48,12 @@
     [self initLocationManager];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)clearViewState
 {
     message.hidden = YES;
     message.text = @"";
 	self.venue = nil;
-	[self.chooseVenueButton setTitle:@"Place" forState:UIControlStateNormal];
+	[self.chooseVenueButton setTitle:@"Place" forState:UIControlStateNormal];	
 }
 
 - (void) initLocationManager
@@ -109,6 +109,7 @@
 
 -(IBAction) backButton:(id) sender
 {
+	[self clearViewState];
     [[self navigationController] popViewControllerAnimated:YES];
 }
 /*
@@ -134,9 +135,17 @@
 {
     Toro *toro = [[Toro alloc] initOwnToroWithLat:_lastLoc.coordinate.latitude lng:_lastLoc.coordinate.longitude message: message.text venue:self.venue];
     _friendListViewController = nil;
-    _friendListViewController = [[FriendListViewController alloc] initWithToro:toro];
+    _friendListViewController = [[FriendListViewController alloc] initWithToro:toro delegate:self];
     //[self.view addSubview:_friendListViewController.view];
     [[self navigationController] pushViewController:_friendListViewController animated:YES];
+}
+
+#pragma mark - FriendListViewController
+
+- (void)friendListViewController:(FriendListViewController *)viewController didSendToro:(Toro *)toro
+{
+	[self clearViewState];
+	[[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - OtoroChooseVenueViewControllerDelegate

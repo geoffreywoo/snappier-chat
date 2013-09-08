@@ -74,8 +74,7 @@
 
 - (void)getNearbyPlaces {
 	if (self.location) {
-#warning TODO: replace these tokens
-		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"https://api.foursquare.com/v2/venues/search?ll=%f,%f&radius=%d&client_id=%@&client_secret=%@&v=%@&limit=50", self.location.coordinate.latitude, self.location.coordinate.longitude, 500, @"JH2SHOUD4L1UWPE0JTN5GH1LMTHPN3NW0YPV2BNHRWAXKONG", @"4PJMX1LHHBHPYNTVD4UEGKQ2TMDN312OGS0E1VJG32WT5LQ0", @"20120601"]];
+		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat: @"https://api.foursquare.com/v2/venues/search?ll=%f,%f&radius=%d&client_id=%@&client_secret=%@&v=%@&limit=50", self.location.coordinate.latitude, self.location.coordinate.longitude, 500, @"KS5CABGDWPZGFOZMT2CP2TYWNOTK2XX42ZUVFWUROXB0EVHB", @"QRH0W4C1RERZDVEQ1F2DCJMMC0ENEEXXK3DLDL1LS3CXTGTM", @"20120601"]];
 		NSURLRequest *request = [NSURLRequest requestWithURL:url
 												 cachePolicy:NSURLRequestUseProtocolCachePolicy
 											 timeoutInterval:30.0];
