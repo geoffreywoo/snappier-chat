@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "FriendListViewController.h"
 
-@interface CreateToroViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate>
+@interface CreateToroViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate,FriendListViewControllerDelegate>
 {
     CLLocationManager *locationManager;
     IBOutlet MKMapView *mapView;

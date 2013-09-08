@@ -31,7 +31,7 @@
     _searchViewController = [[SearchViewController alloc] init];
     _addressBookViewController = [[AddressBookViewController alloc] init];
     _addedYouViewController = [[AddedYouViewController alloc] init];
-    [self contactsButton:contacts];
+    [self searchButton:search];
 }
 
 -(IBAction) backButton:(id) sender {
