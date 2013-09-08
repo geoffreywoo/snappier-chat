@@ -27,6 +27,10 @@
 		6089B86517CAB85D00C3CF9D /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6089B86317CAB85D00C3CF9D /* AddressBookViewController.xib */; };
 		6089B86917CAB87500C3CF9D /* AddedYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6089B86717CAB87500C3CF9D /* AddedYouViewController.m */; };
 		6089B86A17CAB87500C3CF9D /* AddedYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6089B86817CAB87500C3CF9D /* AddedYouViewController.xib */; };
+		608EF30317DBF8760040B0B2 /* OtoroSentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 608EF30217DBF8760040B0B2 /* OtoroSentTableViewCell.m */; };
+		608EF30617DBF8940040B0B2 /* OtoroReceivedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 608EF30517DBF8940040B0B2 /* OtoroReceivedTableViewCell.m */; };
+		608EF30817DBF9040040B0B2 /* OtoroSentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 608EF30717DBF9040040B0B2 /* OtoroSentTableViewCell.xib */; };
+		608EF30A17DBF9530040B0B2 /* OtoroReceivedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 608EF30917DBF9530040B0B2 /* OtoroReceivedTableViewCell.xib */; };
 		609227D417B84CA100E1D897 /* CreateToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 609227D317B84CA100E1D897 /* CreateToroViewController.m */; };
 		609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609227D517B84CC100E1D897 /* CreateToroViewController.xib */; };
 		609227D817B8538C00E1D897 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609227D717B8538C00E1D897 /* CoreLocation.framework */; };
@@ -92,6 +96,12 @@
 		6089B86617CAB87500C3CF9D /* AddedYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddedYouViewController.h; sourceTree = "<group>"; };
 		6089B86717CAB87500C3CF9D /* AddedYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddedYouViewController.m; sourceTree = "<group>"; };
 		6089B86817CAB87500C3CF9D /* AddedYouViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddedYouViewController.xib; sourceTree = "<group>"; };
+		608EF30117DBF8760040B0B2 /* OtoroSentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroSentTableViewCell.h; sourceTree = "<group>"; };
+		608EF30217DBF8760040B0B2 /* OtoroSentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroSentTableViewCell.m; sourceTree = "<group>"; };
+		608EF30417DBF8940040B0B2 /* OtoroReceivedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroReceivedTableViewCell.h; sourceTree = "<group>"; };
+		608EF30517DBF8940040B0B2 /* OtoroReceivedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroReceivedTableViewCell.m; sourceTree = "<group>"; };
+		608EF30717DBF9040040B0B2 /* OtoroSentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtoroSentTableViewCell.xib; sourceTree = "<group>"; };
+		608EF30917DBF9530040B0B2 /* OtoroReceivedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtoroReceivedTableViewCell.xib; sourceTree = "<group>"; };
 		609227D217B84CA100E1D897 /* CreateToroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateToroViewController.h; sourceTree = "<group>"; };
 		609227D317B84CA100E1D897 /* CreateToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateToroViewController.m; sourceTree = "<group>"; };
 		609227D517B84CC100E1D897 /* CreateToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateToroViewController.xib; sourceTree = "<group>"; };
@@ -203,6 +213,19 @@
 			name = Friends;
 			sourceTree = "<group>";
 		};
+		608EF30017DBF6B50040B0B2 /* OtoroTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				608EF30117DBF8760040B0B2 /* OtoroSentTableViewCell.h */,
+				608EF30217DBF8760040B0B2 /* OtoroSentTableViewCell.m */,
+				608EF30717DBF9040040B0B2 /* OtoroSentTableViewCell.xib */,
+				608EF30417DBF8940040B0B2 /* OtoroReceivedTableViewCell.h */,
+				608EF30517DBF8940040B0B2 /* OtoroReceivedTableViewCell.m */,
+				608EF30917DBF9530040B0B2 /* OtoroReceivedTableViewCell.xib */,
+			);
+			name = OtoroTableViewCells;
+			sourceTree = "<group>";
+		};
 		6097D9DC17B349E600EC094E /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +282,7 @@
 				60CE1C9517AEE01B00C6249F /* OtoroContentViewController.h */,
 				60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */,
 				60CE1C9717AEE01B00C6249F /* OtoroContentViewController.xib */,
+				608EF30017DBF6B50040B0B2 /* OtoroTableViewCells */,
 				609227D217B84CA100E1D897 /* CreateToroViewController.h */,
 				609227D317B84CA100E1D897 /* CreateToroViewController.m */,
 				609227D517B84CC100E1D897 /* CreateToroViewController.xib */,
@@ -387,6 +411,8 @@
 				60529FCD17CAAD0000C7F064 /* SearchViewController.xib in Resources */,
 				6089B86517CAB85D00C3CF9D /* AddressBookViewController.xib in Resources */,
 				6089B86A17CAB87500C3CF9D /* AddedYouViewController.xib in Resources */,
+				608EF30817DBF9040040B0B2 /* OtoroSentTableViewCell.xib in Resources */,
+				608EF30A17DBF9530040B0B2 /* OtoroReceivedTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +465,8 @@
 				60529FCC17CAAD0000C7F064 /* SearchViewController.m in Sources */,
 				6089B86417CAB85D00C3CF9D /* AddressBookViewController.m in Sources */,
 				6089B86917CAB87500C3CF9D /* AddedYouViewController.m in Sources */,
+				608EF30317DBF8760040B0B2 /* OtoroSentTableViewCell.m in Sources */,
+				608EF30617DBF8940040B0B2 /* OtoroReceivedTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

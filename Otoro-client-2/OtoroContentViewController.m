@@ -11,6 +11,8 @@
 #import "Toro.h"
 #import "CreateToroViewController.h"
 #import "OtoroConnection.h"
+#import "OtoroSentTableViewCell.h"
+#import "OtoroReceivedTableViewCell.h"
 
 @implementation OtoroContentViewController
 
@@ -42,6 +44,8 @@
     [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
     
     [toroTableView addSubview: self.refreshControl];
+    [toroTableView registerNib:[UINib nibWithNibName:@"OtoroSentTableViewCell" bundle:nil] forCellReuseIdentifier: kOtoroSentTableViewCellIdentifier];
+    [toroTableView registerNib:[UINib nibWithNibName:@"OtoroReceivedTableViewCell" bundle:nil] forCellReuseIdentifier: kOtoroReceivedTableViewCellIdentifier];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -168,8 +172,9 @@
     [[theToro toroViewController].view removeFromSuperview];
 }
 
-- (void) createReceivedCell:(UITableViewCell*) cell withToro:(Toro*)toro withIndex:(NSUInteger) index
+- (UITableViewCell *) createReceivedCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
 {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroReceivedTableViewCellIdentifier];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro sender], [toro created]];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
@@ -190,33 +195,28 @@
     [toro setTimerLabel:timerLabel];
     [self makeTimerLabel:toro];
     [cell addSubview: [toro timerLabel]];
+    return cell;
 }
 
-- (void) createSentCell:(UITableViewCell*) cell withToro:(Toro*)toro withIndex:(NSUInteger) index
+- (UITableViewCell *) createSentCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
 {
+    // NSLog(@"cellForRowAtIndexPath");
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroSentTableViewCellIdentifier];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro receiver], [toro created]];
     cell.accessoryType = UITableViewCellAccessoryNone;
+    return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger index = self.torosReceived.count - 1 - indexPath.row;
     
-   // NSLog(@"cellForRowAtIndexPath");
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ToroViewCell"];
-    
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ToroViewCell"];
-    }
-    
     Toro *o = [[self torosReceived] objectAtIndex:index];
     NSString *myName = [[OtoroConnection sharedInstance] user].username;
     if ([o.sender isEqualToString:myName]) {
-        [self createSentCell:cell withToro:o withIndex:index];
+        return [self createSentCellWithTableView:tableView withToro:o withIndex:index];
     } else {
-        [self createReceivedCell:cell withToro:o withIndex:index];
+        return [self createReceivedCellWithTableView:tableView withToro:o withIndex:index];
     }
-    
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
