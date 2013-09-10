@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddressBookViewController : UIViewController
+@interface AddressBookViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    IBOutlet UITableView *addressBookUsersTableView;
+}
+
+@property (nonatomic, strong) NSMutableArray *addressBookUsers;
 
 @end
