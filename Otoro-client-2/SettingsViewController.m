@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "SplashViewController.h"
 #import "OAppDelegate.h"
+#import "OtoroConnection.h"
 
 @interface SettingsViewController ()
 
@@ -31,6 +32,17 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	self.usernameTextField.text = [defaults objectForKey:@"username"];
+	self.emailTextField.text = [defaults objectForKey:@"email"];
+	self.phoneTextField.text = [defaults objectForKey:@"phone"];
+}
+
 -(IBAction) logout:(id) sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject: nil forKey:@"username"];
@@ -44,12 +56,23 @@
 
 -(IBAction) back:(id) sender {
     [[self navigationController] popViewControllerAnimated:YES];
-}
+	
+	[[OtoroConnection sharedInstance] updateUserEmail:self.emailTextField.text phone:self.phoneTextField.text completionBlock:^(NSError *error, NSDictionary *dict)
+	 {
+		 if (error)
+		 {
+			 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error saving your info, please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+			 [alert show];
+		 }
+		 else
+		 {
+			 [OtoroConnection sharedInstance].user.phone = self.phoneTextField.text;
+			 [OtoroConnection sharedInstance].user.email = self.emailTextField.text;
+			 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+			 [defaults setObject:self.emailTextField.text forKey:@"email"];
+			 [defaults setObject:self.phoneTextField.text forKey:@"phone"];
+		 }
+	 }];
 }
-
 @end

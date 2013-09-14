@@ -108,6 +108,14 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
             error = [NSError errorWithDomain:[o objectForKey:@"error"] code:-1 userInfo:o];
             [self callForConnection:connection].completionBlock(error, nil);
         }
+	} else if (apiType == OtoroConnectionAPITypeUpdateUser) {
+        NSDictionary *o = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if ([[o objectForKey:@"ok"] boolValue]) {
+            [self callForConnection:connection].completionBlock(error, nil);
+        } else {
+            error = [NSError errorWithDomain:[o objectForKey:@"error"] code:-1 userInfo:o];
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
     } else if (apiType == OtoroConnectionAPITypeLogin) {
         NSDictionary *o = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
         NSLog(@"is return ok? %@",[o objectForKey:@"ok"]);
@@ -247,6 +255,20 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeCreateUser completionBlock:block toConnection:connection];
+}
+
+- (void)updateUserEmail:(NSString *)email phone:(NSString *)phone completionBlock:(OtoroConnectionCompletionBlock)block
+{
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/update/%@", OTORO_HOST, self.user.username]]];
+    
+    [request setHTTPMethod:@"PUT"];
+	NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"phone" : phone, @"email":email} options:NSJSONWritingPrettyPrinted error:nil];
+    [request setHTTPBody:data];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeUpdateUser completionBlock:block toConnection:connection];
 }
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password completionBlock:(OtoroConnectionCompletionBlock)block

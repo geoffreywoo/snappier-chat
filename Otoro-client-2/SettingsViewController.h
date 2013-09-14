@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController {
-    IBOutlet UIButton *logoutButton;
-    IBOutlet UIButton *backButton;
+    __weak IBOutlet UIButton *logoutButton;
+    __weak IBOutlet UIButton *backButton;
 }
+
+@property (nonatomic, weak) IBOutlet UITextField *usernameTextField;
+@property (nonatomic, weak) IBOutlet UITextField *emailTextField;
+@property (nonatomic, weak) IBOutlet UITextField *phoneTextField;
+
 
 -(IBAction) logout:(id) sender;
 -(IBAction) back:(id) sender;
