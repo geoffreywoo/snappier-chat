@@ -21,7 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        sendButton.hidden = YES;
+        //sendButton.hidden = YES;
     }
     return self;
 }
@@ -32,7 +32,7 @@
     if (self) {
 		_delegate = delegate;
         _toro = toro;
-        sendButton.hidden = YES;
+        //sendButton.hidden = YES;
     }
     return self;
 }
@@ -42,6 +42,7 @@
     [super viewDidLoad];
     friendTableView.delegate = self;
     friendTableView.dataSource = self;
+    sendButton.hidden = YES;
     
     _friends = [[OtoroConnection sharedInstance] friends];
     [friendTableView reloadData];
@@ -130,7 +131,7 @@ static int NUM_SENT;
 }
 
 -(IBAction) addFriends:(id) sender {
-    NSLog(@"add friends view");
+    //NSLog(@"add friends view");
     
     if (_addFriendsViewController == nil) {
         _addFriendsViewController = [[AddFriendsViewController alloc] init];
@@ -144,7 +145,7 @@ static int NUM_SENT;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        NSLog(@"%d",[ [self friends] count]);
+    //    NSLog(@"%d",[ [self friends] count]);
         return [ [self friends] count];
     } else {
         return 0;
@@ -157,7 +158,7 @@ static int NUM_SENT;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"cellForRowAtIndexPath");
+    //NSLog(@"cellForRowAtIndexPath");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendViewCell"];
 
     
@@ -166,7 +167,7 @@ static int NUM_SENT;
     }
     
     OUser *f = [[self friends] objectAtIndex:[indexPath row]];
-    NSLog(@"%@",f);
+    //NSLog(@"%@",f);
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [f username]];
     if (self.toroIsValid && f.selected) {

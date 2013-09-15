@@ -198,9 +198,6 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
                 } else {
                     f.selected = NO;
                 }
-                
-                NSLog(@"friend: %@",f);
-                [f debugPrint];
                 [_friends addObject:f];
             }
             
@@ -232,6 +229,16 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
         if (users && users.count > 0)
         {
             [self callForConnection:connection].completionBlock(error, @{@"user":users[0]});
+        }
+        else
+        {
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
+    } else if (apiType == OtoroConnectionAPITypeUploadAddressBook) {
+        NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (resp)
+        {
+            [self callForConnection:connection].completionBlock(error, resp);
         }
         else
         {
@@ -405,6 +412,21 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeRemoveFriends completionBlock:block toConnection:connection];
 }
+
+#pragma mark - Address Book Endpoints
+- (void)uploadAddressBookOf:(NSString*)userName atTime:(NSNumber*)unixTimestamp addressBook:(NSArray*)addressBook completionBlock:(OtoroConnectionCompletionBlock)block {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/addressbook/upload", OTORO_HOST]]];
+    
+    [request setHTTPMethod:@"POST"];
+	NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"username" : userName, @"timestamp":unixTimestamp, @"contacts":addressBook} options:NSJSONWritingPrettyPrinted error:nil];
+    [request setHTTPBody:data];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeUploadAddressBook completionBlock:block toConnection:connection];
+}
+
 
 
 @end
