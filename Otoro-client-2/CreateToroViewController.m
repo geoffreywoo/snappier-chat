@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
     
+	self.chooseVenueButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+	
     UITapGestureRecognizer *bgTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(backgroundTap:)];
@@ -55,7 +57,7 @@
     message.hidden = YES;
     message.text = @"";
 	self.venue = nil;
-	[self.chooseVenueButton setTitle:@"Place" forState:UIControlStateNormal];	
+	[self.chooseVenueButton setTitle:@"Where are you?" forState:UIControlStateNormal];	
 }
 
 - (void)checkSendToroButton
