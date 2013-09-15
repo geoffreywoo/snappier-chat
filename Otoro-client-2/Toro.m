@@ -22,8 +22,16 @@ const int MAX_TIME = 15;
         _receiver = [dict objectForKey:@"receiver"];
         _sender = [dict objectForKey:@"sender"];
         _message = [dict objectForKey:@"message"];
-        _created = [dict objectForKey:@"created_at"];
-		
+      
+        /*
+        NSString *created_at_text = [dict objectForKey:@"created_at"];
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'hh':'mm':'ss'.'AAA'Z'"];
+        NSDate *date = [dateFormatter dateFromString:created_at_text];
+        
+        [dateFormatter setDateFormat:@"MM-dd 'at' HH:mm"];
+        _created = [dateFormatter stringFromDate:date];
+        */
 		OVenue *venue = [[OVenue alloc] init];
 		venue.name = dict[@"venue"];
 		venue.venueID = dict[@"venueID"];
@@ -60,6 +68,11 @@ const int MAX_TIME = 15;
     Toro* other = object;
     return [self.toroId isEqualToString:other.toroId];
 }
+
+- (NSComparisonResult)compare:(Toro*)toro {
+    return [self.created compare:toro.created];
+}
+
 
 - (void) print
 {

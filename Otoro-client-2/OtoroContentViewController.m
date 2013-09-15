@@ -46,6 +46,14 @@
     [toroTableView addSubview: self.refreshControl];
     [toroTableView registerNib:[UINib nibWithNibName:@"OtoroSentTableViewCell" bundle:nil] forCellReuseIdentifier: kOtoroSentTableViewCellIdentifier];
     [toroTableView registerNib:[UINib nibWithNibName:@"OtoroReceivedTableViewCell" bundle:nil] forCellReuseIdentifier: kOtoroReceivedTableViewCellIdentifier];
+    
+    [[OtoroConnection sharedInstance] getAllFriendsWithCompletionBlock:^(NSError *error, NSDictionary *data){
+        if (error) {
+            
+        } else {
+            NSLog(@"loaded friends");
+        }
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -63,10 +71,11 @@
         }
         else
         {
+            _torosReceived = [[NSMutableArray alloc] init];
             for (int i = 0; i < [data[@"elements"] count]; i++) {
                 Toro *toro = [[Toro alloc] initWith:data[@"elements"][i]];
                // NSLog(@"toro: %@",toro);
-                if (![_torosReceived containsObject:toro])
+                //if (![_torosReceived containsObject:toro])
                     [_torosReceived addObject: toro];
             }
             [toroTableView reloadData];
@@ -95,13 +104,14 @@
 
 - (void) toroDead:(Toro*)toro
 {
-    [[toro timerLabel] setText:[NSString stringWithFormat:@"Dead!"]];
+    [[toro timerLabel] setText:[NSString stringWithFormat:@"Gone"]];
 }
 
 - (void) makeTimerLabel:(Toro*)toro
 {
+    [[toro timerLabel] setFont:[UIFont systemFontOfSize:12]];
     if (![toro read])
-        [[toro timerLabel] setText:[NSString stringWithFormat:@"View!"]];
+        [[toro timerLabel] setText:[NSString stringWithFormat:@"View"]];
     else if ([toro read] && ([toro maxTime] == [toro elapsedTime]) ) {
         [self toroDead:toro];
     } else {
@@ -176,6 +186,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroReceivedTableViewCellIdentifier];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro sender], [toro created]];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
     UIButton *button = [[UIButton alloc] init];
@@ -203,7 +214,23 @@
     // NSLog(@"cellForRowAtIndexPath");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroSentTableViewCellIdentifier];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro receiver], [toro created]];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
     cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    UILabel *readLabel = [[UILabel alloc] init];
+    [readLabel setFont:[UIFont systemFontOfSize:11]];
+    CGRect frame = cell.frame;
+    if ( [toro read] ) {
+        [readLabel setText:@"Viewed"];
+    } else {
+        [readLabel setText:@"Unviewed"];
+    }
+    readLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
+    [readLabel setBackgroundColor: [UIColor blueColor]];
+    [cell addSubview: readLabel];
+    
+    return cell;
+    
     return cell;
 }
 

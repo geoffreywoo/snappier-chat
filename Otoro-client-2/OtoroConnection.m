@@ -213,6 +213,14 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
         NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
         if (resp)
         {
+            bool ok = [[resp objectForKey:@"ok"] boolValue];
+            if (ok) {
+                NSArray *arr = [resp objectForKey:@"elements"];
+                NSString *addedFriend = arr[0];
+                NSLog(@"added %@",addedFriend);
+                OUser *friend = [[OUser alloc] initWithUsername:addedFriend];
+                [_friends addObject:friend];
+            }
             [self callForConnection:connection].completionBlock(error, resp);
         } 
         else

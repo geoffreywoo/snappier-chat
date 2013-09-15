@@ -32,6 +32,7 @@
 - (id)initWith:(NSDictionary *)dict;
 - (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message venue:(OVenue *)venue;
 - (BOOL)isEqual:(id)object;
+- (NSComparisonResult)compare:(Toro*)toro;
 - (void)print;
 
 
