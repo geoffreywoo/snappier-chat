@@ -43,8 +43,10 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
+	[super viewWillAppear:animated];
+	[self checkSendToroButton];
     [self initLocationManager];
 }
 
@@ -54,6 +56,18 @@
     message.text = @"";
 	self.venue = nil;
 	[self.chooseVenueButton setTitle:@"Place" forState:UIControlStateNormal];	
+}
+
+- (void)checkSendToroButton
+{
+	if (self.venue || message.text.length)
+	{
+		[sendToroButton setTitle:@"Toro!" forState:UIControlStateNormal];
+	}
+	else
+	{
+		[sendToroButton setTitle:@"Friends" forState:UIControlStateNormal];		
+	}
 }
 
 - (void) initLocationManager
@@ -105,6 +119,8 @@
             [message resignFirstResponder];
         }
     }
+	
+	[self checkSendToroButton];
 }
 
 -(IBAction) backButton:(id) sender
@@ -154,5 +170,6 @@
 {
 	self.venue = venue;
 	[self.chooseVenueButton setTitle:venue.name forState:UIControlStateNormal];
+	[self checkSendToroButton];
 }
 @end

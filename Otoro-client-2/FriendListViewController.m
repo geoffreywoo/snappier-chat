@@ -60,14 +60,21 @@
 }
 
 - (BOOL)sendable {
-    if ( (_toro != nil) && ([[[OtoroConnection sharedInstance] selectedFriends] count] > 0) ) {
+    if (self.toroIsValid && [[[OtoroConnection sharedInstance] selectedFriends] count] > 0) {
         return YES;
     }
     return NO;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (BOOL)toroIsValid
 {
+	return self.toro && (self.toro.message.length || self.toro.venue);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
     [[OtoroConnection sharedInstance] getAllFriendsWithCompletionBlock:^(NSError *error, NSDictionary *data){
         if (error) {
             
@@ -78,6 +85,15 @@
         }
     }];
     [self checkSendButton];
+	
+	if (self.toroIsValid)
+	{
+		navBarItem.title = @"Send Toro";
+	}
+	else
+	{
+		navBarItem.title = @"My Friends";
+	}
 }
 
 -(IBAction) back:(id) sender {
@@ -154,7 +170,7 @@ static int NUM_SENT;
     //NSLog(@"%@",f);
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [f username]];
-    if (f.selected) {
+    if (self.toroIsValid && f.selected) {
         [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:0];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
@@ -187,12 +203,15 @@ static int NUM_SENT;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    
-    OUser *f = [[self friends] objectAtIndex:[indexPath row]];
-    [[[OtoroConnection sharedInstance] selectedFriends] addObject:f];
-    [self checkSendButton];
+	if (self.toroIsValid)
+	{
+		UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+		
+		OUser *f = [[self friends] objectAtIndex:[indexPath row]];
+		[[[OtoroConnection sharedInstance] selectedFriends] addObject:f];
+		[self checkSendButton];
+	}
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -210,4 +229,8 @@ static int NUM_SENT;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+	navBarItem = nil;
+	[super viewDidUnload];
+}
 @end
