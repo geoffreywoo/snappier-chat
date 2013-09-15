@@ -11,7 +11,7 @@
 #import "OAppDelegate.h"
 #import "OtoroConnection.h"
 
-@interface SettingsViewController ()
+@interface SettingsViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -43,6 +43,12 @@
 	self.phoneTextField.text = [defaults objectForKey:@"phone"];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[self.emailTextField resignFirstResponder];
+	[self.phoneTextField resignFirstResponder];
+}
+
 -(IBAction) logout:(id) sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject: nil forKey:@"username"];
@@ -52,6 +58,11 @@
     OAppDelegate *delegate = (OAppDelegate *)[[UIApplication sharedApplication] delegate];
     delegate.window.rootViewController = splashViewController;
     [delegate.window makeKeyAndVisible];
+}
+- (IBAction)backgroundTapped:(id)sender
+{
+	[self.emailTextField resignFirstResponder];
+	[self.phoneTextField resignFirstResponder];
 }
 
 -(IBAction) back:(id) sender {
@@ -74,5 +85,11 @@
 			 [defaults setObject:self.phoneTextField.text forKey:@"phone"];
 		 }
 	 }];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
 }
 @end
