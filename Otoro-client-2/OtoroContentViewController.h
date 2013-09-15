@@ -13,8 +13,6 @@
 @interface OtoroContentViewController : UIViewController
 {
     IBOutlet UINavigationBar *navBar;
-    IBOutlet UIBarButtonItem *toTakeToroViewButton;
-    IBOutlet UIBarButtonItem *toSettingsViewButton;
     IBOutlet UITableView *toroTableView;
 }
 @property (nonatomic, strong) NSMutableData *responseData;
