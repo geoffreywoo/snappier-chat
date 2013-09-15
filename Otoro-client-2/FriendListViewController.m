@@ -84,6 +84,15 @@
         }
     }];
     [self checkSendButton];
+	
+	if (self.toroIsValid)
+	{
+		navBarItem.title = @"Send Toro";
+	}
+	else
+	{
+		navBarItem.title = @"My Friends";
+	}
 }
 
 -(IBAction) back:(id) sender {
@@ -219,4 +228,8 @@ static int NUM_SENT;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+	navBarItem = nil;
+	[super viewDidUnload];
+}
 @end

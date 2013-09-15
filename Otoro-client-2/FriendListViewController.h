@@ -18,6 +18,7 @@
 @interface FriendListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UINavigationBar *navBar;
+	IBOutlet UINavigationItem *navBarItem;
     IBOutlet UIBarButtonItem *backButton;
     IBOutlet UIBarButtonItem *addFriendsButton;
     IBOutlet UIButton *sendButton;
