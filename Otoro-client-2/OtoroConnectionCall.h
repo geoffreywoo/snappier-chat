@@ -28,6 +28,10 @@ typedef NS_ENUM(NSInteger, OtoroConnectionAPIType)
     OtoroConnectionAPITypeGetFriends,
     OtoroConnectionAPITypeAddFriend,
     OtoroConnectionAPITypeRemoveFriends,
+    
+    //address book
+    OtoroConnectionAPITypeUploadAddressBook,
+    
 };
 
 typedef void (^OtoroConnectionCompletionBlock)(NSError *error, NSDictionary *returnData);

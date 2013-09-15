@@ -26,10 +26,37 @@ ABAddressBookRef addressBook;
     return self;
 }
 
+- (void)uploadAddressBook {
+    NSLog(@"upload address book");
+    addressBook = ABAddressBookCreate();
+    CFArrayRef all = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFIndex n = ABAddressBookGetPersonCount(addressBook);
+    
+    NSMutableArray *contacts = [[NSMutableArray alloc] init];
+    for( int i = 0 ; i < n ; i++ )
+    {
+        ABRecordRef ref = CFArrayGetValueAtIndex(all, i);
+        NSDictionary *contact = [self shortDictionaryRepresentationForABPerson:ref];
+        [contacts addObject:contact];
+    }
+    
+    NSDate *date = [NSDate date];
+    NSTimeInterval ti = [date timeIntervalSince1970];
+    NSNumber *unixTimestamp = [NSNumber numberWithInt:ti];
+    
+    NSLog(@"contacts: %@",contacts);
+    [[OtoroConnection sharedInstance] uploadAddressBookOf:[[[OtoroConnection sharedInstance] user] username] atTime:unixTimestamp addressBook:contacts completionBlock:^(NSError *error, NSDictionary *data) {
+        if (error) {
+        } else {
+            NSLog(@"address upload response: %@",data);
+        }
+    }];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self uploadAddressBook];
 }
 
 - (NSMutableArray *) phoneNumbersForABPerson:(ABRecordRef) person
@@ -56,28 +83,47 @@ ABAddressBookRef addressBook;
 
 - (NSDictionary *) shortDictionaryRepresentationForABPerson:(ABRecordRef) person
 {
+    NSLog(@"short dictionary representation for ABPerson");
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
     NSString *firstName = (__bridge NSString *)ABRecordCopyValue(person,kABPersonFirstNameProperty);
     NSString *lastName = (__bridge NSString *)ABRecordCopyValue(person,kABPersonLastNameProperty);
     
-    [dictionary setObject:firstName forKey:@"firstName"];
-    [dictionary setObject:lastName forKey:@"lastName"];
+    [dictionary setObject:firstName forKey:@"first_name"];
+    [dictionary setObject:lastName forKey:@"last_name"];
     
-    NSMutableArray *phoneNumbersArray = [[NSMutableArray alloc] init];
-    ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-    for (int i=0; i < ABMultiValueGetCount(phoneNumbers); i++) {
-        NSString *phoneNumber = (__bridge NSString*)ABMultiValueCopyValueAtIndex(phoneNumbers, i);
-        [phoneNumbersArray addObject:phoneNumber];
-    }
-    [dictionary setObject:phoneNumbersArray forKey:@"phoneNumbers"];
+    NSMutableArray *phoneNumbersArray = [self phoneNumbersForABPerson:person];
+    [dictionary setObject:phoneNumbersArray forKey:@"phone"];
 
-    NSMutableArray *emailsArray = [[NSMutableArray alloc] init];
-    ABMultiValueRef emails = ABRecordCopyValue(person, kABPersonEmailProperty);
-    for (int i=0; i < ABMultiValueGetCount(emails); i++) {
-        NSString *email = (__bridge NSString*)ABMultiValueCopyValueAtIndex(emails, i);
-        [emailsArray addObject:email];
+    NSMutableArray *emailsArray = [self emailsForABPerson:person];
+    [dictionary setObject:emailsArray forKey:@"email"];
+    
+    NSMutableArray *addressesArray = [[NSMutableArray alloc] init];
+    ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
+
+    for (int i=0; i < ABMultiValueGetCount(addresses); i++) {
+        NSMutableDictionary *addressObj = [[NSMutableDictionary alloc] init];
+        CFDictionaryRef address = ABMultiValueCopyValueAtIndex(addresses, i);
+       // NSLog(@"address cfdictref: %@", address);
+        
+        CFStringRef typeTmp = ABMultiValueCopyLabelAtIndex(addresses, i);
+        NSString *labeltype = (__bridge NSString *)(ABAddressBookCopyLocalizedLabel(typeTmp));
+        NSString *street = (NSString *)CFDictionaryGetValue(address, kABPersonAddressStreetKey);
+        NSString *city = (NSString *)CFDictionaryGetValue(address, kABPersonAddressCityKey);
+        NSString *state = (NSString *)CFDictionaryGetValue(address, kABPersonAddressStateKey);
+        NSString *zip = (NSString *)CFDictionaryGetValue(address, kABPersonAddressZIPKey);
+        NSString *country = (NSString *)CFDictionaryGetValue(address, kABPersonAddressCountryKey);
+        
+        [addressObj setObject:labeltype forKey:@"type"];
+        [addressObj setObject:street forKey:@"street"];
+        [addressObj setObject:city forKey:@"city"];
+        [addressObj setObject:state forKey:@"state"];
+        [addressObj setObject:zip forKey:@"zip"];
+        [addressObj setObject:country forKey:@"country"];
+        
+        //NSLog(@"%@", addressObj);
+        [addressesArray addObject:addressObj];
     }
-    [dictionary setObject:emailsArray forKey:@"emails"];
+    [dictionary setObject:addressesArray forKey:@"address"];
     
     return dictionary;
 }
@@ -177,6 +223,7 @@ ABAddressBookRef addressBook;
 
 -(void)viewDidAppear:(BOOL)animated
 {
+/*
     addressBook = ABAddressBookCreate();
     CFArrayRef all = ABAddressBookCopyArrayOfAllPeople(addressBook);
     CFIndex n = ABAddressBookGetPersonCount(addressBook);
@@ -205,6 +252,8 @@ ABAddressBookRef addressBook;
             [addressBookUsersTableView reloadData];
         }
      }];
+ */   
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
