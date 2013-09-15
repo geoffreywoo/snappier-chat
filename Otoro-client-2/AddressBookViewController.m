@@ -22,7 +22,6 @@ ABAddressBookRef addressBook;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _addressBookUsers = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -191,6 +190,7 @@ ABAddressBookRef addressBook;
         [allEmails addObjectsFromArray:[self emailsForABPerson:ref]];
     }
     
+    _addressBookUsers = [[NSMutableArray alloc] init];
     [[OtoroConnection sharedInstance] getFriendMatchesWithPhones:allPhones emails:allEmails completionBlock:^(NSError *error, NSDictionary *data) {
         if (error) {
         } else {
@@ -224,6 +224,40 @@ ABAddressBookRef addressBook;
     }
 }
 
+- (void) toggleFriend:(NSString *)userName inCell:(UITableViewCell*)cell
+{
+    [[OtoroConnection sharedInstance] addFriendWithUserID:userName completionBlock:^(NSError *error, NSDictionary *returnData) {
+        if (error) {
+            NSLog(@"Error: %@",error);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Adding friend failed"
+                                                            message:nil
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        } else {
+            NSLog(@"Return Data: %@" ,returnData);
+            bool ok = [[returnData objectForKey:@"ok"] boolValue];
+            if (ok) {
+                NSArray *arr = [returnData objectForKey:@"elements"];
+                NSString *addedFriend = arr[0];
+                NSLog(@"added %@",addedFriend);
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                
+                
+            } else {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Adding friend failed"
+                                                                message:nil
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+    }];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"cellForRowAtIndexPath");
     NSString *userName = [[self addressBookUsers] objectAtIndex:indexPath.row];
@@ -233,9 +267,28 @@ ABAddressBookRef addressBook;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FriendViewCell"];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = [NSString stringWithFormat:@"%@", userName];
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    OUser *testUser = [[OUser alloc] initWithUsername:userName];
+    
+    if ([[[OtoroConnection sharedInstance] friends] containsObject:testUser]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"didSelectRowAtIndexPath: %@", indexPath);
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    NSString *userName = [[self addressBookUsers] objectAtIndex:indexPath.row];
+    OUser *testUser = [[OUser alloc] initWithUsername:userName];
+    if (![[[OtoroConnection sharedInstance] friends] containsObject:testUser]) {
+        [self toggleFriend:userName inCell:cell];
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -248,10 +301,6 @@ ABAddressBookRef addressBook;
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return nil;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

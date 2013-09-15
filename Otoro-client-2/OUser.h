@@ -20,6 +20,7 @@
 - (id)initWithUsername:(NSString *)username;
 - (id)initWith:(NSDictionary *)dict;
 - (id)initFromNSDefaults;
+
 - (void) debugPrint;
 - (BOOL)isEqual:(id)object;
 

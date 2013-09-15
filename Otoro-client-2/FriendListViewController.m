@@ -42,6 +42,9 @@
     [super viewDidLoad];
     friendTableView.delegate = self;
     friendTableView.dataSource = self;
+    
+    _friends = [[OtoroConnection sharedInstance] friends];
+    [friendTableView reloadData];
 }
 
 - (void)checkSendButton {
@@ -162,7 +165,7 @@ static int NUM_SENT;
     /*
     UIButton *button = [[UIButton alloc] init];
     button.tag = indexPath.row;
-    CGRect frame = cell.frame;
+    CG=Rect frame = cell.frame;
     [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
     [button addTarget:self action:@selector(toggleFriend:) forControlEvents: UIControlEventTouchDown];
     [cell addSubview:button];
