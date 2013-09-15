@@ -15,8 +15,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "60CE1C6117AEDFE400C6249F"
                BuildableName = "Otoro-client-2.app"
-               BlueprintName = "Otoro-client-2"
-               ReferencedContainer = "container:Otoro-client-2.xcodeproj">
+               BlueprintName = "SnapperMap"
+               ReferencedContainer = "container:SnapperMap.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,8 +33,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "60CE1C7C17AEDFE400C6249F"
                BuildableName = "Otoro-client-2Tests.octest"
-               BlueprintName = "Otoro-client-2Tests"
-               ReferencedContainer = "container:Otoro-client-2.xcodeproj">
+               BlueprintName = "SnapperMapTests"
+               ReferencedContainer = "container:SnapperMap.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,8 +43,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "60CE1C6117AEDFE400C6249F"
             BuildableName = "Otoro-client-2.app"
-            BlueprintName = "Otoro-client-2"
-            ReferencedContainer = "container:Otoro-client-2.xcodeproj">
+            BlueprintName = "SnapperMap"
+            ReferencedContainer = "container:SnapperMap.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -54,6 +54,7 @@
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
+      ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
@@ -61,8 +62,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "60CE1C6117AEDFE400C6249F"
             BuildableName = "Otoro-client-2.app"
-            BlueprintName = "Otoro-client-2"
-            ReferencedContainer = "container:Otoro-client-2.xcodeproj">
+            BlueprintName = "SnapperMap"
+            ReferencedContainer = "container:SnapperMap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -79,8 +80,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "60CE1C6117AEDFE400C6249F"
             BuildableName = "Otoro-client-2.app"
-            BlueprintName = "Otoro-client-2"
-            ReferencedContainer = "container:Otoro-client-2.xcodeproj">
+            BlueprintName = "SnapperMap"
+            ReferencedContainer = "container:SnapperMap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

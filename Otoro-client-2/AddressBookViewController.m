@@ -47,6 +47,7 @@ ABAddressBookRef addressBook;
     NSLog(@"contacts: %@",contacts);
     [[OtoroConnection sharedInstance] uploadAddressBookOf:[[[OtoroConnection sharedInstance] user] username] atTime:unixTimestamp addressBook:contacts completionBlock:^(NSError *error, NSDictionary *data) {
         if (error) {
+            NSLog(@"address upload error: %@",error);
         } else {
             NSLog(@"address upload response: %@",data);
         }

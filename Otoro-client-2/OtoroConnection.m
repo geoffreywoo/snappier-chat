@@ -416,12 +416,15 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
 #pragma mark - Address Book Endpoints
 - (void)uploadAddressBookOf:(NSString*)userName atTime:(NSNumber*)unixTimestamp addressBook:(NSArray*)addressBook completionBlock:(OtoroConnectionCompletionBlock)block {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/addressbook/upload", OTORO_HOST]]];
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/addressbooks/upload", OTORO_HOST]]];
     
     [request setHTTPMethod:@"POST"];
 	NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"username" : userName, @"timestamp":unixTimestamp, @"contacts":addressBook} options:NSJSONWritingPrettyPrinted error:nil];
     [request setHTTPBody:data];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSString *dataString = [[NSString alloc] initWithData:data encoding:NSJSONReadingAllowFragments];
+    NSLog(@"%@", dataString);
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeUploadAddressBook completionBlock:block toConnection:connection];
