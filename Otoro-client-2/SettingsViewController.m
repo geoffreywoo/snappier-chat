@@ -38,7 +38,7 @@
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
-	self.usernameTextField.text = [defaults objectForKey:@"username"];
+	self.usernameLabel.text = [defaults objectForKey:@"username"];
 	self.emailTextField.text = [defaults objectForKey:@"email"];
 	self.phoneTextField.text = [defaults objectForKey:@"phone"];
 }

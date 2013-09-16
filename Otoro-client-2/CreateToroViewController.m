@@ -62,14 +62,15 @@
 
 - (void)checkSendToroButton
 {
-	if (self.venue || message.text.length)
-	{
-		[sendToroButton setTitle:@"Toro!" forState:UIControlStateNormal];
-	}
-	else
-	{
-		[sendToroButton setTitle:@"Friends" forState:UIControlStateNormal];		
-	}
+#warning TODO: change image?
+//	if (self.venue || message.text.length)
+//	{
+//		[sendToroButton setTitle:@"Toro!" forState:UIControlStateNormal];
+//	}
+//	else
+//	{
+//		[sendToroButton setTitle:@"Friends" forState:UIControlStateNormal];		
+//	}
 }
 
 - (void) initLocationManager

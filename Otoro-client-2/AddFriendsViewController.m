@@ -37,16 +37,16 @@
 -(IBAction) backButton:(id) sender {
     [[self navigationController] popViewControllerAnimated:YES];
 }
-
--(IBAction) addedYouButton:(id) sender {
-    [_addressBookViewController.view removeFromSuperview];
-    [_searchViewController.view removeFromSuperview];
-    [subview2 addSubview:_addedYouViewController.view];
-    
-    [addedYou setBackgroundColor: [UIColor redColor]];
-    [search setBackgroundColor: [UIColor blueColor]];
-    [contacts setBackgroundColor: [UIColor blueColor]];
-}
+//
+//-(IBAction) addedYouButton:(id) sender {
+//    [_addressBookViewController.view removeFromSuperview];
+//    [_searchViewController.view removeFromSuperview];
+//    [subview2 addSubview:_addedYouViewController.view];
+//    
+////    [addedYou setBackgroundColor: [UIColor redColor]];
+//    [search setBackgroundColor: [UIColor blueColor]];
+//    [contacts setBackgroundColor: [UIColor blueColor]];
+//}
 
 -(IBAction) contactsButton:(id) sender {
     if (_addressBookViewController == nil)
@@ -57,8 +57,9 @@
     [subview2 addSubview:_addressBookViewController.view];
 
 //    [addedYou setBackgroundColor: [UIColor blueColor]];
-    [search setBackgroundColor: [UIColor blueColor]];
-    [contacts setBackgroundColor: [UIColor redColor]];
+
+    [search setBackgroundColor: 	[UIColor colorWithRed:105.0/255.0 green:190.0/255.0 blue:232.0/255.0 alpha:1.0]];
+    [contacts setBackgroundColor: 	[UIColor colorWithRed:131.0/255.0 green:209.0/255.0 blue:233.0/255.0 alpha:1.0]];
 }
 
 -(IBAction) searchButton:(id) sender {
@@ -68,8 +69,8 @@
     [subview2 addSubview:_searchViewController.view];
 
 //    [addedYou setBackgroundColor: [UIColor blueColor]];
-    [search setBackgroundColor: [UIColor redColor]];
-    [contacts setBackgroundColor: [UIColor blueColor]];
+    [contacts setBackgroundColor: 	[UIColor colorWithRed:105.0/255.0 green:190.0/255.0 blue:232.0/255.0 alpha:1.0]];
+    [search setBackgroundColor: 	[UIColor colorWithRed:131.0/255.0 green:209.0/255.0 blue:233.0/255.0 alpha:1.0]];
 }
 
 - (void)didReceiveMemoryWarning
