@@ -34,6 +34,7 @@
 		608D601317E686CA008CD91F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 608D601217E686CA008CD91F /* Default@2x.png */; };
 		608D601517E68759008CD91F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 608D601417E68759008CD91F /* Default-568h@2x.png */; };
 		608D601717E68760008CD91F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 608D601617E68760008CD91F /* Default.png */; };
+		608D601D17E6A864008CD91F /* sushi_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 608D601C17E6A863008CD91F /* sushi_pin.png */; };
 		608E7D9317DCFD2B00238AD7 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 608E7D9217DCFD2B00238AD7 /* AddressBookUI.framework */; };
 		608EF30317DBF8760040B0B2 /* OtoroSentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 608EF30217DBF8760040B0B2 /* OtoroSentTableViewCell.m */; };
 		608EF30617DBF8940040B0B2 /* OtoroReceivedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 608EF30517DBF8940040B0B2 /* OtoroReceivedTableViewCell.m */; };
@@ -136,6 +137,7 @@
 		608D601217E686CA008CD91F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		608D601417E68759008CD91F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		608D601617E68760008CD91F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		608D601C17E6A863008CD91F /* sushi_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sushi_pin.png; sourceTree = "<group>"; };
 		608E7D9217DCFD2B00238AD7 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		608EF30117DBF8760040B0B2 /* OtoroSentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroSentTableViewCell.h; sourceTree = "<group>"; };
 		608EF30217DBF8760040B0B2 /* OtoroSentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroSentTableViewCell.m; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 		F4F9A53E17DBE7840027AE66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				608D601C17E6A863008CD91F /* sushi_pin.png */,
 				F4B0CD7917E6965C0057738D /* snappermap_inapp_icon_large.png */,
 				F4B0CD7A17E6965C0057738D /* snappermap_inapp_icon_large@2x.png */,
 				F4B0CD7B17E6965C0057738D /* snappermap_inapp_icon_small.png */,
@@ -553,6 +556,7 @@
 				F4B0CD7E17E6965C0057738D /* snappermap_inapp_icon_large@2x.png in Resources */,
 				F4B0CD7F17E6965C0057738D /* snappermap_inapp_icon_small.png in Resources */,
 				F4B0CD8017E6965C0057738D /* snappermap_inapp_icon_small@2x.png in Resources */,
+				608D601D17E6A864008CD91F /* sushi_pin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

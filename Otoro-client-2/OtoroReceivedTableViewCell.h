@@ -11,5 +11,9 @@
 extern NSString * const kOtoroReceivedTableViewCellIdentifier;
 
 @interface OtoroReceivedTableViewCell : UITableViewCell
+@property(nonatomic, strong) IBOutlet UILabel *nameLabel;
+@property(nonatomic, strong) IBOutlet UILabel *timeLabel;
+@property(nonatomic, strong) IBOutlet UIImageView *statusView;
+@property(nonatomic, strong) IBOutlet UILabel *timerLabel;
 
 @end

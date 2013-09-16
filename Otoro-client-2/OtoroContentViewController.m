@@ -212,22 +212,23 @@
 - (UITableViewCell *) createSentCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
 {
     // NSLog(@"cellForRowAtIndexPath");
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroSentTableViewCellIdentifier];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro receiver], [toro created_string]];
+    OtoroSentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroSentTableViewCellIdentifier];
+    cell.nameLabel.text = [toro receiver];
+    cell.timeLabel.text = [toro created_string];
     [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
-    UILabel *readLabel = [[UILabel alloc] init];
-    [readLabel setFont:[UIFont systemFontOfSize:11]];
-    CGRect frame = cell.frame;
+ //   UILabel *readLabel = [[UILabel alloc] init];
+  //  [readLabel setFont:[UIFont systemFontOfSize:11]];
+ //   CGRect frame = cell.frame;
     if ( [toro read] ) {
-        [readLabel setText:@"Viewed"];
+        [cell.statusView setImage:[UIImage imageNamed:@"sushi_pin"]];
     } else {
-        [readLabel setText:@"Unviewed"];
+        [cell.statusView setImage:[UIImage imageNamed:@"snappermap_inapp_icon_small"]];
     }
-    readLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
-    [readLabel setBackgroundColor: [UIColor blueColor]];
-    [cell addSubview: readLabel];
+//    readLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
+//    [readLabel setBackgroundColor: [UIColor blueColor]];
+//    [cell addSubview: readLabel];
     
     return cell;
     
@@ -244,6 +245,10 @@
     } else {
         return [self createReceivedCellWithTableView:tableView withToro:o withIndex:indexPath.row];
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
