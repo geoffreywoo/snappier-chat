@@ -185,7 +185,7 @@
 - (UITableViewCell *) createReceivedCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroReceivedTableViewCellIdentifier];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro sender], [toro created]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro sender], [toro created_string]];
     [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
@@ -213,7 +213,7 @@
 {
     // NSLog(@"cellForRowAtIndexPath");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroSentTableViewCellIdentifier];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro receiver], [toro created]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro receiver], [toro created_string]];
     [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
@@ -235,14 +235,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger index = self.torosReceived.count - 1 - indexPath.row;
+    //NSUInteger index = self.torosReceived.count - 1 - indexPath.row;
     
-    Toro *o = [[self torosReceived] objectAtIndex:index];
+    Toro *o = [[self torosReceived] objectAtIndex:indexPath.row];
     NSString *myName = [[OtoroConnection sharedInstance] user].username;
     if ([o.sender isEqualToString:myName]) {
-        return [self createSentCellWithTableView:tableView withToro:o withIndex:index];
+        return [self createSentCellWithTableView:tableView withToro:o withIndex:indexPath.row];
     } else {
-        return [self createReceivedCellWithTableView:tableView withToro:o withIndex:index];
+        return [self createReceivedCellWithTableView:tableView withToro:o withIndex:indexPath.row];
     }
 }
 

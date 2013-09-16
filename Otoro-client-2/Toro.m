@@ -23,15 +23,15 @@ const int MAX_TIME = 15;
         _sender = [dict objectForKey:@"sender"];
         _message = [dict objectForKey:@"message"];
       
-        /*
-        NSString *created_at_text = [dict objectForKey:@"created_at"];
-		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'hh':'mm':'ss'.'AAA'Z'"];
-        NSDate *date = [dateFormatter dateFromString:created_at_text];
+        _created = [[dict objectForKey:@"created_at"] floatValue];
         
-        [dateFormatter setDateFormat:@"MM-dd 'at' HH:mm"];
-        _created = [dateFormatter stringFromDate:date];
-        */
+        NSTimeInterval interval = _created;
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
+        NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+        [formatter setLocale:[NSLocale currentLocale]];
+        [formatter setDateFormat:@"EEE, MMM dd, yyyy h:mm a"];
+        _created_string = [formatter stringFromDate:date];
+	
 		OVenue *venue = [[OVenue alloc] init];
 		venue.name = dict[@"venue"];
 		venue.venueID = dict[@"venueID"];
@@ -70,7 +70,12 @@ const int MAX_TIME = 15;
 }
 
 - (NSComparisonResult)compare:(Toro*)toro {
-    return [self.created compare:toro.created];
+    if (self.created > toro.created)
+        return NSOrderedDescending;
+    else if (self.created < toro.created)
+        return NSOrderedAscending;
+    else
+        return NSOrderedSame;
 }
 
 
