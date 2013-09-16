@@ -62,15 +62,14 @@
 
 - (void)checkSendToroButton
 {
-#warning TODO: change image?
-//	if (self.venue || message.text.length)
-//	{
-//		[sendToroButton setTitle:@"Toro!" forState:UIControlStateNormal];
-//	}
-//	else
-//	{
-//		[sendToroButton setTitle:@"Friends" forState:UIControlStateNormal];		
-//	}
+	if (self.venue || message.text.length)
+	{
+		[sendToroButton setImage:[UIImage imageNamed:@"snappermap_inapp_icon_small"] forState:UIControlStateNormal];
+	}
+	else
+	{
+		[sendToroButton setImage:[UIImage imageNamed:@"friends_icon"] forState:UIControlStateNormal];
+	}
 }
 
 - (void) initLocationManager

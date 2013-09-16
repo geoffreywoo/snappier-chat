@@ -88,7 +88,7 @@
 	
 	if (self.toroIsValid)
 	{
-		navBarItem.title = @"Send Toro";
+		navBarItem.title = @"Send Snapper";
 	}
 	else
 	{
