@@ -67,6 +67,11 @@
 
 -(IBAction) back:(id) sender {
     [[self navigationController] popViewControllerAnimated:YES];
+    
+    if (self.emailTextField.text == nil)
+        self.emailTextField.text = @"";
+    if (self.phoneTextField.text == nil)
+        self.phoneTextField.text = @"";
 	
 	[[OtoroConnection sharedInstance] updateUserEmail:self.emailTextField.text phone:self.phoneTextField.text completionBlock:^(NSError *error, NSDictionary *dict)
 	 {
