@@ -28,7 +28,8 @@ ABAddressBookRef addressBook;
 
 - (void)uploadAddressBook {
     NSLog(@"upload address book");
-    addressBook = ABAddressBookCreate();
+    addressBook = ABAddressBookCreateWithOptions(nil,nil);
+    if (addressBook == NULL) return;
     CFArrayRef all = ABAddressBookCopyArrayOfAllPeople(addressBook);
     CFIndex n = ABAddressBookGetPersonCount(addressBook);
     

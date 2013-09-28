@@ -12,9 +12,10 @@
 
 @interface OtoroContentViewController : UIViewController
 {
-    IBOutlet UINavigationBar *navBar;
     IBOutlet UITableView *toroTableView;
 }
+
+@property (nonatomic, strong) IBOutlet UINavigationBar *navBar;
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, strong) NSMutableArray *torosReceived;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BDFAA4AC-9FE7-49B6-9244-67D83DE766C5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SnapperMap</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>89AB0B82-E3A4-4074-90CF-AC6984852EC0</key>
+		<string>https://github.com/geoffreywoo/snapper-map.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SnapperMap.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>89AB0B82-E3A4-4074-90CF-AC6984852EC0</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/geoffreywoo/snapper-map.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>89AB0B82-E3A4-4074-90CF-AC6984852EC0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>89AB0B82-E3A4-4074-90CF-AC6984852EC0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>snapper-map</string>
+		</dict>
+	</array>
+</dict>
+</plist>
