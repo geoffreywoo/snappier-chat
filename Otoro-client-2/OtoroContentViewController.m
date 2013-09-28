@@ -107,14 +107,14 @@
 
 - (void) toroDead:(Toro*)toro
 {
-    [[toro timerLabel] setText:[NSString stringWithFormat:@"Gone"]];
+    [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
 }
 
 - (void) makeTimerLabel:(Toro*)toro
 {
     [[toro timerLabel] setFont:[UIFont systemFontOfSize:12]];
     if (![toro read])
-        [[toro timerLabel] setText:[NSString stringWithFormat:@"View"]];
+        [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
     else if ([toro read] && ([toro maxTime] == [toro elapsedTime]) ) {
         [self toroDead:toro];
     } else {
@@ -158,6 +158,8 @@
     Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
     if (!theToro) return;
     
+    [theToro.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
+    
     if (![theToro read]) {
         [[OtoroConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
             if (error) {
@@ -175,7 +177,6 @@
         NSLog(@"pop toro, elapsed: %i, max: %i", [theToro elapsedTime], [theToro maxTime]);
         [self.view addSubview:[theToro toroViewController].view];
     }
-    
 }
 
 - (void) hideToro:(UIButton*)sender 
@@ -187,14 +188,27 @@
 
 - (UITableViewCell *) createReceivedCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroReceivedTableViewCellIdentifier];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ at %@", [toro sender], [toro created_string]];
-    [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
+    OtoroReceivedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroReceivedTableViewCellIdentifier];
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@", [toro sender]];
+    NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro created_string]];
+    cell.timeLabel.text = timeLabelText;
     cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    [toro setTimerLabel:cell.timerLabel];
+    [self makeTimerLabel:toro];
+    [cell addSubview: [toro timerLabel]];
+
+    if ([toro read]) {
+        [cell.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
+    } else {
+        [cell.statusView setImage:[UIImage imageNamed: @"snappermap_inapp_icon_small.png"]];
+    }
+    toro.statusView = cell.statusView;
     
     UIButton *button = [[UIButton alloc] init];
     button.tag = index;
     CGRect frame = cell.frame;
+
     [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
     [button addTarget:self action:@selector(popToro:) forControlEvents: UIControlEventTouchDown];
     
@@ -202,45 +216,30 @@
     [button addTarget:self action:@selector(hideToro:) forControlEvents: UIControlEventTouchUpOutside];
     
     [cell addSubview:button];
-    
-    UILabel *timerLabel = [[UILabel alloc] init];
-    timerLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
-    [timerLabel setBackgroundColor: [UIColor redColor]];
-    [toro setTimerLabel:timerLabel];
-    [self makeTimerLabel:toro];
-    [cell addSubview: [toro timerLabel]];
     return cell;
 }
 
 - (UITableViewCell *) createSentCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
 {
-    // NSLog(@"cellForRowAtIndexPath");
     OtoroSentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroSentTableViewCellIdentifier];
     cell.nameLabel.text = [toro receiver];
-    cell.timeLabel.text = [toro created_string];
+    
     [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
     cell.accessoryType = UITableViewCellAccessoryNone;
-    
- //   UILabel *readLabel = [[UILabel alloc] init];
-  //  [readLabel setFont:[UIFont systemFontOfSize:11]];
- //   CGRect frame = cell.frame;
+
     if ( [toro read] ) {
-        [cell.statusView setImage:[UIImage imageNamed:@"sushi_pin"]];
+        NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro created_string]];
+        [timeLabelText appendString:@" - Opened"];
+        cell.timeLabel.text = timeLabelText;
     } else {
-        [cell.statusView setImage:[UIImage imageNamed:@"snappermap_inapp_icon_small"]];
+        NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro created_string]];
+        [timeLabelText appendString:@" - Delivered"];
+        cell.timeLabel.text = timeLabelText;
     }
-//    readLabel.frame = CGRectMake(frame.size.width - 50,0,50,frame.size.height);
-//    [readLabel setBackgroundColor: [UIColor blueColor]];
-//    [cell addSubview: readLabel];
-    
-    return cell;
-    
     return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //NSUInteger index = self.torosReceived.count - 1 - indexPath.row;
-    
     Toro *o = [[self torosReceived] objectAtIndex:indexPath.row];
     NSString *myName = [[OtoroConnection sharedInstance] user].username;
     if ([o.sender isEqualToString:myName]) {

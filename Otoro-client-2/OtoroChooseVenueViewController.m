@@ -35,8 +35,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-	
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:105.0/255.0 green:190.0/255.0 blue:232.0/255.0 alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 	[self getNearbyPlaces];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    NSLog(@"appear");
+
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    NSLog(@"disappear");
+
 }
 
 #pragma mark - Private

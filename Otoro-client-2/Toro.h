@@ -26,6 +26,7 @@
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UILabel *timerLabel;
+@property (nonatomic, strong) UIImageView *statusView;
 @property (nonatomic, strong) ToroViewController *toroViewController;
 @property (nonatomic) int elapsedTime;
 @property (nonatomic) int maxTime;

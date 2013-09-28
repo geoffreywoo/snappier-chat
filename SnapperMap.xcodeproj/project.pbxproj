@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		601AB8D317F76FE100F82013 /* bluearrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 601AB8D217F76FE100F82013 /* bluearrow@2x.png */; };
 		602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE417C02F2E007DEF27 /* FriendListViewController.m */; };
 		602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */; };
 		602A4CEA17C03966007DEF27 /* OUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE917C03966007DEF27 /* OUser.m */; };
@@ -100,6 +101,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		601AB8D217F76FE100F82013 /* bluearrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bluearrow@2x.png"; sourceTree = "<group>"; };
 		602A4CE317C02F2E007DEF27 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
 		602A4CE417C02F2E007DEF27 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
 		602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendListViewController.xib; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 		F4F9A53E17DBE7840027AE66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				601AB8D217F76FE100F82013 /* bluearrow@2x.png */,
 				608D601C17E6A863008CD91F /* sushi_pin.png */,
 				F4B0CD7917E6965C0057738D /* snappermap_inapp_icon_large.png */,
 				F4B0CD7A17E6965C0057738D /* snappermap_inapp_icon_large@2x.png */,
@@ -548,6 +551,7 @@
 				F4E3E0B217E68C7F00807D97 /* contact_icon.png in Resources */,
 				F4E3E0B317E68C7F00807D97 /* contact_icon@2x.png in Resources */,
 				F4E3E0B617E68CA100807D97 /* search_icon.png in Resources */,
+				601AB8D317F76FE100F82013 /* bluearrow@2x.png in Resources */,
 				F4E3E0B717E68CA100807D97 /* search_icon@2x.png in Resources */,
 				608D601317E686CA008CD91F /* Default@2x.png in Resources */,
 				608D601517E68759008CD91F /* Default-568h@2x.png in Resources */,

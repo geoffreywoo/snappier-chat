@@ -29,7 +29,7 @@ const int MAX_TIME = 15;
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
         NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
         [formatter setLocale:[NSLocale currentLocale]];
-        [formatter setDateFormat:@"EEE, MMM dd, yyyy h:mm a"];
+        [formatter setDateFormat:@"EEE, MMM dd h:mm a"];
         _created_string = [formatter stringFromDate:date];
 	
 		OVenue *venue = [[OVenue alloc] init];

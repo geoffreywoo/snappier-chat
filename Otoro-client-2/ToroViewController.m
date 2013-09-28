@@ -60,8 +60,19 @@
     [mapView regionThatFits:region];
     [self.view sendSubviewToBack:mapView];
     [[self countDown] setText:[NSString stringWithFormat:@"%d",[[self toro] maxTime]]];
+   
+    if (![[_toro message] isEqualToString:@""])
+        [_message setText:[NSString stringWithFormat:@"%@",[_toro message]]];
+    else
+        _message.hidden = YES;
     
-    [label setText:[NSString stringWithFormat:@"sent from: %@, s/he is at lat/lng: (%f, %f)", [[self toro] sender],location.latitude,location.longitude]];
+    NSMutableString *headerStr = [NSMutableString stringWithString:[_toro created_string]];
+    if (![_toro venue] && ![[_toro venue].name isEqualToString:@""])
+        [headerStr appendString:[NSString stringWithFormat:@" at %@",[_toro venue].name]];
+
+    [_venue setText:headerStr];
+    
+    //[label setText:[NSString stringWithFormat:@"sent from: %@, s/he is at lat/lng: (%f, %f)", [[self toro] sender],location.latitude,location.longitude]];
 }
 
 - (void)viewDidUnload

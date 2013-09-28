@@ -48,6 +48,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
+    
 	[self checkSendToroButton];
     [self initLocationManager];
 }
@@ -145,7 +148,8 @@
 
 - (IBAction)choosePlaceButtonPressed:(id)sender
 {
-	self.chooseVenueViewController = [[OtoroChooseVenueViewController alloc] initWithDelegate:self location:_lastLoc];
+	if (_lastLoc == nil) return;
+    self.chooseVenueViewController = [[OtoroChooseVenueViewController alloc] initWithDelegate:self location:_lastLoc];
 	[self.navigationController pushViewController:self.chooseVenueViewController animated:YES];
 }
 

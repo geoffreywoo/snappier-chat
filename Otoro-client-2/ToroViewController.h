@@ -15,13 +15,12 @@
 @interface ToroViewController : UIViewController <MKMapViewDelegate>
 {
     IBOutlet MKMapView *mapView;
-    IBOutlet UILabel *label;
-
 }
 
 @property (nonatomic, strong) Toro *toro;
 @property (nonatomic,strong) IBOutlet UILabel *countDown;
-
+@property (nonatomic,strong)IBOutlet UILabel *message;
+@property (nonatomic,strong)IBOutlet UILabel *venue;
 - (id)initWithToro:(Toro *)toro;
 
 @end
