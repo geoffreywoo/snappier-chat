@@ -9,26 +9,27 @@
             <connections>
                 <outlet property="friendTableView" destination="4" id="33"/>
                 <outlet property="navBar" destination="9" id="30"/>
-                <outlet property="navBarItem" destination="10" id="58"/>
                 <outlet property="sendButton" destination="42" id="52"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="9">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <color key="tintColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <items>
-                        <navigationItem title="My Friends" id="10"/>
-                    </items>
+                    <color key="backgroundColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="gvm-jM-T1c"/>
+                    </constraints>
+                    <color key="tintColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                 </navigationBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -36,7 +37,7 @@
                         <outlet property="delegate" destination="-1" id="41"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69">
                     <rect key="frame" x="247" y="0.0" width="73" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -55,7 +56,7 @@
                         <action selector="addFriends:" destination="-1" eventType="touchUpInside" id="79"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62">
                     <rect key="frame" x="0.0" y="0.0" width="73" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -74,14 +75,15 @@
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="80"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42">
-                    <rect key="frame" x="0.0" y="420" width="320" height="60"/>
+                <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42">
+                    <rect key="frame" x="0.0" y="488" width="320" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="83"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="tintColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                     <state key="normal" title="Send Snapper!" image="snappermap_inapp_icon_large.png">
@@ -95,27 +97,23 @@
                         <action selector="send:" destination="-1" eventType="touchUpInside" id="51"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ado-2a-Wgs">
+                    <rect key="frame" x="131" y="11" width="99" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="9" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="11"/>
-                <constraint firstItem="9" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="12"/>
-                <constraint firstItem="9" firstAttribute="top" secondItem="1" secondAttribute="top" id="19"/>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="20"/>
-                <constraint firstItem="4" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="22"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="9" secondAttribute="bottom" id="27"/>
-                <constraint firstItem="4" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" id="28"/>
-                <constraint firstItem="42" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" id="55"/>
-                <constraint firstItem="42" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="56"/>
-                <constraint firstItem="42" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="57"/>
-                <constraint firstItem="62" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="65"/>
-                <constraint firstItem="62" firstAttribute="top" secondItem="1" secondAttribute="top" id="66"/>
-                <constraint firstItem="62" firstAttribute="bottom" secondItem="9" secondAttribute="bottom" id="68"/>
-                <constraint firstItem="69" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="74"/>
-                <constraint firstItem="69" firstAttribute="top" secondItem="1" secondAttribute="top" id="75"/>
-                <constraint firstItem="69" firstAttribute="bottom" secondItem="9" secondAttribute="bottom" id="76"/>
+                <constraint firstItem="ado-2a-Wgs" firstAttribute="top" secondItem="1" secondAttribute="top" constant="31" id="55J-dB-Nm6"/>
+                <constraint firstItem="62" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="bV7-ne-3X8"/>
+                <constraint firstItem="69" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="be6-FO-611"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
