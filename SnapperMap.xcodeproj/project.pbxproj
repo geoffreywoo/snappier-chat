@@ -518,6 +518,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Stanford;
+				TargetAttributes = {
+					60CE1C6117AEDFE400C6249F = {
+						DevelopmentTeam = 9492KYU2PD;
+					};
+				};
 			};
 			buildConfigurationList = 60CE1C5C17AEDFE400C6249F /* Build configuration list for PBXProject "SnapperMap" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -757,10 +762,13 @@
 		60CE1C9017AEDFE400C6249F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/SnapperMap-Prefix.pch";
 				INFOPLIST_FILE = "Otoro-client-2/SnapperMap-Info.plist";
 				PRODUCT_NAME = SnapperMap;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -768,10 +776,13 @@
 		60CE1C9117AEDFE400C6249F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/SnapperMap-Prefix.pch";
 				INFOPLIST_FILE = "Otoro-client-2/SnapperMap-Info.plist";
 				PRODUCT_NAME = SnapperMap;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

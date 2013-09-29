@@ -73,7 +73,7 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" alpha="0.79999999999999982" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Write a message!" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98">
-                            <rect key="frame" x="0.0" y="325" width="320" height="30"/>
+                            <rect key="frame" x="0.0" y="213" width="320" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="deviceRGB"/>
                             <constraints>
@@ -93,6 +93,7 @@
                         <constraint firstItem="145" firstAttribute="trailing" secondItem="109" secondAttribute="trailing" id="183"/>
                         <constraint firstAttribute="bottom" secondItem="145" secondAttribute="bottom" constant="20" symbolic="YES" id="184"/>
                         <constraint firstItem="4" firstAttribute="top" secondItem="109" secondAttribute="top" constant="20" id="WdB-Zl-qUp"/>
+                        <constraint firstItem="145" firstAttribute="top" secondItem="98" secondAttribute="bottom" constant="250" id="o0O-Sd-kV4"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23">

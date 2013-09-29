@@ -15,10 +15,10 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9">
                     <rect key="frame" x="20" y="133" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <nil key="textColor"/>
@@ -29,11 +29,8 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24">
-                    <rect key="frame" x="52" y="165" width="217" height="56"/>
+                    <rect key="frame" x="231" y="0.0" width="89" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="217" id="72"/>
-                    </constraints>
                     <state key="normal" title="Login">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -41,7 +38,7 @@
                         <action selector="login:" destination="-1" eventType="touchUpInside" id="61"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4">
                     <rect key="frame" x="20" y="89" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -51,7 +48,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53">
-                    <rect key="frame" x="8" y="0.0" width="35" height="56"/>
+                    <rect key="frame" x="0.0" y="-3" width="69" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="82"/>
@@ -66,19 +63,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="9" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="44"/>
-                <constraint firstAttribute="trailing" secondItem="9" secondAttribute="trailing" constant="20" symbolic="YES" id="46"/>
-                <constraint firstAttribute="trailing" secondItem="4" secondAttribute="trailing" constant="20" symbolic="YES" id="47"/>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="48"/>
-                <constraint firstItem="53" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="57"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="89" id="62"/>
-                <constraint firstItem="9" firstAttribute="top" secondItem="1" secondAttribute="top" constant="133" id="63"/>
-                <constraint firstItem="24" firstAttribute="leading" secondItem="53" secondAttribute="trailing" constant="8" symbolic="YES" id="76"/>
-                <constraint firstItem="24" firstAttribute="bottom" secondItem="53" secondAttribute="bottom" id="77"/>
-                <constraint firstItem="24" firstAttribute="top" secondItem="53" secondAttribute="top" id="80"/>
-                <constraint firstItem="53" firstAttribute="top" secondItem="1" secondAttribute="top" constant="7" id="81"/>
+                <constraint firstItem="53" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="7id-Lf-hAc"/>
+                <constraint firstItem="24" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="Rl1-7H-vSj"/>
+                <constraint firstItem="53" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="oRq-Ux-ATl"/>
+                <constraint firstAttribute="trailing" secondItem="24" secondAttribute="trailing" id="rLI-m7-tED"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
 </document>

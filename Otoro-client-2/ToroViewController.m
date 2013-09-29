@@ -74,7 +74,7 @@
         _message.hidden = YES;
     
     NSMutableString *headerStr = [NSMutableString stringWithString:[_toro created_string]];
-    if (![_toro venue] && ![[_toro venue].name isEqualToString:@""])
+    if ([_toro venue] && ![[_toro venue].name isEqualToString:@""])
         [headerStr appendString:[NSString stringWithFormat:@" at %@",[_toro venue].name]];
 
     [_venue setText:headerStr];
