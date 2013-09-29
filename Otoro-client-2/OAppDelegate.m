@@ -38,8 +38,15 @@
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
         navigationController.navigationBarHidden = YES;
         self.window.rootViewController = navigationController;
+        
+        NSLog(@"Registering for push notifications...");
+        [application registerForRemoteNotificationTypes:
+         UIRemoteNotificationTypeBadge |
+         UIRemoteNotificationTypeAlert |
+         UIRemoteNotificationTypeSound];
+        NSLog(@"Finished registering for push notifications...");
     }
-     
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -81,6 +88,20 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+}
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"Hi there");
+    NSString *deviceTokenStr = [[[[deviceToken description]
+                                  stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                                 stringByReplacingOccurrencesOfString: @">" withString: @""]
+                                stringByReplacingOccurrencesOfString: @" " withString: @""];
+    NSLog(@"Device Token: %@", deviceTokenStr);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults objectForKey:@"username"];
+    [[OtoroConnection sharedInstance] registerDeviceToken:username withDeviceToken:deviceTokenStr completionBlock:^(NSError *error, NSDictionary *returnData) {
+    }];
 }
 
 @end

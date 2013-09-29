@@ -244,6 +244,26 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
         {
             [self callForConnection:connection].completionBlock(error, nil);
         }
+    } else if (apiType == OtoroConnectionAPITypeRegisterDeviceToken) {
+        NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (resp)
+        {
+            [self callForConnection:connection].completionBlock(error, resp);
+        }
+        else
+        {
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
+    } else if (apiType == OtoroConnectionAPITypeUnregisterDeviceToken) {
+        NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (resp)
+        {
+            [self callForConnection:connection].completionBlock(error, resp);
+        }
+        else
+        {
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
     }
     
     [self clearConnectionFromDictionaries:connection];
@@ -411,6 +431,17 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeRemoveFriends completionBlock:block toConnection:connection];
+}
+
+- (void)registerDeviceToken:(NSString *)userId withDeviceToken:(NSString *)deviceToken completionBlock:(OtoroConnectionCompletionBlock)block
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/device_token/%@/%@", OTORO_HOST, self.user.username, deviceToken]]];
+    
+    [request setHTTPMethod:@"PUT"];
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeRegisterDeviceToken completionBlock:block toConnection:connection];
 }
 
 #pragma mark - Address Book Endpoints
