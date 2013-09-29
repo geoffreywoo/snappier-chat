@@ -66,12 +66,12 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self handleRefresh];
-    _pollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
+   // _pollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [_pollTimer invalidate];
+  //  [_pollTimer invalidate];
 }
 
 - (void) handleRefresh
@@ -164,25 +164,25 @@
 
 - (void) popToro:(UIButton*)sender
 {
-    //NSLog(@"pop toro!");
+    NSLog(@"pop toro!");
     Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
     if (!theToro) return;
     
     [theToro.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
     
     if (![theToro read]) {
+        [self.view addSubview:[theToro toroViewController].view];
+        
+        [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:theToro repeats:YES]];
+        [[theToro timerLabel] setText:[NSString stringWithFormat:@"%d",[theToro maxTime]]];
+        [theToro setRead: true];
+        
         [[OtoroConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
             if (error) {
             } else {
                 NSLog(@"set read flag on %@", theToro.toroId);
             }
         }];
-        
-        [self.view addSubview:[theToro toroViewController].view];
-        
-        [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:theToro repeats:YES]];
-        [[theToro timerLabel] setText:[NSString stringWithFormat:@"%d",[theToro maxTime]]];
-        [theToro setRead: true];
     } else if ([theToro elapsedTime] < [theToro maxTime]) {
         NSLog(@"pop toro, elapsed: %i, max: %i", [theToro elapsedTime], [theToro maxTime]);
         [self.view addSubview:[theToro toroViewController].view];
@@ -193,9 +193,9 @@
 {
     NSLog(@"hide Toro");
     Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
-    if (!theToro) return;
-    if (![theToro toroViewController]) return;
-    if (!([theToro toroViewController].view)) return;
+   // if (!theToro) return;
+  //  if (![theToro toroViewController]) return;
+ //   if (!([theToro toroViewController].view)) return;
     [[theToro toroViewController].view removeFromSuperview];
 }
 
