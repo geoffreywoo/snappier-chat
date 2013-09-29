@@ -55,10 +55,42 @@ ABAddressBookRef addressBook;
     }];
 }
 
+- (void)checkFriendsAgainstAddressBook
+{
+    CFArrayRef all = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFIndex n = ABAddressBookGetPersonCount(addressBook);
+    
+    NSMutableArray *allPhones = [[NSMutableArray alloc] init];
+    NSMutableArray *allEmails = [[NSMutableArray alloc] init];
+    for( int i = 0 ; i < n ; i++ )
+    {
+        ABRecordRef ref = CFArrayGetValueAtIndex(all, i);
+        [allPhones addObjectsFromArray:[self phoneNumbersForABPerson:ref]];
+        [allEmails addObjectsFromArray:[self emailsForABPerson:ref]];
+    }
+    
+    _addressBookUsers = [[NSMutableArray alloc] init];
+    [[OtoroConnection sharedInstance] getFriendMatchesWithPhones:allPhones emails:allEmails completionBlock:^(NSError *error, NSDictionary *data) {
+        if (error) {
+        } else {
+            NSArray *users = [data objectForKey:@"users"];
+            NSLog(@"users: %@",users);
+            for (NSDictionary *user in users) {
+                NSLog(@"user: %@",user);
+                NSString *userName = [user objectForKey:@"_id"];
+                NSLog(@"username: %@", userName);
+                [_addressBookUsers addObject:userName];
+            }
+            [addressBookUsersTableView reloadData];
+            if ([users count] > 0) _label.hidden = YES;
+        }
+    }];
+}
+
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    [self uploadAddressBook];
+
+    
 }
 
 - (NSMutableArray *) phoneNumbersForABPerson:(ABRecordRef) person
@@ -89,20 +121,28 @@ ABAddressBookRef addressBook;
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
     NSString *firstName = (__bridge NSString *)ABRecordCopyValue(person,kABPersonFirstNameProperty);
     NSString *lastName = (__bridge NSString *)ABRecordCopyValue(person,kABPersonLastNameProperty);
+    if (firstName == nil) {
+        [dictionary setObject:@"" forKey:@"first_name"];
+    } else {
+        [dictionary setObject:firstName forKey:@"first_name"];
+    }
     
-    [dictionary setObject:firstName forKey:@"first_name"];
-    [dictionary setObject:lastName forKey:@"last_name"];
-    
+    if (lastName == nil) {
+        [dictionary setObject:@"" forKey:@"last_name"];
+    } else {
+        [dictionary setObject:lastName forKey:@"last_name"];
+    }
+
     NSMutableArray *phoneNumbersArray = [self phoneNumbersForABPerson:person];
     [dictionary setObject:phoneNumbersArray forKey:@"phone"];
 
     NSMutableArray *emailsArray = [self emailsForABPerson:person];
     [dictionary setObject:emailsArray forKey:@"email"];
-    
+     /*
     NSMutableArray *addressesArray = [[NSMutableArray alloc] init];
     ABMultiValueRef addresses = ABRecordCopyValue(person, kABPersonAddressProperty);
 
-    for (int i=0; i < ABMultiValueGetCount(addresses); i++) {
+   for (int i=0; i < ABMultiValueGetCount(addresses); i++) {
         NSMutableDictionary *addressObj = [[NSMutableDictionary alloc] init];
         CFDictionaryRef address = ABMultiValueCopyValueAtIndex(addresses, i);
        // NSLog(@"address cfdictref: %@", address);
@@ -126,7 +166,7 @@ ABAddressBookRef addressBook;
         [addressesArray addObject:addressObj];
     }
     [dictionary setObject:addressesArray forKey:@"address"];
-    
+    */
     return dictionary;
 }
 
@@ -225,36 +265,25 @@ ABAddressBookRef addressBook;
 
 -(void)viewDidAppear:(BOOL)animated
 {
-/*
-    addressBook = ABAddressBookCreate();
-    CFArrayRef all = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    CFIndex n = ABAddressBookGetPersonCount(addressBook);
-    
-    NSMutableArray *allPhones = [[NSMutableArray alloc] init];
-    NSMutableArray *allEmails = [[NSMutableArray alloc] init];
-    for( int i = 0 ; i < n ; i++ )
-    {
-        ABRecordRef ref = CFArrayGetValueAtIndex(all, i);
-        [allPhones addObjectsFromArray:[self phoneNumbersForABPerson:ref]];
-        [allEmails addObjectsFromArray:[self emailsForABPerson:ref]];
+
+    [super viewDidLoad];
+    __block BOOL accessGranted = NO;
+    if (ABAddressBookRequestAccessWithCompletion != NULL) { // we're on iOS 6
+        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            accessGranted = granted;
+            dispatch_semaphore_signal(sema);
+        });
+        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    }
+    else { // we're on iOS 5 or older
+        accessGranted = YES;
     }
     
-    _addressBookUsers = [[NSMutableArray alloc] init];
-    [[OtoroConnection sharedInstance] getFriendMatchesWithPhones:allPhones emails:allEmails completionBlock:^(NSError *error, NSDictionary *data) {
-        if (error) {
-        } else {
-            NSArray *users = [data objectForKey:@"users"];
-            NSLog(@"users: %@",users);
-            for (NSDictionary *user in users) {
-                NSLog(@"user: %@",user);
-                NSString *userName = [user objectForKey:@"_id"];
-                NSLog(@"username: %@", userName);
-                [_addressBookUsers addObject:userName];
-            }
-            [addressBookUsersTableView reloadData];
-        }
-     }];
- */   
+    if (accessGranted) {
+        [self uploadAddressBook];
+        [self checkFriendsAgainstAddressBook];
+    }
     
 }
 

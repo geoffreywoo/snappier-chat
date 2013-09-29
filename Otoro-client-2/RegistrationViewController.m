@@ -39,15 +39,25 @@
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:105.0/255.0 green:190.0/255.0 blue:232.0/255.0 alpha:1];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Up"
+                                                                    style:UIBarButtonItemStyleDone target:self action:@selector(registerButton:)];
+    
+    self.navigationItem.rightBarButtonItem = rightButton;
 }
 
 -(IBAction) registerButton:(id) sender {
     NSLog(@"register button hit");
+    
+    if (![self isValid]) {
+        return;
+    }
+    
     [[OtoroConnection sharedInstance] createNewUserWithUsername:usernameField.text password:passwordField.text email: emailField.text phone:phoneField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
             NSLog(@"logged in response: %@",error);
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign Up Failed"
                                                             message:error.domain
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK"
@@ -78,6 +88,36 @@
             [delegate.window makeKeyAndVisible];
         }
     }];
+}
+
+-(BOOL) isValid {
+    if (usernameField.text.length < 3) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                        message:@"Username is too short."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return NO;
+    } else if (passwordField.text.length < 4) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                        message:@"Password is too short."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return NO;
+    } else if (![self validateEmail:emailField.text]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                        message:@"Enter a valid email."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 -(IBAction) checkValidityOfRegistration:(id) sender {

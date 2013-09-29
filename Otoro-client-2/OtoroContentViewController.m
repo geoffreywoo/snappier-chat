@@ -184,6 +184,9 @@
 {
     NSLog(@"hide Toro");
     Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
+    if (!theToro) return;
+    if (![theToro toroViewController]) return;
+    if (!([theToro toroViewController].view)) return;
     [[theToro toroViewController].view removeFromSuperview];
 }
 

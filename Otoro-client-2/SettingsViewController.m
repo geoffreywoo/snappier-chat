@@ -54,6 +54,9 @@
     [defaults setObject: nil forKey:@"username"];
     [defaults synchronize];
     
+    [OtoroConnection sharedInstance].friends = [[NSMutableArray alloc] init];
+    [OtoroConnection sharedInstance].selectedFriends = [[NSMutableArray alloc] init];
+    
     SplashViewController *rootViewController = [[SplashViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     navigationController.navigationBarHidden = YES;

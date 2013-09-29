@@ -74,9 +74,11 @@
         _message.hidden = YES;
     
     NSMutableString *headerStr = [NSMutableString stringWithString:[_toro created_string]];
-    if ([_toro venue] && ![[_toro venue].name isEqualToString:@""])
-        [headerStr appendString:[NSString stringWithFormat:@" at %@",[_toro venue].name]];
-
+    if ([_toro venue] && ([[_toro venue].name isKindOfClass:[NSString class]])) {
+        if (![[_toro venue].name isEqualToString:@""]) {
+            [headerStr appendString:[NSString stringWithFormat:@" at %@",[_toro venue].name]];
+        }
+    }
     [_venue setText:headerStr];
     
     //[label setText:[NSString stringWithFormat:@"sent from: %@, s/he is at lat/lng: (%f, %f)", [[self toro] sender],location.latitude,location.longitude]];

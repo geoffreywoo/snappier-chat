@@ -58,6 +58,11 @@
     [self initLocationManager];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [locationManager stopUpdatingLocation];
+}
+
 - (void)clearViewState
 {
     message.hidden = YES;

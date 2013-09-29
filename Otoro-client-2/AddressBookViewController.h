@@ -13,6 +13,7 @@
     IBOutlet UITableView *addressBookUsersTableView;
 }
 
+@property (nonatomic, strong) IBOutlet UILabel *label;
 @property (nonatomic, strong) NSMutableArray *alreadyFriends;
 @property (nonatomic, strong) NSMutableArray *addressBookUsers;
 
