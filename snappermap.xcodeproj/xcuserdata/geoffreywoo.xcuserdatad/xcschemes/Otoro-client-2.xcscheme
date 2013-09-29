@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "60CE1C6117AEDFE400C6249F"
-               BuildableName = "SnapperMap.app"
-               BlueprintName = "SnapperMap"
-               ReferencedContainer = "container:SnapperMap.xcodeproj">
+               BuildableName = "snappermap.app"
+               BlueprintName = "snappermap"
+               ReferencedContainer = "container:snappermap.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "60CE1C7C17AEDFE400C6249F"
-               BuildableName = "SnapperMapTests.octest"
-               BlueprintName = "SnapperMapTests"
-               ReferencedContainer = "container:SnapperMap.xcodeproj">
+               BuildableName = "snappermapTests.octest"
+               BlueprintName = "snappermapTests"
+               ReferencedContainer = "container:snappermap.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "60CE1C6117AEDFE400C6249F"
-            BuildableName = "SnapperMap.app"
-            BlueprintName = "SnapperMap"
-            ReferencedContainer = "container:SnapperMap.xcodeproj">
+            BuildableName = "snappermap.app"
+            BlueprintName = "snappermap"
+            ReferencedContainer = "container:snappermap.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "60CE1C6117AEDFE400C6249F"
-            BuildableName = "SnapperMap.app"
-            BlueprintName = "SnapperMap"
-            ReferencedContainer = "container:SnapperMap.xcodeproj">
+            BuildableName = "snappermap.app"
+            BlueprintName = "snappermap"
+            ReferencedContainer = "container:snappermap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "60CE1C6117AEDFE400C6249F"
-            BuildableName = "SnapperMap.app"
-            BlueprintName = "SnapperMap"
-            ReferencedContainer = "container:SnapperMap.xcodeproj">
+            BuildableName = "snappermap.app"
+            BlueprintName = "snappermap"
+            ReferencedContainer = "container:snappermap.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

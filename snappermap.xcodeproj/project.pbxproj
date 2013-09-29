@@ -154,19 +154,19 @@
 		609227D717B8538C00E1D897 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6097D9DD17B34A0100EC094E /* Toro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toro.h; sourceTree = "<group>"; };
 		6097D9DE17B34A0100EC094E /* Toro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toro.m; sourceTree = "<group>"; };
-		60CE1C6217AEDFE400C6249F /* SnapperMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapperMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60CE1C6217AEDFE400C6249F /* snappermap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snappermap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CE1C6617AEDFE400C6249F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		60CE1C6817AEDFE400C6249F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		60CE1C6A17AEDFE400C6249F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		60CE1C6E17AEDFE400C6249F /* SnapperMap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapperMap-Info.plist"; sourceTree = "<group>"; };
+		60CE1C6E17AEDFE400C6249F /* snappermap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "snappermap-Info.plist"; sourceTree = "<group>"; };
 		60CE1C7017AEDFE400C6249F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		60CE1C7217AEDFE400C6249F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		60CE1C7417AEDFE400C6249F /* SnapperMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapperMap-Prefix.pch"; sourceTree = "<group>"; };
+		60CE1C7417AEDFE400C6249F /* snappermap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "snappermap-Prefix.pch"; sourceTree = "<group>"; };
 		60CE1C7517AEDFE400C6249F /* OAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAppDelegate.h; sourceTree = "<group>"; };
 		60CE1C7617AEDFE400C6249F /* OAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OAppDelegate.m; sourceTree = "<group>"; };
-		60CE1C7D17AEDFE400C6249F /* SnapperMapTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapperMapTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60CE1C7D17AEDFE400C6249F /* snappermapTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = snappermapTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CE1C7E17AEDFE400C6249F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		60CE1C8617AEDFE400C6249F /* SnapperMapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapperMapTests-Info.plist"; sourceTree = "<group>"; };
+		60CE1C8617AEDFE400C6249F /* snappermapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "snappermapTests-Info.plist"; sourceTree = "<group>"; };
 		60CE1C8817AEDFE400C6249F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		60CE1C8A17AEDFE400C6249F /* Otoro_client_2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Otoro_client_2Tests.h; sourceTree = "<group>"; };
 		60CE1C8B17AEDFE400C6249F /* Otoro_client_2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Otoro_client_2Tests.m; sourceTree = "<group>"; };
@@ -363,8 +363,8 @@
 		60CE1C6317AEDFE400C6249F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				60CE1C6217AEDFE400C6249F /* SnapperMap.app */,
-				60CE1C7D17AEDFE400C6249F /* SnapperMapTests.octest */,
+				60CE1C6217AEDFE400C6249F /* snappermap.app */,
+				60CE1C7D17AEDFE400C6249F /* snappermapTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -403,10 +403,10 @@
 		60CE1C6D17AEDFE400C6249F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				60CE1C6E17AEDFE400C6249F /* SnapperMap-Info.plist */,
+				60CE1C6E17AEDFE400C6249F /* snappermap-Info.plist */,
 				60CE1C6F17AEDFE400C6249F /* InfoPlist.strings */,
 				60CE1C7217AEDFE400C6249F /* main.m */,
-				60CE1C7417AEDFE400C6249F /* SnapperMap-Prefix.pch */,
+				60CE1C7417AEDFE400C6249F /* snappermap-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 		60CE1C8517AEDFE400C6249F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				60CE1C8617AEDFE400C6249F /* SnapperMapTests-Info.plist */,
+				60CE1C8617AEDFE400C6249F /* snappermapTests-Info.plist */,
 				60CE1C8717AEDFE400C6249F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -466,9 +466,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		60CE1C6117AEDFE400C6249F /* SnapperMap */ = {
+		60CE1C6117AEDFE400C6249F /* snappermap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60CE1C8F17AEDFE400C6249F /* Build configuration list for PBXNativeTarget "SnapperMap" */;
+			buildConfigurationList = 60CE1C8F17AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappermap" */;
 			buildPhases = (
 				60CE1C5E17AEDFE400C6249F /* Sources */,
 				60CE1C5F17AEDFE400C6249F /* Frameworks */,
@@ -478,14 +478,14 @@
 			);
 			dependencies = (
 			);
-			name = SnapperMap;
+			name = snappermap;
 			productName = "Otoro-client-2";
-			productReference = 60CE1C6217AEDFE400C6249F /* SnapperMap.app */;
+			productReference = 60CE1C6217AEDFE400C6249F /* snappermap.app */;
 			productType = "com.apple.product-type.application";
 		};
-		60CE1C7C17AEDFE400C6249F /* SnapperMapTests */ = {
+		60CE1C7C17AEDFE400C6249F /* snappermapTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60CE1C9217AEDFE400C6249F /* Build configuration list for PBXNativeTarget "SnapperMapTests" */;
+			buildConfigurationList = 60CE1C9217AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappermapTests" */;
 			buildPhases = (
 				60CE1C7817AEDFE400C6249F /* Sources */,
 				60CE1C7917AEDFE400C6249F /* Frameworks */,
@@ -497,9 +497,9 @@
 			dependencies = (
 				60CE1C8317AEDFE400C6249F /* PBXTargetDependency */,
 			);
-			name = SnapperMapTests;
+			name = snappermapTests;
 			productName = "Otoro-client-2Tests";
-			productReference = 60CE1C7D17AEDFE400C6249F /* SnapperMapTests.octest */;
+			productReference = 60CE1C7D17AEDFE400C6249F /* snappermapTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -509,14 +509,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
-				ORGANIZATIONNAME = Stanford;
+				ORGANIZATIONNAME = "Serrice Corp";
 				TargetAttributes = {
 					60CE1C6117AEDFE400C6249F = {
 						DevelopmentTeam = 9492KYU2PD;
 					};
 				};
 			};
-			buildConfigurationList = 60CE1C5C17AEDFE400C6249F /* Build configuration list for PBXProject "SnapperMap" */;
+			buildConfigurationList = 60CE1C5C17AEDFE400C6249F /* Build configuration list for PBXProject "snappermap" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -528,8 +528,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				60CE1C6117AEDFE400C6249F /* SnapperMap */,
-				60CE1C7C17AEDFE400C6249F /* SnapperMapTests */,
+				60CE1C6117AEDFE400C6249F /* snappermap */,
+				60CE1C7C17AEDFE400C6249F /* snappermapTests */,
 			);
 		};
 /* End PBXProject section */
@@ -658,7 +658,7 @@
 /* Begin PBXTargetDependency section */
 		60CE1C8317AEDFE400C6249F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 60CE1C6117AEDFE400C6249F /* SnapperMap */;
+			target = 60CE1C6117AEDFE400C6249F /* snappermap */;
 			targetProxy = 60CE1C8217AEDFE400C6249F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -694,8 +694,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tony Wu (LZPHZB64CL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tony Wu (LZPHZB64CL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -715,6 +715,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "F44BDB8A-4972-4784-A1AB-15CD676E21C9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -731,8 +732,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tony Wu (LZPHZB64CL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tony Wu (LZPHZB64CL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -745,6 +746,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "F44BDB8A-4972-4784-A1AB-15CD676E21C9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -757,9 +759,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Otoro-client-2/SnapperMap-Prefix.pch";
-				INFOPLIST_FILE = "Otoro-client-2/SnapperMap-Info.plist";
-				PRODUCT_NAME = SnapperMap;
+				GCC_PREFIX_HEADER = "Otoro-client-2/snappermap-Prefix.pch";
+				INFOPLIST_FILE = "Otoro-client-2/snappermap-Info.plist";
+				PRODUCT_NAME = snappermap;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -771,9 +773,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Otoro-client-2/SnapperMap-Prefix.pch";
-				INFOPLIST_FILE = "Otoro-client-2/SnapperMap-Info.plist";
-				PRODUCT_NAME = SnapperMap;
+				GCC_PREFIX_HEADER = "Otoro-client-2/snappermap-Prefix.pch";
+				INFOPLIST_FILE = "Otoro-client-2/snappermap-Info.plist";
+				PRODUCT_NAME = snappermap;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -789,8 +791,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/Otoro-client-2-Prefix.pch";
-				INFOPLIST_FILE = "Otoro-client-2Tests/SnapperMapTests-Info.plist";
-				PRODUCT_NAME = SnapperMapTests;
+				INFOPLIST_FILE = "Otoro-client-2Tests/snappermapTests-Info.plist";
+				PRODUCT_NAME = snappermapTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -806,8 +808,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/Otoro-client-2-Prefix.pch";
-				INFOPLIST_FILE = "Otoro-client-2Tests/SnapperMapTests-Info.plist";
-				PRODUCT_NAME = SnapperMapTests;
+				INFOPLIST_FILE = "Otoro-client-2Tests/snappermapTests-Info.plist";
+				PRODUCT_NAME = snappermapTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -816,7 +818,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		60CE1C5C17AEDFE400C6249F /* Build configuration list for PBXProject "SnapperMap" */ = {
+		60CE1C5C17AEDFE400C6249F /* Build configuration list for PBXProject "snappermap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60CE1C8D17AEDFE400C6249F /* Debug */,
@@ -825,7 +827,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60CE1C8F17AEDFE400C6249F /* Build configuration list for PBXNativeTarget "SnapperMap" */ = {
+		60CE1C8F17AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappermap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60CE1C9017AEDFE400C6249F /* Debug */,
@@ -834,7 +836,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60CE1C9217AEDFE400C6249F /* Build configuration list for PBXNativeTarget "SnapperMapTests" */ = {
+		60CE1C9217AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappermapTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60CE1C9317AEDFE400C6249F /* Debug */,
