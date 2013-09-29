@@ -24,6 +24,8 @@
 		60529FC217CA8E1700C7F064 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60529FC117CA8E1700C7F064 /* AddressBook.framework */; };
 		60529FCC17CAAD0000C7F064 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60529FCA17CAAD0000C7F064 /* SearchViewController.m */; };
 		60529FCD17CAAD0000C7F064 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60529FCB17CAAD0000C7F064 /* SearchViewController.xib */; };
+		605CB7A017F818CB009F8228 /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 605CB79E17F818CB009F8228 /* LegalViewController.m */; };
+		605CB7A117F818CB009F8228 /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 605CB79F17F818CB009F8228 /* LegalViewController.xib */; };
 		6089B86417CAB85D00C3CF9D /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6089B86217CAB85D00C3CF9D /* AddressBookViewController.m */; };
 		6089B86517CAB85D00C3CF9D /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6089B86317CAB85D00C3CF9D /* AddressBookViewController.xib */; };
 		6089B86917CAB87500C3CF9D /* AddedYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6089B86717CAB87500C3CF9D /* AddedYouViewController.m */; };
@@ -127,6 +129,9 @@
 		60529FC917CAACFF00C7F064 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		60529FCA17CAAD0000C7F064 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		60529FCB17CAAD0000C7F064 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		605CB79D17F818CB009F8228 /* LegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegalViewController.h; sourceTree = "<group>"; };
+		605CB79E17F818CB009F8228 /* LegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegalViewController.m; sourceTree = "<group>"; };
+		605CB79F17F818CB009F8228 /* LegalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegalViewController.xib; sourceTree = "<group>"; };
 		6089B86117CAB85D00C3CF9D /* AddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
 		6089B86217CAB85D00C3CF9D /* AddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
 		6089B86317CAB85D00C3CF9D /* AddressBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
@@ -275,9 +280,6 @@
 				602A4CF917C04017007DEF27 /* RegistrationViewController.h */,
 				602A4CFA17C04017007DEF27 /* RegistrationViewController.m */,
 				602A4CFB17C04017007DEF27 /* RegistrationViewController.xib */,
-				602A4CFE17C052E3007DEF27 /* SettingsViewController.h */,
-				602A4CFF17C052E3007DEF27 /* SettingsViewController.m */,
-				602A4D0017C052E3007DEF27 /* SettingsViewController.xib */,
 			);
 			name = "Login and Registration";
 			sourceTree = "<group>";
@@ -313,6 +315,19 @@
 				6089B86817CAB87500C3CF9D /* AddedYouViewController.xib */,
 			);
 			name = Friends;
+			sourceTree = "<group>";
+		};
+		605CB79C17F818A2009F8228 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				602A4CFE17C052E3007DEF27 /* SettingsViewController.h */,
+				602A4CFF17C052E3007DEF27 /* SettingsViewController.m */,
+				602A4D0017C052E3007DEF27 /* SettingsViewController.xib */,
+				605CB79D17F818CB009F8228 /* LegalViewController.h */,
+				605CB79E17F818CB009F8228 /* LegalViewController.m */,
+				605CB79F17F818CB009F8228 /* LegalViewController.xib */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		608EF30017DBF6B50040B0B2 /* OtoroTableViewCells */ = {
@@ -388,6 +403,7 @@
 				60CE1C7617AEDFE400C6249F /* OAppDelegate.m */,
 				602A4D0317C16555007DEF27 /* Networking */,
 				602A4CEB17C03D1D007DEF27 /* Login and Registration */,
+				605CB79C17F818A2009F8228 /* Settings */,
 				6097D9DC17B349E600EC094E /* Models */,
 				60CE1C6D17AEDFE400C6249F /* Supporting Files */,
 				60CE1C9517AEE01B00C6249F /* OtoroContentViewController.h */,
@@ -573,6 +589,7 @@
 				F4E3E0B217E68C7F00807D97 /* contact_icon.png in Resources */,
 				F4E3E0B317E68C7F00807D97 /* contact_icon@2x.png in Resources */,
 				F4E3E0B617E68CA100807D97 /* search_icon.png in Resources */,
+				605CB7A117F818CB009F8228 /* LegalViewController.xib in Resources */,
 				601AB8D317F76FE100F82013 /* bluearrow@2x.png in Resources */,
 				F4E3E0B717E68CA100807D97 /* search_icon@2x.png in Resources */,
 				608D601317E686CA008CD91F /* Default@2x.png in Resources */,
@@ -631,6 +648,7 @@
 				602A4CEA17C03966007DEF27 /* OUser.m in Sources */,
 				601AB8DC17F7A98500F82013 /* SnapperMapAnnotationView.m in Sources */,
 				601AB8D917F7A0CA00F82013 /* SnapperMapAnnotation.m in Sources */,
+				605CB7A017F818CB009F8228 /* LegalViewController.m in Sources */,
 				602A4CF217C03D9C007DEF27 /* SplashViewController.m in Sources */,
 				602A4CFC17C04017007DEF27 /* RegistrationViewController.m in Sources */,
 				602A4D0117C052E3007DEF27 /* SettingsViewController.m in Sources */,

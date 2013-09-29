@@ -26,6 +26,11 @@
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,7 +38,7 @@
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
-	self.usernameLabel.text = [defaults objectForKey:@"username"];
+	self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@",[defaults objectForKey:@"username"]];
 	self.emailTextField.text = [defaults objectForKey:@"email"];
 	self.phoneTextField.text = [defaults objectForKey:@"phone"];
 }
@@ -103,4 +108,21 @@
 	[textField resignFirstResponder];
 	return YES;
 }
+
+-(IBAction) privacy:(id) sender {
+    if (_legalViewController == nil) {
+        _legalViewController = [[LegalViewController alloc] init];
+    }
+    [[self navigationController] pushViewController:_legalViewController animated:YES];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://snappermap.com"]];
+}
+-(IBAction) terms:(id) sender {
+    if (_legalViewController == nil) {
+        _legalViewController = [[LegalViewController alloc] init];
+    }
+    [[self navigationController] pushViewController:_legalViewController animated:YES];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://snappermap.com"]];
+}
+
+
 @end

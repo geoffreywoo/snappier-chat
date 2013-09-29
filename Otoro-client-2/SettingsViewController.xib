@@ -8,6 +8,8 @@
             <connections>
                 <outlet property="emailTextField" destination="36" id="63"/>
                 <outlet property="phoneTextField" destination="35" id="64"/>
+                <outlet property="privacy" destination="Nzq-uT-FIj" id="ik3-tk-Wk8"/>
+                <outlet property="terms" destination="eAL-m4-EiR" id="Wvq-bj-Dzz"/>
                 <outlet property="usernameLabel" destination="140" id="146"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -66,7 +68,6 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="97"/>
-                        <constraint firstAttribute="height" constant="21" id="98"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -140,13 +141,37 @@
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzq-uT-FIj">
+                    <rect key="frame" x="21" y="346" width="277" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Privacy Policy">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="privacy:" destination="-1" eventType="touchDown" id="UGg-C1-BUU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAL-m4-EiR">
+                    <rect key="frame" x="21" y="384" width="277" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Terms of Use">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="terms:" destination="-1" eventType="touchDown" id="Poj-Lq-chh"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="85" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="3dw-in-afX"/>
+                <constraint firstItem="83" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="58E-EK-ARj"/>
                 <constraint firstItem="130" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="EEe-Vo-cb5"/>
-                <constraint firstItem="83" firstAttribute="top" secondItem="1" secondAttribute="top" constant="34" id="LbT-BM-CLn"/>
-                <constraint firstItem="82" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1" secondAttribute="top" constant="-20" id="YTY-dw-ffI"/>
+                <constraint firstItem="eAL-m4-EiR" firstAttribute="top" secondItem="Nzq-uT-FIj" secondAttribute="bottom" constant="10" id="Fi3-TV-RXM"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
         </view>
