@@ -43,19 +43,45 @@
     friendTableView.delegate = self;
     friendTableView.dataSource = self;
     sendButton.hidden = YES;
+    addFriendsLabel.hidden = YES;
+    selectFriendsLabel.hidden = YES;
+    addVenueOrMessageLabel.hidden = YES;
     
     _friends = [[OtoroConnection sharedInstance] friends];
     [friendTableView reloadData];
+}
+
+- (void)toggleInstructionLabel
+{
+    if ([[[OtoroConnection sharedInstance] friends] count] == 0)
+    {
+        addFriendsLabel.hidden = NO;
+        selectFriendsLabel.hidden = YES;
+        addVenueOrMessageLabel.hidden = YES;
+    } else if (!self.toroIsValid)
+    {
+        addFriendsLabel.hidden = YES;
+        selectFriendsLabel.hidden = YES;
+        addVenueOrMessageLabel.hidden = NO;
+    } else
+    {
+        addFriendsLabel.hidden = YES;
+        selectFriendsLabel.hidden = NO;
+        addVenueOrMessageLabel.hidden = YES;
+    }
 }
 
 - (void)checkSendButton {
     if ([self sendable]) {
         NSLog(@"sendable");
         sendButton.hidden = NO;
-//        [self.view bringSubviewToFront:sendButton];
+        addFriendsLabel.hidden = YES;
+        addVenueOrMessageLabel.hidden = YES;
+        selectFriendsLabel.hidden = YES;
     } else {
         NSLog(@"not sendable");
         sendButton.hidden = YES;
+        [self toggleInstructionLabel];
     }
 }
 
@@ -88,11 +114,11 @@
 	
 	if (self.toroIsValid)
 	{
-		navBarItem.title = @"Send Snapper";
+		[title setText:@"Send Snapper"];
 	}
 	else
 	{
-		navBarItem.title = @"My Friends";
+		[title setText:@"My Friends"];
 	}
 }
 
@@ -230,7 +256,6 @@ static int NUM_SENT;
 }
 
 - (void)viewDidUnload {
-	navBarItem = nil;
 	[super viewDidUnload];
 }
 @end

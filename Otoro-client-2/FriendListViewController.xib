@@ -7,8 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendListViewController">
             <connections>
+                <outlet property="addFriendsLabel" destination="V3h-Yh-IlD" id="BgB-M0-tZw"/>
+                <outlet property="addVenueOrMessageLabel" destination="jAq-RX-TBU" id="4qw-FE-lnw"/>
                 <outlet property="friendTableView" destination="4" id="33"/>
-                <outlet property="navBar" destination="9" id="30"/>
+                <outlet property="navBar" destination="9" id="bzJ-hr-dmw"/>
+                <outlet property="selectFriendsLabel" destination="auQ-Sc-NAa" id="YtI-Y6-IFj"/>
                 <outlet property="sendButton" destination="42" id="52"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -106,13 +109,39 @@
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Give a location name or a message to your Snapper!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="jAq-RX-TBU">
+                    <rect key="frame" x="0.0" y="489" width="320" height="59"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Add friends so you can send them Snappers!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="V3h-Yh-IlD">
+                    <rect key="frame" x="0.0" y="488" width="320" height="59"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a friend or two to send your Snapper!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="auQ-Sc-NAa">
+                    <rect key="frame" x="0.0" y="489" width="320" height="59"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="42" secondAttribute="bottom" constant="20" id="51l-jW-7qJ"/>
                 <constraint firstItem="ado-2a-Wgs" firstAttribute="top" secondItem="1" secondAttribute="top" constant="31" id="55J-dB-Nm6"/>
+                <constraint firstAttribute="bottom" secondItem="V3h-Yh-IlD" secondAttribute="bottom" constant="20" id="U4C-Nq-njV"/>
                 <constraint firstItem="62" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="bV7-ne-3X8"/>
                 <constraint firstItem="69" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="be6-FO-611"/>
+                <constraint firstAttribute="bottom" secondItem="jAq-RX-TBU" secondAttribute="bottom" constant="20" id="jzM-rS-QXc"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

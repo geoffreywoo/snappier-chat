@@ -18,10 +18,13 @@
 @interface FriendListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UINavigationBar *navBar;
-	IBOutlet UINavigationItem *navBarItem;
+	IBOutlet UILabel *title;
     IBOutlet UIBarButtonItem *backButton;
     IBOutlet UIBarButtonItem *addFriendsButton;
     IBOutlet UIButton *sendButton;
+    IBOutlet UILabel *addFriendsLabel;
+    IBOutlet UILabel *selectFriendsLabel;
+    IBOutlet UILabel *addVenueOrMessageLabel;
     IBOutlet UITableView *friendTableView;
 }
 @property (nonatomic, strong) AddFriendsViewController *addFriendsViewController;
