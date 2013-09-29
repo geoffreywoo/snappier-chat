@@ -169,9 +169,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="85" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="3dw-in-afX"/>
-                <constraint firstItem="83" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="58E-EK-ARj"/>
                 <constraint firstItem="130" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="EEe-Vo-cb5"/>
                 <constraint firstItem="eAL-m4-EiR" firstAttribute="top" secondItem="Nzq-uT-FIj" secondAttribute="bottom" constant="10" id="Fi3-TV-RXM"/>
+                <constraint firstItem="83" firstAttribute="top" secondItem="1" secondAttribute="top" constant="31" id="tno-Yd-rfa"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
         </view>

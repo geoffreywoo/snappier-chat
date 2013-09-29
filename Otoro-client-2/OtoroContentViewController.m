@@ -66,6 +66,12 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self handleRefresh];
+    _pollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [_pollTimer invalidate];
 }
 
 - (void) handleRefresh

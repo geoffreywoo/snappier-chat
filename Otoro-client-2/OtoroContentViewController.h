@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, strong) NSMutableArray *torosReceived;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *pollTimer;
 @property (nonatomic, strong) CreateToroViewController *createToroViewController;
 @property (nonatomic, strong) SettingsViewController *settingsViewController;
 

@@ -30,6 +30,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://snappermap.com"]]];
+    _webView.scalesPageToFit = YES;
 }
 
 - (void)viewDidLoad
