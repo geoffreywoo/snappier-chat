@@ -209,7 +209,6 @@
     
     [toro setTimerLabel:cell.timerLabel];
     [self makeTimerLabel:toro];
-    [cell addSubview: [toro timerLabel]];
 
     if ([toro read]) {
         [cell.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];

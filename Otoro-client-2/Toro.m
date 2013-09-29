@@ -44,6 +44,8 @@ const int MAX_TIME = 15;
         _maxTime = MAX_TIME;
         
         _toroViewController = [[ToroViewController alloc] initWithToro:self];
+        _timerLabel = [[UILabel alloc] init];
+        [_timerLabel setText:[NSString stringWithFormat:@""]];
     }
     return self;
 }

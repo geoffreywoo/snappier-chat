@@ -17,7 +17,7 @@
                         <rect key="frame" x="6" y="5" width="39" height="39"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzs-ez-imu">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzs-ez-imu">
                         <rect key="frame" x="271" y="0.0" width="49" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -47,7 +47,7 @@
                 <outlet property="nameLabel" destination="B8O-Eh-u4t" id="ary-R2-p66"/>
                 <outlet property="statusView" destination="oQ8-aA-6gn" id="nEz-Z1-J16"/>
                 <outlet property="timeLabel" destination="Rts-7e-vFl" id="h4y-xK-65i"/>
-                <outlet property="timerLabel" destination="Hzs-ez-imu" id="yd0-fv-kCb"/>
+                <outlet property="timerLabel" destination="Hzs-ez-imu" id="jHC-VV-V62"/>
             </connections>
         </tableViewCell>
     </objects>
