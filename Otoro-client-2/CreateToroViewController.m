@@ -9,6 +9,7 @@
 #import "CreateToroViewController.h"
 #import "OtoroConnection.h"
 #import "OtoroChooseVenueViewController.h"
+#import "SnapperMapAnnotation.h"
 
 @interface CreateToroViewController ()<OtoroChooseVenueViewControllerDelegate, FriendListViewControllerDelegate>
 
@@ -42,6 +43,8 @@
     [backgroundView addGestureRecognizer:bgTap];
     
     message.hidden = YES;
+    
+    mapView.showsUserLocation = YES;
     
 }
 
@@ -101,10 +104,10 @@
     [mapView setRegion:region animated:TRUE];
     [mapView regionThatFits:region];
 
-    if ([_lastLoc horizontalAccuracy] < 10) {
-        [manager stopUpdatingLocation];
-    }
-    
+  //  if ([_lastLoc horizontalAccuracy] < 10) {
+  //      [manager stopUpdatingLocation];
+  //  }
+
 }
 
 -(void) backgroundTap:(id) sender

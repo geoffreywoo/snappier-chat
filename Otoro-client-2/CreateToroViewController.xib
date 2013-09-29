@@ -72,6 +72,20 @@
                                 <action selector="backButton:" destination="-1" eventType="touchUpInside" id="11"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" clipsSubviews="YES" alpha="0.79999999999999982" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Write a message!" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98">
+                            <rect key="frame" x="0.0" y="325" width="320" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="118"/>
+                            </constraints>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="107"/>
+                            </connections>
+                        </textField>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -81,20 +95,6 @@
                         <constraint firstItem="4" firstAttribute="top" secondItem="109" secondAttribute="top" constant="20" id="WdB-Zl-qUp"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Write a message!" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98">
-                    <rect key="frame" x="0.0" y="225" width="320" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="deviceRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="118"/>
-                    </constraints>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="107"/>
-                    </connections>
-                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23">
                     <rect key="frame" x="240" y="416" width="80" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -122,13 +122,10 @@
                 <constraint firstItem="13" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" id="56"/>
                 <constraint firstItem="13" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="91"/>
                 <constraint firstItem="13" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="92"/>
-                <constraint firstItem="98" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="103"/>
-                <constraint firstItem="98" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="105"/>
                 <constraint firstItem="109" firstAttribute="top" secondItem="1" secondAttribute="top" id="138"/>
                 <constraint firstItem="109" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="140"/>
                 <constraint firstItem="109" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" id="142"/>
                 <constraint firstItem="109" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="143"/>
-                <constraint firstItem="13" firstAttribute="centerY" secondItem="98" secondAttribute="centerY" id="173"/>
                 <constraint firstItem="23" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="179"/>
                 <constraint firstAttribute="bottom" secondItem="23" secondAttribute="bottom" constant="20" symbolic="YES" id="181"/>
             </constraints>

@@ -30,17 +30,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
 	self.usernameLabel.text = [defaults objectForKey:@"username"];
 	self.emailTextField.text = [defaults objectForKey:@"email"];
 	self.phoneTextField.text = [defaults objectForKey:@"phone"];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

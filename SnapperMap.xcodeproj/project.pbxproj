@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		601AB8D317F76FE100F82013 /* bluearrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 601AB8D217F76FE100F82013 /* bluearrow@2x.png */; };
+		601AB8D917F7A0CA00F82013 /* SnapperMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 601AB8D817F7A0CA00F82013 /* SnapperMapAnnotation.m */; };
+		601AB8DC17F7A98500F82013 /* SnapperMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 601AB8DB17F7A98500F82013 /* SnapperMapAnnotationView.m */; };
 		602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE417C02F2E007DEF27 /* FriendListViewController.m */; };
 		602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */; };
 		602A4CEA17C03966007DEF27 /* OUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE917C03966007DEF27 /* OUser.m */; };
@@ -102,6 +104,10 @@
 
 /* Begin PBXFileReference section */
 		601AB8D217F76FE100F82013 /* bluearrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bluearrow@2x.png"; sourceTree = "<group>"; };
+		601AB8D717F7A0CA00F82013 /* SnapperMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapperMapAnnotation.h; sourceTree = "<group>"; };
+		601AB8D817F7A0CA00F82013 /* SnapperMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapperMapAnnotation.m; sourceTree = "<group>"; };
+		601AB8DA17F7A98500F82013 /* SnapperMapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapperMapAnnotationView.h; sourceTree = "<group>"; };
+		601AB8DB17F7A98500F82013 /* SnapperMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapperMapAnnotationView.m; sourceTree = "<group>"; };
 		602A4CE317C02F2E007DEF27 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
 		602A4CE417C02F2E007DEF27 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
 		602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendListViewController.xib; sourceTree = "<group>"; };
@@ -237,6 +243,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		601AB8D617F7A0A900F82013 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				601AB8DD17F7ABB300F82013 /* Annotations */,
+				609227D217B84CA100E1D897 /* CreateToroViewController.h */,
+				609227D317B84CA100E1D897 /* CreateToroViewController.m */,
+				609227D517B84CC100E1D897 /* CreateToroViewController.xib */,
+				F4F9A53617DBDADA0027AE66 /* OtoroChooseVenueViewController.h */,
+				F4F9A53717DBDADC0027AE66 /* OtoroChooseVenueViewController.m */,
+				F4F9A53817DBDADC0027AE66 /* OtoroChooseVenueViewController.xib */,
+				60CE1C9A17AF2D3E00C6249F /* ToroViewController.h */,
+				60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */,
+				60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		601AB8DD17F7ABB300F82013 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				601AB8D717F7A0CA00F82013 /* SnapperMapAnnotation.h */,
+				601AB8D817F7A0CA00F82013 /* SnapperMapAnnotation.m */,
+				601AB8DA17F7A98500F82013 /* SnapperMapAnnotationView.h */,
+				601AB8DB17F7A98500F82013 /* SnapperMapAnnotationView.m */,
+			);
+			name = Annotations;
+			sourceTree = "<group>";
+		};
 		602A4CEB17C03D1D007DEF27 /* Login and Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +304,9 @@
 		60529FC317CA8ED200C7F064 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				602A4CE317C02F2E007DEF27 /* FriendListViewController.h */,
+				602A4CE417C02F2E007DEF27 /* FriendListViewController.m */,
+				602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */,
 				602A4D0417C17D31007DEF27 /* AddFriendsViewController.h */,
 				602A4D0517C17D32007DEF27 /* AddFriendsViewController.m */,
 				602A4D0617C17D32007DEF27 /* AddFriendsViewController.xib */,
@@ -365,18 +402,7 @@
 				60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */,
 				60CE1C9717AEE01B00C6249F /* OtoroContentViewController.xib */,
 				608EF30017DBF6B50040B0B2 /* OtoroTableViewCells */,
-				609227D217B84CA100E1D897 /* CreateToroViewController.h */,
-				609227D317B84CA100E1D897 /* CreateToroViewController.m */,
-				609227D517B84CC100E1D897 /* CreateToroViewController.xib */,
-				F4F9A53617DBDADA0027AE66 /* OtoroChooseVenueViewController.h */,
-				F4F9A53717DBDADC0027AE66 /* OtoroChooseVenueViewController.m */,
-				F4F9A53817DBDADC0027AE66 /* OtoroChooseVenueViewController.xib */,
-				60CE1C9A17AF2D3E00C6249F /* ToroViewController.h */,
-				60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */,
-				60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */,
-				602A4CE317C02F2E007DEF27 /* FriendListViewController.h */,
-				602A4CE417C02F2E007DEF27 /* FriendListViewController.m */,
-				602A4CE517C02F2E007DEF27 /* FriendListViewController.xib */,
+				601AB8D617F7A0A900F82013 /* Map */,
 				60529FC317CA8ED200C7F064 /* Friends */,
 			);
 			path = "Otoro-client-2";
@@ -607,6 +633,8 @@
 				DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */,
 				602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */,
 				602A4CEA17C03966007DEF27 /* OUser.m in Sources */,
+				601AB8DC17F7A98500F82013 /* SnapperMapAnnotationView.m in Sources */,
+				601AB8D917F7A0CA00F82013 /* SnapperMapAnnotation.m in Sources */,
 				602A4CF217C03D9C007DEF27 /* SplashViewController.m in Sources */,
 				602A4CF717C04008007DEF27 /* LoginViewController.m in Sources */,
 				602A4CFC17C04017007DEF27 /* RegistrationViewController.m in Sources */,
