@@ -14,11 +14,9 @@
     IBOutlet UITextField *emailField;
     IBOutlet UITextField *phoneField;
     IBOutlet UIButton *registerButton;
-    IBOutlet UIButton *backButton;
 }
 
 -(IBAction) checkValidityOfRegistration:(id) sender;
 -(IBAction) registerButton:(id) sender;
--(IBAction) back:(id) sender;
 
 @end

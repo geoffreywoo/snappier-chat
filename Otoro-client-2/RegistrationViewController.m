@@ -34,6 +34,13 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:105.0/255.0 green:190.0/255.0 blue:232.0/255.0 alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+}
+
 -(IBAction) registerButton:(id) sender {
     NSLog(@"register button hit");
     [[OtoroConnection sharedInstance] createNewUserWithUsername:usernameField.text password:passwordField.text email: emailField.text phone:phoneField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
@@ -71,10 +78,6 @@
             [delegate.window makeKeyAndVisible];
         }
     }];
-}
-
--(IBAction) back:(id) sender {
-    [self.view removeFromSuperview];
 }
 
 -(IBAction) checkValidityOfRegistration:(id) sender {

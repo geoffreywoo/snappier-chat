@@ -15,8 +15,6 @@
 		602A4CEA17C03966007DEF27 /* OUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CE917C03966007DEF27 /* OUser.m */; };
 		602A4CF217C03D9C007DEF27 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CF017C03D9C007DEF27 /* SplashViewController.m */; };
 		602A4CF317C03D9C007DEF27 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CF117C03D9C007DEF27 /* SplashViewController.xib */; };
-		602A4CF717C04008007DEF27 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CF517C04008007DEF27 /* LoginViewController.m */; };
-		602A4CF817C04008007DEF27 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CF617C04008007DEF27 /* LoginViewController.xib */; };
 		602A4CFC17C04017007DEF27 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CFA17C04017007DEF27 /* RegistrationViewController.m */; };
 		602A4CFD17C04017007DEF27 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4CFB17C04017007DEF27 /* RegistrationViewController.xib */; };
 		602A4D0117C052E3007DEF27 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4CFF17C052E3007DEF27 /* SettingsViewController.m */; };
@@ -116,9 +114,6 @@
 		602A4CEF17C03D9C007DEF27 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		602A4CF017C03D9C007DEF27 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		602A4CF117C03D9C007DEF27 /* SplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
-		602A4CF417C04008007DEF27 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		602A4CF517C04008007DEF27 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		602A4CF617C04008007DEF27 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		602A4CF917C04017007DEF27 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		602A4CFA17C04017007DEF27 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		602A4CFB17C04017007DEF27 /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
@@ -277,9 +272,6 @@
 				602A4CEF17C03D9C007DEF27 /* SplashViewController.h */,
 				602A4CF017C03D9C007DEF27 /* SplashViewController.m */,
 				602A4CF117C03D9C007DEF27 /* SplashViewController.xib */,
-				602A4CF417C04008007DEF27 /* LoginViewController.h */,
-				602A4CF517C04008007DEF27 /* LoginViewController.m */,
-				602A4CF617C04008007DEF27 /* LoginViewController.xib */,
 				602A4CF917C04017007DEF27 /* RegistrationViewController.h */,
 				602A4CFA17C04017007DEF27 /* RegistrationViewController.m */,
 				602A4CFB17C04017007DEF27 /* RegistrationViewController.xib */,
@@ -553,7 +545,6 @@
 				609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */,
 				602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */,
 				602A4CF317C03D9C007DEF27 /* SplashViewController.xib in Resources */,
-				602A4CF817C04008007DEF27 /* LoginViewController.xib in Resources */,
 				602A4CFD17C04017007DEF27 /* RegistrationViewController.xib in Resources */,
 				602A4D0217C052E3007DEF27 /* SettingsViewController.xib in Resources */,
 				602A4D0817C17D33007DEF27 /* AddFriendsViewController.xib in Resources */,
@@ -641,7 +632,6 @@
 				601AB8DC17F7A98500F82013 /* SnapperMapAnnotationView.m in Sources */,
 				601AB8D917F7A0CA00F82013 /* SnapperMapAnnotation.m in Sources */,
 				602A4CF217C03D9C007DEF27 /* SplashViewController.m in Sources */,
-				602A4CF717C04008007DEF27 /* LoginViewController.m in Sources */,
 				602A4CFC17C04017007DEF27 /* RegistrationViewController.m in Sources */,
 				602A4D0117C052E3007DEF27 /* SettingsViewController.m in Sources */,
 				602A4D0717C17D33007DEF27 /* AddFriendsViewController.m in Sources */,

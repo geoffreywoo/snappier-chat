@@ -54,9 +54,12 @@
     [defaults setObject: nil forKey:@"username"];
     [defaults synchronize];
     
-    SplashViewController *splashViewController = [[SplashViewController alloc] init];
+    SplashViewController *rootViewController = [[SplashViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    navigationController.navigationBarHidden = YES;
+    
     OAppDelegate *delegate = (OAppDelegate *)[[UIApplication sharedApplication] delegate];
-    delegate.window.rootViewController = splashViewController;
+    delegate.window.rootViewController = navigationController;
     [delegate.window makeKeyAndVisible];
 }
 - (IBAction)backgroundTapped:(id)sender

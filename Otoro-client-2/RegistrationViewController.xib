@@ -6,11 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegistrationViewController">
             <connections>
-                <outlet property="backButton" destination="56" id="61"/>
                 <outlet property="emailField" destination="40" id="52"/>
                 <outlet property="passwordField" destination="26" id="51"/>
                 <outlet property="phoneField" destination="33" id="53"/>
-                <outlet property="registerButton" destination="4" id="88"/>
                 <outlet property="usernameField" destination="13" id="50"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -20,22 +18,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="224" y="20" width="96" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13">
+                    <rect key="frame" x="20" y="65" width="280" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="96" id="86"/>
+                        <constraint firstAttribute="height" constant="45" id="CnY-tg-ocw"/>
                     </constraints>
-                    <state key="normal" title="Register">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="registerButton:" destination="-1" eventType="touchUpInside" id="55"/>
-                    </connections>
-                </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13">
-                    <rect key="frame" x="20" y="65" width="280" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                     <connections>
@@ -43,9 +31,12 @@
                         <outlet property="delegate" destination="-1" id="66"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="26">
-                    <rect key="frame" x="20" y="103" width="280" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="26">
+                    <rect key="frame" x="20" y="103" width="280" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="C6x-em-A8F"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                     <connections>
@@ -53,18 +44,12 @@
                         <outlet property="delegate" destination="-1" id="67"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33">
-                    <rect key="frame" x="20" y="179" width="280" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="40">
+                    <rect key="frame" x="20" y="141" width="280" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="69"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="40">
-                    <rect key="frame" x="20" y="141" width="280" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="yuF-wa-WcY"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                     <connections>
@@ -72,35 +57,41 @@
                         <outlet property="delegate" destination="-1" id="68"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56">
-                    <rect key="frame" x="20" y="20" width="35" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33">
+                    <rect key="frame" x="20" y="179" width="280" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Back">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="ahz-DZ-1pn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="69"/>
+                    </connections>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFA-Pj-p5h">
+                    <rect key="frame" x="20" y="269" width="280" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Nfl-aM-go6"/>
+                    </constraints>
+                    <state key="normal" title="Sign Up">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="back:" destination="-1" eventType="touchUpInside" id="62"/>
+                        <action selector="registerButton:" destination="-1" eventType="touchUpInside" id="94F-MB-qhI"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="13" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="22"/>
-                <constraint firstAttribute="trailing" secondItem="13" secondAttribute="trailing" constant="20" symbolic="YES" id="25"/>
-                <constraint firstAttribute="trailing" secondItem="26" secondAttribute="trailing" constant="20" symbolic="YES" id="30"/>
-                <constraint firstItem="26" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="32"/>
-                <constraint firstAttribute="trailing" secondItem="33" secondAttribute="trailing" constant="20" symbolic="YES" id="37"/>
-                <constraint firstItem="33" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="39"/>
-                <constraint firstAttribute="trailing" secondItem="40" secondAttribute="trailing" constant="20" symbolic="YES" id="45"/>
-                <constraint firstItem="40" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="46"/>
-                <constraint firstItem="56" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="72"/>
-                <constraint firstItem="56" firstAttribute="top" secondItem="1" secondAttribute="top" id="73"/>
-                <constraint firstItem="13" firstAttribute="top" secondItem="1" secondAttribute="top" constant="65" id="74"/>
-                <constraint firstItem="26" firstAttribute="top" secondItem="13" secondAttribute="bottom" constant="8" symbolic="YES" id="75"/>
-                <constraint firstItem="40" firstAttribute="top" secondItem="26" secondAttribute="bottom" constant="8" symbolic="YES" id="76"/>
-                <constraint firstItem="33" firstAttribute="top" secondItem="40" secondAttribute="bottom" constant="8" symbolic="YES" id="77"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" id="80"/>
-                <constraint firstItem="4" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="81"/>
+                <constraint firstItem="MFA-Pj-p5h" firstAttribute="top" secondItem="33" secondAttribute="bottom" constant="20" id="2aT-gA-Hhl"/>
+                <constraint firstItem="26" firstAttribute="top" secondItem="13" secondAttribute="bottom" id="b8W-4d-Fzi"/>
+                <constraint firstItem="13" firstAttribute="top" secondItem="1" secondAttribute="top" constant="84" id="g4u-SS-Agz"/>
+                <constraint firstItem="33" firstAttribute="top" secondItem="40" secondAttribute="bottom" constant="10" id="qv5-LH-ImE"/>
+                <constraint firstItem="40" firstAttribute="top" secondItem="26" secondAttribute="bottom" constant="10" id="s9L-TR-vW7"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

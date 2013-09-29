@@ -26,7 +26,10 @@
     NSString *username = [defaults objectForKey:@"username"];
     if (username == nil) {
         SplashViewController *rootViewController = [[SplashViewController alloc] init];
-        self.window.rootViewController = rootViewController;
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+        navigationController.navigationBarHidden = YES;
+        self.window.rootViewController = navigationController;
+        
     } else {
         OUser *me = [[OUser alloc] initFromNSDefaults];
         [[OtoroConnection sharedInstance] setUser: me];
