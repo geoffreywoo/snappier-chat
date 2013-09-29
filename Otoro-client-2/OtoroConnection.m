@@ -414,7 +414,7 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@/friends/%@/%@", OTORO_HOST, self.user.username, userID]]];
     
-    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:@"PUT"];
     //[request setHTTPBody:[[NSString stringWithFormat:@"friend_user_id=%@", userID] dataUsingEncoding:NSUTF8StringEncoding]];
 
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
