@@ -21,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _torosReceived = [[NSMutableArray alloc] init];
+        _torosData = [[NSArray alloc] init];
     }
     return self;
 }
@@ -49,8 +50,10 @@
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl setBackgroundColor:[UIColor colorWithRed:105.0/255.0 green:190.0/255.0 blue:232.0/255.0 alpha:0.3]];
     
     [toroTableView addSubview: self.refreshControl];
+    
     [toroTableView registerNib:[UINib nibWithNibName:@"OtoroSentTableViewCell" bundle:nil] forCellReuseIdentifier: kOtoroSentTableViewCellIdentifier];
     [toroTableView registerNib:[UINib nibWithNibName:@"OtoroReceivedTableViewCell" bundle:nil] forCellReuseIdentifier: kOtoroReceivedTableViewCellIdentifier];
     
@@ -66,12 +69,12 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self handleRefresh];
-   // _pollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
+    _pollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-  //  [_pollTimer invalidate];
+    [_pollTimer invalidate];
 }
 
 - (void) handleRefresh
@@ -84,13 +87,14 @@
         }
         else
         {
-            _torosReceived = [[NSMutableArray alloc] init];
+            //_torosReceived = [[NSMutableArray alloc] init];
             for (int i = 0; i < [data[@"elements"] count]; i++) {
                 Toro *toro = [[Toro alloc] initWith:data[@"elements"][i]];
                // NSLog(@"toro: %@",toro);
-                //if (![_torosReceived containsObject:toro])
-                    [_torosReceived addObject: toro];
+                if (![_torosReceived containsObject:toro])
+                    [_torosReceived addObject:toro];
             }
+            _torosData = [_torosReceived sortedArrayUsingSelector:@selector(compare:)];
             [toroTableView reloadData];
             [self.refreshControl endRefreshing];
 
@@ -115,37 +119,18 @@
     return @"header";
 }
 
-- (void) toroDead:(Toro*)toro
-{
-    [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
-}
-
-- (void) makeTimerLabel:(Toro*)toro
-{
-    [[toro timerLabel] setFont:[UIFont systemFontOfSize:12]];
-    if (![toro read])
-        [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
-    else if ([toro read] && ([toro maxTime] == [toro elapsedTime]) ) {
-        [self toroDead:toro];
-    } else {
-        int timeLeft = ([toro maxTime] - [toro elapsedTime]);
-        [[toro timerLabel] setText:[NSString stringWithFormat:@"%d",timeLeft]];
-    }
-}
-
 - (void) tick:(NSTimer*)timer
 {
     Toro *toro = [timer userInfo];
     [toro setElapsedTime: [toro elapsedTime] + 1];
     if ([toro elapsedTime] < [toro maxTime]) {
-        [self makeTimerLabel:toro];
+        [toro makeTimerLabel];
         int timeLeft = ([toro maxTime] - [toro elapsedTime]);
         [[[toro toroViewController] countDown] setText:[NSString stringWithFormat:@"%d",timeLeft]];
     } else {
         [timer invalidate];
         [[toro toroViewController].view removeFromSuperview];
-        
-        [self toroDead:toro];
+        [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
     }
 }
 
@@ -168,6 +153,9 @@
     Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
     if (!theToro) return;
     
+    if([theToro popped]) return;
+    [theToro setPopped:true];
+    
     [theToro.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
     
     if (![theToro read]) {
@@ -184,7 +172,7 @@
             }
         }];
     } else if ([theToro elapsedTime] < [theToro maxTime]) {
-        NSLog(@"pop toro, elapsed: %i, max: %i", [theToro elapsedTime], [theToro maxTime]);
+        //NSLog(@"pop toro, elapsed: %i, max: %i", [theToro elapsedTime], [theToro maxTime]);
         [self.view addSubview:[theToro toroViewController].view];
     }
 }
@@ -196,19 +184,23 @@
    // if (!theToro) return;
   //  if (![theToro toroViewController]) return;
  //   if (!([theToro toroViewController].view)) return;
+    if(![theToro popped]) return;
+    [theToro setPopped:false];
+    
     [[theToro toroViewController].view removeFromSuperview];
 }
 
 - (UITableViewCell *) createReceivedCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
 {
     OtoroReceivedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroReceivedTableViewCellIdentifier];
+
     cell.nameLabel.text = [NSString stringWithFormat:@"%@", [toro sender]];
     NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro created_string]];
     cell.timeLabel.text = timeLabelText;
     cell.accessoryType = UITableViewCellAccessoryNone;
     
     [toro setTimerLabel:cell.timerLabel];
-    [self makeTimerLabel:toro];
+    [toro makeTimerLabel];
 
     if ([toro read]) {
         [cell.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
@@ -252,7 +244,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Toro *o = [[self torosReceived] objectAtIndex:indexPath.row];
+    Toro *o = [[self torosData] objectAtIndex:indexPath.row];
     NSString *myName = [[OtoroConnection sharedInstance] user].username;
     if ([o.sender isEqualToString:myName]) {
         return [self createSentCellWithTableView:tableView withToro:o withIndex:indexPath.row];

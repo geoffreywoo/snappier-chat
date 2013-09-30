@@ -25,6 +25,8 @@ const int MAX_TIME = 15;
       
         _created = [[dict objectForKey:@"created_at"] floatValue];
         
+        _popped = false;
+        
         NSTimeInterval interval = _created;
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
         NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
@@ -62,6 +64,20 @@ const int MAX_TIME = 15;
     return self;
 }
 
+- (void)makeTimerLabel
+{
+    [_timerLabel setFont:[UIFont systemFontOfSize:12]];
+    if (!_read)
+        [_timerLabel setText:[NSString stringWithFormat:@""]];
+    else if (_read && (_maxTime == _elapsedTime)) {
+        [_timerLabel setText:[NSString stringWithFormat:@""]];
+    } else {
+        int timeLeft = (_maxTime - _elapsedTime);
+        [_timerLabel setText:[NSString stringWithFormat:@"%d",timeLeft]];
+    }
+
+}
+
 - (BOOL)isEqual:(id)object
 {
     if (![object isKindOfClass:self.class]) {
@@ -72,9 +88,9 @@ const int MAX_TIME = 15;
 }
 
 - (NSComparisonResult)compare:(Toro*)toro {
-    if (self.created > toro.created)
+    if (self.created < toro.created)
         return NSOrderedDescending;
-    else if (self.created < toro.created)
+    else if (self.created > toro.created)
         return NSOrderedAscending;
     else
         return NSOrderedSame;

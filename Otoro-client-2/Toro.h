@@ -31,6 +31,9 @@
 @property (nonatomic) int elapsedTime;
 @property (nonatomic) int maxTime;
 
+@property(atomic) bool popped;
+
+- (void)makeTimerLabel;
 - (id)initWith:(NSDictionary *)dict;
 - (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message venue:(OVenue *)venue;
 - (BOOL)isEqual:(id)object;
