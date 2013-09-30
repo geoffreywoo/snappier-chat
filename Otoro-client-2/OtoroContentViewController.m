@@ -108,8 +108,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        NSLog(@"number toros recieved: %d",[ [self torosReceived] count]);
-        return [ [self torosReceived] count]; 
+        NSLog(@"number toros recieved: %d",[ [self torosData] count]);
+        return [ [self torosData] count];
     } else {
         return 0;
     }
@@ -137,8 +137,8 @@
 - (Toro *)getToro:(NSString *) toroID
 {
     Toro *theToro = nil;
-    for (int i = 0; i < [_torosReceived count]; i++) {
-        Toro *toro = [_torosReceived objectAtIndex:i];
+    for (int i = 0; i < [_torosData count]; i++) {
+        Toro *toro = [_torosData objectAtIndex:i];
         if ([[toro toroId] isEqualToString:toroID]) {
             theToro = toro;
             break;
@@ -150,7 +150,7 @@
 - (void) popToro:(UIButton*)sender
 {
     NSLog(@"pop toro!");
-    Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
+    Toro *theToro = [[self torosData] objectAtIndex:sender.tag];
     if (!theToro) return;
     
     if([theToro popped]) return;
@@ -180,7 +180,7 @@
 - (void) hideToro:(UIButton*)sender 
 {
     NSLog(@"hide Toro");
-    Toro *theToro = [[self torosReceived] objectAtIndex:sender.tag];
+    Toro *theToro = [[self torosData] objectAtIndex:sender.tag];
    // if (!theToro) return;
   //  if (![theToro toroViewController]) return;
  //   if (!([theToro toroViewController].view)) return;
