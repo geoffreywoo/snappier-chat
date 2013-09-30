@@ -169,6 +169,14 @@
             if (error) {
             } else {
                 NSLog(@"set read flag on %@", theToro.toroId);
+
+                [[OtoroConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
+                    if (error) {
+                    } else {
+                        NSNumber* count = returnData[@"count"];
+                        [UIApplication sharedApplication].applicationIconBadgeNumber = [count integerValue];
+                    }
+                }];
             }
         }];
     } else if ([theToro elapsedTime] < [theToro maxTime]) {

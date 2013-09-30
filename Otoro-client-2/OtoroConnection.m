@@ -126,7 +126,26 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
             error = [NSError errorWithDomain:[o objectForKey:@"error"] code:-1 userInfo:o];
             [self callForConnection:connection].completionBlock(error, nil);
         }
-	} else if (apiType == OtoroConnectionAPITypeMatchAddressBook) {
+	} else if (apiType == OtoroConnectionAPITypeLogout) {
+        NSDictionary *o = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        NSLog(@"is return ok? %@",[o objectForKey:@"ok"]);
+        if ([[o objectForKey:@"ok"] boolValue]) {
+            NSString *status = ((NSArray*)[o objectForKey:@"elements"])[0];
+            [self callForConnection:connection].completionBlock(error, @{@"status":status});
+        } else {
+            error = [NSError errorWithDomain:[o objectForKey:@"error"] code:-1 userInfo:o];
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
+	} else if (apiType == OtoroConnectionAPITypeGetBadgeCount) {
+        NSDictionary *o = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if ([[o objectForKey:@"ok"] boolValue]) {
+            NSNumber *count = ((NSArray*)[o objectForKey:@"elements"])[0];
+            [self callForConnection:connection].completionBlock(error, @{@"count":count});
+        } else {
+            error = [NSError errorWithDomain:[o objectForKey:@"error"] code:-1 userInfo:o];
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
+    } else if (apiType == OtoroConnectionAPITypeMatchAddressBook) {
         NSDictionary *o = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
         if ([[o objectForKey:@"ok"] boolValue]) {
             [self callForConnection:connection].completionBlock(error, @{@"users":o[@"elements"]});
@@ -318,6 +337,19 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     [self addAPICall:OtoroConnectionAPITypeLogin completionBlock:block toConnection:connection];
 }
 
+- (void)logoutWithUsername:(NSString *)username completionBlock:(OtoroConnectionCompletionBlock)block
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/login", OTORO_HOST]]];
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString *deviceToken = [defaults stringForKey:@"deviceToken"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[[NSString stringWithFormat:@"username=%@&device_token=%@", username, deviceToken] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeLogout completionBlock:block toConnection:connection];
+}
+
 - (void)getFriendMatchesWithPhones:(NSArray *)phones emails:(NSArray *)emails completionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
@@ -437,11 +469,20 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/device_token/%@/%@", OTORO_HOST, self.user.username, deviceToken]]];
-    NSLog([NSString stringWithFormat:@"%@/users/device_token/%@/%@", OTORO_HOST, self.user.username, deviceToken]);
     [request setHTTPMethod:@"PUT"];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeRegisterDeviceToken completionBlock:block toConnection:connection];
+}
+
+- (void)getBadgeCountWithCompletionBlock:(OtoroConnectionCompletionBlock)block
+{
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:
+                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/get_badge_count/%@", OTORO_HOST, self.user.username]]];
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeGetBadgeCount completionBlock:block toConnection:connection];
 }
 
 #pragma mark - Address Book Endpoints

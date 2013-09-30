@@ -64,6 +64,16 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    [[OtoroConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
+        if (error)
+        {
+        }
+        else
+        {
+            NSNumber* count = returnData[@"count"];
+            application.applicationIconBadgeNumber = [count integerValue];
+        }
+    }];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -96,6 +106,7 @@
                                  stringByReplacingOccurrencesOfString: @">" withString: @""]
                                 stringByReplacingOccurrencesOfString: @" " withString: @""];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:deviceTokenStr forKey:@"deviceToken"];
     NSString *username = [defaults objectForKey:@"username"];
     [[OtoroConnection sharedInstance] registerDeviceToken:username withDeviceToken:deviceTokenStr completionBlock:^(NSError *error, NSDictionary *returnData) {
     }];

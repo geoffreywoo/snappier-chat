@@ -33,8 +33,10 @@
 - (void)createNewUserWithUsername:(NSString *)username password:(NSString *)password email:(NSString*)email phone:(NSString*)phone completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)updateUserEmail:(NSString*)email phone:(NSString*)phone completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)logoutWithUsername:(NSString *)username completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getFriendMatchesWithPhones:(NSArray *)phones emails:(NSArray *)emails completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)registerDeviceToken:(NSString *)userId withDeviceToken:(NSString *)deviceToken completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)getBadgeCountWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 
 // toros
 - (void)createNewToro:(Toro*)toro completionBlock:(OtoroConnectionCompletionBlock)block;

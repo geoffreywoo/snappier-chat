@@ -56,11 +56,15 @@
 
 -(IBAction) logout:(id) sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults stringForKey:@"username"];
     [defaults setObject: nil forKey:@"username"];
     [defaults synchronize];
     
     [OtoroConnection sharedInstance].friends = [[NSMutableArray alloc] init];
     [OtoroConnection sharedInstance].selectedFriends = [[NSMutableArray alloc] init];
+    
+    [[OtoroConnection sharedInstance] logoutWithUsername:username completionBlock:^(NSError *error, NSDictionary *returnData) {
+    }];
     
     SplashViewController *rootViewController = [[SplashViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
@@ -69,6 +73,9 @@
     OAppDelegate *delegate = (OAppDelegate *)[[UIApplication sharedApplication] delegate];
     delegate.window.rootViewController = navigationController;
     [delegate.window makeKeyAndVisible];
+    
+    
+    
 }
 - (IBAction)backgroundTapped:(id)sender
 {

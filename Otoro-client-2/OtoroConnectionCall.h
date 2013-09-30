@@ -15,9 +15,11 @@ typedef NS_ENUM(NSInteger, OtoroConnectionAPIType)
     OtoroConnectionAPITypeCreateUser,
 	OtoroConnectionAPITypeUpdateUser,
     OtoroConnectionAPITypeLogin,
+    OtoroConnectionAPITypeLogout,
 	OtoroConnectionAPITypeMatchAddressBook,
     OtoroConnectionAPITypeRegisterDeviceToken,
     OtoroConnectionAPITypeUnregisterDeviceToken,
+    OtoroConnectionAPITypeGetBadgeCount,
     
     // toros
     OtoroConnectionAPITypeCreateToro,
