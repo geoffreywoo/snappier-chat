@@ -66,6 +66,8 @@
     [[OtoroConnection sharedInstance] logoutWithUsername:username completionBlock:^(NSError *error, NSDictionary *returnData) {
     }];
     
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
     SplashViewController *rootViewController = [[SplashViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     navigationController.navigationBarHidden = YES;

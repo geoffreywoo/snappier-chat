@@ -70,6 +70,14 @@
 {
     [self handleRefresh];
     _pollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
+    
+    [[OtoroConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
+        if (error) {
+        } else {
+            NSNumber* count = returnData[@"count"];
+            [UIApplication sharedApplication].applicationIconBadgeNumber = [count integerValue];
+        }
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -129,8 +137,8 @@
         [[[toro toroViewController] countDown] setText:[NSString stringWithFormat:@"%d",timeLeft]];
     } else {
         [timer invalidate];
-        [[toro toroViewController].view removeFromSuperview];
         [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
+        [self hideToro:toro];
     }
 }
 
@@ -147,6 +155,11 @@
     return theToro;
 }
 
+- (void) nothing:(UIButton*)sender
+{
+    //NSLog(@"nothing event");
+}
+
 - (void) popToro:(UIButton*)sender
 {
     NSLog(@"pop toro!");
@@ -155,6 +168,8 @@
     
     if([theToro popped]) return;
     [theToro setPopped:true];
+    
+    NSLog(@"pop toro %@ went through.", [theToro toroId]);
     
     [theToro.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
     
@@ -185,18 +200,27 @@
     }
 }
 
-- (void) hideToro:(UIButton*)sender 
+- (void) hideToroFromButton:(UIButton*)sender
 {
-    NSLog(@"hide Toro");
+
     Toro *theToro = [[self torosData] objectAtIndex:sender.tag];
+    [self hideToro:theToro];
    // if (!theToro) return;
   //  if (![theToro toroViewController]) return;
  //   if (!([theToro toroViewController].view)) return;
-    if(![theToro popped]) return;
-    [theToro setPopped:false];
-    
-    [[theToro toroViewController].view removeFromSuperview];
+
 }
+
+- (void)hideToro:(Toro*)toro
+{
+    NSLog(@"hide Toro!");
+    if(![toro popped]) return;
+    [toro setPopped:false];
+    
+    NSLog(@"hide toro %@ went through.", [toro toroId]);
+    [[toro toroViewController].view removeFromSuperview];
+}
+
 
 - (UITableViewCell *) createReceivedCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
 {
@@ -222,11 +246,13 @@
     CGRect frame = cell.frame;
 
     [button setFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
+    
+    [button addTarget:self action:@selector(nothing:) forControlEvents:UIControlEventAllEvents];
     [button addTarget:self action:@selector(popToro:) forControlEvents: UIControlEventTouchDown];
     
-    [button addTarget:self action:@selector(hideToro:) forControlEvents: UIControlEventTouchUpInside];
-    [button addTarget:self action:@selector(hideToro:) forControlEvents: UIControlEventTouchUpOutside];
-    
+    [button addTarget:self action:@selector(hideToroFromButton:) forControlEvents: UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(hideToroFromButton:) forControlEvents: UIControlEventTouchUpOutside];
+    [button addTarget:self action:@selector(hideToroFromButton:) forControlEvents: UIControlEventTouchCancel];
     [cell addSubview:button];
     return cell;
 }

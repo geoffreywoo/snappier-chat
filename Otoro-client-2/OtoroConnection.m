@@ -140,6 +140,7 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
         NSDictionary *o = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
         if ([[o objectForKey:@"ok"] boolValue]) {
             NSNumber *count = ((NSArray*)[o objectForKey:@"elements"])[0];
+            NSLog(@"BADGE COUNT: %@",count);
             [self callForConnection:connection].completionBlock(error, @{@"count":count});
         } else {
             error = [NSError errorWithDomain:[o objectForKey:@"error"] code:-1 userInfo:o];
