@@ -33,9 +33,10 @@
 
 @property(atomic) bool popped;
 
-- (void)makeTimerLabel;
 - (id)initWith:(NSDictionary *)dict;
 - (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message venue:(OVenue *)venue;
+- (id)update:(Toro*)toro;
+- (void)makeTimerLabel;
 - (BOOL)isEqual:(id)object;
 - (NSComparisonResult)compare:(Toro*)toro;
 - (void)print;

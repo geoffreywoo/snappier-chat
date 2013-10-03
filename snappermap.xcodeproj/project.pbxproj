@@ -43,6 +43,12 @@
 		608EF30617DBF8940040B0B2 /* OtoroReceivedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 608EF30517DBF8940040B0B2 /* OtoroReceivedTableViewCell.m */; };
 		608EF30817DBF9040040B0B2 /* OtoroSentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 608EF30717DBF9040040B0B2 /* OtoroSentTableViewCell.xib */; };
 		608EF30A17DBF9530040B0B2 /* OtoroReceivedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 608EF30917DBF9530040B0B2 /* OtoroReceivedTableViewCell.xib */; };
+		609043B017FABC8600FE23F6 /* snappermap152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 609043AD17FABC8600FE23F6 /* snappermap152x152.png */; };
+		609043B117FABC8600FE23F6 /* snappermap120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 609043AE17FABC8600FE23F6 /* snappermap120x120.png */; };
+		609043B317FABCD800FE23F6 /* snappermap76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 609043B217FABCD800FE23F6 /* snappermap76x76.png */; };
+		609043B517FABD1500FE23F6 /* snappermap80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 609043B417FABD1500FE23F6 /* snappermap80x80.png */; };
+		609043B717FABD4100FE23F6 /* snappermap40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 609043B617FABD4100FE23F6 /* snappermap40x40.png */; };
+		609043B917FABE7A00FE23F6 /* snappermap58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 609043B817FABE7A00FE23F6 /* snappermap58x58.png */; };
 		609227D417B84CA100E1D897 /* CreateToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 609227D317B84CA100E1D897 /* CreateToroViewController.m */; };
 		609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609227D517B84CC100E1D897 /* CreateToroViewController.xib */; };
 		609227D817B8538C00E1D897 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609227D717B8538C00E1D897 /* CoreLocation.framework */; };
@@ -153,6 +159,12 @@
 		608EF30517DBF8940040B0B2 /* OtoroReceivedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroReceivedTableViewCell.m; sourceTree = "<group>"; };
 		608EF30717DBF9040040B0B2 /* OtoroSentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtoroSentTableViewCell.xib; sourceTree = "<group>"; };
 		608EF30917DBF9530040B0B2 /* OtoroReceivedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtoroReceivedTableViewCell.xib; sourceTree = "<group>"; };
+		609043AD17FABC8600FE23F6 /* snappermap152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snappermap152x152.png; sourceTree = "<group>"; };
+		609043AE17FABC8600FE23F6 /* snappermap120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snappermap120x120.png; sourceTree = "<group>"; };
+		609043B217FABCD800FE23F6 /* snappermap76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snappermap76x76.png; sourceTree = "<group>"; };
+		609043B417FABD1500FE23F6 /* snappermap80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snappermap80x80.png; sourceTree = "<group>"; };
+		609043B617FABD4100FE23F6 /* snappermap40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snappermap40x40.png; sourceTree = "<group>"; };
+		609043B817FABE7A00FE23F6 /* snappermap58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snappermap58x58.png; sourceTree = "<group>"; };
 		609227D217B84CA100E1D897 /* CreateToroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateToroViewController.h; sourceTree = "<group>"; };
 		609227D317B84CA100E1D897 /* CreateToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateToroViewController.m; sourceTree = "<group>"; };
 		609227D517B84CC100E1D897 /* CreateToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateToroViewController.xib; sourceTree = "<group>"; };
@@ -359,6 +371,12 @@
 		60CE1C5717AEDFE400C6249F = {
 			isa = PBXGroup;
 			children = (
+				609043B417FABD1500FE23F6 /* snappermap80x80.png */,
+				609043B817FABE7A00FE23F6 /* snappermap58x58.png */,
+				609043B617FABD4100FE23F6 /* snappermap40x40.png */,
+				609043B217FABCD800FE23F6 /* snappermap76x76.png */,
+				609043AD17FABC8600FE23F6 /* snappermap152x152.png */,
+				609043AE17FABC8600FE23F6 /* snappermap120x120.png */,
 				608D601617E68760008CD91F /* Default.png */,
 				608D601417E68759008CD91F /* Default-568h@2x.png */,
 				608D601217E686CA008CD91F /* Default@2x.png */,
@@ -560,8 +578,10 @@
 				60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */,
 				609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */,
 				602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */,
+				609043B917FABE7A00FE23F6 /* snappermap58x58.png in Resources */,
 				602A4CF317C03D9C007DEF27 /* SplashViewController.xib in Resources */,
 				602A4CFD17C04017007DEF27 /* RegistrationViewController.xib in Resources */,
+				609043B517FABD1500FE23F6 /* snappermap80x80.png in Resources */,
 				602A4D0217C052E3007DEF27 /* SettingsViewController.xib in Resources */,
 				602A4D0817C17D33007DEF27 /* AddFriendsViewController.xib in Resources */,
 				60529FCD17CAAD0000C7F064 /* SearchViewController.xib in Resources */,
@@ -575,7 +595,9 @@
 				F4F31E8517E680F60067DB1D /* back_arrow_icon.png in Resources */,
 				F4F31E8617E680F60067DB1D /* back_arrow_icon@2x.png in Resources */,
 				F4F31E8717E680F60067DB1D /* globe_icon.png in Resources */,
+				609043B017FABC8600FE23F6 /* snappermap152x152.png in Resources */,
 				F4F31E8817E680F60067DB1D /* globe_icon@2x.png in Resources */,
+				609043B717FABD4100FE23F6 /* snappermap40x40.png in Resources */,
 				F4F31E8917E680F60067DB1D /* settings_icon.png in Resources */,
 				F4F31E8A17E680F60067DB1D /* settings_icon@2x.png in Resources */,
 				608D600D17E67D55008CD91F /* snappermap_icon@2x.png in Resources */,
@@ -598,8 +620,10 @@
 				F4B0CD7D17E6965C0057738D /* snappermap_inapp_icon_large.png in Resources */,
 				F4B0CD7E17E6965C0057738D /* snappermap_inapp_icon_large@2x.png in Resources */,
 				F4B0CD7F17E6965C0057738D /* snappermap_inapp_icon_small.png in Resources */,
+				609043B117FABC8600FE23F6 /* snappermap120x120.png in Resources */,
 				F4B0CD8017E6965C0057738D /* snappermap_inapp_icon_small@2x.png in Resources */,
 				608D601D17E6A864008CD91F /* sushi_pin.png in Resources */,
+				609043B317FABCD800FE23F6 /* snappermap76x76.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,8 +736,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SERRICE CORP (9492KYU2PD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SERRICE CORP (9492KYU2PD)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -733,7 +757,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "8DF24DD0-646A-4F65-A12B-3566EF078E28";
+				PROVISIONING_PROFILE = "28B23652-C38D-4C4E-BDB2-22B300303A3C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -750,8 +774,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SERRICE CORP (9492KYU2PD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SERRICE CORP (9492KYU2PD)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -764,7 +788,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "8DF24DD0-646A-4F65-A12B-3566EF078E28";
+				PROVISIONING_PROFILE = "28B23652-C38D-4C4E-BDB2-22B300303A3C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -779,8 +803,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/snappermap-Prefix.pch";
 				INFOPLIST_FILE = "Otoro-client-2/snappermap-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = snappermap;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -793,8 +819,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/snappermap-Prefix.pch";
 				INFOPLIST_FILE = "Otoro-client-2/snappermap-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = snappermap;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

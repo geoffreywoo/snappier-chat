@@ -85,6 +85,20 @@
     [_pollTimer invalidate];
 }
 
+
+- (Toro *)getToro:(NSString *) toroID fromCollection:(NSArray*)toroCollection
+{
+    Toro *theToro = nil;
+    for (int i = 0; i < [toroCollection count]; i++) {
+        Toro *toro = [toroCollection objectAtIndex:i];
+        if ([[toro toroId] isEqualToString:toroID]) {
+            theToro = toro;
+            break;
+        }
+    }
+    return theToro;
+}
+
 - (void) handleRefresh
 {   
     [[OtoroConnection sharedInstance] getAllTorosWithCompletionBlock:^(NSError *error, NSDictionary *data)
@@ -99,8 +113,13 @@
             for (int i = 0; i < [data[@"elements"] count]; i++) {
                 Toro *toro = [[Toro alloc] initWith:data[@"elements"][i]];
                // NSLog(@"toro: %@",toro);
-                if (![_torosReceived containsObject:toro])
+                if (![_torosReceived containsObject:toro]) {
                     [_torosReceived addObject:toro];
+                    [toro print];
+                } else {
+                    Toro *toroToUpdate = [self getToro:[toro toroId] fromCollection:_torosReceived];
+                    [toroToUpdate update:toro];
+                }
             }
             _torosData = [_torosReceived sortedArrayUsingSelector:@selector(compare:)];
             [toroTableView reloadData];
@@ -142,18 +161,7 @@
     }
 }
 
-- (Toro *)getToro:(NSString *) toroID
-{
-    Toro *theToro = nil;
-    for (int i = 0; i < [_torosData count]; i++) {
-        Toro *toro = [_torosData objectAtIndex:i];
-        if ([[toro toroId] isEqualToString:toroID]) {
-            theToro = toro;
-            break;
-        }
-    }
-    return theToro;
-}
+
 
 - (void) nothing:(UIButton*)sender
 {

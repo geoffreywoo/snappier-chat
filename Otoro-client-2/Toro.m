@@ -64,6 +64,11 @@ const int MAX_TIME = 15;
     return self;
 }
 
+- (id) update:(Toro*)toro {
+    _read = [toro read];
+    return self;
+}
+
 - (void)makeTimerLabel
 {
     [_timerLabel setFont:[UIFont systemFontOfSize:12]];
@@ -99,11 +104,7 @@ const int MAX_TIME = 15;
 
 - (void) print
 {
-    NSLog(@"lat: %f", _lat);
-    NSLog(@"lng: %f", _lng);
-    NSLog(@"sender: %@", _sender);
-    NSLog(@"receiver: %@", _receiver);
-    NSLog(@"message: %@", _message);
+    NSLog(@"lat: %f, lng: %f, sender: %@, receiver: %@, message: %@, venue: %@, timestamp: %f", _lat, _lng, _sender, _receiver, _message, _venue.name, _created);
 }
 
 @end
