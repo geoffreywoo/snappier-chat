@@ -57,13 +57,8 @@
     [toroTableView registerNib:[UINib nibWithNibName:@"OtoroSentTableViewCell" bundle:nil] forCellReuseIdentifier: kOtoroSentTableViewCellIdentifier];
     [toroTableView registerNib:[UINib nibWithNibName:@"OtoroReceivedTableViewCell" bundle:nil] forCellReuseIdentifier: kOtoroReceivedTableViewCellIdentifier];
     
-    [[OtoroConnection sharedInstance] getAllFriendsWithCompletionBlock:^(NSError *error, NSDictionary *data){
-        if (error) {
-            
-        } else {
-            NSLog(@"loaded friends");
-        }
-    }];
+    [self.refreshControl beginRefreshing];
+    [toroTableView setContentOffset:CGPointMake(0,-60)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -109,10 +104,8 @@
         }
         else
         {
-            //_torosReceived = [[NSMutableArray alloc] init];
             for (int i = 0; i < [data[@"elements"] count]; i++) {
                 Toro *toro = [[Toro alloc] initWith:data[@"elements"][i]];
-               // NSLog(@"toro: %@",toro);
                 if (![_torosReceived containsObject:toro]) {
                     [_torosReceived addObject:toro];
                     [toro print];
@@ -124,7 +117,6 @@
             _torosData = [_torosReceived sortedArrayUsingSelector:@selector(compare:)];
             [toroTableView reloadData];
             [self.refreshControl endRefreshing];
-
         }
     }];
 }
@@ -135,7 +127,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        NSLog(@"number toros recieved: %d",[ [self torosData] count]);
+        //NSLog(@"number toros recieved: %d",[ [self torosData] count]);
         return [ [self torosData] count];
     } else {
         return 0;

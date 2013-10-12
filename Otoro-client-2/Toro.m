@@ -23,7 +23,7 @@ const int MAX_TIME = 15;
         _sender = [dict objectForKey:@"sender"];
         _message = [dict objectForKey:@"message"];
       
-        _created = [[dict objectForKey:@"created_at"] floatValue];
+        _created = [[dict objectForKey:@"created_at"] doubleValue];
         
         _popped = false;
         
@@ -78,7 +78,10 @@ const int MAX_TIME = 15;
         [_timerLabel setText:[NSString stringWithFormat:@""]];
     } else {
         int timeLeft = (_maxTime - _elapsedTime);
-        [_timerLabel setText:[NSString stringWithFormat:@"%d",timeLeft]];
+        if (timeLeft < 0)
+            [_timerLabel setText:[NSString stringWithFormat:@""]];
+        else
+            [_timerLabel setText:[NSString stringWithFormat:@"%d",timeLeft]];
     }
 
 }
