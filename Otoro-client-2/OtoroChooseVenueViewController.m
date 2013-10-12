@@ -24,6 +24,7 @@
 {
     self = [super init];
     if (self) {
+        locationManager = [[CLLocationManager alloc] init];
 		_delegate = delegate;
         _location = location;
 		
@@ -39,17 +40,25 @@
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:105.0/255.0 green:190.0/255.0 blue:232.0/255.0 alpha:1];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-	[self getNearbyPlaces];
+    
+    UIBarButtonItem *button = [[UIBarButtonItem alloc]
+                               initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                               target:self
+                               action:@selector(getNearbyPlaces)];
+    self.navigationItem.rightBarButtonItem = button;
+	
+    [self getNearbyPlaces];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     NSLog(@"appear");
+    [self initLocationManager];
 
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     NSLog(@"disappear");
-
+    [locationManager stopUpdatingLocation];
 }
 
 #pragma mark - Private
@@ -243,6 +252,21 @@
 		return self.placesArray.count + 1;
 }
 
+- (void) initLocationManager
+{
+    NSLog(@"loc manager init");
+    [locationManager setDelegate:self];
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    NSLog(@"location manager did update locations");
+    NSLog(@"%@",locations);
+    
+    _lastLoc = [locations objectAtIndex:[locations count]-1];
+    NSLog(@"lastLoc: %@", _lastLoc);
+    _location = _lastLoc;
+}
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "OVenue.h"
 
@@ -15,7 +16,11 @@
 - (void)otoroChooseVenueViewController:(OtoroChooseVenueViewController *)viewController didChooseVenue:(OVenue *)venue;
 @end
 
-@interface OtoroChooseVenueViewController : UIViewController
+@interface OtoroChooseVenueViewController : UIViewController <CLLocationManagerDelegate>
+{
+    CLLocationManager *locationManager;
+}
+@property (nonatomic, strong) CLLocation *lastLoc;
 @property (nonatomic, weak) id<OtoroChooseVenueViewControllerDelegate>delegate;
 - (instancetype)initWithDelegate:(id<OtoroChooseVenueViewControllerDelegate>)delegate location:(CLLocation *)location;
 @end

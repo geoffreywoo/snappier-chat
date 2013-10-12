@@ -21,7 +21,7 @@
 @property (nonatomic, strong) OVenue *venue;
 @property (nonatomic, strong) NSString *receiver;
 @property (nonatomic, strong) NSString *sender;
-@property (nonatomic) float created;
+@property (nonatomic) double created;
 @property (nonatomic, strong) NSString *created_string;
 
 @property (nonatomic, strong) NSTimer *timer;
