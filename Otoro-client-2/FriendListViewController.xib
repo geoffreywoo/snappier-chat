@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -109,26 +109,35 @@
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Select a location name or write a message to create a Snapper!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="jAq-RX-TBU">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a location name or write a message to create a Snapper!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="jAq-RX-TBU">
                     <rect key="frame" x="0.0" y="489" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="yhl-Qg-vDP"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Add friends so you can send them Snappers!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="V3h-Yh-IlD">
-                    <rect key="frame" x="0.0" y="488" width="320" height="59"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add friends so you can send them Snappers!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="V3h-Yh-IlD">
+                    <rect key="frame" x="0.0" y="489" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="GlO-BS-7zy"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a friend or two to send your Snapper!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="auQ-Sc-NAa">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a friend or two to send your Snapper!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="auQ-Sc-NAa">
                     <rect key="frame" x="0.0" y="489" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="oKw-w5-ztd"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -136,12 +145,23 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="auQ-Sc-NAa" secondAttribute="bottom" constant="20" id="0mc-W4-fba"/>
+                <constraint firstItem="V3h-Yh-IlD" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="2hr-YU-7WU"/>
                 <constraint firstAttribute="bottom" secondItem="42" secondAttribute="bottom" constant="20" id="51l-jW-7qJ"/>
                 <constraint firstItem="ado-2a-Wgs" firstAttribute="top" secondItem="1" secondAttribute="top" constant="31" id="55J-dB-Nm6"/>
+                <constraint firstAttribute="trailing" secondItem="jAq-RX-TBU" secondAttribute="trailing" id="5P8-ie-i4g"/>
+                <constraint firstAttribute="trailing" secondItem="jAq-RX-TBU" secondAttribute="trailing" id="IQb-RD-hFn"/>
+                <constraint firstItem="auQ-Sc-NAa" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Jcw-sV-qOq"/>
+                <constraint firstItem="jAq-RX-TBU" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="U24-2B-FtO"/>
                 <constraint firstAttribute="bottom" secondItem="V3h-Yh-IlD" secondAttribute="bottom" constant="20" id="U4C-Nq-njV"/>
                 <constraint firstItem="62" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="bV7-ne-3X8"/>
                 <constraint firstItem="69" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="be6-FO-611"/>
+                <constraint firstAttribute="trailing" secondItem="auQ-Sc-NAa" secondAttribute="trailing" id="hOr-xG-r13"/>
+                <constraint firstAttribute="trailing" secondItem="V3h-Yh-IlD" secondAttribute="trailing" id="jsg-JG-X5s"/>
                 <constraint firstAttribute="bottom" secondItem="jAq-RX-TBU" secondAttribute="bottom" constant="20" id="jzM-rS-QXc"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jAq-RX-TBU" secondAttribute="bottom" constant="20" id="lh2-ro-VLf"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="V3h-Yh-IlD" secondAttribute="bottom" constant="20" id="tQ2-qE-5Nc"/>
+                <constraint firstItem="jAq-RX-TBU" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="wfd-qj-acx"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
