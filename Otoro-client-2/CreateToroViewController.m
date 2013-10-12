@@ -58,9 +58,11 @@
     [self initLocationManager];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [locationManager stopUpdatingLocation];
+	[super viewWillDisappear:animated];
+	[message resignFirstResponder];
+	[locationManager stopUpdatingLocation];
 }
 
 - (void)clearViewState
