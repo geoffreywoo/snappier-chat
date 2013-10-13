@@ -1,3 +1,2 @@
-snapper-map
-==============
-snapper
+snappier-chat
+=============
