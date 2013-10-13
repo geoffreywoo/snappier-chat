@@ -171,17 +171,17 @@
 		609227D717B8538C00E1D897 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6097D9DD17B34A0100EC094E /* Toro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toro.h; sourceTree = "<group>"; };
 		6097D9DE17B34A0100EC094E /* Toro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toro.m; sourceTree = "<group>"; };
-		60CE1C6217AEDFE400C6249F /* snappermap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snappermap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60CE1C6217AEDFE400C6249F /* snappierchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snappierchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CE1C6617AEDFE400C6249F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		60CE1C6817AEDFE400C6249F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		60CE1C6A17AEDFE400C6249F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		60CE1C6E17AEDFE400C6249F /* snappermap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "snappermap-Info.plist"; sourceTree = "<group>"; };
+		60CE1C6E17AEDFE400C6249F /* snappierchat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "snappierchat-Info.plist"; sourceTree = "<group>"; };
 		60CE1C7017AEDFE400C6249F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		60CE1C7217AEDFE400C6249F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		60CE1C7417AEDFE400C6249F /* snappermap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "snappermap-Prefix.pch"; sourceTree = "<group>"; };
+		60CE1C7417AEDFE400C6249F /* snappierchat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "snappierchat-Prefix.pch"; sourceTree = "<group>"; };
 		60CE1C7517AEDFE400C6249F /* OAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAppDelegate.h; sourceTree = "<group>"; };
 		60CE1C7617AEDFE400C6249F /* OAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OAppDelegate.m; sourceTree = "<group>"; };
-		60CE1C7D17AEDFE400C6249F /* snappermapTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = snappermapTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60CE1C7D17AEDFE400C6249F /* snappierchatTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = snappierchatTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CE1C7E17AEDFE400C6249F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		60CE1C8617AEDFE400C6249F /* snappermapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "snappermapTests-Info.plist"; sourceTree = "<group>"; };
 		60CE1C8817AEDFE400C6249F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -396,8 +396,8 @@
 		60CE1C6317AEDFE400C6249F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				60CE1C6217AEDFE400C6249F /* snappermap.app */,
-				60CE1C7D17AEDFE400C6249F /* snappermapTests.octest */,
+				60CE1C6217AEDFE400C6249F /* snappierchat.app */,
+				60CE1C7D17AEDFE400C6249F /* snappierchatTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -437,10 +437,10 @@
 		60CE1C6D17AEDFE400C6249F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				60CE1C6E17AEDFE400C6249F /* snappermap-Info.plist */,
+				60CE1C6E17AEDFE400C6249F /* snappierchat-Info.plist */,
 				60CE1C6F17AEDFE400C6249F /* InfoPlist.strings */,
 				60CE1C7217AEDFE400C6249F /* main.m */,
-				60CE1C7417AEDFE400C6249F /* snappermap-Prefix.pch */,
+				60CE1C7417AEDFE400C6249F /* snappierchat-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -500,9 +500,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		60CE1C6117AEDFE400C6249F /* snappermap */ = {
+		60CE1C6117AEDFE400C6249F /* snappierchat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60CE1C8F17AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappermap" */;
+			buildConfigurationList = 60CE1C8F17AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappierchat" */;
 			buildPhases = (
 				60CE1C5E17AEDFE400C6249F /* Sources */,
 				60CE1C5F17AEDFE400C6249F /* Frameworks */,
@@ -512,14 +512,14 @@
 			);
 			dependencies = (
 			);
-			name = snappermap;
+			name = snappierchat;
 			productName = "Otoro-client-2";
-			productReference = 60CE1C6217AEDFE400C6249F /* snappermap.app */;
+			productReference = 60CE1C6217AEDFE400C6249F /* snappierchat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		60CE1C7C17AEDFE400C6249F /* snappermapTests */ = {
+		60CE1C7C17AEDFE400C6249F /* snappierchatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60CE1C9217AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappermapTests" */;
+			buildConfigurationList = 60CE1C9217AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappierchatTests" */;
 			buildPhases = (
 				60CE1C7817AEDFE400C6249F /* Sources */,
 				60CE1C7917AEDFE400C6249F /* Frameworks */,
@@ -531,9 +531,9 @@
 			dependencies = (
 				60CE1C8317AEDFE400C6249F /* PBXTargetDependency */,
 			);
-			name = snappermapTests;
+			name = snappierchatTests;
 			productName = "Otoro-client-2Tests";
-			productReference = 60CE1C7D17AEDFE400C6249F /* snappermapTests.octest */;
+			productReference = 60CE1C7D17AEDFE400C6249F /* snappierchatTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -550,7 +550,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 60CE1C5C17AEDFE400C6249F /* Build configuration list for PBXProject "snappermap" */;
+			buildConfigurationList = 60CE1C5C17AEDFE400C6249F /* Build configuration list for PBXProject "snappierchat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -562,8 +562,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				60CE1C6117AEDFE400C6249F /* snappermap */,
-				60CE1C7C17AEDFE400C6249F /* snappermapTests */,
+				60CE1C6117AEDFE400C6249F /* snappierchat */,
+				60CE1C7C17AEDFE400C6249F /* snappierchatTests */,
 			);
 		};
 /* End PBXProject section */
@@ -700,7 +700,7 @@
 /* Begin PBXTargetDependency section */
 		60CE1C8317AEDFE400C6249F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 60CE1C6117AEDFE400C6249F /* snappermap */;
+			target = 60CE1C6117AEDFE400C6249F /* snappierchat */;
 			targetProxy = 60CE1C8217AEDFE400C6249F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -801,10 +801,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Otoro-client-2/snappermap-Prefix.pch";
-				INFOPLIST_FILE = "Otoro-client-2/snappermap-Info.plist";
+				GCC_PREFIX_HEADER = "Otoro-client-2/snappierchat-Prefix.pch";
+				INFOPLIST_FILE = "Otoro-client-2/snappierchat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = snappermap;
+				PRODUCT_NAME = snappierchat;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -817,10 +817,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Otoro-client-2/snappermap-Prefix.pch";
-				INFOPLIST_FILE = "Otoro-client-2/snappermap-Info.plist";
+				GCC_PREFIX_HEADER = "Otoro-client-2/snappierchat-Prefix.pch";
+				INFOPLIST_FILE = "Otoro-client-2/snappierchat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = snappermap;
+				PRODUCT_NAME = snappierchat;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -838,7 +838,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/Otoro-client-2-Prefix.pch";
 				INFOPLIST_FILE = "Otoro-client-2Tests/snappermapTests-Info.plist";
-				PRODUCT_NAME = snappermapTests;
+				PRODUCT_NAME = snappierchatTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -855,7 +855,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/Otoro-client-2-Prefix.pch";
 				INFOPLIST_FILE = "Otoro-client-2Tests/snappermapTests-Info.plist";
-				PRODUCT_NAME = snappermapTests;
+				PRODUCT_NAME = snappierchatTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -864,7 +864,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		60CE1C5C17AEDFE400C6249F /* Build configuration list for PBXProject "snappermap" */ = {
+		60CE1C5C17AEDFE400C6249F /* Build configuration list for PBXProject "snappierchat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60CE1C8D17AEDFE400C6249F /* Debug */,
@@ -873,7 +873,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60CE1C8F17AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappermap" */ = {
+		60CE1C8F17AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappierchat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60CE1C9017AEDFE400C6249F /* Debug */,
@@ -882,7 +882,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60CE1C9217AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappermapTests" */ = {
+		60CE1C9217AEDFE400C6249F /* Build configuration list for PBXNativeTarget "snappierchatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60CE1C9317AEDFE400C6249F /* Debug */,
