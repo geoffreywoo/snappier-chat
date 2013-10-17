@@ -12,12 +12,14 @@
 
 @interface CreateToroViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate,FriendListViewControllerDelegate>
 {
-    CLLocationManager *locationManager;
-    IBOutlet MKMapView *mapView;
+	UITapGestureRecognizer *_backgroundTapGestureRecognizer;
+	UIImagePickerController *_imagePickerController;
     IBOutlet UIView *backgroundView;
     IBOutlet UIButton *backButton;
     IBOutlet UIButton *sendToroButton;
-    IBOutlet UIButton *friendsButton;
+	IBOutlet UIButton *_takePhotoButton;
+    IBOutlet UIButton *_frontBackButton;
+    IBOutlet UIButton *_flashButton;
     IBOutlet UITextField *message;
 }
 @property (nonatomic, strong) NSMutableData *responseData;
@@ -26,7 +28,6 @@
 
 -(IBAction) backButton:(id) sender;
 -(IBAction) sendToroButton:(id) sender;
-//-(IBAction) friendListButton: (id) sender;
 
 
 @end

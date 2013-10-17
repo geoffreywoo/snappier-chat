@@ -25,7 +25,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        locationManager = [[CLLocationManager alloc] init];
        // [self.view sendSubviewToBack:mapView];
     }
     return self;
@@ -37,15 +36,36 @@
     
 	self.chooseVenueButton.titleLabel.adjustsFontSizeToFitWidth = YES;
 	
-    UITapGestureRecognizer *bgTap =
+    _backgroundTapGestureRecognizer =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(backgroundTap:)];
-    [backgroundView addGestureRecognizer:bgTap];
+	_backgroundTapGestureRecognizer.enabled = NO;
+    [backgroundView addGestureRecognizer:_backgroundTapGestureRecognizer];
+	backgroundView.hidden = YES;
     
     message.hidden = YES;
     
-    mapView.showsUserLocation = YES;
-    
+//    mapView.showsUserLocation = YES;
+	
+	_imagePickerController = [[UIImagePickerController alloc] init];
+	_imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+	_imagePickerController.showsCameraControls = NO;
+	
+	CGSize screenSize = [UIScreen mainScreen].bounds.size;
+	
+	CGFloat cameraRatio = 4.0/3.0;
+	CGFloat scale = screenSize.height/(screenSize.width * cameraRatio);
+	
+	// showsCameraControler = NO puts the camera at the top - we need to translate down after scaling to recenter it
+	CGFloat cameraHeight = screenSize.width * cameraRatio;
+	CGFloat translation = (screenSize.height - cameraHeight)/2;
+	
+	_imagePickerController.cameraViewTransform = CGAffineTransformConcat(CGAffineTransformMakeScale(scale, scale), CGAffineTransformMakeTranslation(0, translation));
+	
+	_imagePickerController.view.frame = self.view.frame;
+	
+	[self.view addSubview:_imagePickerController.view];
+	[self.view sendSubviewToBack:_imagePickerController.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,7 +82,7 @@
 {
 	[super viewWillDisappear:animated];
 	[message resignFirstResponder];
-	[locationManager stopUpdatingLocation];
+//	[locationManager stopUpdatingLocation];
 }
 
 - (void)clearViewState
@@ -88,8 +108,8 @@
 - (void) initLocationManager
 {
     NSLog(@"loc manager init");
-    [locationManager setDelegate:self];
-    [locationManager startUpdatingLocation];
+//    [locationManager setDelegate:self];
+//    [locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -108,8 +128,8 @@
     region.span=span;
     region.center=_lastLoc.coordinate;
     
-    [mapView setRegion:region animated:TRUE];
-    [mapView regionThatFits:region];
+//    [mapView setRegion:region animated:TRUE];
+//    [mapView regionThatFits:region];
 
   //  if ([_lastLoc horizontalAccuracy] < 10) {
   //      [manager stopUpdatingLocation];
@@ -155,6 +175,38 @@
     [self.view addSubview:_friendListViewController.view];
 }
 */
+
+- (IBAction)takePhotoButtonPressed:(id)sender {
+	[_imagePickerController takePicture];
+}
+- (IBAction)flashButtonPressed:(id)sender {
+	
+	if (_imagePickerController.cameraFlashMode == UIImagePickerControllerCameraFlashModeOn)
+	{
+		_imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
+		
+		[_flashButton setTitle:@"OFF" forState:UIControlStateNormal];
+	}
+	else
+	{
+		_imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOn;
+		
+		[_flashButton setTitle:@"ON" forState:UIControlStateNormal];
+	}
+	
+}
+- (IBAction)frontBackButtonPressed:(id)sender {
+	
+	if (_imagePickerController.cameraDevice == UIImagePickerControllerCameraDeviceFront)
+	{
+		_imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+	}
+	else
+	{
+#pragma warning TODO: do frontback
+		_imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+	}
+}
 
 - (IBAction)choosePlaceButtonPressed:(id)sender
 {
