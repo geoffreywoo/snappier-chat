@@ -10,8 +10,9 @@
 #import "OtoroConnection.h"
 #import "OtoroChooseVenueViewController.h"
 #import "SnapperMapAnnotation.h"
+#import <MobileCoreServices/UTCoreTypes.h>
 
-@interface CreateToroViewController ()<OtoroChooseVenueViewControllerDelegate, FriendListViewControllerDelegate>
+@interface CreateToroViewController ()< FriendListViewControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *chooseVenueButton;
 @property (nonatomic, strong) OVenue *venue;
@@ -39,16 +40,16 @@
     _backgroundTapGestureRecognizer =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(backgroundTap:)];
-	_backgroundTapGestureRecognizer.enabled = NO;
     [backgroundView addGestureRecognizer:_backgroundTapGestureRecognizer];
-	backgroundView.hidden = YES;
-    
-    message.hidden = YES;
+	
+	[self changeModes:YES];
     
 //    mapView.showsUserLocation = YES;
 	
 	_imagePickerController = [[UIImagePickerController alloc] init];
 	_imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+	
+	_imagePickerController.delegate = self;
 	_imagePickerController.showsCameraControls = NO;
 	
 	CGSize screenSize = [UIScreen mainScreen].bounds.size;
@@ -66,6 +67,10 @@
 	
 	[self.view addSubview:_imagePickerController.view];
 	[self.view sendSubviewToBack:_imagePickerController.view];
+	
+	// default flash OFF
+	_imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
+	[_flashButton setTitle:@"OFF" forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,9 +78,6 @@
 	[super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = YES;
-    
-	[self checkSendToroButton];
-    [self initLocationManager];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -91,18 +93,6 @@
     message.text = @"";
 	self.venue = nil;
 	[self.chooseVenueButton setTitle:@"Where are you?" forState:UIControlStateNormal];	
-}
-
-- (void)checkSendToroButton
-{
-	if (self.venue || message.text.length)
-	{
-		[sendToroButton setImage:[UIImage imageNamed:@"snappermap_inapp_icon_small"] forState:UIControlStateNormal];
-	}
-	else
-	{
-		[sendToroButton setImage:[UIImage imageNamed:@"friends_icon"] forState:UIControlStateNormal];
-	}
 }
 
 - (void) initLocationManager
@@ -154,8 +144,6 @@
             [message resignFirstResponder];
         }
     }
-	
-	[self checkSendToroButton];
 }
 
 -(IBAction) backButton:(id) sender
@@ -179,6 +167,7 @@
 - (IBAction)takePhotoButtonPressed:(id)sender {
 	[_imagePickerController takePicture];
 }
+
 - (IBAction)flashButtonPressed:(id)sender {
 	
 	if (_imagePickerController.cameraFlashMode == UIImagePickerControllerCameraFlashModeOn)
@@ -208,11 +197,9 @@
 	}
 }
 
-- (IBAction)choosePlaceButtonPressed:(id)sender
+- (IBAction)closeButtonPressed:(id)sender
 {
-	if (_lastLoc == nil) return;
-    self.chooseVenueViewController = [[OtoroChooseVenueViewController alloc] initWithDelegate:self location:_lastLoc];
-	[self.navigationController pushViewController:self.chooseVenueViewController animated:YES];
+	[self changeModes:YES];
 }
 
 -(IBAction) sendToroButton:(id) sender
@@ -232,12 +219,89 @@
 	[[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
-#pragma mark - OtoroChooseVenueViewControllerDelegate
+#pragma mark - UIImagePickerControllerDelegate
 
-- (void)otoroChooseVenueViewController:(OtoroChooseVenueViewController *)viewController didChooseVenue:(OVenue *)venue
+- (void)changeModes:(BOOL)takePhotoMode
 {
-	self.venue = venue;
-	[self.chooseVenueButton setTitle:venue.name forState:UIControlStateNormal];
-	[self checkSendToroButton];
+	[message resignFirstResponder];
+	
+	_takePhotoButton.hidden = !takePhotoMode;
+	_flashButton.hidden = !takePhotoMode;
+	_frontBackButton.hidden = !takePhotoMode;
+	backButton.hidden = !takePhotoMode;
+	
+	_bottomBackgroundView.hidden = takePhotoMode;
+	_closeButton.hidden = takePhotoMode;
+	_timeIntervalPicker.hidden = takePhotoMode;
+	[_timeIntervalPicker selectRow:2 inComponent:0 animated:NO];
+	message.hidden = message.text.length == 0 || takePhotoMode;
+	backgroundView.hidden = takePhotoMode;
+	_savedImageView.hidden = takePhotoMode;
+	
+	if (!takePhotoMode)
+	{
+		[sendToroButton setImage:[UIImage imageNamed:@"snappermap_inapp_icon_small"] forState:UIControlStateNormal];
+	}
+	else
+	{
+		[sendToroButton setImage:[UIImage imageNamed:@"friends_icon"] forState:UIControlStateNormal];
+	}
 }
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+	UIImage *savedImage = info[UIImagePickerControllerOriginalImage];
+	
+	if (_imagePickerController.cameraDevice ==UIImagePickerControllerCameraDeviceFront)
+	{
+		// mirror image
+		savedImage = [UIImage imageWithCGImage:savedImage.CGImage scale:savedImage.scale orientation:UIImageOrientationLeftMirrored];
+	}
+	
+	CGFloat scaledWidth = self.view.frame.size.height /savedImage.size.height * savedImage.size.width;
+	
+	_savedImageView.image = savedImage;
+	_savedImageView.frame = CGRectMake(0, 0, scaledWidth, self.view.frame.size.height);
+	_savedImageView.center = self.view.center;
+	
+	[self changeModes:NO];
+}
+
+#pragma mark - UIPicker
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+	return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+	return 5;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+	switch (row) {
+		case 0:
+			return @"1 minute";
+			break;
+		case 1:
+			return @"5 minutes";
+			break;
+		case 2:
+			return @"15 minutes";
+		case 3:
+			return @"1 hour";
+		case 4:
+			return @"1 day";
+		default:
+			return nil;
+	}
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+	
+}
+
 @end
