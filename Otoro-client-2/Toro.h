@@ -14,6 +14,8 @@
 @interface Toro : NSObject
 
 @property (nonatomic, strong) NSString *toroId;
+@property (nonatomic, strong) NSURL *imageURL;
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic) float lat;
 @property (nonatomic) float lng;
 @property (nonatomic) bool read;
@@ -34,7 +36,7 @@
 @property(atomic) bool popped;
 
 - (id)initWith:(NSDictionary *)dict;
-- (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message venue:(OVenue *)venue;
+- (id)initOwnToroWithImage:(UIImage *)image message:(NSString*)message venue:(OVenue *)venue;
 - (id)update:(Toro*)toro;
 - (void)makeTimerLabel;
 - (BOOL)isEqual:(id)object;

@@ -71,6 +71,8 @@
 		60CE1CA017AF2DAB00C6249F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C9F17AF2DAB00C6249F /* MapKit.framework */; };
 		DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA81B17C01D43005418CB /* OtoroConnection.m */; };
 		DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */; };
+		F485518118133B3700C146DA /* JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F485517E18133B3700C146DA /* JMImageCache.m */; };
+		F485518218133B3700C146DA /* UIImageView+JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F485518018133B3700C146DA /* UIImageView+JMImageCache.m */; };
 		F4B0CD7D17E6965C0057738D /* snappermap_inapp_icon_large.png in Resources */ = {isa = PBXBuildFile; fileRef = F4B0CD7917E6965C0057738D /* snappermap_inapp_icon_large.png */; };
 		F4B0CD7E17E6965C0057738D /* snappermap_inapp_icon_large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4B0CD7A17E6965C0057738D /* snappermap_inapp_icon_large@2x.png */; };
 		F4B0CD7F17E6965C0057738D /* snappermap_inapp_icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = F4B0CD7B17E6965C0057738D /* snappermap_inapp_icon_small.png */; };
@@ -198,6 +200,10 @@
 		DB9DA81B17C01D43005418CB /* OtoroConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroConnection.m; sourceTree = "<group>"; };
 		DB9DA81F17C02AB9005418CB /* OtoroConnectionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroConnectionCall.h; sourceTree = "<group>"; };
 		DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroConnectionCall.m; sourceTree = "<group>"; };
+		F485517D18133B3700C146DA /* JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMImageCache.h; sourceTree = "<group>"; };
+		F485517E18133B3700C146DA /* JMImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMImageCache.m; sourceTree = "<group>"; };
+		F485517F18133B3700C146DA /* UIImageView+JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+JMImageCache.h"; sourceTree = "<group>"; };
+		F485518018133B3700C146DA /* UIImageView+JMImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+JMImageCache.m"; sourceTree = "<group>"; };
 		F4B0CD7917E6965C0057738D /* snappermap_inapp_icon_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snappermap_inapp_icon_large.png; path = Resources/snappermap_inapp_icon_large.png; sourceTree = "<group>"; };
 		F4B0CD7A17E6965C0057738D /* snappermap_inapp_icon_large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snappermap_inapp_icon_large@2x.png"; path = "Resources/snappermap_inapp_icon_large@2x.png"; sourceTree = "<group>"; };
 		F4B0CD7B17E6965C0057738D /* snappermap_inapp_icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snappermap_inapp_icon_small.png; path = Resources/snappermap_inapp_icon_small.png; sourceTree = "<group>"; };
@@ -299,6 +305,10 @@
 		602A4D0317C16555007DEF27 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				F485517D18133B3700C146DA /* JMImageCache.h */,
+				F485517E18133B3700C146DA /* JMImageCache.m */,
+				F485517F18133B3700C146DA /* UIImageView+JMImageCache.h */,
+				F485518018133B3700C146DA /* UIImageView+JMImageCache.m */,
 				DB9DA81F17C02AB9005418CB /* OtoroConnectionCall.h */,
 				DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */,
 				DB9DA81A17C01D43005418CB /* OtoroConnection.h */,
@@ -668,6 +678,7 @@
 				DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */,
 				609227D417B84CA100E1D897 /* CreateToroViewController.m in Sources */,
 				DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */,
+				F485518218133B3700C146DA /* UIImageView+JMImageCache.m in Sources */,
 				602A4CE617C02F2E007DEF27 /* FriendListViewController.m in Sources */,
 				602A4CEA17C03966007DEF27 /* OUser.m in Sources */,
 				601AB8DC17F7A98500F82013 /* SnapperMapAnnotationView.m in Sources */,
@@ -678,6 +689,7 @@
 				602A4D0117C052E3007DEF27 /* SettingsViewController.m in Sources */,
 				602A4D0717C17D33007DEF27 /* AddFriendsViewController.m in Sources */,
 				60529FCC17CAAD0000C7F064 /* SearchViewController.m in Sources */,
+				F485518118133B3700C146DA /* JMImageCache.m in Sources */,
 				6089B86417CAB85D00C3CF9D /* AddressBookViewController.m in Sources */,
 				6089B86917CAB87500C3CF9D /* AddedYouViewController.m in Sources */,
 				608EF30317DBF8760040B0B2 /* OtoroSentTableViewCell.m in Sources */,

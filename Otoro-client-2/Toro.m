@@ -16,9 +16,9 @@ const int MAX_TIME = 15;
     self = [super init];
     if (self) {
         _toroId = [dict objectForKey:@"_id"];
-        _lat = [[dict objectForKey:@"latitude"] floatValue];
-        _lng = [[dict objectForKey:@"longitude"] floatValue];
-        _read = [[dict objectForKey:@"read"] boolValue];
+#warning TODO: remove this 
+		_imageURL = [NSURL URLWithString:@"http://snappermap.blob.core.windows.net/test/SxmUjhVMYD"];
+        _read = NO; //[[dict objectForKey:@"read"] boolValue];
         _receiver = [dict objectForKey:@"receiver"];
         _sender = [dict objectForKey:@"sender"];
         _message = [dict objectForKey:@"message"];
@@ -52,12 +52,11 @@ const int MAX_TIME = 15;
     return self;
 }
 
-- (id)initOwnToroWithLat:(float)lat lng:(float)lng message:(NSString*)message venue:(OVenue *)venue
+- (id)initOwnToroWithImage:(UIImage *)image message:(NSString *)message venue:(OVenue *)venue
 {
     self = [super init];
     if (self) {
-        _lat = lat;
-        _lng = lng;
+		_image = image;
         _message = message;
 		_venue = venue;
     }
@@ -107,7 +106,7 @@ const int MAX_TIME = 15;
 
 - (void) print
 {
-    NSLog(@"lat: %f, lng: %f, sender: %@, receiver: %@, message: %@, venue: %@, timestamp: %f", _lat, _lng, _sender, _receiver, _message, _venue.name, _created);
+    NSLog(@"sender: %@, receiver: %@, message: %@, venue: %@, timestamp: %f", _sender, _receiver, _message, _venue.name, _created);
 }
 
 @end

@@ -13,10 +13,8 @@
 @class Toro;
 
 @interface ToroViewController : UIViewController <MKMapViewDelegate>
-{
-    IBOutlet MKMapView *mapView;
-}
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) Toro *toro;
 @property (nonatomic,strong) IBOutlet UILabel *countDown;
 @property (nonatomic,strong)IBOutlet UILabel *message;

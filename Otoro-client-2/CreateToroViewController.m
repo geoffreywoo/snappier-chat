@@ -204,7 +204,7 @@
 
 -(IBAction) sendToroButton:(id) sender
 {
-    Toro *toro = [[Toro alloc] initOwnToroWithLat:_lastLoc.coordinate.latitude lng:_lastLoc.coordinate.longitude message: message.text venue:self.venue];
+    Toro *toro = [[Toro alloc] initOwnToroWithImage:_savedImageView.image message: message.text venue:self.venue];
     _friendListViewController = nil;
     _friendListViewController = [[FriendListViewController alloc] initWithToro:toro delegate:self];
     //[self.view addSubview:_friendListViewController.view];

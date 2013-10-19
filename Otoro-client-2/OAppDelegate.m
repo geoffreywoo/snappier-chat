@@ -32,6 +32,13 @@
         self.window.rootViewController = navigationController;
         
     } else {
+		
+		
+		UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+		controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+		controller.showsCameraControls = NO;
+//		self.window.rootViewController = controller;
+
         OUser *me = [[OUser alloc] initFromNSDefaults];
         [[OtoroConnection sharedInstance] setUser: me];
         

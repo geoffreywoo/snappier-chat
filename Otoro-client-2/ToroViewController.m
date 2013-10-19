@@ -10,6 +10,7 @@
 #import "Toro.h"
 #import "SnapperMapAnnotation.h"
 #import "SnapperMapAnnotationView.h"
+#import "UIImageView+JMImageCache.h"
 
 @implementation ToroViewController
 
@@ -44,28 +45,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    CLLocationCoordinate2D location = mapView.userLocation.coordinate;
-    MKCoordinateRegion region;
-    MKCoordinateSpan span;
-    
-    location.latitude  = [[self toro] lat];
-    location.longitude = [[self toro] lng];
-    
-    span.latitudeDelta = 0.005;
-    span.longitudeDelta = 0.005;
-    
-    region.span = span;
-    region.center = location;
-    
-    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(location.latitude,location.longitude);
-    SnapperMapAnnotation *pin = [[SnapperMapAnnotation alloc] initWithTitle:[_toro sender] andCoordinate:coord];
-
-    [mapView addAnnotation:pin];
-    
-    [mapView setRegion:region animated:YES];
-    [mapView regionThatFits:region];
-    [self.view sendSubviewToBack:mapView];
+	
+	[self.imageView setImageWithURL:_toro.imageURL];
+	
     [[self countDown] setText:[NSString stringWithFormat:@"%d",[[self toro] maxTime]]];
    
     if (![[_toro message] isEqualToString:@""])
