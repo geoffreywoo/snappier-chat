@@ -367,25 +367,44 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
 
 #pragma mark - Toros Endpoints
 
-- (void)createNewToro:(Toro*)toro completionBlock:(OtoroConnectionCompletionBlock)block
+- (void)createNewToro:(Toro*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/new", OTORO_HOST]]];
-    
-    [request setHTTPMethod:@"POST"];
-	
-	NSMutableString *body = [NSMutableString stringWithFormat:@"latitude=%f&longitude=%f&sender=%@&receiver=%@", toro.lat, toro.lng, toro.sender,toro.receiver];
+	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+	dictionary[@"sender"] = toro.sender;
 	if (toro.message)
 	{
-		[body appendFormat:@"&message=%@", toro.message];
+		dictionary[@"message"] = toro.message;
 	}
-	if (toro.venue)
+
+	NSString *boundary = @"0xsNaPpErSeRrIcEb0uNdArY";
+	
+	NSMutableData *body = [NSMutableData data];
+	[body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	for (NSString *key in dictionary.allKeys)
 	{
-		[body appendFormat:@"&venue=%@&venueID=%@", toro.venue.name, toro.venue.venueID];
+		[body appendData:[[NSString stringWithFormat:@"Content-Disposition:form-data; name=\"%@\"\r\n\r\n%@\r\n--%@\r\n", key, dictionary[key], boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+
+	// receivers
+	for (OUser *user in users)
+	{
+		[body appendData:[[NSString stringWithFormat:@"Content-Disposition:form-data; name=\"receivers\"\r\n\r\n%@\r\n--%@\r\n", user.username, boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
 	
-    [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+	// image
+	[body appendData:[@"Content-Disposition:form-data; name=\"image\"; filename=\"picture.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:UIImageJPEGRepresentation(toro.image, 1.0)];
+	[body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+									[NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/new", OTORO_HOST]]];
     
+    [request setHTTPMethod:@"POST"];
+    [request setValue:[NSString stringWithFormat:@"multipart/form-data;boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:body];
+	
+	
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeCreateToro completionBlock:block toConnection:connection];
 }

@@ -94,7 +94,7 @@
 
 - (BOOL)toroIsValid
 {
-	return self.toro && (self.toro.message.length || self.toro.venue);
+	return self.toro && self.toro.image;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -108,6 +108,7 @@
             NSLog(@"loaded");
             _friends = [[OtoroConnection sharedInstance] friends];
             [friendTableView reloadData];
+			[self checkSendButton];
         }
     }];
     [self checkSendButton];
@@ -127,33 +128,17 @@
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
-static int NUM_SENT;
-
-- (void) checkIfAllSent {
-    if (NUM_SENT < [[[OtoroConnection sharedInstance] selectedFriends] count]) {
-        NSLog(@"waiting for other calls");
-    } else {
-		[self.delegate friendListViewController:self didSendToro:self.toro];
-    }
-}
-
 -(IBAction) send:(id) sender {
     NSLog(@"SENDING TORO");
-    NUM_SENT = 0;
 
     _toro.sender = [[OtoroConnection sharedInstance] user].username;
-    for (OUser *selectedFriend in [[OtoroConnection sharedInstance] selectedFriends]) {
-        _toro.receiver = selectedFriend.username;
-        [_toro print];
-        [[OtoroConnection sharedInstance] createNewToro:_toro completionBlock:^(NSError *error, NSDictionary *returnData) {
-            if (error) {
-                
-            } else {
-                NUM_SENT++;
-                [self checkIfAllSent];
-            }
-        }];
-    }
+	[[OtoroConnection sharedInstance] createNewToro:_toro toReceivers:[[OtoroConnection sharedInstance] selectedFriends] completionBlock:^(NSError *error, NSDictionary *returnData) {
+		if (error) {
+			
+		} else {
+			[self.delegate friendListViewController:self didSendToro:self.toro];
+		}
+	}];
 }
 
 -(IBAction) addFriends:(id) sender {

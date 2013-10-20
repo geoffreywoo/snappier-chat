@@ -14,7 +14,8 @@
 
 @interface CreateToroViewController ()< FriendListViewControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *chooseVenueButton;
+@property (nonatomic, assign) UIImagePickerControllerCameraDevice cameraDevice;
+@property (nonatomic, assign) UIImagePickerControllerCameraFlashMode flashMode;
 @property (nonatomic, strong) OVenue *venue;
 @property (strong, nonatomic) OtoroChooseVenueViewController *chooseVenueViewController;
 
@@ -35,8 +36,6 @@
 {
     [super viewDidLoad];
     
-	self.chooseVenueButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-	
     _backgroundTapGestureRecognizer =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(backgroundTap:)];
@@ -77,6 +76,7 @@
 {
 	[super viewWillAppear:animated];
     
+	[self resetImagePickerSettings];
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -84,15 +84,13 @@
 {
 	[super viewWillDisappear:animated];
 	[message resignFirstResponder];
-//	[locationManager stopUpdatingLocation];
 }
 
 - (void)clearViewState
 {
-    message.hidden = YES;
     message.text = @"";
 	self.venue = nil;
-	[self.chooseVenueButton setTitle:@"Where are you?" forState:UIControlStateNormal];	
+	[self changeModes:YES];
 }
 
 - (void) initLocationManager
@@ -170,15 +168,17 @@
 
 - (IBAction)flashButtonPressed:(id)sender {
 	
-	if (_imagePickerController.cameraFlashMode == UIImagePickerControllerCameraFlashModeOn)
+	if (self.flashMode == UIImagePickerControllerCameraFlashModeOn)
 	{
 		_imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
+		self.flashMode = UIImagePickerControllerCameraFlashModeOff;
 		
 		[_flashButton setTitle:@"OFF" forState:UIControlStateNormal];
 	}
 	else
 	{
 		_imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOn;
+		self.flashMode = UIImagePickerControllerCameraFlashModeOn;
 		
 		[_flashButton setTitle:@"ON" forState:UIControlStateNormal];
 	}
@@ -186,15 +186,22 @@
 }
 - (IBAction)frontBackButtonPressed:(id)sender {
 	
-	if (_imagePickerController.cameraDevice == UIImagePickerControllerCameraDeviceFront)
+	if (self.cameraDevice == UIImagePickerControllerCameraDeviceFront)
 	{
 		_imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+		self.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+		_flashButton.hidden = NO;
+		_imagePickerController.cameraFlashMode = self.flashMode; // reset this, might not have been set in viewDidLoad if front camera was on
 	}
 	else
 	{
 #pragma warning TODO: do frontback
 		_imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+		self.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+		_flashButton.hidden = YES;
 	}
+	
+	
 }
 
 - (IBAction)closeButtonPressed:(id)sender
@@ -207,7 +214,7 @@
     Toro *toro = [[Toro alloc] initOwnToroWithImage:_savedImageView.image message: message.text venue:self.venue];
     _friendListViewController = nil;
     _friendListViewController = [[FriendListViewController alloc] initWithToro:toro delegate:self];
-    //[self.view addSubview:_friendListViewController.view];
+    
     [[self navigationController] pushViewController:_friendListViewController animated:YES];
 }
 
@@ -221,12 +228,20 @@
 
 #pragma mark - UIImagePickerControllerDelegate
 
+- (void)resetImagePickerSettings
+{
+	_imagePickerController.cameraDevice = self.cameraDevice;
+	_imagePickerController.cameraFlashMode = self.flashMode;
+}
+
 - (void)changeModes:(BOOL)takePhotoMode
 {
 	[message resignFirstResponder];
 	
+	[self resetImagePickerSettings];
+	
 	_takePhotoButton.hidden = !takePhotoMode;
-	_flashButton.hidden = !takePhotoMode;
+	_flashButton.hidden = self.cameraDevice != UIImagePickerControllerCameraDeviceRear || !takePhotoMode;
 	_frontBackButton.hidden = !takePhotoMode;
 	backButton.hidden = !takePhotoMode;
 	

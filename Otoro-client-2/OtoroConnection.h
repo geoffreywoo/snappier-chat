@@ -39,7 +39,7 @@
 - (void)getBadgeCountWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 
 // toros
-- (void)createNewToro:(Toro*)toro completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)createNewToro:(Toro*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
