@@ -425,16 +425,38 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
 	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
 	dictionary[@"sender"] = toro.sender;
 	dictionary[@"duration"] = [NSNumber numberWithDouble: toro.expireTimeInterval];
+	dictionary[@"image"] = toro.imageKey;
 	if (toro.message)
 	{
 		dictionary[@"message"] = toro.message;
 	}
+	NSMutableArray *userNames = [NSMutableArray array];
+	for (OUser *user in users)
+	{
+		[userNames addObject:user.username];
+	}
+	dictionary[@"receivers"] = userNames;
+
+	
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/new", OTORO_HOST]]];
+    
+    [request setHTTPMethod:@"POST"];
+	NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:nil];
+    [request setHTTPBody:data];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSString *dataString = [[NSString alloc] initWithData:data encoding:NSJSONReadingAllowFragments];
+    NSLog(@"%@", dataString);
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeCreateToro completionBlock:block toConnection:connection];
 }
 
 - (void)getAllTorosReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/received/%@", OTORO_HOST, self.user.username]]];
+                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/received/%@", OTORO_HOST, self.user.username]]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeGetReceivedToro completionBlock:block toConnection:connection];
@@ -443,7 +465,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
 - (void)getAllTorosSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/sent/%@", OTORO_HOST, self.user.username]]];
+                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/sent/%@", OTORO_HOST, self.user.username]]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeGetSentToros completionBlock:block toConnection:connection];
@@ -452,7 +474,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
 - (void)getAllTorosWithCompletionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/%@", OTORO_HOST, self.user.username]]];
+                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/%@", OTORO_HOST, self.user.username]]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeGetAllToros completionBlock:block toConnection:connection];
@@ -461,7 +483,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/set_read/%@", OTORO_HOST, toroID]]];
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/set_read/%@", OTORO_HOST, toroID]]];
     
     [request setHTTPMethod:@"PUT"];
 	NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"read":@YES} options:NSJSONWritingPrettyPrinted error:nil];
