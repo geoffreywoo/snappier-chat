@@ -19,11 +19,12 @@ const int MAX_TIME = 15;
 		_imageURL = [NSURL URLWithString:dict[@"image"]];
 #warning TODO: remove this
 		_imageURL = [NSURL URLWithString:@"http://snappermap.blob.core.windows.net/test/SxmUjhVMYD"];
-        _read = NO; //[[dict objectForKey:@"read"] boolValue];
+        _read = [[dict objectForKey:@"read"] boolValue];
         _receiver = [dict objectForKey:@"receiver"];
         _sender = [dict objectForKey:@"sender"];
         _message = [dict objectForKey:@"message"];
 		_expireTimeInterval = [dict[@"duration"] doubleValue];
+		NSLog(@"%f expire time ", _expireTimeInterval);
       
         _popped = false;
         
@@ -61,7 +62,16 @@ const int MAX_TIME = 15;
 - (void)makeTimerLabel
 {
 #warning TODO
-//    [_timerLabel setFont:[UIFont systemFontOfSize:12]];
+    [_timerLabel setFont:[UIFont systemFontOfSize:12]];
+	NSInteger minutesLeft = ceil([self.expireDate timeIntervalSinceNow]/60);
+	if (minutesLeft > 0)
+	{
+		[_timerLabel setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
+	}
+	else
+	{
+		[_timerLabel setText:@""];
+	}
 //    if (!_read)
 //        [_timerLabel setText:[NSString stringWithFormat:@""]];
 //    else if (_read && (_maxTime == _elapsedTime)) {
@@ -74,6 +84,11 @@ const int MAX_TIME = 15;
 //            [_timerLabel setText:[NSString stringWithFormat:@"%d",timeLeft]];
 //    }
 
+}
+
+- (NSDate *)expireDate
+{
+	return [_createdDate dateByAddingTimeInterval:_expireTimeInterval];
 }
 
 - (BOOL)isEqual:(id)object

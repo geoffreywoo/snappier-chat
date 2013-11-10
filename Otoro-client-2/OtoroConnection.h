@@ -45,6 +45,7 @@
 - (void)getAllTorosSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)blurPhotoForToro:(Toro *)toro completionBlock:(OtoroConnectionCompletionBlock)block;
 
 // friends
 - (void)getAllFriendsWithCompletionBlock:(OtoroConnectionCompletionBlock)block;

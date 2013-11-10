@@ -14,6 +14,12 @@
 #import "OtoroSentTableViewCell.h"
 #import "OtoroReceivedTableViewCell.h"
 
+@interface OtoroContentViewController ()
+
+@property (nonatomic, strong) NSMutableDictionary *toroTimers;
+
+@end
+
 @implementation OtoroContentViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -22,6 +28,7 @@
     if (self) {
         _torosReceived = [[NSMutableArray alloc] init];
         _torosData = [[NSArray alloc] init];
+		_toroTimers = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -140,21 +147,18 @@
 
 - (void) tick:(NSTimer*)timer
 {
-//	
-//    Toro *toro = [timer userInfo];
-//    [toro setElapsedTime: [toro elapsedTime] + 1];
-//    if ([toro elapsedTime] < [toro maxTime]) {
-//        [toro makeTimerLabel];
-//        int timeLeft = ([toro maxTime] - [toro elapsedTime]);
-//        [[[toro toroViewController] countDown] setText:[NSString stringWithFormat:@"%d",timeLeft]];
-//    } else {
-//        [timer invalidate];
-//        [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
-//        [self hideToro:toro];
-//    }
+    Toro *toro = [timer userInfo];
+	NSInteger minutesLeft = ceil([toro.expireDate timeIntervalSinceNow]/60);
+    if (minutesLeft > 0) {
+        [toro makeTimerLabel];
+        [[[toro toroViewController] countDown] setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
+		[toro setTimer: [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(tick:) userInfo:toro repeats:NO]];
+    } else {
+        [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
+        [self hideToro:toro];
+		toro.timer = nil;
+    }
 }
-
-
 
 - (void) nothing:(UIButton*)sender
 {
@@ -173,12 +177,16 @@
     NSLog(@"pop toro %@ went through.", [theToro toroId]);
     
     [theToro.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
+	
+	if (!theToro.timer)
+	{
+        [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(tick:) userInfo:theToro repeats:NO]];
+	}
     
     if (![theToro read]) {
+		// very first tap, set the read flag
         [self.view addSubview:[theToro toroViewController].view];
-        
-        [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:theToro repeats:YES]];
-//        [[theToro timerLabel] setText:[NSString stringWithFormat:@"%d",[theToro maxTime]]];
+		
         [theToro setRead: true];
         
         [[OtoroConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
@@ -195,7 +203,9 @@
                 }];
             }
         }];
-    } else if (YES) {// || [theToro elapsedTime] < [theToro maxTime]) {
+#warning TODO: check time
+    } else if (YES || [[NSDate date] compare:[theToro expireDate]] == NSOrderedAscending) {// || [theToro elapsedTime] < [theToro maxTime]) {
+		// subsequent tap, just open the view, don't need to update state
         //NSLog(@"pop toro, elapsed: %i, max: %i", [theToro elapsedTime], [theToro maxTime]);
         [self.view addSubview:[theToro toroViewController].view];
     }

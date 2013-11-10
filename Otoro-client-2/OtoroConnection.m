@@ -214,10 +214,20 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
             [self callForConnection:connection].completionBlock(error, nil);
         }
     } else if (apiType == OtoroConnectionAPITypeSetToroRead) {
-        NSArray *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        NSDictionary *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
         if (jsonToros)
         {
             [self callForConnection:connection].completionBlock(error, @{@"toros":jsonToros});
+        }
+        else
+        {
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
+	} else if (apiType == OtoroConnectionAPITypeBlurPhoto) {
+        NSDictionary *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (jsonToros)
+        {
+            [self callForConnection:connection].completionBlock(error, jsonToros);
         }
         else
         {
@@ -474,7 +484,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
 - (void)getAllTorosWithCompletionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/%@", OTORO_HOST, self.user.username]]];
+                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/%@", OTORO_HOST, self.user.username]]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeGetAllToros completionBlock:block toConnection:connection];
@@ -492,6 +502,17 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeSetToroRead completionBlock:block toConnection:connection];
+}
+
+- (void)blurPhotoForToro:(Toro *)toro completionBlock:(OtoroConnectionCompletionBlock)block
+{
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/blur/%@", IMAGE_SERVICE_HOST, toro.imageKey]]];
+    
+    [request setHTTPMethod:@"PUT"];
+	
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeBlurPhoto completionBlock:block toConnection:connection];
 }
 
 #pragma mark - Friends Endpoints
