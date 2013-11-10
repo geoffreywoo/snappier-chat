@@ -48,22 +48,20 @@
 	
 	[self.imageView setImageWithURL:_toro.imageURL];
 	
-    [[self countDown] setText:[NSString stringWithFormat:@"%d",[[self toro] maxTime]]];
+//    [[self countDown] setText:[NSString stringWithFormat:@"%d",[[self toro] maxTime]]];
    
     if (![[_toro message] isEqualToString:@""])
         [_message setText:[NSString stringWithFormat:@"%@",[_toro message]]];
     else
         _message.hidden = YES;
     
-    NSMutableString *headerStr = [NSMutableString stringWithString:[_toro created_string]];
+    NSMutableString *headerStr = [NSMutableString stringWithString:[_toro stringForCreationDate]];
     if ([_toro venue] && ([[_toro venue].name isKindOfClass:[NSString class]])) {
         if (![[_toro venue].name isEqualToString:@""]) {
             [headerStr appendString:[NSString stringWithFormat:@" at %@",[_toro venue].name]];
         }
     }
     [_venue setText:headerStr];
-    
-    //[label setText:[NSString stringWithFormat:@"sent from: %@, s/he is at lat/lng: (%f, %f)", [[self toro] sender],location.latitude,location.longitude]];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation

@@ -16,6 +16,7 @@
 
 @property (nonatomic, assign) UIImagePickerControllerCameraDevice cameraDevice;
 @property (nonatomic, assign) UIImagePickerControllerCameraFlashMode flashMode;
+@property (nonatomic, assign) NSTimeInterval duration;
 @property (nonatomic, strong) OVenue *venue;
 @property (strong, nonatomic) OtoroChooseVenueViewController *chooseVenueViewController;
 
@@ -200,8 +201,6 @@
 		self.cameraDevice = UIImagePickerControllerCameraDeviceFront;
 		_flashButton.hidden = YES;
 	}
-	
-	
 }
 
 - (IBAction)closeButtonPressed:(id)sender
@@ -211,7 +210,8 @@
 
 -(IBAction) sendToroButton:(id) sender
 {
-    Toro *toro = [[Toro alloc] initOwnToroWithImage:_savedImageView.image message: message.text venue:self.venue];
+    Toro *toro = [[Toro alloc] initOwnToroWithImage:_savedImageView.image expireTimeSetting:self.duration message: message.text venue:self.venue];
+	toro.imageKey = _savedImageKey;
     _friendListViewController = nil;
     _friendListViewController = [[FriendListViewController alloc] initWithToro:toro delegate:self];
     
@@ -249,6 +249,7 @@
 	_closeButton.hidden = takePhotoMode;
 	_timeIntervalPicker.hidden = takePhotoMode;
 	[_timeIntervalPicker selectRow:2 inComponent:0 animated:NO];
+	self.duration = 15 * 60;
 	message.hidden = message.text.length == 0 || takePhotoMode;
 	backgroundView.hidden = takePhotoMode;
 	_savedImageView.hidden = takePhotoMode;
@@ -259,6 +260,9 @@
 	}
 	else
 	{
+		_savedImageView.image = nil;
+		_savedImageKey = nil;
+		
 		[sendToroButton setImage:[UIImage imageNamed:@"friends_icon"] forState:UIControlStateNormal];
 	}
 }
@@ -278,8 +282,29 @@
 	_savedImageView.image = savedImage;
 	_savedImageView.frame = CGRectMake(0, 0, scaledWidth, self.view.frame.size.height);
 	_savedImageView.center = self.view.center;
+	_savedImageKey = nil;
+	
+	[self uploadSavedImage];
 	
 	[self changeModes:NO];
+}
+
+- (void)uploadSavedImage
+{
+	// pre-upload saved image
+	[[OtoroConnection sharedInstance] uploadToroPhoto:_savedImageView.image  completionBlock:^(NSError *error, NSDictionary *returnData) {
+		if (error) {
+			
+		} else {
+			if (returnData[@"image"] == _savedImageView.image)
+			{
+				// if haven't taken a new photo, save the key
+				_savedImageKey = returnData[@"key"];
+				// let the friendlistviewcontroller know upload finished
+				[_friendListViewController imageDidFinishUpload:returnData[@"image"] withKey:returnData[@"key"]];
+			}
+		}
+	}];
 }
 
 #pragma mark - UIPicker
@@ -316,7 +341,25 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-	
+	switch (row) {
+		case 0:
+			self.duration = 60;
+			break;
+		case 1:
+			self.duration = 5 * 60;
+			break;
+		case 2:
+			self.duration = 15 * 60;
+			break;
+		case 3:
+			self.duration = 60 * 60;
+			break;
+		case 4:
+			self.duration = 24 * 60 * 60;
+			break;
+		default:
+			break;
+	}
 }
 
 @end

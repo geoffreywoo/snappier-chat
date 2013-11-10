@@ -12,7 +12,7 @@
 #import "OUser.h"
 
 @interface FriendListViewController ()
-
+@property (nonatomic, assign) BOOL userWantsSend;
 @end
 
 @implementation FriendListViewController
@@ -128,17 +128,35 @@
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
--(IBAction) send:(id) sender {
-    NSLog(@"SENDING TORO");
+- (IBAction)send:(id) sender {
+#warning TODO: spinner
+	self.userWantsSend = YES;
+	[self checkToroSend];
+}
 
-    _toro.sender = [[OtoroConnection sharedInstance] user].username;
-	[[OtoroConnection sharedInstance] createNewToro:_toro toReceivers:[[OtoroConnection sharedInstance] selectedFriends] completionBlock:^(NSError *error, NSDictionary *returnData) {
-		if (error) {
-			
-		} else {
-			[self.delegate friendListViewController:self didSendToro:self.toro];
-		}
-	}];
+- (void)imageDidFinishUpload:(UIImage *)image withKey:(NSString *)imageKey
+{
+	if (self.toro.image == image)
+	{
+		self.toro.imageKey = imageKey;
+		[self checkToroSend];
+	}
+}
+
+- (void)checkToroSend
+{
+	if (_toro.imageKey && self.userWantsSend)
+	{
+		NSLog(@"SENDING TORO");
+		_toro.sender = [[OtoroConnection sharedInstance] user].username;
+		[[OtoroConnection sharedInstance] createNewToro:_toro toReceivers:[[OtoroConnection sharedInstance] selectedFriends] completionBlock:^(NSError *error, NSDictionary *returnData) {
+			if (error) {
+				
+			} else {
+				[self.delegate friendListViewController:self didSendToro:self.toro];
+			}
+		}];
+	}
 }
 
 -(IBAction) addFriends:(id) sender {

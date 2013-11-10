@@ -39,6 +39,7 @@
 - (void)getBadgeCountWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 
 // toros
+- (void)uploadToroPhoto:(UIImage *)toroImage completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)createNewToro:(Toro*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllTorosSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;

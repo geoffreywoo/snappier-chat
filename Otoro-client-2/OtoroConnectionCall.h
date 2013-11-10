@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, OtoroConnectionAPIType)
     OtoroConnectionAPITypeGetBadgeCount,
     
     // toros
+	OtoroConnectionAPITypeUploadToroPhoto,
     OtoroConnectionAPITypeCreateToro,
     OtoroConnectionAPITypeGetReceivedToro,
     OtoroConnectionAPITypeGetSentToros,
@@ -43,5 +44,6 @@ typedef void (^OtoroConnectionCompletionBlock)(NSError *error, NSDictionary *ret
 @interface OtoroConnectionCall : NSObject
 @property (nonatomic, assign) OtoroConnectionAPIType apiType;
 @property (nonatomic, copy) OtoroConnectionCompletionBlock completionBlock;
+@property (nonatomic, strong) NSDictionary *userInfo;
 @property (nonatomic, strong) NSMutableData *data;
 @end

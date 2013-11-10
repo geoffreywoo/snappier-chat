@@ -140,17 +140,18 @@
 
 - (void) tick:(NSTimer*)timer
 {
-    Toro *toro = [timer userInfo];
-    [toro setElapsedTime: [toro elapsedTime] + 1];
-    if ([toro elapsedTime] < [toro maxTime]) {
-        [toro makeTimerLabel];
-        int timeLeft = ([toro maxTime] - [toro elapsedTime]);
-        [[[toro toroViewController] countDown] setText:[NSString stringWithFormat:@"%d",timeLeft]];
-    } else {
-        [timer invalidate];
-        [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
-        [self hideToro:toro];
-    }
+//	
+//    Toro *toro = [timer userInfo];
+//    [toro setElapsedTime: [toro elapsedTime] + 1];
+//    if ([toro elapsedTime] < [toro maxTime]) {
+//        [toro makeTimerLabel];
+//        int timeLeft = ([toro maxTime] - [toro elapsedTime]);
+//        [[[toro toroViewController] countDown] setText:[NSString stringWithFormat:@"%d",timeLeft]];
+//    } else {
+//        [timer invalidate];
+//        [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
+//        [self hideToro:toro];
+//    }
 }
 
 
@@ -177,7 +178,7 @@
         [self.view addSubview:[theToro toroViewController].view];
         
         [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:theToro repeats:YES]];
-        [[theToro timerLabel] setText:[NSString stringWithFormat:@"%d",[theToro maxTime]]];
+//        [[theToro timerLabel] setText:[NSString stringWithFormat:@"%d",[theToro maxTime]]];
         [theToro setRead: true];
         
         [[OtoroConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
@@ -194,7 +195,7 @@
                 }];
             }
         }];
-    } else if ([theToro elapsedTime] < [theToro maxTime]) {
+    } else if (YES) {// || [theToro elapsedTime] < [theToro maxTime]) {
         //NSLog(@"pop toro, elapsed: %i, max: %i", [theToro elapsedTime], [theToro maxTime]);
         [self.view addSubview:[theToro toroViewController].view];
     }
@@ -227,7 +228,8 @@
     OtoroReceivedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroReceivedTableViewCellIdentifier];
 
     cell.nameLabel.text = [NSString stringWithFormat:@"%@", [toro sender]];
-    NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro created_string]];
+    NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro stringForCreationDate]];
+	
     cell.timeLabel.text = timeLabelText;
     cell.accessoryType = UITableViewCellAccessoryNone;
     
@@ -266,11 +268,11 @@
     cell.accessoryType = UITableViewCellAccessoryNone;
 
     if ( [toro read] ) {
-        NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro created_string]];
+        NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro stringForCreationDate]];
         [timeLabelText appendString:@" - Opened"];
         cell.timeLabel.text = timeLabelText;
     } else {
-        NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro created_string]];
+        NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro stringForCreationDate]];
         [timeLabelText appendString:@" - Delivered"];
         cell.timeLabel.text = timeLabelText;
     }

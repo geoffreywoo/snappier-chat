@@ -13,35 +13,33 @@
 
 @interface Toro : NSObject
 
-@property (nonatomic, strong) NSString *toroId;
-@property (nonatomic, strong) NSURL *imageURL;
-@property (nonatomic, strong) UIImage *image;
-@property (nonatomic) float lat;
-@property (nonatomic) float lng;
-@property (nonatomic) bool read;
-@property (nonatomic, strong) NSString *message;
-@property (nonatomic, strong) OVenue *venue;
+@property (nonatomic, strong, readonly) NSString *toroId;
+@property (nonatomic, strong) NSString *imageKey;
+@property (nonatomic, strong, readonly) NSURL *imageURL;
+@property (nonatomic, strong, readonly) UIImage *image;
+@property (nonatomic, assign) bool read;
+@property (nonatomic, strong, readonly) NSString *message;
+@property (nonatomic, strong, readonly) OVenue *venue;
 @property (nonatomic, strong) NSString *receiver;
 @property (nonatomic, strong) NSString *sender;
-@property (nonatomic) double created;
-@property (nonatomic, strong) NSString *created_string;
+@property (nonatomic, strong, readonly) NSDate *createdDate;
+@property (nonatomic, assign, readonly) NSTimeInterval expireTimeInterval;
+@property (nonatomic, strong, readonly) NSDate *expireDate;
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UILabel *timerLabel;
 @property (nonatomic, strong) UIImageView *statusView;
 @property (nonatomic, strong) ToroViewController *toroViewController;
-@property (nonatomic) int elapsedTime;
-@property (nonatomic) int maxTime;
-
-@property(atomic) bool popped;
+@property(atomic, assign) BOOL popped;
 
 - (id)initWith:(NSDictionary *)dict;
-- (id)initOwnToroWithImage:(UIImage *)image message:(NSString*)message venue:(OVenue *)venue;
+- (id)initOwnToroWithImage:(UIImage *)image expireTimeSetting:(NSTimeInterval)expireTimeInterval message:(NSString*)message venue:(OVenue *)venue;
 - (id)update:(Toro*)toro;
 - (void)makeTimerLabel;
 - (BOOL)isEqual:(id)object;
 - (NSComparisonResult)compare:(Toro*)toro;
 - (void)print;
+- (NSString *)stringForCreationDate;
 
 
 @end

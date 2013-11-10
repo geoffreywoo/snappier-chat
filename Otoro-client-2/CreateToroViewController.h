@@ -24,6 +24,8 @@
     __weak IBOutlet UITextField *message;
 	__weak IBOutlet UIPickerView *_timeIntervalPicker;
 	__weak IBOutlet UIImageView *_savedImageView;
+	NSString *_savedImageKey;
+
 	__weak IBOutlet UIView *_bottomBackgroundView;
 }
 @property (nonatomic, strong) NSMutableData *responseData;

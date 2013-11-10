@@ -37,5 +37,6 @@
 -(IBAction) back:(id) sender;
 -(IBAction) addFriends:(id) sender;
 -(IBAction) send:(id) sender;
+-(void)imageDidFinishUpload:(UIImage *)image withKey:(NSString *)imageKey;
 
 @end

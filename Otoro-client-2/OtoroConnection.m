@@ -10,13 +10,12 @@
 #import "Toro.h"
 
 NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
+NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsites.net";
 
 @interface OtoroConnection ()<NSURLConnectionDelegate>
 {
     CFMutableDictionaryRef _connectionToCall;
 }
-
-
 
 @end
 
@@ -50,6 +49,15 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
     OtoroConnectionCall *call = [[OtoroConnectionCall alloc] init];
     call.apiType = apiType;
     call.completionBlock = block;
+    CFDictionaryAddValue(_connectionToCall, (__bridge const void *)(connection), (__bridge const void *)call);
+}
+
+- (void)addAPICall:(OtoroConnectionAPIType)apiType completionBlock:(OtoroConnectionCompletionBlock)block toConnection:(NSURLConnection *)connection userInfo:(NSDictionary *)userInfo
+{
+    OtoroConnectionCall *call = [[OtoroConnectionCall alloc] init];
+    call.apiType = apiType;
+    call.completionBlock = block;
+	call.userInfo = userInfo;
     CFDictionaryAddValue(_connectionToCall, (__bridge const void *)(connection), (__bridge const void *)call);
 }
 
@@ -154,9 +162,20 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
             error = [NSError errorWithDomain:[o objectForKey:@"error"] code:-1 userInfo:o];
             [self callForConnection:connection].completionBlock(error, nil);
         }
+	} else if (apiType == OtoroConnectionAPITypeUploadToroPhoto) {
+        NSDictionary *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (jsonToros && jsonToros[@"ok"])
+        {
+			OtoroConnectionCall *call = [self callForConnection:connection];
+			call.completionBlock(error, @{@"key":jsonToros[@"elements"][0], @"image":call.userInfo[@"image"]});
+        }
+        else
+        {
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
     } else if (apiType == OtoroConnectionAPITypeCreateToro) {
-        NSArray *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
-        if (jsonToros)
+        NSDictionary *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (jsonToros && [jsonToros[@"ok"] boolValue])
         {
             [self callForConnection:connection].completionBlock(error, @{@"toros":jsonToros});
         }
@@ -367,46 +386,49 @@ NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
 
 #pragma mark - Toros Endpoints
 
-- (void)createNewToro:(Toro*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block
+- (void)uploadToroPhoto:(UIImage *)toroImage completionBlock:(OtoroConnectionCompletionBlock)block
 {
-	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-	dictionary[@"sender"] = toro.sender;
-	if (toro.message)
-	{
-		dictionary[@"message"] = toro.message;
-	}
-
 	NSString *boundary = @"0xsNaPpErSeRrIcEb0uNdArY";
 	
 	NSMutableData *body = [NSMutableData data];
 	[body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-	
-	for (NSString *key in dictionary.allKeys)
-	{
-		[body appendData:[[NSString stringWithFormat:@"Content-Disposition:form-data; name=\"%@\"\r\n\r\n%@\r\n--%@\r\n", key, dictionary[key], boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-	}
-
-	// receivers
-	for (OUser *user in users)
-	{
-		[body appendData:[[NSString stringWithFormat:@"Content-Disposition:form-data; name=\"receivers\"\r\n\r\n%@\r\n--%@\r\n", user.username, boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-	}
+//	
+//	for (NSString *key in dictionary.allKeys)
+//	{
+//		[body appendData:[[NSString stringWithFormat:@"Content-Disposition:form-data; name=\"%@\"\r\n\r\n%@\r\n--%@\r\n", key, dictionary[key], boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+//	}
+//
+//	// receivers
+//	for (OUser *user in users)
+//	{
+//		[body appendData:[[NSString stringWithFormat:@"Content-Disposition:form-data; name=\"receivers\"\r\n\r\n%@\r\n--%@\r\n", user.username, boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+//	}
 	
 	// image
-	[body appendData:[@"Content-Disposition:form-data; name=\"image\"; filename=\"picture.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-	[body appendData:UIImageJPEGRepresentation(toro.image, 1.0)];
+	[body appendData:[@"Content-Disposition:form-data; name=\"pic\"; filename=\"picture.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:UIImageJPEGRepresentation(toroImage, 1.0)];
 	[body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 	
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-									[NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/new", OTORO_HOST]]];
+									[NSURL URLWithString:[NSString stringWithFormat:@"%@/upload", IMAGE_SERVICE_HOST]]];
     
     [request setHTTPMethod:@"POST"];
-    [request setValue:[NSString stringWithFormat:@"multipart/form-data;boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:body];
 	
-	
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-    [self addAPICall:OtoroConnectionAPITypeCreateToro completionBlock:block toConnection:connection];
+    [self addAPICall:OtoroConnectionAPITypeUploadToroPhoto completionBlock:block toConnection:connection userInfo:@{@"image":toroImage}];
+}
+
+- (void)createNewToro:(Toro*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block
+{
+	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+	dictionary[@"sender"] = toro.sender;
+	dictionary[@"duration"] = [NSNumber numberWithDouble: toro.expireTimeInterval];
+	if (toro.message)
+	{
+		dictionary[@"message"] = toro.message;
+	}
 }
 
 - (void)getAllTorosReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block
