@@ -42,13 +42,29 @@
     [super viewDidLoad];
     friendTableView.delegate = self;
     friendTableView.dataSource = self;
-    sendButton.hidden = YES;
+
+    _friends = [[OtoroConnection sharedInstance] friends];
+    [friendTableView reloadData];
+
+    [self hideSpinner];
+}
+
+- (void)hideSpinner
+{
+    spinner.hidden = YES;
+    spinnerLabel.hidden = YES;
+    [spinner stopAnimating];
+    [self toggleInstructionLabel];
+}
+
+- (void)showSpinner
+{
+    spinner.hidden = NO;
+    [spinner startAnimating];
+    spinnerLabel.hidden = NO;
     addFriendsLabel.hidden = YES;
     selectFriendsLabel.hidden = YES;
     addVenueOrMessageLabel.hidden = YES;
-    
-    _friends = [[OtoroConnection sharedInstance] friends];
-    [friendTableView reloadData];
 }
 
 - (void)toggleInstructionLabel
@@ -69,6 +85,7 @@
         selectFriendsLabel.hidden = NO;
         addVenueOrMessageLabel.hidden = YES;
     }
+
 }
 
 - (void)checkSendButton {
@@ -130,7 +147,7 @@
 
 - (IBAction)send:(id) sender {
     NSLog(@"send tapped");
-#warning TODO: spinner
+    [self showSpinner];
 	self.userWantsSend = YES;
 	[self checkToroSend];
 }
@@ -151,6 +168,7 @@
 		NSLog(@"SENDING TORO");
 		_toro.sender = [[OtoroConnection sharedInstance] user].username;
 		[[OtoroConnection sharedInstance] createNewToro:_toro toReceivers:[[OtoroConnection sharedInstance] selectedFriends] completionBlock:^(NSError *error, NSDictionary *returnData) {
+            [self hideSpinner];
 			if (error) {
 				NSLog(@"send error");
                 [self.delegate friendListViewController:self didSendToro:self.toro];

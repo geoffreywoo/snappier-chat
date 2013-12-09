@@ -26,6 +26,10 @@
     IBOutlet UILabel *selectFriendsLabel;
     IBOutlet UILabel *addVenueOrMessageLabel;
     IBOutlet UITableView *friendTableView;
+    
+    IBOutlet UILabel *spinnerLabel;
+    IBOutlet UIActivityIndicatorView  *spinner;
+    
 }
 @property (nonatomic, strong) AddFriendsViewController *addFriendsViewController;
 @property (nonatomic, strong) NSMutableArray *friends;

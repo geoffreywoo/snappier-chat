@@ -271,6 +271,9 @@
 + (UIImage*)imageWithImage:(UIImage*)image
               scaledToSize:(CGSize)newSize;
 {
+    
+    
+    
     UIGraphicsBeginImageContext( newSize );
     [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -289,13 +292,16 @@
 		savedImage = [UIImage imageWithCGImage:savedImage.CGImage scale:savedImage.scale orientation:UIImageOrientationLeftMirrored];
 	}
     
-    CGSize resizedSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+    CGFloat scaledWidth = self.view.frame.size.height /savedImage.size.height * savedImage.size.width;
+    
+    CGSize resizedSize = CGSizeMake(scaledWidth, self.view.frame.size.height);
     UIImage *resizedImage = [CreateToroViewController imageWithImage:savedImage scaledToSize:resizedSize];
 	
 	_savedImageView.image = resizedImage;
-	_savedImageView.center = self.view.center;
-	_savedImageKey = nil;
-	
+    _savedImageView.frame = CGRectMake(0, 0, scaledWidth, self.view.frame.size.height);
+    _savedImageView.center = self.view.center;
+    _savedImageKey = nil;
+    
 	[self uploadSavedImage];
 	
 	[self changeModes:NO];
