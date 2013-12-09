@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>951BD71B-C434-4F49-B5D0-CB85F5B78F48</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PufferChat</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F98A2407-C6B7-4AA0-A510-251D5F77C9CC</key>
+		<string>https://github.com/geoffreywoo/snappier-chat.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PufferChat.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F98A2407-C6B7-4AA0-A510-251D5F77C9CC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/geoffreywoo/snappier-chat.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F98A2407-C6B7-4AA0-A510-251D5F77C9CC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F98A2407-C6B7-4AA0-A510-251D5F77C9CC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>snappier-chat</string>
+		</dict>
+	</array>
+</dict>
+</plist>
