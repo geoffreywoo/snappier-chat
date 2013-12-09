@@ -34,6 +34,7 @@
 
 -(IBAction) backButton:(id) sender;
 -(IBAction) sendToroButton:(id) sender;
-
++ (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
 
 @end

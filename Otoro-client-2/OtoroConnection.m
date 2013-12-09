@@ -10,7 +10,7 @@
 #import "Toro.h"
 
 NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
-NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsites.net";
+NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 
 @interface OtoroConnection ()<NSURLConnectionDelegate>
 {
@@ -485,7 +485,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
     [self addAPICall:OtoroConnectionAPITypeCreateToro completionBlock:block toConnection:connection];
 }
 
-- (void)getAllTorosReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block
+- (void)getAllPuffersReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:
                              [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/received/%@", OTORO_HOST, self.user.username]]];
@@ -494,7 +494,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
     [self addAPICall:OtoroConnectionAPITypeGetReceivedToro completionBlock:block toConnection:connection];
 }
 
-- (void)getAllTorosSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block
+- (void)getAllPuffersSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:
                              [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/sent/%@", OTORO_HOST, self.user.username]]];
@@ -503,10 +503,10 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-image-service.azurewebsite
     [self addAPICall:OtoroConnectionAPITypeGetSentToros completionBlock:block toConnection:connection];
 }
 
-- (void)getAllTorosWithCompletionBlock:(OtoroConnectionCompletionBlock)block
+- (void)getAllPuffersWithCompletionBlock:(OtoroConnectionCompletionBlock)block
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/toros/%@", OTORO_HOST, self.user.username]]];
+                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/%@", OTORO_HOST, self.user.username]]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeGetAllToros completionBlock:block toConnection:connection];

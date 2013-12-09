@@ -129,6 +129,7 @@
 }
 
 - (IBAction)send:(id) sender {
+    NSLog(@"send tapped");
 #warning TODO: spinner
 	self.userWantsSend = YES;
 	[self checkToroSend];
@@ -151,8 +152,10 @@
 		_toro.sender = [[OtoroConnection sharedInstance] user].username;
 		[[OtoroConnection sharedInstance] createNewToro:_toro toReceivers:[[OtoroConnection sharedInstance] selectedFriends] completionBlock:^(NSError *error, NSDictionary *returnData) {
 			if (error) {
-				
+				NSLog(@"send error");
+                [self.delegate friendListViewController:self didSendToro:self.toro];
 			} else {
+                NSLog(@"send complete");
 				[self.delegate friendListViewController:self didSendToro:self.toro];
 			}
 		}];

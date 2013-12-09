@@ -103,7 +103,7 @@
 
 - (void) handleRefresh
 {   
-    [[OtoroConnection sharedInstance] getAllTorosWithCompletionBlock:^(NSError *error, NSDictionary *data)
+    [[OtoroConnection sharedInstance] getAllPuffersWithCompletionBlock:^(NSError *error, NSDictionary *data)
     {
         if (error)
         {

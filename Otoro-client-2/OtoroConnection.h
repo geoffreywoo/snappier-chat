@@ -41,9 +41,9 @@
 // toros
 - (void)uploadToroPhoto:(UIImage *)toroImage completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)createNewToro:(Toro*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block;
-- (void)getAllTorosReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
-- (void)getAllTorosSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
-- (void)getAllTorosWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)getAllPuffersReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)getAllPuffersSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)getAllPuffersWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)blurPhotoForToro:(Toro *)toro completionBlock:(OtoroConnectionCompletionBlock)block;
 

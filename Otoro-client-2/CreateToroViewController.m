@@ -222,6 +222,7 @@
 
 - (void)friendListViewController:(FriendListViewController *)viewController didSendToro:(Toro *)toro
 {
+    NSLog(@"friendListViewController didSendToro: %@",toro);
 	[self clearViewState];
 	[[self navigationController] popToRootViewControllerAnimated:YES];
 }
@@ -267,6 +268,17 @@
 	}
 }
 
++ (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
 	UIImage *savedImage = info[UIImagePickerControllerOriginalImage];
@@ -276,11 +288,11 @@
 		// mirror image
 		savedImage = [UIImage imageWithCGImage:savedImage.CGImage scale:savedImage.scale orientation:UIImageOrientationLeftMirrored];
 	}
+    
+    CGSize resizedSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+    UIImage *resizedImage = [CreateToroViewController imageWithImage:savedImage scaledToSize:resizedSize];
 	
-	CGFloat scaledWidth = self.view.frame.size.height /savedImage.size.height * savedImage.size.width;
-	
-	_savedImageView.image = savedImage;
-	_savedImageView.frame = CGRectMake(0, 0, scaledWidth, self.view.frame.size.height);
+	_savedImageView.image = resizedImage;
 	_savedImageView.center = self.view.center;
 	_savedImageKey = nil;
 	
