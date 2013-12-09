@@ -438,7 +438,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 	
 	// image
 	[body appendData:[@"Content-Disposition:form-data; name=\"pic\"; filename=\"picture.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-	[body appendData:UIImageJPEGRepresentation(toroImage, 1.0)];
+	[body appendData:UIImageJPEGRepresentation(toroImage, 0.7)];
 	[body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 	
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
