@@ -6,21 +6,21 @@
 //  Copyright (c) 2013 Stanford. All rights reserved.
 //
 
-#import "OtoroContentViewController.h"
+#import "PufferContentViewController.h"
 #import "ToroViewController.h"
 #import "Toro.h"
 #import "CreateToroViewController.h"
-#import "OtoroConnection.h"
+#import "PufferConnection.h"
 #import "OtoroSentTableViewCell.h"
 #import "OtoroReceivedTableViewCell.h"
 
-@interface OtoroContentViewController ()
+@interface PufferContentViewController ()
 
 @property (nonatomic, strong) NSMutableDictionary *toroTimers;
 
 @end
 
-@implementation OtoroContentViewController
+@implementation PufferContentViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,7 +73,7 @@
     [self handleRefresh];
     _pollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
     
-    [[OtoroConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
+    [[PufferConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
         } else {
             NSNumber* count = returnData[@"count"];
@@ -103,7 +103,7 @@
 
 - (void) handleRefresh
 {   
-    [[OtoroConnection sharedInstance] getAllPuffersWithCompletionBlock:^(NSError *error, NSDictionary *data)
+    [[PufferConnection sharedInstance] getAllPuffersWithCompletionBlock:^(NSError *error, NSDictionary *data)
     {
         if (error)
         {
@@ -155,7 +155,6 @@
 		[toro setTimer: [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(tick:) userInfo:toro repeats:NO]];
     } else {
         [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
-        [self hideToro:toro];
 		toro.timer = nil;
     }
 }
@@ -189,12 +188,12 @@
 		
         [theToro setRead: true];
         
-        [[OtoroConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
+        [[PufferConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
             if (error) {
             } else {
                 NSLog(@"set read flag on %@", theToro.toroId);
 
-                [[OtoroConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
+                [[PufferConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
                     if (error) {
                     } else {
                         NSNumber* count = returnData[@"count"];
@@ -291,7 +290,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Toro *o = [[self torosData] objectAtIndex:indexPath.row];
-    NSString *myName = [[OtoroConnection sharedInstance] user].username;
+    NSString *myName = [[PufferConnection sharedInstance] user].username;
     if ([o.sender isEqualToString:myName]) {
         return [self createSentCellWithTableView:tableView withToro:o withIndex:indexPath.row];
     } else {

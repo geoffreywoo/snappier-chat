@@ -7,7 +7,7 @@
 //
 
 #import "FriendListViewController.h"
-#import "OtoroConnection.h"
+#import "PufferConnection.h"
 #import "AddFriendsViewController.h"
 #import "OUser.h"
 
@@ -43,7 +43,7 @@
     friendTableView.delegate = self;
     friendTableView.dataSource = self;
 
-    _friends = [[OtoroConnection sharedInstance] friends];
+    _friends = [[PufferConnection sharedInstance] friends];
     [friendTableView reloadData];
 
     [self hideSpinner];
@@ -69,7 +69,7 @@
 
 - (void)toggleInstructionLabel
 {
-    if ([[[OtoroConnection sharedInstance] friends] count] == 0)
+    if ([[[PufferConnection sharedInstance] friends] count] == 0)
     {
         addFriendsLabel.hidden = NO;
         selectFriendsLabel.hidden = YES;
@@ -103,7 +103,7 @@
 }
 
 - (BOOL)sendable {
-    if (self.toroIsValid && [[[OtoroConnection sharedInstance] selectedFriends] count] > 0) {
+    if (self.toroIsValid && [[[PufferConnection sharedInstance] selectedFriends] count] > 0) {
         return YES;
     }
     return NO;
@@ -118,12 +118,12 @@
 {
 	[super viewWillAppear:animated];
 	
-    [[OtoroConnection sharedInstance] getAllFriendsWithCompletionBlock:^(NSError *error, NSDictionary *data){
+    [[PufferConnection sharedInstance] getAllFriendsWithCompletionBlock:^(NSError *error, NSDictionary *data){
         if (error) {
             
         } else {
             NSLog(@"loaded");
-            _friends = [[OtoroConnection sharedInstance] friends];
+            _friends = [[PufferConnection sharedInstance] friends];
             [friendTableView reloadData];
 			[self checkSendButton];
         }
@@ -166,8 +166,8 @@
 	if (_toro.imageKey && self.userWantsSend)
 	{
 		NSLog(@"SENDING TORO");
-		_toro.sender = [[OtoroConnection sharedInstance] user].username;
-		[[OtoroConnection sharedInstance] createNewToro:_toro toReceivers:[[OtoroConnection sharedInstance] selectedFriends] completionBlock:^(NSError *error, NSDictionary *returnData) {
+		_toro.sender = [[PufferConnection sharedInstance] user].username;
+		[[PufferConnection sharedInstance] createNewToro:_toro toReceivers:[[PufferConnection sharedInstance] selectedFriends] completionBlock:^(NSError *error, NSDictionary *returnData) {
             [self hideSpinner];
 			if (error) {
 				NSLog(@"send error");
@@ -259,7 +259,7 @@
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
 		
 		OUser *f = [[self friends] objectAtIndex:[indexPath row]];
-		[[[OtoroConnection sharedInstance] selectedFriends] addObject:f];
+		[[[PufferConnection sharedInstance] selectedFriends] addObject:f];
 		[self checkSendButton];
 	}
 }
@@ -269,7 +269,7 @@
     cell.accessoryType = UITableViewCellAccessoryNone;
     
     OUser *f = [[self friends] objectAtIndex:[indexPath row]];
-    [[[OtoroConnection sharedInstance] selectedFriends] removeObject:f];
+    [[[PufferConnection sharedInstance] selectedFriends] removeObject:f];
     [self checkSendButton];
 }
 

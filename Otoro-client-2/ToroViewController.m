@@ -44,9 +44,11 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"DISPLAYING:%@",_toro.imageURL);
     [super viewDidLoad];
 	
-	[self.imageView setImageWithURL:_toro.imageURL];
+    
+
 	
 //    [[self countDown] setText:[NSString stringWithFormat:@"%d",[[self toro] maxTime]]];
    
@@ -64,19 +66,13 @@
     [_venue setText:headerStr];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation
+- (void)viewDidAppear:(BOOL)animated
 {
-    if ([annotation isKindOfClass:[SnapperMapAnnotation class]]) {
-        NSString *annotationIdentifier = @"SnapperMapAnnotationView";
-		SnapperMapAnnotationView *annotationView = (SnapperMapAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
-		if (annotationView == nil) {
-		    annotationView = [[SnapperMapAnnotationView alloc] initWithAnnotation:annotation  reuseIdentifier:@"SnapperMapAnnotationView"];
-		}
-        annotationView.annotation = annotation;
-        return annotationView;
-	}
-    return nil;
+    NSLog(@"view did appear");
+    [self.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:_toro.imageURL]]];
+    [self.view bringSubviewToFront:self.imageView];
 }
+
 
 - (void)viewDidUnload
 {

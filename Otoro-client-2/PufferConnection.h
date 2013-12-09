@@ -12,7 +12,7 @@
 #import "OUser.h"
 #import "Toro.h"
 
-@interface OtoroConnection : NSObject
+@interface PufferConnection : NSObject
 
 // example usage:
 //
@@ -23,7 +23,7 @@
 //          returnData[@"toros"] ...
 // }];
 
-+ (OtoroConnection *)sharedInstance;
++ (PufferConnection *)sharedInstance;
 @property (nonatomic, strong) OUser *user;
 @property (nonatomic, strong) NSMutableArray *friends;
 @property (nonatomic, strong) NSMutableArray *selectedFriends;

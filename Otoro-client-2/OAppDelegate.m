@@ -8,8 +8,8 @@
 
 #import "OAppDelegate.h"
 #import "SplashViewController.h"
-#import "OtoroContentViewController.h"
-#import "OtoroConnection.h"
+#import "PufferContentViewController.h"
+#import "PufferConnection.h"
 
 @implementation OAppDelegate
 
@@ -40,9 +40,9 @@
 //		self.window.rootViewController = controller;
 
         OUser *me = [[OUser alloc] initFromNSDefaults];
-        [[OtoroConnection sharedInstance] setUser: me];
+        [[PufferConnection sharedInstance] setUser: me];
         
-        OtoroContentViewController *rootViewController = [[OtoroContentViewController alloc] init];
+        PufferContentViewController *rootViewController = [[PufferContentViewController alloc] init];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
         navigationController.navigationBarHidden = YES;
         self.window.rootViewController = navigationController;
@@ -71,7 +71,7 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
-    [[OtoroConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
+    [[PufferConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error)
         {
         }
@@ -115,7 +115,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:deviceTokenStr forKey:@"deviceToken"];
     NSString *username = [defaults objectForKey:@"username"];
-    [[OtoroConnection sharedInstance] registerDeviceToken:username withDeviceToken:deviceTokenStr completionBlock:^(NSError *error, NSDictionary *returnData) {
+    [[PufferConnection sharedInstance] registerDeviceToken:username withDeviceToken:deviceTokenStr completionBlock:^(NSError *error, NSDictionary *returnData) {
     }];
 }
 

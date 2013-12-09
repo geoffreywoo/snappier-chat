@@ -7,7 +7,7 @@
 //
 
 #import "CreateToroViewController.h"
-#import "OtoroConnection.h"
+#import "PufferConnection.h"
 #import "OtoroChooseVenueViewController.h"
 #import "SnapperMapAnnotation.h"
 #import <MobileCoreServices/UTCoreTypes.h>
@@ -310,7 +310,7 @@
 - (void)uploadSavedImage
 {
 	// pre-upload saved image
-	[[OtoroConnection sharedInstance] uploadToroPhoto:_savedImageView.image  completionBlock:^(NSError *error, NSDictionary *returnData) {
+	[[PufferConnection sharedInstance] uploadToroPhoto:_savedImageView.image  completionBlock:^(NSError *error, NSDictionary *returnData) {
 		if (error) {
 			
 		} else {

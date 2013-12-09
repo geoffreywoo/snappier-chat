@@ -7,8 +7,8 @@
 //
 
 #import "SplashViewController.h"
-#import "OtoroConnection.h"
-#import "OtoroContentViewController.h"
+#import "PufferConnection.h"
+#import "PufferContentViewController.h"
 #import "OAppDelegate.h"
 
 @interface SplashViewController ()
@@ -49,7 +49,7 @@
 -(IBAction) login:(id) sender {
     NSLog(@"login button hit");
     
-    [[OtoroConnection sharedInstance] loginWithUsername:usernameField.text password:passwordField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
+    [[PufferConnection sharedInstance] loginWithUsername:usernameField.text password:passwordField.text completionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
             NSLog(@"logged in response: %@",error);
             
@@ -67,7 +67,7 @@
         } else {
             NSLog(@"logged in response: %@",returnData);
             OUser *me = [[OUser alloc]initWith:[returnData objectForKey:@"user"] ];
-            [[OtoroConnection sharedInstance] setUser: me];
+            [[PufferConnection sharedInstance] setUser: me];
             
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject: [me username] forKey:@"username"];
@@ -75,7 +75,7 @@
             [defaults setObject: [me phone] forKey:@"phone"];
             [defaults synchronize];
             
-            OtoroContentViewController *rootViewController = [[OtoroContentViewController alloc] init];
+            PufferContentViewController *rootViewController = [[PufferContentViewController alloc] init];
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
             navigationController.navigationBarHidden = YES;
             

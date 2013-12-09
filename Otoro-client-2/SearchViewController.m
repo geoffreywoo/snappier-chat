@@ -7,7 +7,7 @@
 //
 
 #import "SearchViewController.h"
-#import "OtoroConnection.h"
+#import "PufferConnection.h"
 
 @interface SearchViewController ()
 
@@ -129,7 +129,7 @@
     // If you want to push another view upon tapping one of the cells on your table.
     if (isSearching && [filteredList count]) {
         //If the user is searching, use the list in our filteredList array.
-        [[OtoroConnection sharedInstance] addFriendWithUserID:[filteredList objectAtIndex:indexPath.row] completionBlock:^(NSError *error, NSDictionary *returnData) {
+        [[PufferConnection sharedInstance] addFriendWithUserID:[filteredList objectAtIndex:indexPath.row] completionBlock:^(NSError *error, NSDictionary *returnData) {
             if (error) {
                 NSLog(@"Error: %@",error);
                 [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;

@@ -58,15 +58,15 @@
 		60CE1C8117AEDFE400C6249F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6817AEDFE400C6249F /* Foundation.framework */; };
 		60CE1C8917AEDFE400C6249F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60CE1C8717AEDFE400C6249F /* InfoPlist.strings */; };
 		60CE1C8C17AEDFE400C6249F /* Otoro_client_2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CE1C8B17AEDFE400C6249F /* Otoro_client_2Tests.m */; };
-		60CE1C9817AEE01B00C6249F /* OtoroContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */; };
-		60CE1C9917AEE01B00C6249F /* OtoroContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60CE1C9717AEE01B00C6249F /* OtoroContentViewController.xib */; };
+		60CE1C9817AEE01B00C6249F /* PufferContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CE1C9617AEE01B00C6249F /* PufferContentViewController.m */; };
+		60CE1C9917AEE01B00C6249F /* PufferContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60CE1C9717AEE01B00C6249F /* PufferContentViewController.xib */; };
 		60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */; };
 		60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */; };
 		60CE1CA017AF2DAB00C6249F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C9F17AF2DAB00C6249F /* MapKit.framework */; };
 		60E1C18318553C1D00167FA8 /* puffer120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E1C18018553C1D00167FA8 /* puffer120x120.png */; };
 		60E1C18418553C1D00167FA8 /* puffer80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E1C18118553C1D00167FA8 /* puffer80x80.png */; };
 		60E1C18518553C1D00167FA8 /* puffer58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E1C18218553C1D00167FA8 /* puffer58x58.png */; };
-		DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA81B17C01D43005418CB /* OtoroConnection.m */; };
+		DB9DA81C17C01D43005418CB /* PufferConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA81B17C01D43005418CB /* PufferConnection.m */; };
 		DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */; };
 		F485518118133B3700C146DA /* JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F485517E18133B3700C146DA /* JMImageCache.m */; };
 		F485518218133B3700C146DA /* UIImageView+JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F485518018133B3700C146DA /* UIImageView+JMImageCache.m */; };
@@ -180,9 +180,9 @@
 		60CE1C8817AEDFE400C6249F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		60CE1C8A17AEDFE400C6249F /* Otoro_client_2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Otoro_client_2Tests.h; sourceTree = "<group>"; };
 		60CE1C8B17AEDFE400C6249F /* Otoro_client_2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Otoro_client_2Tests.m; sourceTree = "<group>"; };
-		60CE1C9517AEE01B00C6249F /* OtoroContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroContentViewController.h; sourceTree = "<group>"; };
-		60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroContentViewController.m; sourceTree = "<group>"; };
-		60CE1C9717AEE01B00C6249F /* OtoroContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtoroContentViewController.xib; sourceTree = "<group>"; };
+		60CE1C9517AEE01B00C6249F /* PufferContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PufferContentViewController.h; sourceTree = "<group>"; };
+		60CE1C9617AEE01B00C6249F /* PufferContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PufferContentViewController.m; sourceTree = "<group>"; };
+		60CE1C9717AEE01B00C6249F /* PufferContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PufferContentViewController.xib; sourceTree = "<group>"; };
 		60CE1C9A17AF2D3E00C6249F /* ToroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToroViewController.h; sourceTree = "<group>"; };
 		60CE1C9B17AF2D3E00C6249F /* ToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToroViewController.m; sourceTree = "<group>"; };
 		60CE1C9C17AF2D3F00C6249F /* ToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToroViewController.xib; sourceTree = "<group>"; };
@@ -190,8 +190,8 @@
 		60E1C18018553C1D00167FA8 /* puffer120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puffer120x120.png; sourceTree = "<group>"; };
 		60E1C18118553C1D00167FA8 /* puffer80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puffer80x80.png; sourceTree = "<group>"; };
 		60E1C18218553C1D00167FA8 /* puffer58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puffer58x58.png; sourceTree = "<group>"; };
-		DB9DA81A17C01D43005418CB /* OtoroConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroConnection.h; sourceTree = "<group>"; };
-		DB9DA81B17C01D43005418CB /* OtoroConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroConnection.m; sourceTree = "<group>"; };
+		DB9DA81A17C01D43005418CB /* PufferConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PufferConnection.h; sourceTree = "<group>"; };
+		DB9DA81B17C01D43005418CB /* PufferConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PufferConnection.m; sourceTree = "<group>"; };
 		DB9DA81F17C02AB9005418CB /* OtoroConnectionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroConnectionCall.h; sourceTree = "<group>"; };
 		DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroConnectionCall.m; sourceTree = "<group>"; };
 		F485517D18133B3700C146DA /* JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMImageCache.h; sourceTree = "<group>"; };
@@ -305,8 +305,8 @@
 				F485518018133B3700C146DA /* UIImageView+JMImageCache.m */,
 				DB9DA81F17C02AB9005418CB /* OtoroConnectionCall.h */,
 				DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */,
-				DB9DA81A17C01D43005418CB /* OtoroConnection.h */,
-				DB9DA81B17C01D43005418CB /* OtoroConnection.m */,
+				DB9DA81A17C01D43005418CB /* PufferConnection.h */,
+				DB9DA81B17C01D43005418CB /* PufferConnection.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -420,9 +420,9 @@
 			children = (
 				60CE1C7517AEDFE400C6249F /* OAppDelegate.h */,
 				60CE1C7617AEDFE400C6249F /* OAppDelegate.m */,
-				60CE1C9517AEE01B00C6249F /* OtoroContentViewController.h */,
-				60CE1C9617AEE01B00C6249F /* OtoroContentViewController.m */,
-				60CE1C9717AEE01B00C6249F /* OtoroContentViewController.xib */,
+				60CE1C9517AEE01B00C6249F /* PufferContentViewController.h */,
+				60CE1C9617AEE01B00C6249F /* PufferContentViewController.m */,
+				60CE1C9717AEE01B00C6249F /* PufferContentViewController.xib */,
 				608EF30017DBF6B50040B0B2 /* OtoroTableViewCells */,
 				602A4D0317C16555007DEF27 /* Networking */,
 				602A4CEB17C03D1D007DEF27 /* Login and Registration */,
@@ -575,7 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60CE1C7117AEDFE400C6249F /* InfoPlist.strings in Resources */,
-				60CE1C9917AEE01B00C6249F /* OtoroContentViewController.xib in Resources */,
+				60CE1C9917AEE01B00C6249F /* PufferContentViewController.xib in Resources */,
 				60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */,
 				609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */,
 				602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */,
@@ -660,10 +660,10 @@
 			files = (
 				60CE1C7317AEDFE400C6249F /* main.m in Sources */,
 				60CE1C7717AEDFE400C6249F /* OAppDelegate.m in Sources */,
-				60CE1C9817AEE01B00C6249F /* OtoroContentViewController.m in Sources */,
+				60CE1C9817AEE01B00C6249F /* PufferContentViewController.m in Sources */,
 				60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */,
 				6097D9DF17B34A0100EC094E /* Toro.m in Sources */,
-				DB9DA81C17C01D43005418CB /* OtoroConnection.m in Sources */,
+				DB9DA81C17C01D43005418CB /* PufferConnection.m in Sources */,
 				609227D417B84CA100E1D897 /* CreateToroViewController.m in Sources */,
 				DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */,
 				F485518218133B3700C146DA /* UIImageView+JMImageCache.m in Sources */,

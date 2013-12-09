@@ -10,7 +10,7 @@
 #import "CreateToroViewController.h"
 #import "SettingsViewController.h"
 
-@interface OtoroContentViewController : UIViewController
+@interface PufferContentViewController : UIViewController
 {
     IBOutlet UITableView *toroTableView;
 }

@@ -7,7 +7,7 @@
 //
 
 #import "AddressBookViewController.h"
-#import "OtoroConnection.h"
+#import "PufferConnection.h"
 #import <AddressBook/AddressBook.h>
 
 @interface AddressBookViewController ()
@@ -46,7 +46,7 @@ ABAddressBookRef addressBook;
     NSNumber *unixTimestamp = [NSNumber numberWithInt:ti];
     
     NSLog(@"contacts: %@",contacts);
-    [[OtoroConnection sharedInstance] uploadAddressBookOf:[[[OtoroConnection sharedInstance] user] username] atTime:unixTimestamp addressBook:contacts completionBlock:^(NSError *error, NSDictionary *data) {
+    [[PufferConnection sharedInstance] uploadAddressBookOf:[[[PufferConnection sharedInstance] user] username] atTime:unixTimestamp addressBook:contacts completionBlock:^(NSError *error, NSDictionary *data) {
         if (error) {
             NSLog(@"address upload error: %@",error);
         } else {
@@ -71,7 +71,7 @@ ABAddressBookRef addressBook;
     
 	NSString *loggedInUserName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     _addressBookUsers = [[NSMutableArray alloc] init];
-    [[OtoroConnection sharedInstance] getFriendMatchesWithPhones:allPhones emails:allEmails completionBlock:^(NSError *error, NSDictionary *data) {
+    [[PufferConnection sharedInstance] getFriendMatchesWithPhones:allPhones emails:allEmails completionBlock:^(NSError *error, NSDictionary *data) {
         if (error) {
         } else {
             NSArray *users = [data objectForKey:@"users"];
@@ -310,7 +310,7 @@ ABAddressBookRef addressBook;
 
 - (void) toggleFriend:(NSString *)userName inCell:(UITableViewCell*)cell
 {
-    [[OtoroConnection sharedInstance] addFriendWithUserID:userName completionBlock:^(NSError *error, NSDictionary *returnData) {
+    [[PufferConnection sharedInstance] addFriendWithUserID:userName completionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
             NSLog(@"Error: %@",error);
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Adding friend failed"
@@ -355,7 +355,7 @@ ABAddressBookRef addressBook;
     cell.textLabel.text = [NSString stringWithFormat:@"%@", userName];
     OUser *testUser = [[OUser alloc] initWithUsername:userName];
     
-    if ([[[OtoroConnection sharedInstance] friends] containsObject:testUser]) {
+    if ([[[PufferConnection sharedInstance] friends] containsObject:testUser]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -370,7 +370,7 @@ ABAddressBookRef addressBook;
     
     NSString *userName = [[self addressBookUsers] objectAtIndex:indexPath.row];
     OUser *testUser = [[OUser alloc] initWithUsername:userName];
-    if (![[[OtoroConnection sharedInstance] friends] containsObject:testUser]) {
+    if (![[[PufferConnection sharedInstance] friends] containsObject:testUser]) {
         [self toggleFriend:userName inCell:cell];
     }
 }

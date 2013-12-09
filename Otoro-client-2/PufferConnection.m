@@ -6,28 +6,28 @@
 //  Copyright (c) 2013 Stanford. All rights reserved.
 //
 
-#import "OtoroConnection.h"
+#import "PufferConnection.h"
 #import "Toro.h"
 
 NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
 NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 
-@interface OtoroConnection ()<NSURLConnectionDelegate>
+@interface PufferConnection ()<NSURLConnectionDelegate>
 {
     CFMutableDictionaryRef _connectionToCall;
 }
 
 @end
 
-@implementation OtoroConnection
+@implementation PufferConnection
 
-+ (OtoroConnection *)sharedInstance
++ (PufferConnection *)sharedInstance
 {
-    static OtoroConnection *sharedInstance = nil;
+    static PufferConnection *sharedInstance = nil;
     static dispatch_once_t oncePredicate;
     
     dispatch_once(&oncePredicate, ^{
-        sharedInstance = [[OtoroConnection alloc] init];
+        sharedInstance = [[PufferConnection alloc] init];
     });
     
     return sharedInstance;
@@ -258,7 +258,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
             for (int i = 0; i < [friends count]; i++) {
                 
                 OUser *f = [[OUser alloc] initWithUsername:friends[i][@"user_id"]];
-                if ([[[OtoroConnection sharedInstance] selectedFriends] containsObject:f]) {
+                if ([[[PufferConnection sharedInstance] selectedFriends] containsObject:f]) {
                     f.selected = YES;
                 } else {
                     f.selected = NO;

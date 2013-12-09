@@ -9,7 +9,7 @@
 #import "SettingsViewController.h"
 #import "SplashViewController.h"
 #import "OAppDelegate.h"
-#import "OtoroConnection.h"
+#import "PufferConnection.h"
 
 @interface SettingsViewController ()<UITextFieldDelegate>
 
@@ -60,10 +60,10 @@
     [defaults setObject: nil forKey:@"username"];
     [defaults synchronize];
     
-    [OtoroConnection sharedInstance].friends = [[NSMutableArray alloc] init];
-    [OtoroConnection sharedInstance].selectedFriends = [[NSMutableArray alloc] init];
+    [PufferConnection sharedInstance].friends = [[NSMutableArray alloc] init];
+    [PufferConnection sharedInstance].selectedFriends = [[NSMutableArray alloc] init];
     
-    [[OtoroConnection sharedInstance] logoutWithUsername:username completionBlock:^(NSError *error, NSDictionary *returnData) {
+    [[PufferConnection sharedInstance] logoutWithUsername:username completionBlock:^(NSError *error, NSDictionary *returnData) {
     }];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
@@ -93,7 +93,7 @@
     if (self.phoneTextField.text == nil)
         self.phoneTextField.text = @"";
 	
-	[[OtoroConnection sharedInstance] updateUserEmail:self.emailTextField.text phone:self.phoneTextField.text completionBlock:^(NSError *error, NSDictionary *dict)
+	[[PufferConnection sharedInstance] updateUserEmail:self.emailTextField.text phone:self.phoneTextField.text completionBlock:^(NSError *error, NSDictionary *dict)
 	 {
 		 if (error)
 		 {
@@ -102,8 +102,8 @@
 		 }
 		 else
 		 {
-			 [OtoroConnection sharedInstance].user.phone = self.phoneTextField.text;
-			 [OtoroConnection sharedInstance].user.email = self.emailTextField.text;
+			 [PufferConnection sharedInstance].user.phone = self.phoneTextField.text;
+			 [PufferConnection sharedInstance].user.email = self.emailTextField.text;
 			 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
 			 [defaults setObject:self.emailTextField.text forKey:@"email"];

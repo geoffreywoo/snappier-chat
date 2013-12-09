@@ -16,9 +16,7 @@ const int MAX_TIME = 15;
     self = [super init];
     if (self) {
         _toroId = [dict objectForKey:@"_id"];
-		_imageURL = [NSURL URLWithString:dict[@"image"]];
-#warning TODO: remove this
-		_imageURL = [NSURL URLWithString:@"http://snappermap.blob.core.windows.net/test/SxmUjhVMYD"];
+        _imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.pufferchat.com/img/%@",dict[@"image"]]];
         _read = [[dict objectForKey:@"read"] boolValue];
         _receiver = [dict objectForKey:@"receiver"];
         _sender = [dict objectForKey:@"sender"];
@@ -66,7 +64,7 @@ const int MAX_TIME = 15;
 	NSInteger minutesLeft = ceil([self.expireDate timeIntervalSinceNow]/60);
 	if (minutesLeft > 0)
 	{
-		[_timerLabel setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
+		[_timerLabel setText:[NSString stringWithFormat:@"%d min left",minutesLeft]];
 	}
 	else
 	{
