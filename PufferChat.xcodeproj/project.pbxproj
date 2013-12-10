@@ -46,7 +46,7 @@
 		609227D417B84CA100E1D897 /* CreateToroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 609227D317B84CA100E1D897 /* CreateToroViewController.m */; };
 		609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609227D517B84CC100E1D897 /* CreateToroViewController.xib */; };
 		609227D817B8538C00E1D897 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609227D717B8538C00E1D897 /* CoreLocation.framework */; };
-		6097D9DF17B34A0100EC094E /* Toro.m in Sources */ = {isa = PBXBuildFile; fileRef = 6097D9DE17B34A0100EC094E /* Toro.m */; };
+		6097D9DF17B34A0100EC094E /* Puffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6097D9DE17B34A0100EC094E /* Puffer.m */; };
 		60CE1C6717AEDFE400C6249F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6617AEDFE400C6249F /* UIKit.framework */; };
 		60CE1C6917AEDFE400C6249F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6817AEDFE400C6249F /* Foundation.framework */; };
 		60CE1C6B17AEDFE400C6249F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CE1C6A17AEDFE400C6249F /* CoreGraphics.framework */; };
@@ -162,8 +162,8 @@
 		609227D317B84CA100E1D897 /* CreateToroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateToroViewController.m; sourceTree = "<group>"; };
 		609227D517B84CC100E1D897 /* CreateToroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateToroViewController.xib; sourceTree = "<group>"; };
 		609227D717B8538C00E1D897 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		6097D9DD17B34A0100EC094E /* Toro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toro.h; sourceTree = "<group>"; };
-		6097D9DE17B34A0100EC094E /* Toro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toro.m; sourceTree = "<group>"; };
+		6097D9DD17B34A0100EC094E /* Puffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puffer.h; sourceTree = "<group>"; };
+		6097D9DE17B34A0100EC094E /* Puffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puffer.m; sourceTree = "<group>"; };
 		60CE1C6217AEDFE400C6249F /* PufferChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PufferChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CE1C6617AEDFE400C6249F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		60CE1C6817AEDFE400C6249F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -362,8 +362,8 @@
 		6097D9DC17B349E600EC094E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6097D9DD17B34A0100EC094E /* Toro.h */,
-				6097D9DE17B34A0100EC094E /* Toro.m */,
+				6097D9DD17B34A0100EC094E /* Puffer.h */,
+				6097D9DE17B34A0100EC094E /* Puffer.m */,
 				602A4CE817C03966007DEF27 /* OUser.h */,
 				602A4CE917C03966007DEF27 /* OUser.m */,
 				F4F9A53B17DBE1890027AE66 /* OVenue.h */,
@@ -662,7 +662,7 @@
 				60CE1C7717AEDFE400C6249F /* OAppDelegate.m in Sources */,
 				60CE1C9817AEE01B00C6249F /* PufferContentViewController.m in Sources */,
 				60CE1C9D17AF2D3F00C6249F /* ToroViewController.m in Sources */,
-				6097D9DF17B34A0100EC094E /* Toro.m in Sources */,
+				6097D9DF17B34A0100EC094E /* Puffer.m in Sources */,
 				DB9DA81C17C01D43005418CB /* PufferConnection.m in Sources */,
 				609227D417B84CA100E1D897 /* CreateToroViewController.m in Sources */,
 				DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */,

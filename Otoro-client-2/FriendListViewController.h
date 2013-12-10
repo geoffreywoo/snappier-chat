@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Toro.h"
+#import "Puffer.h"
 #import "AddFriendsViewController.h"
 
 @class FriendListViewController;
 @protocol FriendListViewControllerDelegate <NSObject>
-- (void)friendListViewController:(FriendListViewController *)viewController didSendToro:(Toro *)toro;
+- (void)friendListViewController:(FriendListViewController *)viewController didSendToro:(Puffer *)toro;
 @end
 
 @interface FriendListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
@@ -33,10 +33,10 @@
 }
 @property (nonatomic, strong) AddFriendsViewController *addFriendsViewController;
 @property (nonatomic, strong) NSMutableArray *friends;
-@property (nonatomic, strong) Toro *toro;
+@property (nonatomic, strong) Puffer *toro;
 @property (nonatomic, weak) id<FriendListViewControllerDelegate>delegate;
 
--(id)initWithToro: (Toro*)toro delegate:(id<FriendListViewControllerDelegate>)delegate;
+-(id)initWithToro: (Puffer*)toro delegate:(id<FriendListViewControllerDelegate>)delegate;
 
 -(IBAction) back:(id) sender;
 -(IBAction) addFriends:(id) sender;

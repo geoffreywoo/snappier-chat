@@ -7,7 +7,7 @@
 //
 
 #import "ToroViewController.h"
-#import "Toro.h"
+#import "Puffer.h"
 #import "SnapperMapAnnotation.h"
 #import "SnapperMapAnnotationView.h"
 #import "UIImageView+JMImageCache.h"
@@ -23,11 +23,12 @@
     return self;
 }
 
-- (id)initWithToro:(Toro *)toro
+- (id)initWithToro:(Puffer *)toro
 {
     self = [super initWithNibName: @"ToroViewController" bundle: nil];
     if (self) {
         _toro = toro;
+        
     }
     return self;
 }
@@ -47,7 +48,7 @@
     NSLog(@"DISPLAYING:%@",_toro.imageURL);
     [super viewDidLoad];
 	
-    
+    [self.imageView setImage:[UIImage imageWithData:_toro.imageData]];
 
 	
 //    [[self countDown] setText:[NSString stringWithFormat:@"%d",[[self toro] maxTime]]];
@@ -69,8 +70,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"view did appear");
-    [self.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:_toro.imageURL]]];
-    [self.view bringSubviewToFront:self.imageView];
+
 }
 
 

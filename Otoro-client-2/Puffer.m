@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Stanford. All rights reserved.
 //
 
-#import "Toro.h"
+#import "Puffer.h"
 
-@implementation Toro
+@implementation Puffer
 
 const int MAX_TIME = 15;
 
@@ -17,12 +17,16 @@ const int MAX_TIME = 15;
     if (self) {
         _toroId = [dict objectForKey:@"_id"];
         _imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.pufferchat.com/img/%@",dict[@"image"]]];
+     
+        // need cache for this instead of poll every time
+        // _imageData = [NSData dataWithContentsOfURL:_imageURL];
+        
         _read = [[dict objectForKey:@"read"] boolValue];
         _receiver = [dict objectForKey:@"receiver"];
         _sender = [dict objectForKey:@"sender"];
         _message = [dict objectForKey:@"message"];
 		_expireTimeInterval = [dict[@"duration"] doubleValue];
-		NSLog(@"%f expire time ", _expireTimeInterval);
+		//NSLog(@"%f expire time ", _expireTimeInterval);
       
         _popped = false;
         
@@ -52,7 +56,7 @@ const int MAX_TIME = 15;
     return self;
 }
 
-- (id) update:(Toro*)toro {
+- (id) update:(Puffer*)toro {
     _read = [toro read];
     return self;
 }
@@ -94,11 +98,11 @@ const int MAX_TIME = 15;
     if (![object isKindOfClass:self.class]) {
         return NO;
     }
-    Toro* other = object;
+    Puffer* other = object;
     return [self.toroId isEqualToString:other.toroId];
 }
 
-- (NSComparisonResult)compare:(Toro*)toro {
+- (NSComparisonResult)compare:(Puffer*)toro {
 	return [self.createdDate compare:toro.createdDate];
 }
 

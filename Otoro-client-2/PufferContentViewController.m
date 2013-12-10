@@ -8,7 +8,7 @@
 
 #import "PufferContentViewController.h"
 #import "ToroViewController.h"
-#import "Toro.h"
+#import "Puffer.h"
 #import "CreateToroViewController.h"
 #import "PufferConnection.h"
 #import "OtoroSentTableViewCell.h"
@@ -88,11 +88,11 @@
 }
 
 
-- (Toro *)getToro:(NSString *) toroID fromCollection:(NSArray*)toroCollection
+- (Puffer *)getToro:(NSString *) toroID fromCollection:(NSArray*)toroCollection
 {
-    Toro *theToro = nil;
+    Puffer *theToro = nil;
     for (int i = 0; i < [toroCollection count]; i++) {
-        Toro *toro = [toroCollection objectAtIndex:i];
+        Puffer *toro = [toroCollection objectAtIndex:i];
         if ([[toro toroId] isEqualToString:toroID]) {
             theToro = toro;
             break;
@@ -112,16 +112,18 @@
         else
         {
             for (int i = 0; i < [data[@"elements"] count]; i++) {
-                Toro *toro = [[Toro alloc] initWith:data[@"elements"][i]];
+                Puffer *toro = [[Puffer alloc] initWith:data[@"elements"][i]];
                 if (![_torosReceived containsObject:toro]) {
                     [_torosReceived addObject:toro];
+
                     [toro print];
                 } else {
-                    Toro *toroToUpdate = [self getToro:[toro toroId] fromCollection:_torosReceived];
+                    Puffer *toroToUpdate = [self getToro:[toro toroId] fromCollection:_torosReceived];
                     [toroToUpdate update:toro];
                 }
             }
-            _torosData = [_torosReceived sortedArrayUsingSelector:@selector(compare:)];
+            _torosData = [[[_torosReceived sortedArrayUsingSelector:@selector(compare:)] reverseObjectEnumerator] allObjects];
+           //  _torosData = [_torosReceived sortedArrayUsingSelector:@selector(compare:)];
             [toroTableView reloadData];
             [self.refreshControl endRefreshing];
         }
@@ -147,7 +149,7 @@
 
 - (void) tick:(NSTimer*)timer
 {
-    Toro *toro = [timer userInfo];
+    Puffer *toro = [timer userInfo];
 	NSInteger minutesLeft = ceil([toro.expireDate timeIntervalSinceNow]/60);
     if (minutesLeft > 0) {
         [toro makeTimerLabel];
@@ -167,7 +169,7 @@
 - (void) popToro:(UIButton*)sender
 {
     NSLog(@"pop toro!");
-    Toro *theToro = [[self torosData] objectAtIndex:sender.tag];
+    Puffer *theToro = [[self torosData] objectAtIndex:sender.tag];
     if (!theToro) return;
     
     if([theToro popped]) return;
@@ -176,7 +178,13 @@
     NSLog(@"pop toro %@ went through.", [theToro toroId]);
     
     [theToro.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
-	
+    
+//#TODO cache this
+	if (theToro.imageData == nil) {
+        theToro.imageData = [NSData dataWithContentsOfURL:theToro.imageURL];
+    }
+    
+    
 	if (!theToro.timer)
 	{
         [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(tick:) userInfo:theToro repeats:NO]];
@@ -213,7 +221,7 @@
 - (void) hideToroFromButton:(UIButton*)sender
 {
 
-    Toro *theToro = [[self torosData] objectAtIndex:sender.tag];
+    Puffer *theToro = [[self torosData] objectAtIndex:sender.tag];
     [self hideToro:theToro];
    // if (!theToro) return;
   //  if (![theToro toroViewController]) return;
@@ -221,7 +229,7 @@
 
 }
 
-- (void)hideToro:(Toro*)toro
+- (void)hideToro:(Puffer*)toro
 {
     NSLog(@"hide Toro!");
     if(![toro popped]) return;
@@ -232,7 +240,7 @@
 }
 
 
-- (UITableViewCell *) createReceivedCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
+- (UITableViewCell *) createReceivedCellWithTableView:(UITableView*)tableView withToro:(Puffer*)toro withIndex:(NSUInteger) index
 {
     OtoroReceivedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroReceivedTableViewCellIdentifier];
 
@@ -268,7 +276,7 @@
     return cell;
 }
 
-- (UITableViewCell *) createSentCellWithTableView:(UITableView*)tableView withToro:(Toro*)toro withIndex:(NSUInteger) index
+- (UITableViewCell *) createSentCellWithTableView:(UITableView*)tableView withToro:(Puffer*)toro withIndex:(NSUInteger) index
 {
     OtoroSentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kOtoroSentTableViewCellIdentifier];
     cell.nameLabel.text = [toro receiver];
@@ -289,7 +297,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Toro *o = [[self torosData] objectAtIndex:indexPath.row];
+    Puffer *o = [[self torosData] objectAtIndex:indexPath.row];
     NSString *myName = [[PufferConnection sharedInstance] user].username;
     if ([o.sender isEqualToString:myName]) {
         return [self createSentCellWithTableView:tableView withToro:o withIndex:indexPath.row];

@@ -7,7 +7,7 @@
 //
 
 #import "PufferConnection.h"
-#import "Toro.h"
+#import "Puffer.h"
 
 NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
 NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
@@ -452,7 +452,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
     [self addAPICall:OtoroConnectionAPITypeUploadToroPhoto completionBlock:block toConnection:connection userInfo:@{@"image":toroImage}];
 }
 
-- (void)createNewToro:(Toro*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block
+- (void)createNewToro:(Puffer*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block
 {
 	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
 	dictionary[@"sender"] = toro.sender;
@@ -526,7 +526,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
     [self addAPICall:OtoroConnectionAPITypeSetToroRead completionBlock:block toConnection:connection];
 }
 
-- (void)blurPhotoForToro:(Toro *)toro completionBlock:(OtoroConnectionCompletionBlock)block
+- (void)blurPhotoForToro:(Puffer *)toro completionBlock:(OtoroConnectionCompletionBlock)block
 {
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@/blur/%@", IMAGE_SERVICE_HOST, toro.imageKey]]];

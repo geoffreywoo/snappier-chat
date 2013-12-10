@@ -26,7 +26,7 @@
     return self;
 }
 
--(id)initWithToro:(Toro*)toro delegate:(id<FriendListViewControllerDelegate>)delegate
+-(id)initWithToro:(Puffer*)toro delegate:(id<FriendListViewControllerDelegate>)delegate
 {
     self = [super initWithNibName:@"FriendListViewController" bundle:nil];
     if (self) {

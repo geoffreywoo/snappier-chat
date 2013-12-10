@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "OtoroConnectionCall.h"
 #import "OUser.h"
-#import "Toro.h"
+#import "Puffer.h"
 
 @interface PufferConnection : NSObject
 
@@ -40,12 +40,12 @@
 
 // toros
 - (void)uploadToroPhoto:(UIImage *)toroImage completionBlock:(OtoroConnectionCompletionBlock)block;
-- (void)createNewToro:(Toro*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)createNewToro:(Puffer*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllPuffersReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllPuffersSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllPuffersWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block;
-- (void)blurPhotoForToro:(Toro *)toro completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)blurPhotoForToro:(Puffer *)toro completionBlock:(OtoroConnectionCompletionBlock)block;
 
 // friends
 - (void)getAllFriendsWithCompletionBlock:(OtoroConnectionCompletionBlock)block;

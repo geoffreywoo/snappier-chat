@@ -210,7 +210,7 @@
 
 -(IBAction) sendToroButton:(id) sender
 {
-    Toro *toro = [[Toro alloc] initOwnToroWithImage:_savedImageView.image expireTimeSetting:self.duration message: message.text venue:self.venue];
+    Puffer *toro = [[Puffer alloc] initOwnToroWithImage:_savedImageView.image expireTimeSetting:self.duration message: message.text venue:self.venue];
 	toro.imageKey = _savedImageKey;
     _friendListViewController = nil;
     _friendListViewController = [[FriendListViewController alloc] initWithToro:toro delegate:self];
@@ -220,7 +220,7 @@
 
 #pragma mark - FriendListViewController
 
-- (void)friendListViewController:(FriendListViewController *)viewController didSendToro:(Toro *)toro
+- (void)friendListViewController:(FriendListViewController *)viewController didSendToro:(Puffer *)toro
 {
     NSLog(@"friendListViewController didSendToro: %@",toro);
 	[self clearViewState];

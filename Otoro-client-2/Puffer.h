@@ -11,11 +11,13 @@
 #import "OVenue.h"
 @class ToroViewController;
 
-@interface Toro : NSObject
+@interface Puffer : NSObject
 
 @property (nonatomic, strong, readonly) NSString *toroId;
 @property (nonatomic, strong) NSString *imageKey;
 @property (nonatomic, strong, readonly) NSURL *imageURL;
+@property (nonatomic, strong) NSData *imageData;
+
 @property (nonatomic, strong, readonly) UIImage *image;
 @property (nonatomic, assign) bool read;
 @property (nonatomic, strong, readonly) NSString *message;
@@ -34,10 +36,10 @@
 
 - (id)initWith:(NSDictionary *)dict;
 - (id)initOwnToroWithImage:(UIImage *)image expireTimeSetting:(NSTimeInterval)expireTimeInterval message:(NSString*)message venue:(OVenue *)venue;
-- (id)update:(Toro*)toro;
+- (id)update:(Puffer*)toro;
 - (void)makeTimerLabel;
 - (BOOL)isEqual:(id)object;
-- (NSComparisonResult)compare:(Toro*)toro;
+- (NSComparisonResult)compare:(Puffer*)toro;
 - (void)print;
 - (NSString *)stringForCreationDate;
 
