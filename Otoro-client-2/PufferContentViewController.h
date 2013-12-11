@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSTimer *pollTimer;
+@property (nonatomic, strong) NSTimer *timeLabelTimer;
+
 @property (nonatomic, strong) CreateToroViewController *createToroViewController;
 @property (nonatomic, strong) SettingsViewController *settingsViewController;
 

@@ -50,8 +50,12 @@
 	
     [self.imageView setImage:[UIImage imageWithData:_toro.imageData]];
 
-	
-//    [[self countDown] setText:[NSString stringWithFormat:@"%d",[[self toro] maxTime]]];
+    if ([_toro expired]) {
+        [_countDown setText:[NSString stringWithFormat:@"Expired"]];
+    } else {
+        NSInteger minutesLeft = ceil([_toro.expireDate timeIntervalSinceNow]/60);
+        [_countDown setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
+    }
    
     if (![[_toro message] isEqualToString:@""])
         [_message setText:[NSString stringWithFormat:@"%@",[_toro message]]];

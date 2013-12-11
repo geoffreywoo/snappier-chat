@@ -10,8 +10,6 @@
 
 @implementation Puffer
 
-const int MAX_TIME = 15;
-
 - (id)initWith:(NSDictionary *)dict {
     self = [super init];
     if (self) {
@@ -40,6 +38,7 @@ const int MAX_TIME = 15;
         _toroViewController = [[ToroViewController alloc] initWithToro:self];
         _timerLabel = [[UILabel alloc] init];
         [_timerLabel setText:[NSString stringWithFormat:@""]];
+        [self makeTimerLabel];
     }
     return self;
 }
@@ -69,10 +68,13 @@ const int MAX_TIME = 15;
 	if (minutesLeft > 0)
 	{
 		[_timerLabel setText:[NSString stringWithFormat:@"%d min left",minutesLeft]];
+        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
+        
 	}
 	else
 	{
 		[_timerLabel setText:@""];
+        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"Expired"]];
 	}
 //    if (!_read)
 //        [_timerLabel setText:[NSString stringWithFormat:@""]];
@@ -100,6 +102,12 @@ const int MAX_TIME = 15;
     }
     Puffer* other = object;
     return [self.toroId isEqualToString:other.toroId];
+}
+
+- (BOOL)expired {
+    NSComparisonResult result = [[NSDate date] compare:[self expireDate]];
+    if (result == -1) return NO;
+    return YES;
 }
 
 - (NSComparisonResult)compare:(Puffer*)toro {

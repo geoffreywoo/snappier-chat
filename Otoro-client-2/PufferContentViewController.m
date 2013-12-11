@@ -71,7 +71,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self handleRefresh];
-    _pollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
+    _pollTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
+    _timeLabelTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimerLabels) userInfo:nil repeats:YES];
     
     [[PufferConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
@@ -85,6 +86,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [_pollTimer invalidate];
+    [_timeLabelTimer invalidate];
 }
 
 
@@ -102,7 +104,8 @@
 }
 
 - (void) handleRefresh
-{   
+{
+    NSLog(@"handling refresh");
     [[PufferConnection sharedInstance] getAllPuffersWithCompletionBlock:^(NSError *error, NSDictionary *data)
     {
         if (error)
@@ -130,6 +133,16 @@
     }];
 }
 
+- (void) handleTimerLabels
+{
+    NSLog(@"handling timer labels");
+    for (Puffer *puffer in _torosData) {
+        [puffer makeTimerLabel];
+    }
+    [toroTableView reloadData];
+
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -145,20 +158,6 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"header";
-}
-
-- (void) tick:(NSTimer*)timer
-{
-    Puffer *toro = [timer userInfo];
-	NSInteger minutesLeft = ceil([toro.expireDate timeIntervalSinceNow]/60);
-    if (minutesLeft > 0) {
-        [toro makeTimerLabel];
-        [[[toro toroViewController] countDown] setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
-		[toro setTimer: [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(tick:) userInfo:toro repeats:NO]];
-    } else {
-        [[toro timerLabel] setText:[NSString stringWithFormat:@""]];
-		toro.timer = nil;
-    }
 }
 
 - (void) nothing:(UIButton*)sender
@@ -177,22 +176,14 @@
     
     NSLog(@"pop toro %@ went through.", [theToro toroId]);
     
-    [theToro.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
-    
-//#TODO cache this
+#warning TODO: cache this
 	if (theToro.imageData == nil) {
         theToro.imageData = [NSData dataWithContentsOfURL:theToro.imageURL];
     }
     
-    
-	if (!theToro.timer)
-	{
-        [theToro setTimer: [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(tick:) userInfo:theToro repeats:NO]];
-	}
-    
     if (![theToro read]) {
 		// very first tap, set the read flag
-        [self.view addSubview:[theToro toroViewController].view];
+
 		
         [theToro setRead: true];
         
@@ -210,12 +201,8 @@
                 }];
             }
         }];
-#warning TODO: check time
-    } else if (YES || [[NSDate date] compare:[theToro expireDate]] == NSOrderedAscending) {// || [theToro elapsedTime] < [theToro maxTime]) {
-		// subsequent tap, just open the view, don't need to update state
-        //NSLog(@"pop toro, elapsed: %i, max: %i", [theToro elapsedTime], [theToro maxTime]);
-        [self.view addSubview:[theToro toroViewController].view];
     }
+    [self.view addSubview:[theToro toroViewController].view];
 }
 
 - (void) hideToroFromButton:(UIButton*)sender
@@ -250,15 +237,13 @@
     cell.timeLabel.text = timeLabelText;
     cell.accessoryType = UITableViewCellAccessoryNone;
     
-    [toro setTimerLabel:cell.timerLabel];
-    [toro makeTimerLabel];
+    [cell.timerLabel setText:[toro timerLabel].text];
 
-    if ([toro read]) {
+    if ([toro expired]) {
         [cell.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
     } else {
         [cell.statusView setImage:[UIImage imageNamed: @"snappermap_inapp_icon_small.png"]];
     }
-    toro.statusView = cell.statusView;
     
     UIButton *button = [[UIButton alloc] init];
     button.tag = index;

@@ -28,7 +28,6 @@
 @property (nonatomic, assign, readonly) NSTimeInterval expireTimeInterval;
 @property (nonatomic, strong, readonly) NSDate *expireDate;
 
-@property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) UILabel *timerLabel;
 @property (nonatomic, strong) UIImageView *statusView;
 @property (nonatomic, strong) ToroViewController *toroViewController;
@@ -39,6 +38,7 @@
 - (id)update:(Puffer*)toro;
 - (void)makeTimerLabel;
 - (BOOL)isEqual:(id)object;
+- (BOOL)expired;
 - (NSComparisonResult)compare:(Puffer*)toro;
 - (void)print;
 - (NSString *)stringForCreationDate;
