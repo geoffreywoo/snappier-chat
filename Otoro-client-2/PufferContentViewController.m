@@ -221,11 +221,8 @@
 
 - (void)hideToro:(Puffer*)toro
 {
-    NSLog(@"hide Toro!");
     if(![toro popped]) return;
     [toro setPopped:false];
-    
-    NSLog(@"hide toro %@ went through.", [toro toroId]);
     [[toro toroViewController].view removeFromSuperview];
 }
 

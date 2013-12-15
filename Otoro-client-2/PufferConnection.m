@@ -10,6 +10,7 @@
 #import "Puffer.h"
 
 NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
+//NSString *const OTORO_HOST = @"http://otoro-staging.herokuapp.com";
 NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 
 @interface PufferConnection ()<NSURLConnectionDelegate>
@@ -529,7 +530,6 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/set_read/%@", OTORO_HOST, toroID]]];
-    
     [request setHTTPMethod:@"PUT"];
 	NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"read":@YES} options:NSJSONWritingPrettyPrinted error:nil];
     [request setHTTPBody:data];
@@ -610,7 +610,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 {
     
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/get_badge_count/%@", OTORO_HOST, self.user.username]]];
+                             [NSURL URLWithString:[NSString stringWithFormat:@"%@/puffers/get_badge_count/%@", OTORO_HOST, self.user.username]]];
     
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeGetBadgeCount completionBlock:block toConnection:connection];
