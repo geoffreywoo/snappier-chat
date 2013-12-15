@@ -44,33 +44,41 @@
 	
 	[self changeModes:YES];
     
-//    mapView.showsUserLocation = YES;
-	
 	_imagePickerController = [[UIImagePickerController alloc] init];
-	_imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-	
-	_imagePickerController.delegate = self;
-	_imagePickerController.showsCameraControls = NO;
-	
-	CGSize screenSize = [UIScreen mainScreen].bounds.size;
-	
-	CGFloat cameraRatio = 4.0/3.0;
-	CGFloat scale = screenSize.height/(screenSize.width * cameraRatio);
-	
-	// showsCameraControler = NO puts the camera at the top - we need to translate down after scaling to recenter it
-	CGFloat cameraHeight = screenSize.width * cameraRatio;
-	CGFloat translation = (screenSize.height - cameraHeight)/2;
-	
-	_imagePickerController.cameraViewTransform = CGAffineTransformConcat(CGAffineTransformMakeScale(scale, scale), CGAffineTransformMakeTranslation(0, translation));
-	
-	_imagePickerController.view.frame = self.view.frame;
-	
-	[self.view addSubview:_imagePickerController.view];
-	[self.view sendSubviewToBack:_imagePickerController.view];
-	
-	// default flash OFF
-	_imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
-	[_flashButton setTitle:@"OFF" forState:UIControlStateNormal];
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        _imagePickerController.delegate = self;
+        _imagePickerController.showsCameraControls = NO;
+        
+        CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        
+        CGFloat cameraRatio = 4.0/3.0;
+        CGFloat scale = screenSize.height/(screenSize.width * cameraRatio);
+        
+        // showsCameraControler = NO puts the camera at the top - we need to translate down after scaling to recenter it
+        CGFloat cameraHeight = screenSize.width * cameraRatio;
+        CGFloat translation = (screenSize.height - cameraHeight)/2;
+        
+        _imagePickerController.cameraViewTransform = CGAffineTransformConcat(CGAffineTransformMakeScale(scale, scale), CGAffineTransformMakeTranslation(0, translation));
+        
+        _imagePickerController.view.frame = self.view.frame;
+        
+        [self.view addSubview:_imagePickerController.view];
+        [self.view sendSubviewToBack:_imagePickerController.view];
+        
+        // default flash OFF
+        _imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
+        [_flashButton setTitle:@"OFF" forState:UIControlStateNormal];
+
+    }
+    else
+    {
+        _imagePickerController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        [self.navigationController presentViewController:_imagePickerController animated:YES completion:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -164,7 +172,12 @@
 */
 
 - (IBAction)takePhotoButtonPressed:(id)sender {
-	[_imagePickerController takePicture];
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        [_imagePickerController takePicture];
+    } else {
+        [self.navigationController presentViewController:_imagePickerController animated:NO completion:nil];
+    }
 }
 
 - (IBAction)flashButtonPressed:(id)sender {
@@ -231,8 +244,10 @@
 
 - (void)resetImagePickerSettings
 {
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
 	_imagePickerController.cameraDevice = self.cameraDevice;
 	_imagePickerController.cameraFlashMode = self.flashMode;
+    }
 }
 
 - (void)changeModes:(BOOL)takePhotoMode
@@ -334,23 +349,26 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-	return 5;
+	return 6;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
 	switch (row) {
-		case 0:
+        case 0:
+            return @"15 seconds";
+            break;
+		case 1:
 			return @"1 minute";
 			break;
-		case 1:
+		case 2:
 			return @"5 minutes";
 			break;
-		case 2:
-			return @"15 minutes";
 		case 3:
-			return @"1 hour";
+			return @"15 minutes";
 		case 4:
+			return @"1 hour";
+		case 5:
 			return @"1 day";
 		default:
 			return nil;
@@ -360,19 +378,22 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
 	switch (row) {
-		case 0:
+        case 0:
+            self.duration = 15;
+            break;
+		case 1:
 			self.duration = 60;
 			break;
-		case 1:
+		case 2:
 			self.duration = 5 * 60;
 			break;
-		case 2:
+		case 3:
 			self.duration = 15 * 60;
 			break;
-		case 3:
+		case 4:
 			self.duration = 60 * 60;
 			break;
-		case 4:
+		case 5:
 			self.duration = 24 * 60 * 60;
 			break;
 		default:

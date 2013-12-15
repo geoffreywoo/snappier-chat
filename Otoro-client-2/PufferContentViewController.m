@@ -70,9 +70,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    NSLog(@"pufferContentViewController viewDidAppear");
     [self handleRefresh];
-    _pollTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
-    _timeLabelTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(handleTimerLabels) userInfo:nil repeats:YES];
+    _pollTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(handleRefresh) userInfo:nil repeats:YES];
+    _tickTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
     
     [[PufferConnection sharedInstance] getBadgeCountWithCompletionBlock:^(NSError *error, NSDictionary *returnData) {
         if (error) {
@@ -85,8 +86,9 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    NSLog(@"pufferContentViewController viewDidDissappear");
     [_pollTimer invalidate];
-    [_timeLabelTimer invalidate];
+    [_tickTimer invalidate];
 }
 
 
@@ -105,7 +107,7 @@
 
 - (void) handleRefresh
 {
-    NSLog(@"handling refresh");
+   // NSLog(@"handling refresh");
     [[PufferConnection sharedInstance] getAllPuffersWithCompletionBlock:^(NSError *error, NSDictionary *data)
     {
         if (error)
@@ -133,14 +135,22 @@
     }];
 }
 
-- (void) handleTimerLabels
+- (void) tick
 {
-    NSLog(@"handling timer labels");
+    //NSLog(@"handling timer labels");
     for (Puffer *puffer in _torosData) {
         [puffer makeTimerLabel];
+        if ([puffer expired] && ![puffer swapped]) {
+            NSLog(@"swapped %@", puffer.toroId);
+            [[PufferConnection sharedInstance] swapPuffer:puffer completionBlock:^(NSError *error, NSDictionary *returnData) {
+                if (error) {
+                } else {
+                    [puffer swap];
+                }
+            }];
+        }
     }
     [toroTableView reloadData];
-
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -178,7 +188,7 @@
     
 #warning TODO: cache this
 	if (theToro.imageData == nil) {
-        theToro.imageData = [NSData dataWithContentsOfURL:theToro.imageURL];
+        theToro.imageData = [theToro getImageData:theToro.imageURL];
     }
     
     if (![theToro read]) {

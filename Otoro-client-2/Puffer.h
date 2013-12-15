@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong, readonly) NSString *toroId;
 @property (nonatomic, strong) NSString *imageKey;
+@property (nonatomic, strong, readonly) NSURL *puffedURL;
 @property (nonatomic, strong, readonly) NSURL *imageURL;
 @property (nonatomic, strong) NSData *imageData;
 
@@ -31,17 +32,20 @@
 @property (nonatomic, strong) UILabel *timerLabel;
 @property (nonatomic, strong) UIImageView *statusView;
 @property (nonatomic, strong) ToroViewController *toroViewController;
-@property(atomic, assign) BOOL popped;
+@property(atomic, assign) bool popped;
+@property (atomic, assign) bool swapped;
 
 - (id)initWith:(NSDictionary *)dict;
 - (id)initOwnToroWithImage:(UIImage *)image expireTimeSetting:(NSTimeInterval)expireTimeInterval message:(NSString*)message venue:(OVenue *)venue;
 - (id)update:(Puffer*)toro;
 - (void)makeTimerLabel;
+- (void)swap;
 - (BOOL)isEqual:(id)object;
 - (BOOL)expired;
 - (NSComparisonResult)compare:(Puffer*)toro;
 - (void)print;
 - (NSString *)stringForCreationDate;
+- (NSData *) getImageData:(NSURL*)url;
 
 
 @end

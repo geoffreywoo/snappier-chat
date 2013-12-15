@@ -74,7 +74,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"view did appear");
-
+    [self.imageView setImage:nil];
+    [self.imageView setImage:[UIImage imageWithData:_toro.imageData]];
 }
 
 

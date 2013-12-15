@@ -15,9 +15,7 @@
     if (self) {
         _toroId = [dict objectForKey:@"_id"];
         _imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.pufferchat.com/img/%@",dict[@"image"]]];
-     
-        // need cache for this instead of poll every time
-        // _imageData = [NSData dataWithContentsOfURL:_imageURL];
+        _puffedURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.pufferchat.com/puffed/%@",dict[@"image"]]];
         
         _read = [[dict objectForKey:@"read"] boolValue];
         _receiver = [dict objectForKey:@"receiver"];
@@ -27,6 +25,7 @@
 		//NSLog(@"%f expire time ", _expireTimeInterval);
       
         _popped = false;
+        _swapped = false;
         
         _createdDate = [NSDate dateWithTimeIntervalSince1970:[[dict objectForKey:@"created_at"] doubleValue]];
 	
@@ -62,32 +61,19 @@
 
 - (void)makeTimerLabel
 {
-#warning TODO
-    [_timerLabel setFont:[UIFont systemFontOfSize:12]];
-	NSInteger minutesLeft = ceil([self.expireDate timeIntervalSinceNow]/60);
-	if (minutesLeft > 0)
-	{
-		[_timerLabel setText:[NSString stringWithFormat:@"%d min left",minutesLeft]];
-        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
-        
-	}
-	else
-	{
-		[_timerLabel setText:@""];
+    [_timerLabel setFont:[UIFont systemFontOfSize:10]];
+    int secondsLeft = ceil([self.expireDate timeIntervalSinceNow]);
+    if (secondsLeft <= 0) {
+        [_timerLabel setText:@""];
         [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"Expired"]];
-	}
-//    if (!_read)
-//        [_timerLabel setText:[NSString stringWithFormat:@""]];
-//    else if (_read && (_maxTime == _elapsedTime)) {
-//        [_timerLabel setText:[NSString stringWithFormat:@""]];
-//    } else {
-//        int timeLeft = (_maxTime - _elapsedTime);
-//        if (timeLeft < 0)
-//            [_timerLabel setText:[NSString stringWithFormat:@""]];
-//        else
-//            [_timerLabel setText:[NSString stringWithFormat:@"%d",timeLeft]];
-//    }
-
+    } else if (secondsLeft < 60 && secondsLeft > 0) {
+        [_timerLabel setText:[NSString stringWithFormat:@"%d seconds",secondsLeft]];
+        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d seconds",secondsLeft]];
+    } else {
+        NSInteger minutesLeft = ceil([self.expireDate timeIntervalSinceNow]/60);
+        [_timerLabel setText:[NSString stringWithFormat:@"%d minutes left",minutesLeft]];
+        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
+    }
 }
 
 - (NSDate *)expireDate
@@ -108,6 +94,12 @@
     NSComparisonResult result = [[NSDate date] compare:[self expireDate]];
     if (result == -1) return NO;
     return YES;
+}
+
+- (void)swap {
+    _imageData = [self getImageData:_imageURL];
+    _swapped = true;
+    [_toroViewController.imageView setImage:[UIImage imageWithData:self.imageData]];
 }
 
 - (NSComparisonResult)compare:(Puffer*)toro {
@@ -134,5 +126,14 @@
 	return [creationDateFormatter stringFromDate:self.createdDate];
 }
 
+- (NSData *)getImageData:(NSURL*)url
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
+    
+    NSError *error = nil;
+    NSURLResponse *response = nil;
+    
+    return [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+}
 
 @end

@@ -38,7 +38,7 @@
 - (void)registerDeviceToken:(NSString *)userId withDeviceToken:(NSString *)deviceToken completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getBadgeCountWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 
-// toros
+// puffers
 - (void)uploadToroPhoto:(UIImage *)toroImage completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)createNewToro:(Puffer*)toro toReceivers:(NSArray *)users completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllPuffersReceivedWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
@@ -46,6 +46,7 @@
 - (void)getAllPuffersWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)blurPhotoForToro:(Puffer *)toro completionBlock:(OtoroConnectionCompletionBlock)block;
+- (void)swapPuffer:(Puffer *)puffer completionBlock:(OtoroConnectionCompletionBlock)block;
 
 // friends
 - (void)getAllFriendsWithCompletionBlock:(OtoroConnectionCompletionBlock)block;

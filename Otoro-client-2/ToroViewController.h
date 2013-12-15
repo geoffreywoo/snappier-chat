@@ -19,5 +19,6 @@
 @property (nonatomic,strong)IBOutlet UILabel *message;
 @property (nonatomic,strong)IBOutlet UILabel *venue;
 - (id)initWithToro:(Puffer *)toro;
+@property (nonatomic) bool imageSwapped;
 
 @end

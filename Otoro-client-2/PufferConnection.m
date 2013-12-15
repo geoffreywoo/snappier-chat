@@ -46,6 +46,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 
 - (void)addAPICall:(OtoroConnectionAPIType)apiType completionBlock:(OtoroConnectionCompletionBlock)block toConnection:(NSURLConnection *)connection
 {
+   // NSLog(@"connection: %@",connection);
     OtoroConnectionCall *call = [[OtoroConnectionCall alloc] init];
     call.apiType = apiType;
     call.completionBlock = block;
@@ -54,6 +55,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 
 - (void)addAPICall:(OtoroConnectionAPIType)apiType completionBlock:(OtoroConnectionCompletionBlock)block toConnection:(NSURLConnection *)connection userInfo:(NSDictionary *)userInfo
 {
+  //  NSLog(@"connection: %@",connection);
     OtoroConnectionCall *call = [[OtoroConnectionCall alloc] init];
     call.apiType = apiType;
     call.completionBlock = block;
@@ -239,6 +241,17 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
             [self callForConnection:connection].completionBlock(error, nil);
         }
 	} else if (apiType == OtoroConnectionAPITypeBlurPhoto) {
+        NSDictionary *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
+        if (jsonToros)
+        {
+            [self callForConnection:connection].completionBlock(error, jsonToros);
+        }
+        else
+        {
+			error = [self errorForResponse:jsonToros];
+            [self callForConnection:connection].completionBlock(error, nil);
+        }
+    } else if (apiType == OtoroConnectionAPITypeSwapPhoto) {
         NSDictionary *jsonToros = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
         if (jsonToros)
         {
@@ -535,6 +548,17 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 	
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeBlurPhoto completionBlock:block toConnection:connection];
+}
+
+- (void)swapPuffer:(Puffer *)puffer completionBlock:(OtoroConnectionCompletionBlock)block
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/swap/%@", IMAGE_SERVICE_HOST, puffer.imageKey]]];
+    
+    [request setHTTPMethod:@"PUT"];
+	
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeSwapPhoto completionBlock:block toConnection:connection];
 }
 
 #pragma mark - Friends Endpoints

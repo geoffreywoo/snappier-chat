@@ -66,6 +66,7 @@
 		60E1C18318553C1D00167FA8 /* puffer120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E1C18018553C1D00167FA8 /* puffer120x120.png */; };
 		60E1C18418553C1D00167FA8 /* puffer80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E1C18118553C1D00167FA8 /* puffer80x80.png */; };
 		60E1C18518553C1D00167FA8 /* puffer58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E1C18218553C1D00167FA8 /* puffer58x58.png */; };
+		60E1C187185D39C100167FA8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60E1C186185D39C100167FA8 /* Images.xcassets */; };
 		DB9DA81C17C01D43005418CB /* PufferConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA81B17C01D43005418CB /* PufferConnection.m */; };
 		DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */; };
 		F485518118133B3700C146DA /* JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F485517E18133B3700C146DA /* JMImageCache.m */; };
@@ -190,6 +191,7 @@
 		60E1C18018553C1D00167FA8 /* puffer120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puffer120x120.png; sourceTree = "<group>"; };
 		60E1C18118553C1D00167FA8 /* puffer80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puffer80x80.png; sourceTree = "<group>"; };
 		60E1C18218553C1D00167FA8 /* puffer58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puffer58x58.png; sourceTree = "<group>"; };
+		60E1C186185D39C100167FA8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PufferChat/Images.xcassets; sourceTree = "<group>"; };
 		DB9DA81A17C01D43005418CB /* PufferConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PufferConnection.h; sourceTree = "<group>"; };
 		DB9DA81B17C01D43005418CB /* PufferConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PufferConnection.m; sourceTree = "<group>"; };
 		DB9DA81F17C02AB9005418CB /* OtoroConnectionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroConnectionCall.h; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 		F4F9A53E17DBE7840027AE66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				60E1C186185D39C100167FA8 /* Images.xcassets */,
 				601AB8D217F76FE100F82013 /* bluearrow@2x.png */,
 				608D601C17E6A863008CD91F /* sushi_pin.png */,
 				F4B0CD7917E6965C0057738D /* snappermap_inapp_icon_large.png */,
@@ -576,6 +579,7 @@
 			files = (
 				60CE1C7117AEDFE400C6249F /* InfoPlist.strings in Resources */,
 				60CE1C9917AEE01B00C6249F /* PufferContentViewController.xib in Resources */,
+				60E1C187185D39C100167FA8 /* Images.xcassets in Resources */,
 				60CE1C9E17AF2D3F00C6249F /* ToroViewController.xib in Resources */,
 				609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */,
 				602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */,
@@ -798,6 +802,8 @@
 		60CE1C9017AEDFE400C6249F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -814,6 +820,8 @@
 		60CE1C9117AEDFE400C6249F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, OtoroConnectionAPIType)
     OtoroConnectionAPITypeSetToroRead,
     OtoroConnectionAPITypeGetAllToros,
 	OtoroConnectionAPITypeBlurPhoto,
+    OtoroConnectionAPITypeSwapPhoto,
     
     // friends
     OtoroConnectionAPITypeGetFriends,
