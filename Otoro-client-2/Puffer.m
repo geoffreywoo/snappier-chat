@@ -25,7 +25,7 @@
 		//NSLog(@"%f expire time ", _expireTimeInterval);
       
         _popped = false;
-        _swapped = false;
+        _swapped = [[dict objectForKey:@"expired"] boolValue];
         
         _createdDate = [NSDate dateWithTimeIntervalSince1970:[[dict objectForKey:@"created_at"] doubleValue]];
 	
@@ -63,16 +63,20 @@
 {
     [_timerLabel setFont:[UIFont systemFontOfSize:10]];
     int secondsLeft = ceil([self.expireDate timeIntervalSinceNow]);
+    NSInteger minutesLeft = ceil([self.expireDate timeIntervalSinceNow]/60);
+    NSInteger hoursLeft = ceil([self.expireDate timeIntervalSinceNow]/3600);
     if (secondsLeft <= 0) {
         [_timerLabel setText:@""];
         [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"Expired"]];
     } else if (secondsLeft < 60 && secondsLeft > 0) {
         [_timerLabel setText:[NSString stringWithFormat:@"%d seconds",secondsLeft]];
-        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d seconds",secondsLeft]];
-    } else {
-        NSInteger minutesLeft = ceil([self.expireDate timeIntervalSinceNow]/60);
-        [_timerLabel setText:[NSString stringWithFormat:@"%d minutes left",minutesLeft]];
+        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d",secondsLeft]];
+    } else if (secondsLeft < 3600){
+        [_timerLabel setText:[NSString stringWithFormat:@"%d minutes",minutesLeft]];
         [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
+    } else {
+        [_timerLabel setText:[NSString stringWithFormat:@"%d hours",hoursLeft]];
+        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d hr",hoursLeft]];
     }
 }
 

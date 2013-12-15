@@ -43,6 +43,28 @@
                         <outlet property="delegate" destination="-1" id="41"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42">
+                    <rect key="frame" x="0.0" y="489" width="320" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="83"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="tintColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                    <state key="normal" title="Send Puffer!" image="puffer_large_icon.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="send:" destination="-1" eventType="touchUpInside" id="51"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69">
                     <rect key="frame" x="247" y="0.0" width="73" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -79,28 +101,6 @@
                     </state>
                     <connections>
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="80"/>
-                    </connections>
-                </button>
-                <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42">
-                    <rect key="frame" x="0.0" y="488" width="320" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="83"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                    <color key="tintColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
-                    <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
-                    <state key="normal" title="Send Puffer!" image="snappermap_inapp_icon_large.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="send:" destination="-1" eventType="touchUpInside" id="51"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ado-2a-Wgs">
@@ -166,7 +166,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="42" secondAttribute="bottom" constant="20" id="51l-jW-7qJ"/>
                 <constraint firstItem="ado-2a-Wgs" firstAttribute="top" secondItem="1" secondAttribute="top" constant="31" id="55J-dB-Nm6"/>
                 <constraint firstItem="62" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="bV7-ne-3X8"/>
                 <constraint firstItem="69" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="be6-FO-611"/>
@@ -178,6 +177,6 @@
     <resources>
         <image name="back_arrow_white_icon.png" width="24" height="24"/>
         <image name="plus_icon.png" width="24" height="24"/>
-        <image name="snappermap_inapp_icon_large.png" width="67" height="48"/>
+        <image name="puffer_large_icon.png" width="70" height="70"/>
     </resources>
 </document>

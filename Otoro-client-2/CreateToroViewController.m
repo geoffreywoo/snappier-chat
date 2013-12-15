@@ -70,7 +70,7 @@
         
         // default flash OFF
         _imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
-        [_flashButton setTitle:@"OFF" forState:UIControlStateNormal];
+        [_flashButton setImage:[UIImage imageNamed:@"flash_off"] forState:UIControlStateNormal];
 
     }
     else
@@ -186,14 +186,14 @@
 		_imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
 		self.flashMode = UIImagePickerControllerCameraFlashModeOff;
 		
-		[_flashButton setTitle:@"OFF" forState:UIControlStateNormal];
+		[_flashButton setImage:[UIImage imageNamed:@"flash_off"] forState:UIControlStateNormal];
 	}
 	else
 	{
 		_imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOn;
 		self.flashMode = UIImagePickerControllerCameraFlashModeOn;
 		
-		[_flashButton setTitle:@"ON" forState:UIControlStateNormal];
+		[_flashButton setImage:[UIImage imageNamed:@"flash_on"] forState:UIControlStateNormal];
 	}
 	
 }
@@ -271,7 +271,7 @@
 	
 	if (!takePhotoMode)
 	{
-		[sendToroButton setImage:[UIImage imageNamed:@"snappermap_inapp_icon_small"] forState:UIControlStateNormal];
+		[sendToroButton setImage:[UIImage imageNamed:@"puffer_small_icon"] forState:UIControlStateNormal];
 	}
 	else
 	{
