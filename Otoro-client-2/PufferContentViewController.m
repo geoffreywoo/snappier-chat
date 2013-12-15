@@ -276,10 +276,12 @@
         NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro stringForCreationDate]];
         [timeLabelText appendString:@" - Opened"];
         cell.timeLabel.text = timeLabelText;
+        [cell.statusView setImage:[UIImage imageNamed: @"hollow_orangearrow.png"]];
     } else {
         NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro stringForCreationDate]];
         [timeLabelText appendString:@" - Delivered"];
         cell.timeLabel.text = timeLabelText;
+        [cell.statusView setImage:[UIImage imageNamed: @"orangearrow.png"]];
     }
     return cell;
 }

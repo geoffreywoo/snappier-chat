@@ -34,7 +34,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bluearrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-dk-rno">
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orangearrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-dk-rno">
                         <rect key="frame" x="0.0" y="0.0" width="48" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -48,11 +48,12 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="19" id="42"/>
+                <outlet property="statusView" destination="FPK-dk-rno" id="v8J-5g-t7E"/>
                 <outlet property="timeLabel" destination="27" id="43"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bluearrow.png" width="17" height="18"/>
+        <image name="orangearrow.png" width="17" height="18"/>
     </resources>
 </document>
