@@ -10,6 +10,7 @@
 #import "Puffer.h"
 
 NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
+//NSString *const OTORO_HOST = @"http://otoro-staging.herokuapp.com";
 NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
 
 @interface PufferConnection ()<NSURLConnectionDelegate>
