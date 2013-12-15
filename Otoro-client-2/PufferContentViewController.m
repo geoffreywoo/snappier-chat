@@ -193,8 +193,6 @@
     
     if (![theToro read]) {
 		// very first tap, set the read flag
-
-		
         [theToro setRead: true];
         
         [[PufferConnection sharedInstance] setReadFlagForToroID:theToro.toroId completionBlock:^(NSError *error, NSDictionary *returnData) {
@@ -217,13 +215,8 @@
 
 - (void) hideToroFromButton:(UIButton*)sender
 {
-
     Puffer *theToro = [[self torosData] objectAtIndex:sender.tag];
     [self hideToro:theToro];
-   // if (!theToro) return;
-  //  if (![theToro toroViewController]) return;
- //   if (!([theToro toroViewController].view)) return;
-
 }
 
 - (void)hideToro:(Puffer*)toro

@@ -97,6 +97,7 @@
 }
 
 - (void)swap {
+  //  _imageData = nil;
     _imageData = [self getImageData:_imageURL];
     _swapped = true;
     [_toroViewController.imageView setImage:[UIImage imageWithData:self.imageData]];
@@ -128,6 +129,7 @@
 
 - (NSData *)getImageData:(NSURL*)url
 {
+    //NSLog(@"getting imagedata: %@",url);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
     
     NSError *error = nil;
