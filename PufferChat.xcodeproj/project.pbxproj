@@ -853,7 +853,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/tony/Code/snapper/pufferchat/Airship,
+					./Airship,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = PufferChat;
@@ -881,7 +881,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/tony/Code/snapper/pufferchat/Airship,
+					./Airship,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = PufferChat;
