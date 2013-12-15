@@ -237,6 +237,10 @@
     cell.nameLabel.text = [NSString stringWithFormat:@"%@", [toro sender]];
     NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro stringForCreationDate]];
 	
+    if ( [toro read] ) {
+        [timeLabelText appendString:@" - Read"];
+    }
+    
     cell.timeLabel.text = timeLabelText;
     cell.accessoryType = UITableViewCellAccessoryNone;
     
