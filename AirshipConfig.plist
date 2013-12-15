@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>detectProvisioningMode</key>
+	<true/>
+	<key>developmentAppKey</key>
+	<string>DWehOd1hRrGgfJsiudQ3vw</string>
+	<key>developmentAppSecret</key>
+	<string>mS5AqSg2RS6wDVIg2X9Ojw</string>
+	<key>productionAppKey</key>
+	<string>2e4kjHZzQOevT8wz1dpZ-g</string>
+	<key>productionAppSecret</key>
+	<string>M9uUvER4S9ypEmNVXLtMmA</string>
+</dict>
+</plist>
