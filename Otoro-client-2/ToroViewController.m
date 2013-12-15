@@ -8,8 +8,6 @@
 
 #import "ToroViewController.h"
 #import "Puffer.h"
-#import "SnapperMapAnnotation.h"
-#import "SnapperMapAnnotationView.h"
 #import "UIImageView+JMImageCache.h"
 
 @implementation ToroViewController

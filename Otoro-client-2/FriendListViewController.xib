@@ -26,12 +26,12 @@
                 <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="gvm-jM-T1c"/>
                     </constraints>
-                    <color key="tintColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
-                    <color key="barTintColor" red="0.41176470590000003" green="0.74509803919999995" blue="0.90980392160000001" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
                 </navigationBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4">
                     <rect key="frame" x="0.0" y="64" width="320" height="504"/>
@@ -84,15 +84,15 @@
                 <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42">
                     <rect key="frame" x="0.0" y="488" width="320" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="83"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                    <color key="tintColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="tintColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
-                    <state key="normal" title="Send Snapper!" image="snappermap_inapp_icon_large.png">
+                    <state key="normal" title="Send Puffer!" image="snappermap_inapp_icon_large.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -111,21 +111,11 @@
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a location name or write a message to create a Snapper!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="jAq-RX-TBU">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Add friends so you can send them Puffers!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="V3h-Yh-IlD">
                     <rect key="frame" x="0.0" y="489" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="59" id="yhl-Qg-vDP"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add friends so you can send them Snappers!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="V3h-Yh-IlD">
-                    <rect key="frame" x="0.0" y="489" width="320" height="59"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="59" id="GlO-BS-7zy"/>
                     </constraints>
@@ -133,10 +123,11 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a friend or two to send your Snapper!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="auQ-Sc-NAa">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Choose a friend or two to send your Puffer!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="auQ-Sc-NAa">
                     <rect key="frame" x="0.0" y="489" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="59" id="oKw-w5-ztd"/>
                     </constraints>
@@ -144,10 +135,23 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="Age-nA-tmj">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Take a picture and write a message to create a Puffer!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="jAq-RX-TBU">
                     <rect key="frame" x="0.0" y="489" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.41176474089999998" green="0.74509805439999999" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="yhl-Qg-vDP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="Age-nA-tmj">
+                    <rect key="frame" x="0.0" y="488" width="320" height="59"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.90980392160000001" green="0.55794524450000005" blue="0.1504027064" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="59" id="8pZ-rc-muz"/>
                     </constraints>
@@ -162,23 +166,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="auQ-Sc-NAa" secondAttribute="bottom" constant="20" id="0mc-W4-fba"/>
-                <constraint firstItem="V3h-Yh-IlD" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="2hr-YU-7WU"/>
                 <constraint firstAttribute="bottom" secondItem="42" secondAttribute="bottom" constant="20" id="51l-jW-7qJ"/>
                 <constraint firstItem="ado-2a-Wgs" firstAttribute="top" secondItem="1" secondAttribute="top" constant="31" id="55J-dB-Nm6"/>
-                <constraint firstAttribute="trailing" secondItem="jAq-RX-TBU" secondAttribute="trailing" id="5P8-ie-i4g"/>
-                <constraint firstAttribute="trailing" secondItem="jAq-RX-TBU" secondAttribute="trailing" id="IQb-RD-hFn"/>
-                <constraint firstItem="auQ-Sc-NAa" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Jcw-sV-qOq"/>
-                <constraint firstItem="jAq-RX-TBU" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="U24-2B-FtO"/>
-                <constraint firstAttribute="bottom" secondItem="V3h-Yh-IlD" secondAttribute="bottom" constant="20" id="U4C-Nq-njV"/>
                 <constraint firstItem="62" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="bV7-ne-3X8"/>
                 <constraint firstItem="69" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="be6-FO-611"/>
-                <constraint firstAttribute="trailing" secondItem="auQ-Sc-NAa" secondAttribute="trailing" id="hOr-xG-r13"/>
-                <constraint firstAttribute="trailing" secondItem="V3h-Yh-IlD" secondAttribute="trailing" id="jsg-JG-X5s"/>
-                <constraint firstAttribute="bottom" secondItem="jAq-RX-TBU" secondAttribute="bottom" constant="20" id="jzM-rS-QXc"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jAq-RX-TBU" secondAttribute="bottom" constant="20" id="lh2-ro-VLf"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="V3h-Yh-IlD" secondAttribute="bottom" constant="20" id="tQ2-qE-5Nc"/>
-                <constraint firstItem="jAq-RX-TBU" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="wfd-qj-acx"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

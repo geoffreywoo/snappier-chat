@@ -69,18 +69,15 @@
 
 - (void)toggleInstructionLabel
 {
-    if ([[[PufferConnection sharedInstance] friends] count] == 0)
-    {
+    if ([[[PufferConnection sharedInstance] friends] count] == 0) {
         addFriendsLabel.hidden = NO;
         selectFriendsLabel.hidden = YES;
         addVenueOrMessageLabel.hidden = YES;
-    } else if (!self.toroIsValid)
-    {
+    } else if (!self.toroIsValid) {
         addFriendsLabel.hidden = YES;
         selectFriendsLabel.hidden = YES;
         addVenueOrMessageLabel.hidden = NO;
-    } else
-    {
+    } else {
         addFriendsLabel.hidden = YES;
         selectFriendsLabel.hidden = NO;
         addVenueOrMessageLabel.hidden = YES;

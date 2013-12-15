@@ -75,7 +75,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="30" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="7En-cG-PRw"/>
                 <constraint firstItem="8" firstAttribute="top" secondItem="12" secondAttribute="bottom" id="aRG-Zt-fC8"/>

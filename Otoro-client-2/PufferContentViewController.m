@@ -57,8 +57,8 @@
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
-    [self.refreshControl setBackgroundColor:[UIColor colorWithRed:105.0/255.0 green:190.0/255.0 blue:232.0/255.0 alpha:0.3]];
-    
+    [self.refreshControl setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:127.0/255.0 blue:0.0/255.0 alpha:0.5]];
+
     [toroTableView addSubview: self.refreshControl];
     
     [toroTableView registerNib:[UINib nibWithNibName:@"OtoroSentTableViewCell" bundle:nil] forCellReuseIdentifier: kOtoroSentTableViewCellIdentifier];

@@ -9,7 +9,6 @@
 #import "CreateToroViewController.h"
 #import "PufferConnection.h"
 #import "OtoroChooseVenueViewController.h"
-#import "SnapperMapAnnotation.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
 @interface CreateToroViewController ()< FriendListViewControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UINavigationControllerDelegate>
