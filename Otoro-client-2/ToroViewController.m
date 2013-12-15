@@ -46,15 +46,9 @@
     NSLog(@"DISPLAYING:%@",_toro.imageURL);
     [super viewDidLoad];
 	
+    [self.toro makeTimerLabel];
     [self.imageView setImage:[UIImage imageWithData:_toro.imageData]];
-
-    if ([_toro expired]) {
-        [_countDown setText:[NSString stringWithFormat:@"Expired"]];
-    } else {
-        NSInteger minutesLeft = ceil([_toro.expireDate timeIntervalSinceNow]/60);
-        [_countDown setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
-    }
-   
+    
     if (![[_toro message] isEqualToString:@""])
         [_message setText:[NSString stringWithFormat:@"%@",[_toro message]]];
     else

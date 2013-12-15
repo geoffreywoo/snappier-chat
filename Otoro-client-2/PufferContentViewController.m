@@ -242,7 +242,7 @@
     if ([toro expired]) {
         [cell.statusView setImage:[UIImage imageNamed: @"sushi_pin.png"]];
     } else {
-        [cell.statusView setImage:[UIImage imageNamed: @"snappermap_inapp_icon_small.png"]];
+        [cell.statusView setImage:[UIImage imageNamed: @"puffer_small_icon.png"]];
     }
     
     UIButton *button = [[UIButton alloc] init];
