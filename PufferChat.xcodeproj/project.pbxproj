@@ -68,6 +68,15 @@
 		60E1C18518553C1D00167FA8 /* puffer58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E1C18218553C1D00167FA8 /* puffer58x58.png */; };
 		DB9DA81C17C01D43005418CB /* PufferConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA81B17C01D43005418CB /* PufferConnection.m */; };
 		DB9DA82117C02AB9005418CB /* OtoroConnectionCall.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */; };
+		EA10FE1D185D412E0052AF84 /* libUAirship-3.0.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA10FE1C185D412E0052AF84 /* libUAirship-3.0.2.a */; };
+		EA10FE1F185D430B0052AF84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA10FE1E185D430B0052AF84 /* CFNetwork.framework */; };
+		EA10FE21185D43230052AF84 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA10FE20185D43230052AF84 /* MobileCoreServices.framework */; };
+		EA10FE23185D432D0052AF84 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA10FE22185D432D0052AF84 /* Security.framework */; };
+		EA10FE25185D43380052AF84 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA10FE24185D43380052AF84 /* SystemConfiguration.framework */; };
+		EA10FE27185D434E0052AF84 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA10FE26185D434E0052AF84 /* libz.dylib */; };
+		EA10FE29185D435B0052AF84 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA10FE28185D435B0052AF84 /* libsqlite3.dylib */; };
+		EA10FE2B185D43640052AF84 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA10FE2A185D43640052AF84 /* CoreTelephony.framework */; };
+		EA10FE2D185D53AF0052AF84 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA10FE2C185D53AF0052AF84 /* AirshipConfig.plist */; };
 		F485518118133B3700C146DA /* JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F485517E18133B3700C146DA /* JMImageCache.m */; };
 		F485518218133B3700C146DA /* UIImageView+JMImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F485518018133B3700C146DA /* UIImageView+JMImageCache.m */; };
 		F4B0CD7D17E6965C0057738D /* snappermap_inapp_icon_large.png in Resources */ = {isa = PBXBuildFile; fileRef = F4B0CD7917E6965C0057738D /* snappermap_inapp_icon_large.png */; };
@@ -194,6 +203,15 @@
 		DB9DA81B17C01D43005418CB /* PufferConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PufferConnection.m; sourceTree = "<group>"; };
 		DB9DA81F17C02AB9005418CB /* OtoroConnectionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroConnectionCall.h; sourceTree = "<group>"; };
 		DB9DA82017C02AB9005418CB /* OtoroConnectionCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtoroConnectionCall.m; sourceTree = "<group>"; };
+		EA10FE1C185D412E0052AF84 /* libUAirship-3.0.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libUAirship-3.0.2.a"; path = "Airship/libUAirship-3.0.2.a"; sourceTree = "<group>"; };
+		EA10FE1E185D430B0052AF84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EA10FE20185D43230052AF84 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		EA10FE22185D432D0052AF84 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EA10FE24185D43380052AF84 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EA10FE26185D434E0052AF84 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		EA10FE28185D435B0052AF84 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		EA10FE2A185D43640052AF84 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		EA10FE2C185D53AF0052AF84 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		F485517D18133B3700C146DA /* JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMImageCache.h; sourceTree = "<group>"; };
 		F485517E18133B3700C146DA /* JMImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMImageCache.m; sourceTree = "<group>"; };
 		F485517F18133B3700C146DA /* UIImageView+JMImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+JMImageCache.h"; sourceTree = "<group>"; };
@@ -232,6 +250,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA10FE2B185D43640052AF84 /* CoreTelephony.framework in Frameworks */,
+				EA10FE29185D435B0052AF84 /* libsqlite3.dylib in Frameworks */,
+				EA10FE27185D434E0052AF84 /* libz.dylib in Frameworks */,
+				EA10FE25185D43380052AF84 /* SystemConfiguration.framework in Frameworks */,
+				EA10FE23185D432D0052AF84 /* Security.framework in Frameworks */,
+				EA10FE21185D43230052AF84 /* MobileCoreServices.framework in Frameworks */,
+				EA10FE1F185D430B0052AF84 /* CFNetwork.framework in Frameworks */,
+				EA10FE1D185D412E0052AF84 /* libUAirship-3.0.2.a in Frameworks */,
 				608E7D9317DCFD2B00238AD7 /* AddressBookUI.framework in Frameworks */,
 				60529FC217CA8E1700C7F064 /* AddressBook.framework in Frameworks */,
 				609227D817B8538C00E1D897 /* CoreLocation.framework in Frameworks */,
@@ -375,6 +401,7 @@
 		60CE1C5717AEDFE400C6249F = {
 			isa = PBXGroup;
 			children = (
+				EA10FE2C185D53AF0052AF84 /* AirshipConfig.plist */,
 				60E1C18018553C1D00167FA8 /* puffer120x120.png */,
 				60E1C18118553C1D00167FA8 /* puffer80x80.png */,
 				60E1C18218553C1D00167FA8 /* puffer58x58.png */,
@@ -406,6 +433,14 @@
 		60CE1C6517AEDFE400C6249F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA10FE2A185D43640052AF84 /* CoreTelephony.framework */,
+				EA10FE28185D435B0052AF84 /* libsqlite3.dylib */,
+				EA10FE26185D434E0052AF84 /* libz.dylib */,
+				EA10FE24185D43380052AF84 /* SystemConfiguration.framework */,
+				EA10FE22185D432D0052AF84 /* Security.framework */,
+				EA10FE20185D43230052AF84 /* MobileCoreServices.framework */,
+				EA10FE1E185D430B0052AF84 /* CFNetwork.framework */,
+				EA10FE1C185D412E0052AF84 /* libUAirship-3.0.2.a */,
 				60CE1C9F17AF2DAB00C6249F /* MapKit.framework */,
 				60CE1C6617AEDFE400C6249F /* UIKit.framework */,
 				60CE1C6817AEDFE400C6249F /* Foundation.framework */,
@@ -582,6 +617,7 @@
 				602A4CF317C03D9C007DEF27 /* SplashViewController.xib in Resources */,
 				602A4CFD17C04017007DEF27 /* RegistrationViewController.xib in Resources */,
 				602A4D0217C052E3007DEF27 /* SettingsViewController.xib in Resources */,
+				EA10FE2D185D53AF0052AF84 /* AirshipConfig.plist in Resources */,
 				602A4D0817C17D33007DEF27 /* AddFriendsViewController.xib in Resources */,
 				60529FCD17CAAD0000C7F064 /* SearchViewController.xib in Resources */,
 				6089B86517CAB85D00C3CF9D /* AddressBookViewController.xib in Resources */,
@@ -802,8 +838,18 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/PufferChat-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"./Airship/**",
+				);
 				INFOPLIST_FILE = "Otoro-client-2/PufferChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/tony/Code/snapper/pufferchat/Airship,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = PufferChat;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -818,8 +864,18 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/PufferChat-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"./Airship/**",
+				);
 				INFOPLIST_FILE = "Otoro-client-2/PufferChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/tony/Code/snapper/pufferchat/Airship,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = PufferChat;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

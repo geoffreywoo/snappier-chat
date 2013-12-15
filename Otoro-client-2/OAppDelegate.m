@@ -11,33 +11,36 @@
 #import "PufferContentViewController.h"
 #import "PufferConnection.h"
 
+#import "UAirship.h"
+#import "UAConfig.h"
+#import "UAPush.h"
+
 @implementation OAppDelegate
 
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"%@",[[NSBundle mainBundle] bundleIdentifier]);
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *username = [defaults objectForKey:@"username"];
+    
+    [UAirship setLogLevel:UALogLevelTrace];
+    [UAirship takeOff];
+    
     if (username == nil) {
         SplashViewController *rootViewController = [[SplashViewController alloc] init];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
         navigationController.navigationBarHidden = YES;
         self.window.rootViewController = navigationController;
-        
+        [UAPush setDefaultPushEnabledValue:NO];
     } else {
-		
-		
 		UIImagePickerController *controller = [[UIImagePickerController alloc] init];
 		controller.sourceType = UIImagePickerControllerSourceTypeCamera;
 		controller.showsCameraControls = NO;
-//		self.window.rootViewController = controller;
 
         OUser *me = [[OUser alloc] initFromNSDefaults];
         [[PufferConnection sharedInstance] setUser: me];
@@ -46,11 +49,13 @@
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
         navigationController.navigationBarHidden = YES;
         self.window.rootViewController = navigationController;
+        [[UAPush shared] setPushEnabled:YES];
         
-        [application registerForRemoteNotificationTypes:
-         UIRemoteNotificationTypeBadge |
-         UIRemoteNotificationTypeAlert |
-         UIRemoteNotificationTypeSound];
+        if (![defaults boolForKey:@"registeredDeviceToken"]) {
+            [UAPush shared].alias = username;
+            [[UAPush shared] updateRegistration];
+            [defaults setBool:YES forKey:@"registeredDeviceToken"];
+        }
     }
     
     [self.window makeKeyAndVisible];
@@ -108,15 +113,7 @@
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSString *deviceTokenStr = [[[[deviceToken description]
-                                  stringByReplacingOccurrencesOfString: @"<" withString: @""]
-                                 stringByReplacingOccurrencesOfString: @">" withString: @""]
-                                stringByReplacingOccurrencesOfString: @" " withString: @""];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:deviceTokenStr forKey:@"deviceToken"];
-    NSString *username = [defaults objectForKey:@"username"];
-    [[PufferConnection sharedInstance] registerDeviceToken:username withDeviceToken:deviceTokenStr completionBlock:^(NSError *error, NSDictionary *returnData) {
-    }];
+
 }
 
 @end
