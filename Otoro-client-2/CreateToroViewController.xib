@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2df-Vb-gc2">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2df-Vb-gc2">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -207,9 +207,9 @@
     </objects>
     <resources>
         <image name="back_arrow_white_icon.png" width="24" height="24"/>
-        <image name="camera_frontback.png" width="85" height="47"/>
-        <image name="flash_off.png" width="91" height="38"/>
+        <image name="camera_frontback.png" width="42" height="23"/>
+        <image name="flash_off.png" width="45" height="19"/>
         <image name="friends_icon.png" width="24" height="24"/>
-        <image name="take_picture.png" width="155" height="154"/>
+        <image name="take_picture.png" width="77" height="77"/>
     </resources>
 </document>

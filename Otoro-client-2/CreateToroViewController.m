@@ -52,6 +52,7 @@
         _imagePickerController.delegate = self;
         _imagePickerController.showsCameraControls = NO;
         
+        /*
         CGSize screenSize = [UIScreen mainScreen].bounds.size;
         
         CGFloat cameraRatio = 4.0/3.0;
@@ -62,8 +63,18 @@
         CGFloat translation = (screenSize.height - cameraHeight)/2;
         
         _imagePickerController.cameraViewTransform = CGAffineTransformConcat(CGAffineTransformMakeScale(scale, scale), CGAffineTransformMakeTranslation(0, translation));
+        */
         
-        _imagePickerController.view.frame = self.view.frame;
+        CGSize screenBounds = [UIScreen mainScreen].bounds.size;
+        
+        CGFloat cameraAspectRatio = 4.0f/3.0f;
+        
+        CGFloat camViewHeight = screenBounds.width * cameraAspectRatio;
+        CGFloat scale = screenBounds.height / camViewHeight;
+        
+        _imagePickerController.cameraViewTransform = CGAffineTransformMakeTranslation(0, (screenBounds.height - camViewHeight) / 2.0);
+        _imagePickerController.cameraViewTransform = CGAffineTransformScale(_imagePickerController.cameraViewTransform, scale, scale);
+        
         
         [self.view addSubview:_imagePickerController.view];
         [self.view sendSubviewToBack:_imagePickerController.view];
@@ -101,38 +112,6 @@
 	[self changeModes:YES];
 }
 
-- (void) initLocationManager
-{
-    NSLog(@"loc manager init");
-//    [locationManager setDelegate:self];
-//    [locationManager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    NSLog(@"location manager did update locations");
-    NSLog(@"%@",locations);
-    
-    _lastLoc = [locations objectAtIndex:[locations count]-1];
-    NSLog(@"lastLoc: %@", _lastLoc);
-
-    MKCoordinateRegion region;
-    MKCoordinateSpan span;
-    
-    span.latitudeDelta=0.005;
-    span.longitudeDelta=0.005;
-    
-    region.span=span;
-    region.center=_lastLoc.coordinate;
-    
-//    [mapView setRegion:region animated:TRUE];
-//    [mapView regionThatFits:region];
-
-  //  if ([_lastLoc horizontalAccuracy] < 10) {
-  //      [manager stopUpdatingLocation];
-  //  }
-
-}
-
 -(void) backgroundTap:(id) sender
 {
     NSLog(@"background tapped");
@@ -157,18 +136,7 @@
 	[self clearViewState];
     [[self navigationController] popViewControllerAnimated:YES];
 }
-/*
--(IBAction) friendListButton:(id) sender
-{
-    NSLog(@"friends view");
-    
-    if (_friendListViewController == nil) {
-        _friendListViewController = [[FriendListViewController alloc] init];
-    }
-    
-    [self.view addSubview:_friendListViewController.view];
-}
-*/
+
 
 - (IBAction)takePhotoButtonPressed:(id)sender {
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
@@ -180,6 +148,7 @@
 }
 
 - (IBAction)flashButtonPressed:(id)sender {
+    if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) return;
 	
 	if (self.flashMode == UIImagePickerControllerCameraFlashModeOn)
 	{
@@ -247,14 +216,18 @@
 	_imagePickerController.cameraDevice = self.cameraDevice;
 	_imagePickerController.cameraFlashMode = self.flashMode;
     }
+    
 }
 
 - (void)changeModes:(BOOL)takePhotoMode
 {
-	[message resignFirstResponder];
+	if (takePhotoMode)
+        _savedImageView.transform = CGAffineTransformMakeRotation(0);
+    
+    [message resignFirstResponder];
 	
 	[self resetImagePickerSettings];
-	
+    
 	_takePhotoButton.hidden = !takePhotoMode;
 	_flashButton.hidden = self.cameraDevice != UIImagePickerControllerCameraDeviceRear || !takePhotoMode;
 	_frontBackButton.hidden = !takePhotoMode;
@@ -285,9 +258,6 @@
 + (UIImage*)imageWithImage:(UIImage*)image
               scaledToSize:(CGSize)newSize;
 {
-    
-    
-    
     UIGraphicsBeginImageContext( newSize );
     [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -295,7 +265,7 @@
     
     return newImage;
 }
-
+/*
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
 	UIImage *savedImage = info[UIImagePickerControllerOriginalImage];
@@ -316,6 +286,61 @@
     _savedImageView.center = self.view.center;
     _savedImageKey = nil;
     
+	[self uploadSavedImage];
+	
+	[self changeModes:NO];
+}
+*/
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+	UIImage *savedImage = info[UIImagePickerControllerOriginalImage];
+	
+    if (savedImage.size.width >  savedImage.size.height)
+    {
+        NSLog(@"Select Image is in Landscape Mode ....");
+        if (_imagePickerController.cameraDevice ==UIImagePickerControllerCameraDeviceFront)
+        {
+            // mirror image
+            savedImage = [UIImage imageWithCGImage:savedImage.CGImage scale:savedImage.scale orientation:UIImageOrientationLeftMirrored];
+        }
+        
+        CGFloat scaledHeight = self.view.frame.size.width /savedImage.size.width * savedImage.size.height;
+        
+      //  CGSize resizedSize = CGSizeMake(scaledHeight,self.view.frame.size.width);
+        CGSize resizedSize = CGSizeMake(self.view.frame.size.width,scaledHeight);
+        UIImage *resizedImage = [CreateToroViewController imageWithImage:savedImage scaledToSize:resizedSize];
+        
+        _savedImageView.image = resizedImage;
+        _savedImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, scaledHeight);
+        _savedImageView.center = self.view.center;
+        _savedImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+        _savedImageKey = nil;
+        
+        
+    }
+    else
+    {
+        NSLog(@"Select Image is in Portrait Mode ...");
+        if (_imagePickerController.cameraDevice ==UIImagePickerControllerCameraDeviceFront)
+        {
+            // mirror image
+            savedImage = [UIImage imageWithCGImage:savedImage.CGImage scale:savedImage.scale orientation:UIImageOrientationLeftMirrored];
+        }
+        
+        CGFloat scaledWidth = self.view.frame.size.height /savedImage.size.height * savedImage.size.width;
+        
+        CGSize resizedSize = CGSizeMake(scaledWidth, self.view.frame.size.height);
+        UIImage *resizedImage = [CreateToroViewController imageWithImage:savedImage scaledToSize:resizedSize];
+        
+        _savedImageView.image = resizedImage;
+        _savedImageView.frame = CGRectMake(0, 0, scaledWidth, self.view.frame.size.height);
+        //_savedImageView.transform = CGAffineTransformMakeRotation(0);
+        _savedImageView.center = self.view.center;
+        _savedImageKey = nil;
+        
+    }
+    
+
 	[self uploadSavedImage];
 	
 	[self changeModes:NO];

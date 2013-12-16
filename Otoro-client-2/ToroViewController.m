@@ -47,7 +47,22 @@
     [super viewDidLoad];
 	
     [self.toro makeTimerLabel];
-    [self.imageView setImage:[UIImage imageWithData:_toro.imageData]];
+    
+    UIImage *rawImage = [UIImage imageWithData:_toro.imageData];
+    
+    CGFloat scaledWidth = self.view.frame.size.height /rawImage.size.height * rawImage.size.width;
+    CGSize resizedSize = CGSizeMake(scaledWidth,self.view.frame.size.height);
+    UIImage *resizedImage = [ToroViewController imageWithImage:rawImage scaledToSize:resizedSize];
+    
+    [self.imageView setImage:resizedImage];
+    
+    if (rawImage.size.width > rawImage.size.height) {
+        self.imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
+        
+    NSLog(@"raw width: %f, raw height: %f\n resized width: %f, resized height: %f\n screen width: %f, screen height: %f\n",
+          rawImage.size.width,rawImage.size.height,resizedImage.size.width,resizedImage.size.height,self.view.frame.size.width,self.view.frame.size.height);
+
     
     if (![[_toro message] isEqualToString:@""])
         [_message setText:[NSString stringWithFormat:@"%@",[_toro message]]];
@@ -61,6 +76,16 @@
         }
     }
     [_venue setText:headerStr];
+}
+
++ (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 - (void)viewDidAppear:(BOOL)animated

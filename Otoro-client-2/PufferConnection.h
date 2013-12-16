@@ -45,7 +45,6 @@
 - (void)getAllPuffersSentWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)getAllPuffersWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block;
-- (void)blurPhotoForToro:(Puffer *)toro completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)swapPuffer:(Puffer *)puffer completionBlock:(OtoroConnectionCompletionBlock)block;
 
 // friends

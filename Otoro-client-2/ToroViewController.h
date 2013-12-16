@@ -20,5 +20,6 @@
 @property (nonatomic,strong)IBOutlet UILabel *venue;
 - (id)initWithToro:(Puffer *)toro;
 @property (nonatomic) bool imageSwapped;
-
++ (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
 @end

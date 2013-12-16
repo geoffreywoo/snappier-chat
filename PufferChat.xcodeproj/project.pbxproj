@@ -201,6 +201,7 @@
 		60CE1C9F17AF2DAB00C6249F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		60E1C186185D39C100167FA8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PufferChat/Images.xcassets; sourceTree = "<group>"; };
 		60F5B54A185E8E08006BF02E /* sushi_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sushi_pin@2x.png"; sourceTree = "<group>"; };
+		60F5B54C185EBCB5006BF02E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DB9DA81A17C01D43005418CB /* PufferConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PufferConnection.h; sourceTree = "<group>"; };
 		DB9DA81B17C01D43005418CB /* PufferConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PufferConnection.m; sourceTree = "<group>"; };
 		DB9DA81F17C02AB9005418CB /* OtoroConnectionCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtoroConnectionCall.h; sourceTree = "<group>"; };
@@ -414,6 +415,7 @@
 		60CE1C6517AEDFE400C6249F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				60F5B54C185EBCB5006BF02E /* QuartzCore.framework */,
 				EA10FE2A185D43640052AF84 /* CoreTelephony.framework */,
 				EA10FE28185D435B0052AF84 /* libsqlite3.dylib */,
 				EA10FE26185D434E0052AF84 /* libz.dylib */,
