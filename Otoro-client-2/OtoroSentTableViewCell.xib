@@ -13,8 +13,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19">
-                        <rect key="frame" x="0.0" y="-1" width="204" height="21"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="orangearrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-dk-rno">
+                        <rect key="frame" x="0.0" y="0.0" width="49" height="49"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="31o-7C-dQL"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19">
+                        <rect key="frame" x="46" y="8" width="204" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="255" id="54"/>
@@ -23,8 +30,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27">
-                        <rect key="frame" x="0.0" y="-2" width="204" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="timestamp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27">
+                        <rect key="frame" x="46" y="27" width="204" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="255" id="34"/>
@@ -34,22 +41,25 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orangearrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-dk-rno">
-                        <rect key="frame" x="0.0" y="0.0" width="48" height="49"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1H-hB-WvQ">
+                        <rect key="frame" x="205" y="0.0" width="115" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="27" firstAttribute="leading" secondItem="XSy-Hs-map" secondAttribute="leading" constant="55" id="CTZ-A9-rAv"/>
-                    <constraint firstItem="27" firstAttribute="top" secondItem="XSy-Hs-map" secondAttribute="top" constant="25" id="I2H-52-fLH"/>
-                    <constraint firstItem="19" firstAttribute="leading" secondItem="XSy-Hs-map" secondAttribute="leading" constant="55" id="htQ-bh-Vn8"/>
-                    <constraint firstItem="19" firstAttribute="top" secondItem="XSy-Hs-map" secondAttribute="top" constant="5" id="uDD-mP-7xc"/>
+                    <constraint firstItem="FPK-dk-rno" firstAttribute="top" secondItem="XSy-Hs-map" secondAttribute="top" id="L6V-PC-Eof"/>
+                    <constraint firstAttribute="trailing" secondItem="O1H-hB-WvQ" secondAttribute="trailing" constant="10" id="Ynh-ei-1AI"/>
+                    <constraint firstAttribute="bottom" secondItem="FPK-dk-rno" secondAttribute="bottom" id="lRY-M2-3g5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="19" id="42"/>
                 <outlet property="statusView" destination="FPK-dk-rno" id="v8J-5g-t7E"/>
                 <outlet property="timeLabel" destination="27" id="43"/>
+                <outlet property="timerLabel" destination="O1H-hB-WvQ" id="1fj-BJ-xvh"/>
             </connections>
         </tableViewCell>
     </objects>

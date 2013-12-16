@@ -14,6 +14,7 @@
     self = [super init];
     if (self) {
         _toroId = [dict objectForKey:@"_id"];
+        _imageKey = [dict objectForKey:@"image"];
         _imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.pufferchat.com/img/%@",dict[@"image"]]];
         _puffedURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.pufferchat.com/puffed/%@",dict[@"image"]]];
         
@@ -69,14 +70,14 @@
         [_timerLabel setText:@""];
         [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"Expired"]];
     } else if (secondsLeft < 60 && secondsLeft > 0) {
-        [_timerLabel setText:[NSString stringWithFormat:@"%d seconds",secondsLeft]];
-        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d",secondsLeft]];
+        [_timerLabel setText:[NSString stringWithFormat:@"%d s",secondsLeft]];
+        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d s",secondsLeft]];
     } else if (secondsLeft < 3600){
-        [_timerLabel setText:[NSString stringWithFormat:@"%d minutes",minutesLeft]];
-        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d min",minutesLeft]];
+        [_timerLabel setText:[NSString stringWithFormat:@"%d m",minutesLeft]];
+        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d m",minutesLeft]];
     } else {
-        [_timerLabel setText:[NSString stringWithFormat:@"%d hours",hoursLeft]];
-        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d hr",hoursLeft]];
+        [_timerLabel setText:[NSString stringWithFormat:@"%d h",hoursLeft]];
+        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d h",hoursLeft]];
     }
 }
 

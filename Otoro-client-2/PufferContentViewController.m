@@ -58,6 +58,7 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
     [self.refreshControl setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:127.0/255.0 blue:0.0/255.0 alpha:0.5]];
+    [self.refreshControl setTintColor:[UIColor whiteColor]];
 
     [toroTableView addSubview: self.refreshControl];
     
@@ -238,7 +239,9 @@
     NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro stringForCreationDate]];
 	
     if ( [toro read] ) {
-        [timeLabelText appendString:@" - Read"];
+        cell.backgroundColor = [UIColor whiteColor];
+    } else {
+        cell.backgroundColor = [UIColor colorWithRed:232.0/255.0 green:142.0/255.0 blue:38.0/255.0 alpha:0.15];
     }
     
     cell.timeLabel.text = timeLabelText;
@@ -276,6 +279,8 @@
     [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
     cell.accessoryType = UITableViewCellAccessoryNone;
 
+    [cell.timerLabel setText:[toro timerLabel].text];
+    
     if ( [toro read] ) {
         NSMutableString *timeLabelText = [NSMutableString stringWithString:[toro stringForCreationDate]];
         [timeLabelText appendString:@" - Opened"];

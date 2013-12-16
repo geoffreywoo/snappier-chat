@@ -540,19 +540,9 @@ NSString *const IMAGE_SERVICE_HOST = @"http://snapper-images.cloudapp.net:1337";
     [self addAPICall:OtoroConnectionAPITypeSetToroRead completionBlock:block toConnection:connection];
 }
 
-- (void)blurPhotoForToro:(Puffer *)toro completionBlock:(OtoroConnectionCompletionBlock)block
-{
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/blur/%@", IMAGE_SERVICE_HOST, toro.imageKey]]];
-    
-    [request setHTTPMethod:@"PUT"];
-	
-    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-    [self addAPICall:OtoroConnectionAPITypeBlurPhoto completionBlock:block toConnection:connection];
-}
-
 - (void)swapPuffer:(Puffer *)puffer completionBlock:(OtoroConnectionCompletionBlock)block
 {
+    NSLog(@"puffer image key: %@", puffer.imageKey);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@/swap/%@", IMAGE_SERVICE_HOST, puffer.imageKey]]];
     

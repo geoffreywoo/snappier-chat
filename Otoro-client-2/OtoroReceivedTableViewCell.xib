@@ -13,34 +13,39 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oQ8-aA-6gn">
-                        <rect key="frame" x="6" y="5" width="39" height="39"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oQ8-aA-6gn">
+                        <rect key="frame" x="0.0" y="0.0" width="49" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="39" id="FJQ-Mh-XVc"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzs-ez-imu">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzs-ez-imu">
                         <rect key="frame" x="209" y="0.0" width="111" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="111" id="EpZ-Dp-GKf"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8O-Eh-u4t">
-                        <rect key="frame" x="0.0" y="-1" width="206" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8O-Eh-u4t">
+                        <rect key="frame" x="52" y="8" width="206" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rts-7e-vFl">
-                        <rect key="frame" x="0.0" y="-2" width="206" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rts-7e-vFl">
+                        <rect key="frame" x="52" y="27" width="206" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="B8O-Eh-u4t" firstAttribute="leading" secondItem="Gar-n1-Thw" secondAttribute="leading" constant="55" id="emg-Tv-mg1"/>
-                    <constraint firstItem="Rts-7e-vFl" firstAttribute="leading" secondItem="Gar-n1-Thw" secondAttribute="leading" constant="55" id="kdd-zA-AOY"/>
-                    <constraint firstItem="Rts-7e-vFl" firstAttribute="top" secondItem="Gar-n1-Thw" secondAttribute="top" constant="25" id="rDd-pG-HUr"/>
-                    <constraint firstItem="B8O-Eh-u4t" firstAttribute="top" secondItem="Gar-n1-Thw" secondAttribute="top" constant="5" id="uSP-4j-tHX"/>
+                    <constraint firstItem="oQ8-aA-6gn" firstAttribute="leading" secondItem="Gar-n1-Thw" secondAttribute="leading" constant="5" id="2a0-5G-ztR"/>
+                    <constraint firstItem="Rts-7e-vFl" firstAttribute="leading" secondItem="oQ8-aA-6gn" secondAttribute="trailing" constant="5" id="TWZ-M1-R0L"/>
+                    <constraint firstAttribute="trailing" secondItem="Hzs-ez-imu" secondAttribute="trailing" constant="10" id="o0L-vg-oW9"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
