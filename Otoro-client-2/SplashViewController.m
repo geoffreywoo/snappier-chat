@@ -10,6 +10,7 @@
 #import "PufferConnection.h"
 #import "PufferContentViewController.h"
 #import "OAppDelegate.h"
+#import "UAPush.h"
 
 @interface SplashViewController ()
 
@@ -74,6 +75,13 @@
             [defaults setObject: [me email] forKey:@"email"];
             [defaults setObject: [me phone] forKey:@"phone"];
             [defaults synchronize];
+            
+            [[UAPush shared] setPushEnabled:YES];
+            if (![defaults boolForKey:@"registeredDeviceToken"]) {
+                [UAPush shared].alias = [me username];
+                [[UAPush shared] updateRegistration];
+                [defaults setBool:YES forKey:@"registeredDeviceToken"];
+            }
             
             PufferContentViewController *rootViewController = [[PufferContentViewController alloc] init];
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
