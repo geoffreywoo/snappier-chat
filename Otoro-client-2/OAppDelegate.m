@@ -46,7 +46,6 @@
         navigationController.navigationBarHidden = YES;
         self.window.rootViewController = navigationController;
         [[UAPush shared] setPushEnabled:YES];
-        
         if (![defaults boolForKey:@"registeredDeviceToken"]) {
             [UAPush shared].alias = username;
             [[UAPush shared] updateRegistration];

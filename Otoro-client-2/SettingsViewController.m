@@ -10,6 +10,7 @@
 #import "SplashViewController.h"
 #import "OAppDelegate.h"
 #import "PufferConnection.h"
+#import "UAPush.h"
 
 @interface SettingsViewController ()<UITextFieldDelegate>
 
@@ -67,6 +68,10 @@
     }];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [[UAPush shared] setPushEnabled:YES];
+    [defaults setBool:NO forKey:@"registeredDeviceToken"];
+    [UAPush shared].alias = nil;
+    [[UAPush shared] updateRegistration];
     
     SplashViewController *rootViewController = [[SplashViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
