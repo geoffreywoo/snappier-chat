@@ -19,6 +19,7 @@
 		602A4D0217C052E3007DEF27 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4D0017C052E3007DEF27 /* SettingsViewController.xib */; };
 		602A4D0717C17D33007DEF27 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 602A4D0517C17D32007DEF27 /* AddFriendsViewController.m */; };
 		602A4D0817C17D33007DEF27 /* AddFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 602A4D0617C17D32007DEF27 /* AddFriendsViewController.xib */; };
+		602F7543185ED84900BA59D4 /* puffer_small_icon_dropshadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 602F7542185ED84900BA59D4 /* puffer_small_icon_dropshadow@2x.png */; };
 		60529FC217CA8E1700C7F064 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60529FC117CA8E1700C7F064 /* AddressBook.framework */; };
 		60529FCC17CAAD0000C7F064 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60529FCA17CAAD0000C7F064 /* SearchViewController.m */; };
 		60529FCD17CAAD0000C7F064 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60529FCB17CAAD0000C7F064 /* SearchViewController.xib */; };
@@ -135,6 +136,7 @@
 		602A4D0417C17D31007DEF27 /* AddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsViewController.h; sourceTree = "<group>"; };
 		602A4D0517C17D32007DEF27 /* AddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsViewController.m; sourceTree = "<group>"; };
 		602A4D0617C17D32007DEF27 /* AddFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFriendsViewController.xib; sourceTree = "<group>"; };
+		602F7542185ED84900BA59D4 /* puffer_small_icon_dropshadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puffer_small_icon_dropshadow@2x.png"; sourceTree = "<group>"; };
 		60529FC117CA8E1700C7F064 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		60529FC917CAACFF00C7F064 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		60529FCA17CAAD0000C7F064 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 		F4F9A53E17DBE7840027AE66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				602F7542185ED84900BA59D4 /* puffer_small_icon_dropshadow@2x.png */,
 				60F5B54A185E8E08006BF02E /* sushi_pin@2x.png */,
 				609EEFA7185E832B00E56B6E /* flash_off@2x.png */,
 				609EEFA8185E832B00E56B6E /* flash_on@2x.png */,
@@ -609,6 +612,7 @@
 				609227D617B84CC100E1D897 /* CreateToroViewController.xib in Resources */,
 				609EEFA4185E831700E56B6E /* camera_frontback@2x.png in Resources */,
 				602A4CE717C02F2E007DEF27 /* FriendListViewController.xib in Resources */,
+				602F7543185ED84900BA59D4 /* puffer_small_icon_dropshadow@2x.png in Resources */,
 				602A4CF317C03D9C007DEF27 /* SplashViewController.xib in Resources */,
 				602A4CFD17C04017007DEF27 /* RegistrationViewController.xib in Resources */,
 				602A4D0217C052E3007DEF27 /* SettingsViewController.xib in Resources */,

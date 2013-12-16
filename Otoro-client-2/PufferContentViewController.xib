@@ -50,7 +50,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" image="puffer_small_icon.png">
+                    <state key="normal" image="puffer_small_icon_dropshadow.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted">
@@ -87,7 +87,7 @@
         </view>
     </objects>
     <resources>
-        <image name="puffer_small_icon.png" width="35" height="35"/>
+        <image name="puffer_small_icon_dropshadow.png" width="35" height="35"/>
         <image name="settings_icon.png" width="24" height="24"/>
     </resources>
 </document>
