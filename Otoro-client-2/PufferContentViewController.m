@@ -238,7 +238,7 @@
     if ( [toro read] ) {
         cell.backgroundColor = [UIColor whiteColor];
     } else {
-        cell.backgroundColor = [UIColor colorWithRed:232.0/255.0 green:142.0/255.0 blue:38.0/255.0 alpha:0.15];
+        cell.backgroundColor = [UIColor colorWithRed:237.0/255.0 green:194.0/255.0 blue:145.0/255.0 alpha:0.15];
     }
     
     cell.timeLabel.text = timeLabelText;
