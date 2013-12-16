@@ -41,7 +41,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1H-hB-WvQ">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1H-hB-WvQ">
                         <rect key="frame" x="205" y="0.0" width="115" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -50,9 +50,11 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="O1H-hB-WvQ" firstAttribute="top" secondItem="XSy-Hs-map" secondAttribute="top" id="HKy-W4-iO6"/>
                     <constraint firstItem="FPK-dk-rno" firstAttribute="top" secondItem="XSy-Hs-map" secondAttribute="top" id="L6V-PC-Eof"/>
                     <constraint firstAttribute="trailing" secondItem="O1H-hB-WvQ" secondAttribute="trailing" constant="10" id="Ynh-ei-1AI"/>
                     <constraint firstAttribute="bottom" secondItem="FPK-dk-rno" secondAttribute="bottom" id="lRY-M2-3g5"/>
+                    <constraint firstAttribute="bottom" secondItem="O1H-hB-WvQ" secondAttribute="bottom" id="mCt-JQ-djt"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
