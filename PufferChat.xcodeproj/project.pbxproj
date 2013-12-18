@@ -576,6 +576,11 @@
 				TargetAttributes = {
 					60CE1C6117AEDFE400C6249F = {
 						DevelopmentTeam = 9492KYU2PD;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -830,8 +835,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SERRICE CORP (9492KYU2PD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/PufferChat-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -847,7 +852,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = PufferChat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B700F19E-D6B7-4EEE-B13B-4BA6B687EDB1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -858,8 +863,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Geoffrey Woo (LEF3S99LJ5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SERRICE CORP (9492KYU2PD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Otoro-client-2/PufferChat-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -875,7 +880,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = PufferChat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B700F19E-D6B7-4EEE-B13B-4BA6B687EDB1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -301,7 +301,7 @@
         if (_imagePickerController.cameraDevice ==UIImagePickerControllerCameraDeviceFront)
         {
             // mirror image
-            savedImage = [UIImage imageWithCGImage:savedImage.CGImage scale:savedImage.scale orientation:UIImageOrientationLeftMirrored];
+            //savedImage = [UIImage imageWithCGImage:savedImage.CGImage scale:savedImage.scale orientation:UIImageOrientationLeftMirrored];
         }
         
         CGFloat scaledHeight = self.view.frame.size.width /savedImage.size.width * savedImage.size.height;
@@ -313,7 +313,11 @@
         _savedImageView.image = resizedImage;
         _savedImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, scaledHeight);
         _savedImageView.center = self.view.center;
-        _savedImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+        //if (_imagePickerController.cameraDevice ==UIImagePickerControllerCameraDeviceFront) {
+          //  _savedImageView.transform = CGAffineTransformMakeRotation(3*M_PI_2);
+       // } else {
+            _savedImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+       // }
         _savedImageKey = nil;
         
         

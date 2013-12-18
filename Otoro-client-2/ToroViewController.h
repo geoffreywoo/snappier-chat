@@ -17,7 +17,7 @@
 @property (nonatomic,strong) Puffer *toro;
 @property (nonatomic,strong) IBOutlet UILabel *countDown;
 @property (nonatomic,strong)IBOutlet UILabel *message;
-@property (nonatomic,strong)IBOutlet UILabel *venue;
+//@property (nonatomic,strong)IBOutlet UILabel *venue;
 - (id)initWithToro:(Puffer *)toro;
 @property (nonatomic) bool imageSwapped;
 + (UIImage*)imageWithImage:(UIImage*)image

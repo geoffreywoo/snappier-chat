@@ -68,7 +68,7 @@
         [_message setText:[NSString stringWithFormat:@"%@",[_toro message]]];
     else
         _message.hidden = YES;
-    
+ /*
     NSMutableString *headerStr = [NSMutableString stringWithString:[_toro stringForCreationDate]];
     if ([_toro venue] && ([[_toro venue].name isKindOfClass:[NSString class]])) {
         if (![[_toro venue].name isEqualToString:@""]) {
@@ -76,6 +76,7 @@
         }
     }
     [_venue setText:headerStr];
+  */
 }
 
 + (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
