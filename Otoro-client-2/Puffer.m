@@ -15,8 +15,10 @@
     if (self) {
         _toroId = [dict objectForKey:@"_id"];
         _imageKey = [dict objectForKey:@"image"];
-        _imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.pufferchat.com/img/%@",dict[@"image"]]];
-        _puffedURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images.pufferchat.com/puffed/%@",dict[@"image"]]];
+        
+        //TODO: new image host
+        _imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images-new.pufferchat.com/img/%@",dict[@"image"]]];
+        _puffedURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://images-new.pufferchat.com/puffed/%@",dict[@"image"]]];
         
         _read = [[dict objectForKey:@"read"] boolValue];
         _receiver = [dict objectForKey:@"receiver"];
