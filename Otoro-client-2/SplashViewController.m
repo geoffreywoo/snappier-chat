@@ -101,6 +101,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"text field should return.");
     if (textField == usernameField) {
         NSLog(@"text field 1");
         [passwordField becomeFirstResponder];
@@ -110,6 +111,11 @@
         [self login:textField];
     }
     
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    NSLog(@"text field should end editing.");
     return YES;
 }
 

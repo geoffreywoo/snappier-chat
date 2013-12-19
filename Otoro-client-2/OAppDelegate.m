@@ -28,8 +28,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *username = [defaults objectForKey:@"username"];
     
-    [UAirship setLogLevel:UALogLevelTrace];
-    [UAirship takeOff];
+    //[UAirship setLogLevel:UALogLevelTrace];
+   // [UAirship takeOff];
     
     if (username == nil) {
         SplashViewController *rootViewController = [[SplashViewController alloc] init];
