@@ -47,6 +47,9 @@
 - (void)setReadFlagForToroID:(NSString *)toroID completionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)swapPuffer:(Puffer *)puffer completionBlock:(OtoroConnectionCompletionBlock)block;
 
+//images
+- (void)downloadPhoto:(NSURL *)url completionBlock:(OtoroConnectionCompletionBlockNSData)block;
+
 // friends
 - (void)getAllFriendsWithCompletionBlock:(OtoroConnectionCompletionBlock)block;
 - (void)addFriendWithUserID:(NSString *)userID completionBlock:(OtoroConnectionCompletionBlock)block;

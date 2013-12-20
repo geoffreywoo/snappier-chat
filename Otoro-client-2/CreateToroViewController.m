@@ -303,15 +303,13 @@
             // mirror image
             //savedImage = [UIImage imageWithCGImage:savedImage.CGImage scale:savedImage.scale orientation:UIImageOrientationLeftMirrored];
         }
+        CGFloat scaledWidth = self.view.frame.size.height /savedImage.size.height * savedImage.size.width;
         
-        CGFloat scaledHeight = self.view.frame.size.width /savedImage.size.width * savedImage.size.height;
-        
-      //  CGSize resizedSize = CGSizeMake(scaledHeight,self.view.frame.size.width);
-        CGSize resizedSize = CGSizeMake(self.view.frame.size.width,scaledHeight);
+        CGSize resizedSize = CGSizeMake(scaledWidth, self.view.frame.size.height);
         UIImage *resizedImage = [CreateToroViewController imageWithImage:savedImage scaledToSize:resizedSize];
-        
         _savedImageView.image = resizedImage;
-        _savedImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, scaledHeight);
+        _savedImageView.frame = CGRectMake(0, 0, scaledWidth, self.view.frame.size.height);
+
         _savedImageView.center = self.view.center;
         //if (_imagePickerController.cameraDevice ==UIImagePickerControllerCameraDeviceFront) {
           //  _savedImageView.transform = CGAffineTransformMakeRotation(3*M_PI_2);
@@ -319,8 +317,6 @@
             _savedImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
        // }
         _savedImageKey = nil;
-        
-        
     }
     else
     {

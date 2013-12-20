@@ -31,6 +31,9 @@ typedef NS_ENUM(NSInteger, OtoroConnectionAPIType)
 	OtoroConnectionAPITypeBlurPhoto,
     OtoroConnectionAPITypeSwapPhoto,
     
+    // images
+    OtoroConnectionAPITypeDownloadPhoto,
+    
     // friends
     OtoroConnectionAPITypeGetFriends,
     OtoroConnectionAPITypeAddFriend,
@@ -42,10 +45,12 @@ typedef NS_ENUM(NSInteger, OtoroConnectionAPIType)
 };
 
 typedef void (^OtoroConnectionCompletionBlock)(NSError *error, NSDictionary *returnData);
+typedef void (^OtoroConnectionCompletionBlockNSData)(NSError *error, NSData *returnData);
 
 @interface OtoroConnectionCall : NSObject
 @property (nonatomic, assign) OtoroConnectionAPIType apiType;
 @property (nonatomic, copy) OtoroConnectionCompletionBlock completionBlock;
+@property (nonatomic, copy) OtoroConnectionCompletionBlockNSData completionBlockNSData;
 @property (nonatomic, strong) NSDictionary *userInfo;
 @property (nonatomic, strong) NSMutableData *data;
 @end

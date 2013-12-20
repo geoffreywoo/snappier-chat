@@ -22,4 +22,5 @@
 @property (nonatomic) bool imageSwapped;
 + (UIImage*)imageWithImage:(UIImage*)image
               scaledToSize:(CGSize)newSize;
+- (void)landscapeFlip;
 @end

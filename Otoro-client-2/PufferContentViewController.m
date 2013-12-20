@@ -187,10 +187,13 @@
     
     NSLog(@"pop toro %@ went through.", [theToro toroId]);
     
+
 #warning TODO: cache this
 	if (theToro.imageData == nil) {
-        theToro.imageData = [theToro getImageData:theToro.imageURL];
+        [theToro getImageData:theToro.imageURL];
     }
+    
+    [self.view addSubview:[theToro toroViewController].view];
     
     if (![theToro read]) {
 		// very first tap, set the read flag
@@ -211,7 +214,7 @@
             }
         }];
     }
-    [self.view addSubview:[theToro toroViewController].view];
+
 }
 
 - (void) hideToroFromButton:(UIButton*)sender

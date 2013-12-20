@@ -45,7 +45,7 @@
 - (NSComparisonResult)compare:(Puffer*)toro;
 - (void)print;
 - (NSString *)stringForCreationDate;
-- (NSData *) getImageData:(NSURL*)url;
+- (void) getImageData:(NSURL*)url;
 
 
 @end

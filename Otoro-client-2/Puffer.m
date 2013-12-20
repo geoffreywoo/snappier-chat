@@ -7,6 +7,7 @@
 //
 
 #import "Puffer.h"
+#import "PufferConnection.h"
 
 @implementation Puffer
 
@@ -68,9 +69,12 @@
     int secondsLeft = ceil([self.expireDate timeIntervalSinceNow]);
     NSInteger minutesLeft = ceil([self.expireDate timeIntervalSinceNow]/60);
     NSInteger hoursLeft = ceil([self.expireDate timeIntervalSinceNow]/3600);
+    if (self.expired)
+        [[_toroViewController countDown] setText:[NSString stringWithFormat:@"Expired"]];
+    
     if (secondsLeft <= 0) {
         [_timerLabel setText:@""];
-        [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"Expired"]];
+        //expire when swap goes through
     } else if (secondsLeft < 60 && secondsLeft > 0) {
         [_timerLabel setText:[NSString stringWithFormat:@"%d s",secondsLeft]];
         [[[self toroViewController] countDown] setText:[NSString stringWithFormat:@"%d s",secondsLeft]];
@@ -104,10 +108,19 @@
 }
 
 - (void)swap {
+    NSLog(@"swap called");
   //  _imageData = nil;
-    _imageData = [self getImageData:_imageURL];
-    _swapped = true;
-    [_toroViewController.imageView setImage:[UIImage imageWithData:self.imageData]];
+    [[PufferConnection sharedInstance] downloadPhoto:self.imageURL completionBlock:^(NSError *error, NSData *returnData) {
+        if (error) {
+            
+        } else {
+            _imageData = returnData;
+            [self setImageOnPufferViewController:returnData];
+            _swapped = true;
+            [[_toroViewController countDown] setText:[NSString stringWithFormat:@"Expired"]];
+        }
+    }];
+
 }
 
 - (NSComparisonResult)compare:(Puffer*)toro {
@@ -134,15 +147,32 @@
 	return [creationDateFormatter stringFromDate:self.createdDate];
 }
 
-- (NSData *)getImageData:(NSURL*)url
+- (void) getImageData:(NSURL*)url
 {
-    //NSLog(@"getting imagedata: %@",url);
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
+    //[_toroViewController.imageView setImage:[UIImage imageNamed:@"puffer_large_icon"]];
+    [[PufferConnection sharedInstance] downloadPhoto:url completionBlock:^(NSError *error, NSData *returnData) {
+        if (error) {
+            
+        } else {
+            _imageData = returnData;
+            [self setImageOnPufferViewController:returnData];
+        }
+    }];
+}
+
+- (void) setImageOnPufferViewController:(NSData *)data {
     
-    NSError *error = nil;
-    NSURLResponse *response = nil;
+    UIImage *rawImage = [UIImage imageWithData:data];
     
-    return [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    CGFloat scaledWidth = _toroViewController.view.frame.size.height /rawImage.size.height * rawImage.size.width;
+    CGSize resizedSize = CGSizeMake(scaledWidth,_toroViewController.view.frame.size.height);
+    UIImage *resizedImage = [ToroViewController imageWithImage:rawImage scaledToSize:resizedSize];
+    
+    [_toroViewController.imageView setImage:resizedImage];
+    
+    if (rawImage.size.width > rawImage.size.height) {
+        [_toroViewController landscapeFlip];
+    }
 }
 
 @end

@@ -56,6 +56,15 @@ NSString *const IMAGE_SERVICE_HOST = @"http://image-service.pufferchat.com:1337"
     CFDictionaryAddValue(_connectionToCall, (__bridge const void *)(connection), (__bridge const void *)call);
 }
 
+- (void)addAPICall:(OtoroConnectionAPIType)apiType completionBlockNSData:(OtoroConnectionCompletionBlockNSData)block toConnection:(NSURLConnection *)connection
+{
+    // NSLog(@"connection: %@",connection);
+    OtoroConnectionCall *call = [[OtoroConnectionCall alloc] init];
+    call.apiType = apiType;
+    call.completionBlockNSData = block;
+    CFDictionaryAddValue(_connectionToCall, (__bridge const void *)(connection), (__bridge const void *)call);
+}
+
 - (void)addAPICall:(OtoroConnectionAPIType)apiType completionBlock:(OtoroConnectionCompletionBlock)block toConnection:(NSURLConnection *)connection userInfo:(NSDictionary *)userInfo
 {
   //  NSLog(@"connection: %@",connection);
@@ -265,6 +274,17 @@ NSString *const IMAGE_SERVICE_HOST = @"http://image-service.pufferchat.com:1337"
 			error = [self errorForResponse:jsonToros];
             [self callForConnection:connection].completionBlock(error, nil);
         }
+    } else if (apiType == OtoroConnectionAPITypeDownloadPhoto) {
+        NSData *data = [self callForConnection:connection].data;
+        if (data)
+        {
+            [self callForConnection:connection].completionBlockNSData(error, data);
+        }
+        else
+        {
+            [self callForConnection:connection].completionBlockNSData(error, nil);
+        }
+        
     } else if (apiType == OtoroConnectionAPITypeGetFriends) {
         NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:[self callForConnection:connection].data options:NSJSONReadingMutableLeaves error:&error];
         if (resp)
@@ -432,7 +452,7 @@ NSString *const IMAGE_SERVICE_HOST = @"http://image-service.pufferchat.com:1337"
     [self addAPICall:OtoroConnectionAPITypeMatchAddressBook completionBlock:block toConnection:connection];
 }
 
-#pragma mark - Toros Endpoints
+#pragma mark - Puffers Endpoints
 
 - (void)uploadToroPhoto:(UIImage *)toroImage completionBlock:(OtoroConnectionCompletionBlock)block
 {
@@ -551,6 +571,15 @@ NSString *const IMAGE_SERVICE_HOST = @"http://image-service.pufferchat.com:1337"
 	
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [self addAPICall:OtoroConnectionAPITypeSwapPhoto completionBlock:block toConnection:connection];
+}
+
+#pragma mark - Images Endpoint
+- (void)downloadPhoto:(NSURL *)url completionBlock:(OtoroConnectionCompletionBlockNSData)block
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10];
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self addAPICall:OtoroConnectionAPITypeDownloadPhoto completionBlockNSData:block toConnection:connection];
 }
 
 #pragma mark - Friends Endpoints
