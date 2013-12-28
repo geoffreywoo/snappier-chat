@@ -9,8 +9,8 @@
 #import "PufferConnection.h"
 #import "Puffer.h"
 
-NSString *const OTORO_HOST = @"http://otoro.herokuapp.com";
-//NSString *const OTORO_HOST = @"http://otoro-staging.herokuapp.com";
+NSString *const OTORO_HOST = @"http://api.serrice.com";
+//NSString *const OTORO_HOST = @"http://api-staging.serrice.com";
 
 //TODO: new image service host
 NSString *const IMAGE_SERVICE_HOST = @"http://image-service.pufferchat.com:1337";
