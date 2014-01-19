@@ -66,7 +66,6 @@
             [usernameField resignFirstResponder];
             
         } else {
-            NSLog(@"logged in response: %@",returnData);
             OUser *me = [[OUser alloc]initWith:[returnData objectForKey:@"user"] ];
             [[PufferConnection sharedInstance] setUser: me];
             
@@ -76,12 +75,8 @@
             [defaults setObject: [me phone] forKey:@"phone"];
             [defaults synchronize];
             
-            [[UAPush shared] setPushEnabled:YES];
-            if (![defaults boolForKey:@"registeredDeviceToken"]) {
-                [UAPush shared].alias = [me username];
-                [[UAPush shared] updateRegistration];
-                [defaults setBool:YES forKey:@"registeredDeviceToken"];
-            }
+            [UAPush shared].alias = [me username];
+            [[UAPush shared] updateRegistration];
             
             PufferContentViewController *rootViewController = [[PufferContentViewController alloc] init];
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
@@ -95,18 +90,14 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"touches began");
     [usernameField resignFirstResponder];
     [passwordField resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"text field should return.");
     if (textField == usernameField) {
-        NSLog(@"text field 1");
         [passwordField becomeFirstResponder];
     } else {
-        NSLog(@"text field 2");
         [textField resignFirstResponder];
         [self login:textField];
     }
@@ -115,7 +106,6 @@
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    NSLog(@"text field should end editing.");
     return YES;
 }
 

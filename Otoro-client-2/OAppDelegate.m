@@ -29,8 +29,9 @@
     NSString *username = [defaults objectForKey:@"username"];
     
     [UAirship setLogLevel:UALogLevelTrace];
-    [UAirship takeOff];
     
+    [UAirship takeOff];
+    NSLog(@"UAirship took off!");
     if (username == nil) {
         SplashViewController *rootViewController = [[SplashViewController alloc] init];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
@@ -45,12 +46,9 @@
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
         navigationController.navigationBarHidden = YES;
         self.window.rootViewController = navigationController;
-        [[UAPush shared] setPushEnabled:YES];
-        if (![defaults boolForKey:@"registeredDeviceToken"]) {
-            [UAPush shared].alias = username;
-            [[UAPush shared] updateRegistration];
-            [defaults setBool:YES forKey:@"registeredDeviceToken"];
-        }
+        
+        [UAPush shared].alias = username;
+        [[UAPush shared] updateRegistration];
     }
     
     [self.window makeKeyAndVisible];
@@ -104,11 +102,6 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
-}
-
-- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-
 }
 
 @end

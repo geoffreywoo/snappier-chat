@@ -130,7 +130,7 @@
 
 - (void) print
 {
-    NSLog(@"sender: %@, receiver: %@, message: %@, venue: %@, timestamp: %@", _sender, _receiver, _message, _venue.name, _createdDate);
+//    NSLog(@"sender: %@, receiver: %@, message: %@, venue: %@, timestamp: %@", _sender, _receiver, _message, _venue.name, _createdDate);
 }
 
 - (NSString *)stringForCreationDate
